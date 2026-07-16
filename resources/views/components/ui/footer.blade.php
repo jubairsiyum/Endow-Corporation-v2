@@ -1,13 +1,13 @@
 {{-- Footer --}}
-<footer style="background-color: #d8e5e5; position: relative; overflow: hidden;">
-    <div class="max-w-7xl mx-auto px-6 pt-32 pb-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+<footer style="background: linear-gradient(180deg, var(--color-dark) 0%, var(--color-dark-2) 100%); position: relative; overflow: hidden;">
+    <div class="max-w-7xl mx-auto px-6 pt-20 pb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
             {{-- Brand --}}
             <div>
-                <a href="{{ route('home') }}" class="flex items-center gap-3 mb-6">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 md:h-16 w-auto">
+                <a href="{{ route('home') }}" class="inline-block mb-6">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
                 </a>
-                <p class="text-sm leading-relaxed mb-6" style="color: #67787a; max-width: 280px;">
+                <p class="text-sm leading-relaxed mb-6" style="color: rgba(255,255,255,0.45); max-width: 280px;">
                     A global leader in travel, education, technology, and healthcare solutions. Empowering businesses worldwide.
                 </p>
                 <div class="flex items-center gap-3">
@@ -18,11 +18,11 @@
                         ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
                     ] as $social)
                         <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                           class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
-                           style="background: rgba(12,30,33,0.3); color: #d8e5e5;"
+                           class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300"
+                           style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45);"
                            onmouseover="this.style.backgroundColor='var(--color-primary)'; this.style.color='white';"
-                           onmouseout="this.style.backgroundColor='rgba(12,30,33,0.3)'; this.style.color='#d8e5e5';">
-                            <i class="{{ $social['icon'] }}" style="font-size: 14px;"></i>
+                           onmouseout="this.style.backgroundColor='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.45)';">
+                            <i class="{{ $social['icon'] }}" style="font-size: 13px;"></i>
                         </a>
                     @endforeach
                 </div>
@@ -30,7 +30,7 @@
 
             {{-- Services --}}
             <div>
-                <h5 class="text-base font-semibold mb-6" style="color: var(--color-text-heading);">Services</h5>
+                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Services</h5>
                 <ul class="space-y-3">
                     @foreach([
                         ['label' => 'Endow Travel', 'url' => route('division.show', 'travel')],
@@ -39,7 +39,7 @@
                         ['label' => 'Hospital Tourism', 'url' => route('division.show', 'hospital-tourism')],
                     ] as $link)
                         <li>
-                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='#67787a'">
+                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='var(--color-primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
                                 {{ $link['label'] }}
                             </a>
                         </li>
@@ -49,7 +49,7 @@
 
             {{-- Company --}}
             <div>
-                <h5 class="text-base font-semibold mb-6" style="color: var(--color-text-heading);">Company</h5>
+                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Company</h5>
                 <ul class="space-y-3">
                     @foreach([
                         ['label' => 'About Us', 'url' => route('about')],
@@ -57,7 +57,7 @@
                         ['label' => 'Consulting', 'url' => route('consulting')],
                     ] as $link)
                         <li>
-                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='#67787a'">
+                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='var(--color-primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
                                 {{ $link['label'] }}
                             </a>
                         </li>
@@ -67,34 +67,34 @@
 
             {{-- Contact --}}
             <div>
-                <h5 class="text-base font-semibold mb-6" style="color: var(--color-text-heading);">Contact</h5>
+                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Contact</h5>
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3">
                         <i class="fa-solid fa-phone text-sm mt-1" style="color: var(--color-primary);"></i>
                         <div>
-                            <a href="tel:0226322559" class="text-sm block hover:text-primary transition-colors" style="color: #67787a;">02-2632-2559</a>
-                            <a href="tel:+821057672559" class="text-sm block hover:text-primary transition-colors" style="color: #67787a;">+82 10-5767-2559</a>
+                            <a href="tel:0226322559" class="text-sm block transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">02-2632-2559</a>
+                            <a href="tel:+821057672559" class="text-sm block transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">+82 10-5767-2559</a>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
                         <i class="fa-regular fa-envelope text-sm mt-1" style="color: var(--color-primary);"></i>
-                        <a href="mailto:contact@endowcorporation.com" class="text-sm hover:text-primary transition-colors break-all" style="color: #67787a;">contact@endowcorporation.com</a>
+                        <a href="mailto:contact@endowcorporation.com" class="text-sm transition-colors break-all" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">contact@endowcorporation.com</a>
                     </li>
                     <li class="flex items-start gap-3">
                         <i class="fa-solid fa-location-dot text-sm mt-1" style="color: var(--color-primary);"></i>
-                        <span class="text-sm" style="color: #67787a;">Room 311, River Tower Officetel, Seoul, South Korea</span>
+                        <span class="text-sm" style="color: rgba(255,255,255,0.4);">Room 311, River Tower Officetel, Seoul, South Korea</span>
                     </li>
                 </ul>
             </div>
         </div>
 
         {{-- Copyright --}}
-        <div class="pt-8" style="border-top: 1px dashed #b0c4c4;">
+        <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.08);">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-sm" style="color: #67787a;">&copy; {{ date('Y') }} Endow Corporation. All rights reserved.</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.3);">&copy; {{ date('Y') }} Endow Corporation. All rights reserved.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-sm hover:text-primary transition-colors" style="color: #67787a;">Privacy Policy</a>
-                    <a href="#" class="text-sm hover:text-primary transition-colors" style="color: #67787a;">Terms of Service</a>
+                    <a href="#" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
+                    <a href="#" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Terms of Service</a>
                 </div>
             </div>
         </div>

@@ -51,25 +51,25 @@
 <body>
 
     {{-- Top Bar --}}
-    <div class="hidden lg:block" style="background-color: var(--color-dark);">
-        <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
-            <div class="flex items-center gap-7">
-                <div class="flex items-center gap-2 text-white/60 text-xs font-medium">
-                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
+    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%); border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2 text-xs font-medium" style="color: rgba(255,255,255,0.45);">
+                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 10px;"></i>
                     <span>Sat – Thu, 8:00am – 6:00pm</span>
                 </div>
-                <div class="w-px h-3 bg-white/15"></div>
-                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2 text-white/60 text-xs font-medium hover:text-white transition-colors">
-                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
+                <div class="w-px h-3" style="background: rgba(255,255,255,0.1);"></div>
+                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2 text-xs font-medium transition-colors" style="color: rgba(255,255,255,0.45);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 10px;"></i>
                     contact@endowcorporation.com
                 </a>
-                <div class="w-px h-3 bg-white/15"></div>
-                <div class="flex items-center gap-2 text-white/60 text-xs font-medium">
-                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
+                <div class="w-px h-3" style="background: rgba(255,255,255,0.1);"></div>
+                <div class="flex items-center gap-2 text-xs font-medium" style="color: rgba(255,255,255,0.45);">
+                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 10px;"></i>
                     Seoul, South Korea
                 </div>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
                 @foreach([
                     ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
                     ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
@@ -77,9 +77,12 @@
                     ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
                 ] as $social)
                     <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                       class="w-6 h-6 rounded flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                       class="w-6 h-6 rounded flex items-center justify-center transition-all"
+                       style="color: rgba(255,255,255,0.3);"
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.08)';"
+                       onmouseout="this.style.color='rgba(255,255,255,0.3)'; this.style.backgroundColor='transparent';"
                        aria-label="Social">
-                        <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
+                        <i class="{{ $social['icon'] }}" style="font-size: 10px;"></i>
                     </a>
                 @endforeach
             </div>
@@ -88,15 +91,10 @@
 
     {{-- Header --}}
     <header id="main-header" class="transition-all duration-300" style="background: white; position: relative; z-index: 100; border-bottom: 1px solid var(--color-border);">
-        <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 md:h-16 lg:h-18 w-auto flex-shrink-0">
-                <div class="hidden sm:flex flex-col">
-                    <span class="text-base font-bold leading-tight" style="color: var(--color-dark); letter-spacing: -0.02em;">Endow Corporation</span>
-                    <span class="text-[10px] font-medium uppercase tracking-[1.5px] leading-tight" style="color: var(--color-primary);">Navigating Knowledge, Embracing Adventure</span>
-                </div>
-            </a>
+            <a href="{{ route('home') }}" class="flex-shrink-0">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 42px; width: auto;">
             </a>
 
             {{-- Desktop Nav --}}
