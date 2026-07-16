@@ -4,11 +4,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
             {{-- Brand --}}
             <div>
-                <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    </div>
-                    <span class="text-xl font-bold" style="color: var(--color-text-heading); letter-spacing: -0.03em;">Endow</span>
+                <a href="{{ route('home') }}" class="flex items-center gap-3 mb-6">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-12 w-auto">
                 </a>
                 <p class="text-sm leading-relaxed mb-6" style="color: #67787a; max-width: 280px;">
                     A global leader in travel, education, technology, and healthcare solutions. Empowering businesses worldwide.
@@ -23,7 +20,7 @@
                         <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
                            class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
                            style="background: rgba(12,30,33,0.3); color: #d8e5e5;"
-                           onmouseover="this.style.backgroundColor='#FF2957'; this.style.color='white';"
+                           onmouseover="this.style.backgroundColor='var(--color-primary)'; this.style.color='white';"
                            onmouseout="this.style.backgroundColor='rgba(12,30,33,0.3)'; this.style.color='#d8e5e5';">
                             <i class="{{ $social['icon'] }}" style="font-size: 14px;"></i>
                         </a>
@@ -42,7 +39,7 @@
                         ['label' => 'Hospital Tourism', 'url' => route('division.show', 'hospital-tourism')],
                     ] as $link)
                         <li>
-                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='#FF2957'" onmouseout="this.style.color='#67787a'">
+                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='#67787a'">
                                 {{ $link['label'] }}
                             </a>
                         </li>
@@ -60,7 +57,7 @@
                         ['label' => 'Consulting', 'url' => route('consulting')],
                     ] as $link)
                         <li>
-                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='#FF2957'" onmouseout="this.style.color='#67787a'">
+                            <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: #67787a;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='#67787a'">
                                 {{ $link['label'] }}
                             </a>
                         </li>

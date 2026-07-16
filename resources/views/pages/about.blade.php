@@ -64,7 +64,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px]" data-animate>
             @foreach([
-                ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel', 'desc' => 'Seamless travel solutions for business and leisure.', 'color' => '#FF2957', 'link' => 'https://endowtravel.com/'],
+                ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel', 'desc' => 'Seamless travel solutions for business and leisure.', 'color' => 'var(--color-primary)', 'link' => 'https://endowtravel.com/'],
                 ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education', 'desc' => 'World-class educational programs and partnerships.', 'color' => '#7C5CFC', 'link' => 'https://endowglobaledu.com/'],
                 ['route' => 'technology', 'icon' => 'fa-solid fa-microchip', 'name' => 'Technologies', 'desc' => 'Innovative tech solutions for digital transformation.', 'color' => '#3b82f6', 'link' => 'https://endowtech.net/'],
                 ['route' => 'hospital-tourism', 'icon' => 'fa-solid fa-heart-pulse', 'name' => 'Hospital Tourism', 'desc' => 'Healthcare travel across 30+ countries.', 'color' => '#10b981'],

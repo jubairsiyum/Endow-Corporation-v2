@@ -52,22 +52,24 @@
 
     {{-- Top Bar --}}
     <div class="hidden lg:block" style="background-color: var(--color-dark); border-radius: 0 0 12px 12px; margin: 0 15px;">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-8">
-                <div class="flex items-center gap-2 text-white/70 text-sm">
-                    <i class="fa-regular fa-clock" style="color: var(--color-primary);"></i>
+        <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-7">
+                <div class="flex items-center gap-2 text-white/60 text-xs font-medium">
+                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
                     <span>Sat – Thu, 8:00am – 6:00pm</span>
                 </div>
-                <div class="flex items-center gap-2 text-white/70 text-sm">
-                    <i class="fa-regular fa-envelope" style="color: var(--color-primary);"></i>
-                    <a href="mailto:contact@endowcorporation.com" class="hover:text-white transition-colors">contact@endowcorporation.com</a>
-                </div>
-                <div class="flex items-center gap-2 text-white/70 text-sm">
-                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary);"></i>
-                    <span>Seoul, South Korea</span>
+                <div class="w-px h-3 bg-white/15"></div>
+                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2 text-white/60 text-xs font-medium hover:text-white transition-colors">
+                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
+                    contact@endowcorporation.com
+                </a>
+                <div class="w-px h-3 bg-white/15"></div>
+                <div class="flex items-center gap-2 text-white/60 text-xs font-medium">
+                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
+                    Seoul, South Korea
                 </div>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
                 @foreach([
                     ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
                     ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
@@ -75,9 +77,9 @@
                     ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
                 ] as $social)
                     <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                       class="w-7 h-7 rounded-full flex items-center justify-center text-white/50 hover:text-white transition-colors"
-                       style="background: rgba(255,255,255,0.1);">
-                        <i class="{{ $social['icon'] }}" style="font-size: 12px;"></i>
+                       class="w-6 h-6 rounded flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                       aria-label="Social">
+                        <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
                     </a>
                 @endforeach
             </div>
@@ -85,24 +87,21 @@
     </div>
 
     {{-- Header --}}
-    <header id="main-header" class="transition-all duration-300" style="background: white; border-radius: 0 0 12px 12px; margin: 0 15px; position: relative; z-index: 100;">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header id="main-header" class="transition-all duration-300" style="background: white; border-radius: 0 0 12px 12px; margin: 0 15px; position: relative; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-2">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: var(--color-primary);">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                </div>
-                <span class="text-xl font-bold" style="color: var(--color-text-heading); letter-spacing: -0.03em;">Endow</span>
+            <a href="{{ route('home') }}" class="flex items-center">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 w-auto">
             </a>
 
             {{-- Desktop Nav --}}
             <nav class="hidden lg:flex items-center gap-8">
-                <a href="{{ route('home') }}" class="text-sm font-medium transition-colors {{ request()->routeIs('home') ? '' : '' }}" style="color: {{ request()->routeIs('home') ? 'var(--color-primary)' : 'var(--color-text)' }};">Home</a>
-                <a href="{{ route('about') }}" class="text-sm font-medium transition-colors hover:text-primary" style="color: {{ request()->routeIs('about') ? 'var(--color-primary)' : 'var(--color-text)' }};">About</a>
+                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
 
                 {{-- Divisions --}}
                 <div x-data="{ open: false }" class="relative" @click.away="open = false">
-                    <button @click="open = !open" class="text-sm font-medium flex items-center gap-1.5 transition-colors hover:text-primary" style="color: {{ request()->routeIs('division.*') ? 'var(--color-primary)' : 'var(--color-text)' }};">
+                    <button @click="open = !open" class="nav-link flex items-center gap-1.5 {{ request()->routeIs('division.*') ? 'active' : '' }}">
                         Divisions
                         <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
                     </button>
@@ -127,7 +126,7 @@
                     </div>
                 </div>
 
-                <a href="{{ route('contact') }}" class="text-sm font-medium transition-colors hover:text-primary" style="color: {{ request()->routeIs('contact') ? 'var(--color-primary)' : 'var(--color-text)' }};">Contact</a>
+                <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
             </nav>
 
             {{-- CTA + Hamburger --}}
@@ -152,10 +151,7 @@
         <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-8 transform translate-x-full transition-transform duration-300 bg-white" style="box-shadow: -4px 0 24px rgba(0,0,0,0.1);">
             <div class="flex items-center justify-between mb-10">
                 <a href="{{ route('home') }}" class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-primary);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    </div>
-                    <span class="text-lg font-bold" style="color: var(--color-text-heading);">Endow</span>
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-10 w-auto">
                 </a>
                 <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close">
                     <i class="fa-solid fa-xmark text-lg" style="color: var(--color-text);"></i>
