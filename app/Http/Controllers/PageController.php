@@ -26,11 +26,36 @@ class PageController extends Controller
 
     public function division($slug)
     {
-        $divisions = [
+        $divisions = $this->getDivisions();
+
+        if (!isset($divisions[$slug])) {
+            abort(404);
+        }
+
+        $division = $divisions[$slug];
+
+        $appointmentTexts = [
+            'travel' => 'Let us help you plan your perfect journey! Schedule a quick consultation with our experts to discuss your travel needs and get personalized recommendations.',
+            'education' => "Ready to take the next step in your educational journey? Book a consultation with our experts to explore study programs, scholarship opportunities, and visa assistance.",
+            'technology' => "Let's discuss how technology can accelerate your business. Schedule a session with our experts today!",
+            'hospital-tourism' => "Planning medical travel? Book a free consultation with our healthcare travel experts. We'll help you find the best hospitals, doctors, and treatment packages worldwide.",
+        ];
+
+        return view('pages.division', [
+            'division' => $division,
+            'appointment_text' => $appointmentTexts[$slug] ?? '',
+        ]);
+    }
+
+    private function getDivisions(): array
+    {
+        return [
             'travel' => [
                 'name' => 'Endow Travel',
                 'tagline' => 'Where the journey begins',
                 'meta_description' => 'Discover seamless travel solutions with Endow Travel. Personalized itineraries, corporate travel, and exclusive deals for every journey.',
+                'icon' => 'fas fa-plane-departure',
+                'color' => 'primary',
                 'services' => [
                     ['title' => 'Tailored Travel Plans', 'description' => 'Personalized itineraries crafted to meet your unique preferences and needs.', 'icon' => 'fas fa-map-marked-alt'],
                     ['title' => 'Exclusive Deals & Discounts', 'description' => 'Access unbeatable offers on flights, hotels, and holiday packages.', 'icon' => 'fas fa-tags'],
@@ -44,19 +69,23 @@ class PageController extends Controller
                 'name' => 'Endow Global Education',
                 'tagline' => 'Global Vision, Guided Path',
                 'meta_description' => 'Transform your education journey with Endow Global Education. World-class study programs, scholarships, and international student support.',
+                'icon' => 'fas fa-graduation-cap',
+                'color' => 'accent-blue',
                 'services' => [
                     ['title' => 'World-Class Study Programs', 'description' => 'Access globally recognized educational programs tailored for career growth and academic excellence.', 'icon' => 'fas fa-book-open'],
                     ['title' => 'International Student Support', 'description' => 'Comprehensive assistance for admissions, visas, and settling into a new country.', 'icon' => 'fas fa-globe-americas'],
                     ['title' => 'Cultural Exchange Opportunities', 'description' => 'Participate in immersive programs that promote global understanding and cultural diversity.', 'icon' => 'fas fa-people-arrows'],
                     ['title' => 'Scholarship Guidance', 'description' => 'Explore and apply for scholarships to make quality education more affordable.', 'icon' => 'fas fa-award'],
                     ['title' => 'Language Training & Certifications', 'description' => 'Prepare for success with expert language training and internationally accepted certifications.', 'icon' => 'fas fa-language'],
-                    ['title' => 'Collaborations with Leading Institutions', 'description' => 'Partnerships with top universities and organizations worldwide for unparalleled learning opportunities.', 'icon' => 'fas fa-university'],
+                    ['title' => 'Collaborations with Leading Institutions', 'description' => 'Partnerships with top universities and organizations worldwide for unparalleled learning.', 'icon' => 'fas fa-university'],
                 ],
             ],
             'technology' => [
                 'name' => 'Endow Technologies',
                 'tagline' => 'Innovate. Transform. Lead.',
-                'meta_description' => 'Cutting-edge technology solutions with Endow Technologies. Software development, AI, cloud computing, and digital transformation services.',
+                'meta_description' => 'Cutting-edge technology solutions with Endow Technologies. Software development, AI, cloud computing, and digital transformation.',
+                'icon' => 'fas fa-microchip',
+                'color' => 'accent-violet',
                 'services' => [
                     ['title' => 'Cutting-Edge Software Solutions', 'description' => 'Delivering innovative and scalable software tailored to business needs.', 'icon' => 'fas fa-code', 'link' => 'https://endowtech.net/'],
                     ['title' => 'AI & Automation Integration', 'description' => 'Enhancing efficiency with AI-driven automation and smart technologies.', 'icon' => 'fas fa-robot', 'link' => 'https://endowtech.net/'],
@@ -67,28 +96,38 @@ class PageController extends Controller
                 ],
                 'cta' => [
                     'heading' => 'Ready to Transform Your Business?',
-                    'description' => 'Discover how Endow Technologies can help you leverage cutting-edge technology for competitive advantage.',
+                    'description' => 'Discover how Endow Technologies can help you leverage cutting-edge technology.',
                     'url' => 'https://endowtech.net/',
                     'text' => 'Visit Endow Tech',
                 ],
             ],
+            'hospital-tourism' => [
+                'name' => 'Hospital Tourism',
+                'tagline' => 'World-Class Healthcare, Personalized Journey',
+                'meta_description' => 'Medical travel services with Endow Corporation. Access world-class hospitals, expert doctors, and comprehensive treatment packages globally.',
+                'icon' => 'fas fa-heartbeat',
+                'color' => 'accent-cyan',
+                'services' => [
+                    ['title' => 'International Hospital Network', 'description' => 'Access to JCI-accredited hospitals and medical centers across 30+ countries with world-class facilities.', 'icon' => 'fas fa-hospital'],
+                    ['title' => 'Expert Doctor Matching', 'description' => 'We connect you with top specialists and surgeons based on your specific medical needs and preferences.', 'icon' => 'fas fa-user-md'],
+                    ['title' => 'Treatment Package Coordination', 'description' => 'Comprehensive packages including surgery, accommodation, transportation, and post-operative care.', 'icon' => 'fas fa-box-medical'],
+                    ['title' => 'Medical Visa Assistance', 'description' => 'Streamlined medical visa processing with documentation support for patients and companions.', 'icon' => 'fas fa-passport'],
+                    ['title' => 'Second Opinion Services', 'description' => 'Get expert medical opinions from leading specialists before making treatment decisions.', 'icon' => 'fas fa-stethoscope'],
+                    ['title' => 'Post-Treatment Follow-Up', 'description' => 'Continued care coordination and telemedicine follow-ups after returning to your home country.', 'icon' => 'fas fa-heart'],
+                ],
+                'highlights' => [
+                    ['value' => '500+', 'label' => 'Partner Hospitals'],
+                    ['value' => '30+', 'label' => 'Countries'],
+                    ['value' => '50,000+', 'label' => 'Patients Served'],
+                    ['value' => '40%', 'label' => 'Cost Savings'],
+                ],
+                'cta' => [
+                    'heading' => 'Your Health Journey Starts Here',
+                    'description' => 'Get a free consultation and personalized treatment plan from our medical travel experts.',
+                    'url' => '/get-consulting',
+                    'text' => 'Get Free Consultation',
+                ],
+            ],
         ];
-
-        if (! isset($divisions[$slug])) {
-            abort(404);
-        }
-
-        $division = $divisions[$slug];
-
-        $appointmentTexts = [
-            'travel' => 'Let us help you plan your perfect journey! Schedule a quick consultation with our experts to discuss your travel needs and get personalized recommendations.',
-            'education' => "Ready to take the next step in your educational journey? Book a consultation with our experts to explore study programs, scholarship opportunities, and visa assistance. Let's make your global education dream a reality!",
-            'technology' => "Let's discuss how technology can accelerate your business. Schedule a session with our experts today!",
-        ];
-
-        return view('pages.division', [
-            'division' => $division,
-            'appointment_text' => $appointmentTexts[$slug],
-        ]);
     }
 }

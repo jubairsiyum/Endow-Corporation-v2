@@ -1,128 +1,133 @@
-{{-- Footer --}}
-<footer class="gradient-dark text-white pt-20 pb-8 relative overflow-hidden">
-    {{-- Decorative Shape --}}
-    <div class="absolute top-0 right-0 w-48 h-48 opacity-5">
-        <img src="{{ asset('images/site-footer-shape-2.png') }}" alt="" class="w-full h-full object-contain" loading="lazy">
-    </div>
+{{-- Premium Dark Footer --}}
+<footer class="relative overflow-hidden" style="background: linear-gradient(180deg, #0F172A 0%, #0a0f1e 100%);">
+    {{-- Subtle glow --}}
+    <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-20" style="background: radial-gradient(circle, rgba(255,41,87,0.3) 0%, transparent 70%); filter: blur(80px);"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 rounded-full opacity-15" style="background: radial-gradient(circle, rgba(124,92,252,0.3) 0%, transparent 70%); filter: blur(80px);"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            {{-- Column 1: Brand --}}
-            <div class="space-y-6">
-                <a href="{{ route('home') }}" class="inline-block">
-                    <img src="{{ asset('images/footer-logo.png') }}" alt="Endow Corporation" class="h-20 w-auto" loading="lazy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 relative z-10">
+        {{-- Top: Brand + Newsletter --}}
+        <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div>
+                <a href="{{ route('home') }}" class="flex items-center gap-2.5 mb-5">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #FF2957, #7C5CFC);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <span class="font-heading text-xl font-bold text-white" style="letter-spacing: -0.03em;">Endow Corporation</span>
                 </a>
-                <p class="text-gray-400 leading-relaxed">
-                    Endow Corporation is a global leader in travel, education, and technology. Inspiring progress, one step at a time.
+                <p class="text-white/50 text-sm leading-relaxed max-w-sm mb-6">
+                    A global leader in travel, education, technology, and healthcare. Empowering businesses worldwide with innovative solutions.
                 </p>
-                <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/endowcorporation?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                       aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/endow-corporation/" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                       aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://www.instagram.com/endowcorporation" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                       aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@endowcorporation" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
-                       aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                <div class="flex items-center gap-3">
+                    @foreach([
+                        ['icon' => 'fab fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation?mibextid=ZbWKwL'],
+                        ['icon' => 'fab fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
+                        ['icon' => 'fab fa-instagram', 'url' => 'https://www.instagram.com/endowcorporation'],
+                        ['icon' => 'fab fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
+                    ] as $social)
+                        <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
+                           class="w-10 h-10 rounded-xl flex items-center justify-center text-white/40 transition-all duration-300 hover:text-white hover:-translate-y-0.5"
+                           style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);"
+                           aria-label="{{ basename($social['url']) }}">
+                            <i class="{{ $social['icon'] }} text-sm"></i>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
-            {{-- Column 2: Company Links --}}
-            <div>
-                <h4 class="text-lg font-bold mb-6">Company Links</h4>
-                <ul class="space-y-3">
-                    <li>
-                        <a href="{{ route('about') }}" class="text-gray-400 hover:text-primary transition-colors flex items-center space-x-2">
-                            <i class="fas fa-chevron-right text-xs text-primary"></i>
-                            <span>About Us</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('division.show', 'travel') }}" class="text-gray-400 hover:text-primary transition-colors flex items-center space-x-2">
-                            <i class="fas fa-chevron-right text-xs text-primary"></i>
-                            <span>Endow Travel</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('division.show', 'education') }}" class="text-gray-400 hover:text-primary transition-colors flex items-center space-x-2">
-                            <i class="fas fa-chevron-right text-xs text-primary"></i>
-                            <span>Endow Global Education</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('division.show', 'technology') }}" class="text-gray-400 hover:text-primary transition-colors flex items-center space-x-2">
-                            <i class="fas fa-chevron-right text-xs text-primary"></i>
-                            <span>Endow Technologies</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            {{-- Column 3: Contact --}}
-            <div>
-                <h4 class="text-lg font-bold mb-6">You've Questions</h4>
-                <ul class="space-y-4">
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-map-marker-alt text-primary mt-1"></i>
-                        <span class="text-gray-400 text-sm">
-                            Room 311, River Tower Officetel, 50 Beodeunaru-ro, Yeongdeungpo-dong 2-ga, Yeongdeungpo-gu, Seoul 07248, South Korea
-                        </span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-phone-alt text-primary mt-1"></i>
-                        <div class="text-gray-400 text-sm">
-                            <a href="tel:0226322559" class="block hover:text-primary transition-colors">02-2632-2559 (Landline)</a>
-                            <a href="tel:+821057672559" class="block hover:text-primary transition-colors">+82 10-5767-2559 (CEO)</a>
-                        </div>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <i class="far fa-envelope text-primary mt-1"></i>
-                        <a href="mailto:contact@endowcorporation.com" class="text-gray-400 text-sm hover:text-primary transition-colors">
-                            contact@endowcorporation.com
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            {{-- Column 4: Newsletter --}}
-            <div>
-                <h4 class="text-lg font-bold mb-6">Newsletter</h4>
-                <p class="text-gray-400 text-sm mb-4">
-                    Sign up for our latest news & articles. We won't give you spam mails.
-                </p>
-                <form action="{{ route('newsletter.store') }}" method="POST" class="flex">
+            <div class="lg:pl-12">
+                <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Stay Updated</h3>
+                <p class="text-white/40 text-sm mb-4">Get the latest news and insights. No spam, ever.</p>
+                <form action="{{ route('newsletter.store') }}" method="POST" class="flex gap-2">
                     @csrf
                     <input type="email" name="email" placeholder="Enter your email" required
-                           class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-l-lg text-white placeholder-gray-400
-                                  focus:outline-none focus:border-primary transition-colors">
-                    <button type="submit" class="px-4 py-3 bg-primary rounded-r-lg hover:bg-primary-dark transition-colors"
-                            aria-label="Subscribe">
-                        <i class="fas fa-paper-plane"></i>
+                           class="flex-1 px-5 py-3 rounded-full text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-primary/30"
+                           style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                    <button type="submit" class="btn-primary py-3 px-6 text-sm whitespace-nowrap">
+                        Subscribe
                     </button>
                 </form>
-                @error('email')
-                    <p class="text-red-400 text-sm mt-2">{{ $message }}</p>
-                @enderror
             </div>
         </div>
 
-        {{-- Copyright --}}
-        <div class="border-t border-white/10 pt-8 text-center">
-            <p class="text-gray-400 text-sm">
-                &copy; Copyright Endow Corporation {{ date('Y') }}. All rights reserved.
-            </p>
+        {{-- Links Grid --}}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+            <div>
+                <h4 class="text-white font-bold text-sm mb-5">Company</h4>
+                <ul class="space-y-3">
+                    @foreach([
+                        ['label' => 'About Us', 'url' => route('about')],
+                        ['label' => 'Contact', 'url' => route('contact')],
+                        ['label' => 'Consulting', 'url' => route('consulting')],
+                    ] as $link)
+                        <li>
+                            <a href="{{ $link['url'] }}" class="text-white/40 text-sm hover:text-white transition-colors duration-200">
+                                {{ $link['label'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-5">Divisions</h4>
+                <ul class="space-y-3">
+                    @foreach([
+                        ['label' => 'Endow Travel', 'url' => route('division.show', 'travel')],
+                        ['label' => 'Global Education', 'url' => route('division.show', 'education')],
+                        ['label' => 'Technologies', 'url' => route('division.show', 'technology')],
+                        ['label' => 'Hospital Tourism', 'url' => route('division.show', 'hospital-tourism')],
+                    ] as $link)
+                        <li>
+                            <a href="{{ $link['url'] }}" class="text-white/40 text-sm hover:text-white transition-colors duration-200">
+                                {{ $link['label'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-5">Services</h4>
+                <ul class="space-y-3">
+                    @foreach(['Travel Planning', 'Education Consulting', 'Software Development', 'Healthcare Travel'] as $service)
+                        <li>
+                            <span class="text-white/40 text-sm">{{ $service }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-5">Contact</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span class="text-white/40 text-sm">Seoul, South Korea</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 mt-0.5 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <div>
+                            <a href="tel:0226322559" class="text-white/40 text-sm hover:text-white transition-colors block">02-2632-2559</a>
+                            <a href="tel:+821057672559" class="text-white/40 text-sm hover:text-white transition-colors block">+82 10-5767-2559</a>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 mt-0.5 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a href="mailto:contact@endowcorporation.com" class="text-white/40 text-sm hover:text-white transition-colors break-all">contact@endowcorporation.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {{-- Bottom --}}
+        <div class="pt-8 border-t border-white/8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-white/30 text-sm">&copy; {{ date('Y') }} Endow Corporation. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-white/30 text-sm hover:text-white/60 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-white/30 text-sm hover:text-white/60 transition-colors">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

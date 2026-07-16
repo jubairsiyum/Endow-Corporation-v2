@@ -2,126 +2,110 @@
 
 @section('title', 'About Us – Endow Corporation')
 @section('meta_title', 'About Us – Endow Corporation')
-@section('meta_description', 'Learn about Endow Corporation - a global leader in travel, education, and technology solutions. Discover our mission, values, and commitment to excellence.')
-@section('og_title', 'About Us – Endow Corporation')
-@section('og_description', 'Learn about Endow Corporation - a global leader in travel, education, and technology solutions.')
+@section('meta_description', 'Learn about Endow Corporation - a global leader in travel, education, technology, and healthcare solutions.')
 
 @section('content')
 
 {{-- Hero --}}
-<x-sections.hero title="About Us" breadcrumb="About" />
+<section class="relative min-h-[40vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 gradient-hero"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+        <nav aria-label="Breadcrumb" class="mb-6">
+            <ol class="flex items-center gap-2 text-sm text-white/50">
+                <li><a href="{{ route('home') }}" class="hover:text-white transition-colors"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-chevron-right text-xs"></i></li>
+                <li class="text-white">About Us</li>
+            </ol>
+        </nav>
+        <h1 class="text-4xl md:text-5xl font-bold text-white">About Us</h1>
+    </div>
+</section>
 
 {{-- About Section --}}
-<section class="py-20 bg-white">
+<section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center" data-animate>
-            <span class="section-label">ABOUT US</span>
-            <p class="text-xl text-text-light leading-relaxed mb-8">
-                At Endow Corporation, we make innovation simple and excellence achievable. Through Endow Travel, Global Education, and Technologies, we're here to help businesses grow, connect, and succeed. Let's create something extraordinary together.
+        <div class="max-w-4xl mx-auto text-center mb-16" data-animate>
+            <span class="section-label">About Us</span>
+            <p class="text-xl text-text-light leading-relaxed text-balance">
+                At Endow Corporation, we make innovation simple and excellence achievable. Through Endow Travel, Global Education, Technologies, and Hospital Tourism, we're here to help businesses grow, connect, and succeed. Let's create something extraordinary together.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
-                <div class="flex items-start space-x-3">
-                    <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <i class="fas fa-check text-xs text-primary"></i>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+            @foreach([
+                ['icon' => 'fas fa-globe', 'title' => 'Global Reach', 'description' => 'Through Travel, Education, and Technology, we help businesses grow and thrive across 30+ countries.', 'color' => 'primary'],
+                ['icon' => 'fas fa-heart', 'title' => 'Meaningful Impact', 'description' => 'Committed to quality, we create meaningful connections and opportunities for lasting success.', 'color' => 'accent-cyan'],
+            ] as $index => $point)
+                <div class="card p-8 hover:shadow-xl transition-all group" data-animate style="animation-delay: {{ $index * 0.1 }}s">
+                    <div class="w-14 h-14 bg-{{ $point['color'] }}/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i class="{{ $point['icon'] }} text-xl text-{{ $point['color'] }}"></i>
                     </div>
-                    <p class="text-text-light">Through Travel, Education, and Technology, we help businesses grow and thrive.</p>
+                    <h3 class="text-lg font-bold text-dark mb-2">{{ $point['title'] }}</h3>
+                    <p class="text-text-light text-sm leading-relaxed">{{ $point['description'] }}</p>
                 </div>
-                <div class="flex items-start space-x-3">
-                    <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <i class="fas fa-check text-xs text-primary"></i>
-                    </div>
-                    <p class="text-text-light">Committed to quality, we create meaningful connections and opportunities.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
-{{-- Divisions Grid --}}
-<section class="py-20 bg-surface-alt">
+{{-- Divisions --}}
+<section class="py-24 gradient-mesh">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-animate>
-            <span class="section-label">FEATURES</span>
-            <h2 class="section-heading">Our <span class="text-gradient">Divisions</span></h2>
+            <span class="section-label">Our Divisions</span>
+            <h2 class="section-heading">Four Pillars of <span class="text-gradient">Excellence</span></h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{-- Endow Travel --}}
-            <div class="card card-hover p-8" data-animate>
-                <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                    <i class="fas fa-plane-departure text-2xl text-primary"></i>
+        <div class="bento-grid" data-animate>
+            @foreach([
+                ['route' => 'travel', 'icon' => 'fas fa-plane-departure', 'name' => 'Endow Travel', 'description' => 'Discover seamless travel solutions that cater to both business and leisure. From personalized itineraries to exclusive experiences.', 'color' => 'primary', 'link' => 'https://endowtravel.com/'],
+                ['route' => 'education', 'icon' => 'fas fa-graduation-cap', 'name' => 'Global Education', 'description' => 'Open doors to global opportunities through world-class educational programs, partnerships, and resources.', 'color' => 'accent-blue', 'link' => 'https://endowglobaledu.com/'],
+                ['route' => 'technology', 'icon' => 'fas fa-microchip', 'name' => 'Technologies', 'description' => 'Stay ahead with innovative tech solutions that drive digital transformation, improve efficiency, and power your business.', 'color' => 'accent-violet', 'link' => 'https://endowtech.net/'],
+                ['route' => 'hospital-tourism', 'icon' => 'fas fa-heartbeat', 'name' => 'Hospital Tourism', 'description' => 'Access world-class medical facilities across 30+ countries. Comprehensive healthcare travel with expert coordination.', 'color' => 'accent-cyan'],
+            ] as $index => $division)
+                <div class="bento-card group" data-animate style="animation-delay: {{ $index * 0.1 }}s">
+                    <div class="w-14 h-14 bg-{{ $division['color'] }}/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i class="{{ $division['icon'] }} text-xl text-{{ $division['color'] }}"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-dark mb-2">{{ $division['name'] }}</h3>
+                    <p class="text-text-light text-sm leading-relaxed mb-4">{{ $division['description'] }}</p>
+                    <a href="{{ isset($division['link']) ? $division['link'] : route('division.show', $division['route']) }}" {{ isset($division['link']) ? 'target="_blank" rel="noopener noreferrer"' : '' }} class="inline-flex items-center gap-2 text-{{ $division['color'] }} font-semibold text-sm group-hover:gap-3 transition-all">
+                        {{ isset($division['link']) ? 'Visit Site' : 'Learn More' }} <i class="fas fa-{{ isset($division['link']) ? 'external-link-alt' : 'arrow-right' }} text-xs"></i>
+                    </a>
                 </div>
-                <h3 class="text-xl font-bold text-dark mb-3">Endow Travel</h3>
-                <p class="text-text-light leading-relaxed mb-4">
-                    Discover seamless travel solutions that cater to both business and leisure. From personalized itineraries to exclusive experiences, we ensure every journey is extraordinary.
-                </p>
-                <a href="https://endowtravel.com/" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors">
-                    Explore <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                </a>
-            </div>
-
-            {{-- Endow Global Education --}}
-            <div class="card card-hover p-8" data-animate style="animation-delay: 0.1s">
-                <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                    <i class="fas fa-graduation-cap text-2xl text-primary"></i>
-                </div>
-                <h3 class="text-xl font-bold text-dark mb-3">Endow Global Education</h3>
-                <p class="text-text-light leading-relaxed mb-4">
-                    Open doors to global opportunities through world-class educational programs, partnerships, and resources that inspire growth and learning.
-                </p>
-                <a href="https://endowglobaledu.com/" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors">
-                    Explore <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                </a>
-            </div>
-
-            {{-- Endow Technologies --}}
-            <div class="card card-hover p-8" data-animate style="animation-delay: 0.2s">
-                <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                    <i class="fas fa-microchip text-2xl text-primary"></i>
-                </div>
-                <h3 class="text-xl font-bold text-dark mb-3">Endow Technologies</h3>
-                <p class="text-text-light leading-relaxed mb-4">
-                    Stay ahead with innovative tech solutions that drive digital transformation, improve efficiency, and power your business forward.
-                </p>
-                <a href="https://endowtech.net/" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors">
-                    Explore <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                </a>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 {{-- Testimonials --}}
-<section class="py-20 bg-white">
+<section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-animate>
-            <span class="section-label">TESTIMONIALS</span>
-            <h2 class="section-heading">What Our Client's Says About Our <span class="text-gradient">Best Work</span></h2>
+            <span class="section-label">Testimonials</span>
+            <h2 class="section-heading">What Our Clients <span class="text-gradient">Say</span></h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bento-grid" data-animate>
             @foreach([
-                'Endow Travel made our business trips effortless! Their attention to detail and personalized service ensured every journey was smooth and productive. Highly recommend!',
-                'With Endow Global Education, I gained access to programs that completely transformed my career. Their support and resources helped me achieve my goals faster than I imagined.',
-                'Endow Technologies delivered cutting-edge solutions that revolutionized our operations. Their team truly understands the needs of modern businesses.',
+                ['text' => 'Endow Travel made our business trips effortless! Their attention to detail and personalized service ensured every journey was smooth and productive.', 'division' => 'Travel', 'icon' => 'fas fa-plane-departure', 'color' => 'primary'],
+                ['text' => 'With Endow Global Education, I gained access to programs that completely transformed my career. Their support and resources helped me achieve my goals faster than I imagined.', 'division' => 'Education', 'icon' => 'fas fa-graduation-cap', 'color' => 'accent-blue'],
+                ['text' => 'Endow Technologies delivered cutting-edge solutions that revolutionized our operations. Their team truly understands the needs of modern businesses.', 'division' => 'Technology', 'icon' => 'fas fa-microchip', 'color' => 'accent-violet'],
             ] as $index => $testimonial)
                 <div class="card p-8" data-animate style="animation-delay: {{ $index * 0.1 }}s">
-                    <div class="flex items-center space-x-1 mb-4">
+                    <div class="flex items-center gap-1 mb-4">
                         @for($i = 0; $i < 5; $i++)
                             <i class="fas fa-star text-yellow-400 text-sm"></i>
                         @endfor
                     </div>
-                    <p class="text-text-light leading-relaxed mb-6">"{{ $testimonial }}"</p>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-primary"></i>
+                    <p class="text-text-light leading-relaxed mb-6 text-sm">"{{ $testimonial['text'] }}"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-{{ $testimonial['color'] }}/10 rounded-full flex items-center justify-center">
+                            <i class="{{ $testimonial['icon'] }} text-{{ $testimonial['color'] }} text-sm"></i>
                         </div>
                         <div>
-                            <p class="font-semibold text-dark">Client {{ $index + 1 }}</p>
-                            <p class="text-sm text-text-muted">{{ ['Travel', 'Education', 'Technology'][$index] }} Division</p>
+                            <p class="font-semibold text-dark text-sm">Client</p>
+                            <p class="text-xs text-text-muted">{{ $testimonial['division'] }} Division</p>
                         </div>
                     </div>
                 </div>
@@ -130,35 +114,22 @@
     </div>
 </section>
 
-{{-- Team Section --}}
-<section class="py-20 bg-surface-alt">
+{{-- Team --}}
+<section class="py-24 gradient-mesh">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16" data-animate>
-            <span class="section-label">TEAM MEMBERS</span>
+            <span class="section-label">Team</span>
             <h2 class="section-heading">Meet Our <span class="text-gradient">Experts</span></h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            @foreach([
-                ['role' => 'CEO', 'social' => ['facebook', 'twitter', 'instagram']],
-                ['role' => 'Strategic Director', 'social' => ['facebook', 'twitter', 'instagram']],
-                ['role' => 'Senior Consultant', 'social' => []],
-            ] as $index => $member)
-                <div class="card card-hover text-center p-8" data-animate style="animation-delay: {{ $index * 0.1 }}s">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                        <i class="fas fa-user text-4xl text-primary"></i>
+        <div class="grid md:grid-cols-3 gap-8" data-animate>
+            @foreach(['CEO', 'Strategic Director', 'Senior Consultant'] as $index => $role)
+                <div class="card text-center p-8 hover:shadow-xl transition-all group" style="animation-delay: {{ $index * 0.1 }}s">
+                    <div class="w-24 h-24 mx-auto mb-5 bg-gradient-to-br from-primary/10 to-accent-violet/10 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <i class="fas fa-user text-3xl text-primary/40"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-dark mb-1">{{ $member['role'] }}</h3>
-                    <p class="text-text-muted text-sm mb-4">{{ $member['role'] }}</p>
-                    @if(count($member['social']) > 0)
-                        <div class="flex justify-center space-x-3">
-                            @foreach($member['social'] as $platform)
-                                <a href="#" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-text-muted">
-                                    <i class="fab fa-{{ $platform }} text-sm"></i>
-                                </a>
-                            @endforeach
-                        </div>
-                    @endif
+                    <h3 class="font-bold text-dark mb-1">{{ $role }}</h3>
+                    <p class="text-text-muted text-sm">Endow Corporation</p>
                 </div>
             @endforeach
         </div>
