@@ -116,8 +116,101 @@
             el.style.opacity = '0';
             observer.observe(el);
         });
-    </script>
 
-    @stack('scripts')
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+        }
+
+        // Mobile divisions submenu
+        const mobileDivisionsBtn = document.getElementById('mobile-divisions-btn');
+        const mobileDivisionsSubmenu = document.getElementById('mobile-divisions-submenu');
+        const mobileDivisionsIcon = document.getElementById('mobile-divisions-icon');
+
+        if (mobileDivisionsBtn) {
+            mobileDivisionsBtn.addEventListener('click', () => {
+                mobileDivisionsSubmenu.classList.toggle('hidden');
+                mobileDivisionsIcon.classList.toggle('rotate-180');
+            });
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg');
+                    navbar.classList.remove('shadow-md');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                    navbar.classList.add('shadow-md');
+                }
+            });
+        }
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        if (counters.length > 0) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target + (target > 100 ? '+' : '');
+                            }
+                        };
+                        updateCounter();
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const faqItem = toggle.closest('.faq-item');
+                const content = faqItem.querySelector('.faq-content');
+                const icon = toggle.querySelector('i');
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-content').classList.add('hidden');
+                        item.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+                        item.querySelector('i').classList.remove('rotate-180');
+                        item.classList.remove('faq-active');
+                    }
+                });
+
+                content.classList.toggle('hidden');
+                toggle.setAttribute('aria-expanded', !isExpanded);
+                icon.classList.toggle('rotate-180');
+                faqItem.classList.toggle('faq-active');
+            });
+        });
+    </script>
 </body>
 </html>

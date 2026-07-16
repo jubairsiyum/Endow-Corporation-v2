@@ -10,14 +10,14 @@
 {{-- JSON-LD LocalBusiness --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@@context": "https://schema.org",
+    "@@type": "LocalBusiness",
     "name": "Endow Corporation",
     "image": "https://endowcorporation.com/wp-content/uploads/2025/01/lg.png",
     "telephone": "+82-2-2632-2559",
     "email": "contact@endowcorporation.com",
     "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "Room 311, River Tower Officetel, 50 Beodeunaru-ro",
         "addressLocality": "Yeongdeungpo-gu",
         "addressRegion": "Seoul",
@@ -25,13 +25,13 @@
         "addressCountry": "KR"
     },
     "geo": {
-        "@type": "GeoCoordinates",
+        "@@type": "GeoCoordinates",
         "latitude": 37.5264,
         "longitude": 126.9103
     },
     "openingHoursSpecification": [
         {
-            "@type": "OpeningHoursSpecification",
+            "@@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"],
             "opens": "08:00",
             "closes": "18:00"

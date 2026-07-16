@@ -21,35 +21,3 @@
         </div>
     </div>
 </section>
-
-@push('scripts')
-<script>
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-
-                const updateCounter = () => {
-                    current += step;
-                    if (current < target) {
-                        counter.textContent = Math.floor(current) + (target > 100 ? '+' : '');
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target + (target > 100 ? '+' : '');
-                    }
-                };
-                updateCounter();
-                counterObserver.unobserve(counter);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-</script>
-@endpush

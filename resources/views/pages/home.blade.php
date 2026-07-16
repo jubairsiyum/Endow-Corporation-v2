@@ -10,14 +10,14 @@
 {{-- JSON-LD Organization --}}
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@@context": "https://schema.org",
+    "@@type": "Organization",
     "name": "Endow Corporation",
     "url": "https://endowcorporation.com",
     "logo": "https://endowcorporation.com/wp-content/uploads/2025/01/lg.png",
     "description": "Global leader in travel, education, and technology solutions.",
     "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "Room 311, River Tower Officetel, 50 Beodeunaru-ro",
         "addressLocality": "Yeongdeungpo-gu",
         "addressRegion": "Seoul",
@@ -25,7 +25,7 @@
         "addressCountry": "KR"
     },
     "contactPoint": {
-        "@type": "ContactPoint",
+        "@@type": "ContactPoint",
         "telephone": "+82-2-2632-2559",
         "contactType": "customer service",
         "availableLanguage": ["English", "Korean"]
@@ -206,7 +206,7 @@
 
 {{-- CTA Banner --}}
 <x-sections.cta-banner
-    heading='Let\'s Discuss How We Can Help You <span class="text-white">Succeed!</span>'
+    heading="Let's Discuss How We Can Help You <span class='text-white'>Succeed!</span>"
     description="At Endow Corporation, we're dedicated to transforming your vision into reality. Whether you're looking for tailored solutions in Travel, Education, or Technology, our team is ready to guide you every step of the way. Let's collaborate to build innovative strategies and achieve your goals."
     cta-url="{{ route('consulting') }}"
     cta-text="Get a Personalized Quote"

@@ -43,32 +43,3 @@
         </div>
     </div>
 </section>
-
-@push('scripts')
-<script>
-    document.querySelectorAll('.faq-toggle').forEach(toggle => {
-        toggle.addEventListener('click', () => {
-            const faqItem = toggle.closest('.faq-item');
-            const content = faqItem.querySelector('.faq-content');
-            const icon = toggle.querySelector('i');
-            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-
-            // Close all other FAQs
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.querySelector('.faq-content').classList.add('hidden');
-                    item.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
-                    item.querySelector('i').classList.remove('rotate-180');
-                    item.classList.remove('faq-active');
-                }
-            });
-
-            // Toggle current FAQ
-            content.classList.toggle('hidden');
-            toggle.setAttribute('aria-expanded', !isExpanded);
-            icon.classList.toggle('rotate-180');
-            faqItem.classList.toggle('faq-active');
-        });
-    });
-</script>
-@endpush
