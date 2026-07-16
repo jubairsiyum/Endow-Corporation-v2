@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    {{-- Primary Meta Tags --}}
     <title>@yield('title', 'Endow Corporation – Empowering Businesses Globally')</title>
     <meta name="title" content="@yield('meta_title', 'Endow Corporation – Empowering Businesses Globally')">
-    <meta name="description" content="@yield('meta_description', 'Endow Corporation is a global leader in travel, education, technology, and healthcare solutions. Empowering businesses worldwide with innovative consulting services.')">
+    <meta name="description" content="@yield('meta_description', 'Endow Corporation is a global leader in travel, education, technology, and healthcare solutions.')">
     <meta name="keywords" content="@yield('meta_keywords', 'Endow Corporation, travel, education, technology, consulting, global business solutions, medical tourism')">
     <meta name="author" content="Endow Corporation">
     <meta name="robots" content="index, follow">
 
-    {{-- Open Graph / Facebook --}}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('og_title', 'Endow Corporation – Empowering Businesses Globally')">
@@ -21,36 +19,26 @@
     <meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))">
     <meta property="og:site_name" content="Endow Corporation">
 
-    {{-- Twitter --}}
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('og_title', 'Endow Corporation – Empowering Businesses Globally')">
     <meta property="twitter:description" content="@yield('og_description', 'Endow Corporation is a global leader in travel, education, technology, and healthcare solutions.')">
     <meta property="twitter:image" content="@yield('og_image', asset('images/og-default.jpg'))">
 
-    {{-- Canonical URL --}}
     <link rel="canonical" href="{{ url()->current() }}">
 
-    {{-- Favicon --}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/favicon-192x192.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
 
-    {{-- Google Fonts: Space Grotesk + Plus Jakarta Sans --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    {{-- Lucide Icons --}}
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    {{-- Font Awesome (fallback for social icons) --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    {{-- Alpine.js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    {{-- Vite CSS --}}
     @vite(['resources/css/app.css'])
 
     @stack('structured-data')
@@ -58,11 +46,161 @@
 
     <style>
         [x-cloak] { display: none !important; }
-        .opacity-0-init { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="antialiased">
-    @include('components.ui.navbar')
+<body>
+
+    {{-- Top Bar --}}
+    <div class="hidden lg:block" style="background-color: var(--color-dark); border-radius: 0 0 12px 12px; margin: 0 15px;">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2 text-white/70 text-sm">
+                    <i class="fa-regular fa-clock" style="color: var(--color-primary);"></i>
+                    <span>Sat – Thu, 8:00am – 6:00pm</span>
+                </div>
+                <div class="flex items-center gap-2 text-white/70 text-sm">
+                    <i class="fa-regular fa-envelope" style="color: var(--color-primary);"></i>
+                    <a href="mailto:contact@endowcorporation.com" class="hover:text-white transition-colors">contact@endowcorporation.com</a>
+                </div>
+                <div class="flex items-center gap-2 text-white/70 text-sm">
+                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary);"></i>
+                    <span>Seoul, South Korea</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                @foreach([
+                    ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
+                    ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
+                    ['icon' => 'fa-brands fa-instagram', 'url' => 'https://www.instagram.com/endowcorporation'],
+                    ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
+                ] as $social)
+                    <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
+                       class="w-7 h-7 rounded-full flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                       style="background: rgba(255,255,255,0.1);">
+                        <i class="{{ $social['icon'] }}" style="font-size: 12px;"></i>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    {{-- Header --}}
+    <header id="main-header" class="transition-all duration-300" style="background: white; border-radius: 0 0 12px 12px; margin: 0 15px; position: relative; z-index: 100;">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            {{-- Logo --}}
+            <a href="{{ route('home') }}" class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: var(--color-primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="text-xl font-bold" style="color: var(--color-text-heading); letter-spacing: -0.03em;">Endow</span>
+            </a>
+
+            {{-- Desktop Nav --}}
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="{{ route('home') }}" class="text-sm font-medium transition-colors {{ request()->routeIs('home') ? '' : '' }}" style="color: {{ request()->routeIs('home') ? 'var(--color-primary)' : 'var(--color-text)' }};">Home</a>
+                <a href="{{ route('about') }}" class="text-sm font-medium transition-colors hover:text-primary" style="color: {{ request()->routeIs('about') ? 'var(--color-primary)' : 'var(--color-text)' }};">About</a>
+
+                {{-- Divisions --}}
+                <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                    <button @click="open = !open" class="text-sm font-medium flex items-center gap-1.5 transition-colors hover:text-primary" style="color: {{ request()->routeIs('division.*') ? 'var(--color-primary)' : 'var(--color-text)' }};">
+                        Divisions
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
+                         class="absolute top-full left-0 mt-3 w-64 p-2 rounded-xl bg-white border border-gray-100"
+                         style="box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                        @foreach([
+                            ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
+                            ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
+                            ['route' => 'technology', 'icon' => 'fa-solid fa-microchip', 'name' => 'Technologies'],
+                            ['route' => 'hospital-tourism', 'icon' => 'fa-solid fa-heart-pulse', 'name' => 'Hospital Tourism'],
+                        ] as $division)
+                            <a href="{{ route('division.show', $division['route']) }}"
+                               class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-gray-50">
+                                <i class="{{ $division['icon'] }} text-sm" style="color: var(--color-primary);"></i>
+                                <span class="text-sm font-medium" style="color: var(--color-text);">{{ $division['name'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <a href="{{ route('contact') }}" class="text-sm font-medium transition-colors hover:text-primary" style="color: {{ request()->routeIs('contact') ? 'var(--color-primary)' : 'var(--color-text)' }};">Contact</a>
+            </nav>
+
+            {{-- CTA + Hamburger --}}
+            <div class="flex items-center gap-4">
+                <a href="{{ route('consulting') }}" class="btn-primary hidden sm:inline-flex">
+                    <span class="btn-text"><span>Let's Talk</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menu">
+                    <span class="w-5 h-0.5 bg-dark rounded-full transition-all" id="bar1"></span>
+                    <span class="w-5 h-0.5 bg-dark rounded-full transition-all" id="bar2"></span>
+                    <span class="w-5 h-0.5 bg-dark rounded-full transition-all" id="bar3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    {{-- Mobile Menu --}}
+    <div id="mobile-menu" class="hidden fixed inset-0 z-50">
+        <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/30" style="backdrop-filter: blur(4px);"></div>
+        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-8 transform translate-x-full transition-transform duration-300 bg-white" style="box-shadow: -4px 0 24px rgba(0,0,0,0.1);">
+            <div class="flex items-center justify-between mb-10">
+                <a href="{{ route('home') }}" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <span class="text-lg font-bold" style="color: var(--color-text-heading);">Endow</span>
+                </a>
+                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close">
+                    <i class="fa-solid fa-xmark text-lg" style="color: var(--color-text);"></i>
+                </button>
+            </div>
+
+            <nav class="space-y-1">
+                @foreach([
+                    ['route' => 'home', 'label' => 'Home'],
+                    ['route' => 'about', 'label' => 'About Us'],
+                    ['route' => 'contact', 'label' => 'Contact'],
+                ] as $link)
+                    <a href="{{ route($link['route']) }}"
+                       class="block px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs($link['route']) ? 'text-white' : 'hover:bg-gray-50' }}"
+                       @if(request()->routeIs($link['route'])) style="background: var(--color-primary);" @else style="color: var(--color-text);" @endif>
+                        {{ $link['label'] }}
+                    </a>
+                @endforeach
+
+                <div class="pt-6 pb-2 px-4">
+                    <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-text-muted);">Divisions</p>
+                </div>
+
+                @foreach([
+                    ['route' => 'travel', 'label' => 'Endow Travel'],
+                    ['route' => 'education', 'label' => 'Global Education'],
+                    ['route' => 'technology', 'label' => 'Technologies'],
+                    ['route' => 'hospital-tourism', 'label' => 'Hospital Tourism'],
+                ] as $division)
+                    <a href="{{ route('division.show', $division['route']) }}"
+                       class="block px-4 py-3 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('division.show', $division['route']) ? 'text-white' : 'hover:bg-gray-50' }}"
+                       @if(request()->routeIs('division.show', $division['route'])) style="background: var(--color-primary);" @else style="color: var(--color-text);" @endif>
+                        {{ $division['label'] }}
+                    </a>
+                @endforeach
+            </nav>
+
+            <div class="absolute bottom-8 left-8 right-8">
+                <a href="{{ route('consulting') }}" class="btn-primary w-full justify-center">
+                    <span class="btn-text"><span>Let's Talk</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <main>
         @yield('content')
@@ -72,15 +210,16 @@
 
     {{-- Back to Top --}}
     <button id="back-to-top"
-            class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:-translate-y-0.5 focus:outline-none"
-            style="background: linear-gradient(135deg, #FF2957, #7C5CFC); box-shadow: 0 4px 20px rgba(255, 41, 87, 0.3);"
+            class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 text-white"
+            style="background-color: var(--color-primary); box-shadow: 0 4px 20px rgba(255,41,87,0.3);"
             aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        <i class="fa-solid fa-arrow-up text-sm"></i>
     </button>
 
-    {{-- WhatsApp Float --}}
+    {{-- WhatsApp --}}
     <a href="https://wa.link/2tzhly" target="_blank" rel="noopener noreferrer"
-       class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[#25D366]/30"
+       class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+       style="background-color: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.3);"
        aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
@@ -88,33 +227,38 @@
     @vite(['resources/js/app.js'])
 
     <script>
-        // Initialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-
         // Back to top
         const backToTop = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.remove('opacity-0', 'invisible');
-                backToTop.classList.add('opacity-100', 'visible');
-            } else {
-                backToTop.classList.add('opacity-0', 'invisible');
-                backToTop.classList.remove('opacity-100', 'visible');
-            }
+            backToTop.classList.toggle('opacity-100', window.scrollY > 400);
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+            backToTop.classList.toggle('opacity-0', window.scrollY <= 400);
+            backToTop.classList.toggle('invisible', window.scrollY <= 400);
         });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Navbar shrink on scroll
-        const navbarWrapper = document.getElementById('navbar-wrapper');
+        // Sticky header
+        const header = document.getElementById('main-header');
+        const headerTopBar = header.previousElementSibling;
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbarWrapper.classList.add('navbar-scrolled');
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.left = '0';
+                header.style.right = '0';
+                header.style.zIndex = '1002';
+                header.style.boxShadow = '0 0 15px rgba(0,0,0,0.1)';
+                header.style.width = '100%';
+                header.style.borderRadius = '0';
+                header.style.margin = '0';
+                if (headerTopBar) headerTopBar.style.display = 'none';
             } else {
-                navbarWrapper.classList.remove('navbar-scrolled');
+                header.style.position = 'relative';
+                header.style.boxShadow = 'none';
+                header.style.width = '';
+                header.style.borderRadius = '0 0 12px 12px';
+                header.style.margin = '0 15px';
+                if (headerTopBar) headerTopBar.style.display = '';
             }
         });
 
@@ -141,86 +285,77 @@
             setTimeout(() => mobileMenu.classList.add('hidden'), 300);
         }
 
-        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
-        if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-        if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        mobileMenuBtn?.addEventListener('click', openMobileMenu);
+        mobileMenuClose?.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
 
-        // Scroll animations with staggered reveal
-        const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const delay = entry.target.dataset.delay || 0;
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, delay);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('[data-animate]').forEach((el, i) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(24px)';
-            el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-            if (!el.dataset.delay) {
-                el.dataset.delay = (i % 5) * 80;
-            }
+            el.style.transform = 'translateY(25px)';
+            el.style.transition = `opacity 0.6s ease-out ${i * 0.08}s, transform 0.6s ease-out ${i * 0.08}s`;
             observer.observe(el);
         });
 
-        // Animated counters
-        const counters = document.querySelectorAll('.counter');
-        if (counters.length > 0) {
-            const counterObserver = new IntersectionObserver((entries) => {
+        // Counters
+        document.querySelectorAll('.counter').forEach(counter => {
+            const counterObserver = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const counter = entry.target;
                         const target = parseInt(counter.getAttribute('data-target'));
                         const duration = 2000;
                         const step = target / (duration / 16);
                         let current = 0;
-                        const updateCounter = () => {
+                        const update = () => {
                             current += step;
                             if (current < target) {
                                 counter.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
-                                requestAnimationFrame(updateCounter);
+                                requestAnimationFrame(update);
                             } else {
                                 counter.textContent = target + (target >= 100 ? '+' : '');
                             }
                         };
-                        updateCounter();
+                        update();
                         counterObserver.unobserve(counter);
                     }
                 });
             }, { threshold: 0.5 });
-            counters.forEach(counter => counterObserver.observe(counter));
-        }
+            counterObserver.observe(counter);
+        });
 
-        // FAQ accordion
-        document.querySelectorAll('.faq-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const faqItem = toggle.closest('.accordion-item');
-                const content = faqItem.querySelector('.faq-content');
-                const icon = toggle.querySelector('.faq-chevron');
-                const isOpen = !content.classList.contains('hidden');
+        // FAQ accordion (Bootstrap-compatible)
+        document.querySelectorAll('.accordion-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.accordion-item');
+                const body = item.querySelector('.accordion-body');
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
                 // Close all others
-                document.querySelectorAll('.accordion-item').forEach(item => {
-                    if (item !== faqItem) {
-                        item.querySelector('.faq-content').classList.add('hidden');
-                        item.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
-                        const otherIcon = item.querySelector('.faq-chevron');
-                        if (otherIcon) otherIcon.style.transform = '';
-                        item.classList.remove('active');
+                document.querySelectorAll('.accordion-item').forEach(other => {
+                    if (other !== item) {
+                        other.querySelector('.accordion-button')?.setAttribute('aria-expanded', 'false');
+                        other.querySelector('.accordion-body').classList.add('collapsed');
+                        other.querySelector('.accordion-body').style.maxHeight = null;
                     }
                 });
 
-                content.classList.toggle('hidden');
-                toggle.setAttribute('aria-expanded', !isOpen);
-                if (icon) icon.style.transform = isOpen ? '' : 'rotate(180deg)';
-                faqItem.classList.toggle('active');
+                if (isOpen) {
+                    body.classList.add('collapsed');
+                    body.style.maxHeight = null;
+                } else {
+                    body.classList.remove('collapsed');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                }
             });
         });
     </script>

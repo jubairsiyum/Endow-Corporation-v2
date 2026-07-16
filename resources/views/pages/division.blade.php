@@ -3,44 +3,41 @@
 @section('title', $division['name'] . ' – Endow Corporation')
 @section('meta_title', $division['name'] . ' – Endow Corporation')
 @section('meta_description', $division['meta_description'])
-@section('og_title', $division['name'] . ' – Endow Corporation')
-@section('og_description', $division['meta_description'])
 
 @section('content')
 
 {{-- Hero --}}
-<section class="relative pt-32 pb-20 overflow-hidden gradient-hero">
-    <div class="absolute top-20 right-20 w-72 h-72 rounded-full floating opacity-30" style="background: radial-gradient(circle, rgba(255,41,87,0.15) 0%, transparent 70%); filter: blur(40px);"></div>
-    <div class="absolute bottom-20 left-20 w-64 h-64 rounded-full float-delayed opacity-20" style="background: radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%); filter: blur(40px);"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <nav aria-label="Breadcrumb" class="mb-8">
-            <ol class="flex items-center gap-2 text-sm" style="color: var(--color-text-muted);">
-                <li><a href="{{ route('home') }}" class="hover:text-dark transition-colors">Home</a></li>
-                <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
-                <li class="text-dark font-medium">{{ $division['name'] }}</li>
+<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 15px 15px 0; position: relative; overflow: hidden;">
+    <div class="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(65px);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 py-16">
+        <nav class="mb-6">
+            <ol class="flex items-center gap-2 text-sm" style="color: #a9b8b8;">
+                <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a></li>
+                <li><i class="fa-solid fa-chevron-right text-[10px]"></i></li>
+                <li class="text-white font-medium">{{ $division['name'] }}</li>
             </ol>
         </nav>
         <div class="flex items-center gap-5">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255,41,87,0.12), rgba(124,92,252,0.12)); border: 1px solid rgba(255,41,87,0.15);">
-                <i data-lucide="{{ $division['icon'] ?? 'building' }}" style="width: 28px; height: 28px; color: var(--color-primary);"></i>
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: rgba(255,41,87,0.15); border: 1px solid rgba(255,41,87,0.2);">
+                <i class="{{ $division['icon'] ?? 'fa-solid fa-building' }} text-xl" style="color: var(--color-primary);"></i>
             </div>
             <div>
-                <h1 class="text-4xl md:text-6xl font-bold text-dark" style="letter-spacing: -0.04em;">{{ $division['name'] }}</h1>
-                <p class="text-text-secondary text-lg mt-1">{{ $division['tagline'] }}</p>
+                <h1 class="text-4xl md:text-5xl lg:text-[68px] font-medium text-white" style="letter-spacing: -0.03em; line-height: 1.135;">{{ $division['name'] }}</h1>
+                <p class="text-white/50 text-lg mt-1">{{ $division['tagline'] }}</p>
             </div>
         </div>
     </div>
 </section>
 
-{{-- Highlights (for Hospital Tourism) --}}
+{{-- Highlights --}}
 @if(isset($division['highlights']))
-<section class="py-16 bg-white border-b border-border-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-16" style="background-color: var(--color-body-bg);">
+    <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            @foreach($division['highlights'] as $index => $highlight)
-                <div class="text-center" data-animate style="animation-delay: {{ $index * 0.1 }}s">
-                    <p class="text-4xl md:text-5xl font-bold text-gradient mb-1" style="letter-spacing: -0.03em;">{{ $highlight['value'] }}</p>
-                    <p class="text-sm text-text-muted">{{ $highlight['label'] }}</p>
+            @foreach($division['highlights'] as $index => $h)
+                <div data-animate class="text-center" style="animation-delay: {{ $index * 0.1 }}s;">
+                    <p class="text-4xl md:text-5xl font-medium" style="color: var(--color-primary); letter-spacing: -0.03em;">{{ $h['value'] }}</p>
+                    <p class="text-sm mt-1" style="color: var(--color-text-muted);">{{ $h['label'] }}</p>
                 </div>
             @endforeach
         </div>
@@ -49,27 +46,27 @@
 @endif
 
 {{-- Services --}}
-<section class="py-24 md:py-32 gradient-mesh">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-animate>
-            <span class="section-label">Our Services</span>
-            <h2 class="section-heading mb-4">What We <span class="text-gradient">Offer</span></h2>
-            <p class="section-subheading mx-auto text-balance">Comprehensive solutions tailored to your needs.</p>
+<section class="section-gap" style="background-color: var(--color-body-bg);">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-[52px]" data-animate>
+            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
+                <i class="fa-solid fa-briefcase"></i>
+                Our Services
+            </div>
+            <h2 class="section-heading">What We <span style="color: var(--color-primary);">Offer</span></h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-animate>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]" data-animate>
             @foreach($division['services'] as $index => $service)
-                <div class="bento-card group" style="animation-delay: {{ $index * 0.05 }}s">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
-                         style="background: linear-gradient(135deg, rgba(255,41,87,0.1), rgba(124,92,252,0.1));">
-                        <i data-lucide="{{ $service['icon'] }}" style="width: 24px; height: 24px; color: var(--color-primary);"></i>
+                <div class="service-card">
+                    <div class="service-icon mb-6">
+                        <i class="{{ $service['icon'] }}"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-dark mb-2">{{ $service['title'] }}</h3>
-                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text-secondary);">{{ $service['description'] }}</p>
+                    <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text-heading);">{{ $service['title'] }}</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text);">{{ $service['description'] }}</p>
                     @if(isset($service['link']))
-                        <a href="{{ $service['link'] }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300" style="color: var(--color-primary);">
-                            Learn More
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <a href="{{ $service['link'] }}" target="_blank" rel="noopener noreferrer" class="text-sm font-medium inline-flex items-center gap-2" style="color: var(--color-primary);">
+                            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     @endif
                 </div>
@@ -78,106 +75,103 @@
     </div>
 </section>
 
-{{-- Extra CTA --}}
+{{-- CTA --}}
 @if(isset($division['cta']))
-    <section class="py-24 md:py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #0F172A 0%, #1a1040 50%, #0F172A 100%);">
-        <div class="absolute top-0 left-1/3 w-96 h-96 rounded-full opacity-30" style="background: radial-gradient(circle, rgba(255,41,87,0.3) 0%, transparent 70%); filter: blur(80px);"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-animate>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" style="letter-spacing: -0.03em;">{{ $division['cta']['heading'] }}</h2>
-            <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-2xl mx-auto text-balance">{{ $division['cta']['description'] }}</p>
-            <a href="{{ $division['cta']['url'] }}" class="btn-primary text-base py-4 px-8">
-                {{ $division['cta']['text'] }}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+<section class="px-[15px]">
+    <div class="stat-bar flex flex-wrap items-center" style="margin-bottom: 0;">
+        <div class="w-full p-10 lg:p-14 text-center">
+            <h2 data-animate class="text-3xl md:text-4xl font-medium text-white mb-6" style="letter-spacing: -0.03em;">{{ $division['cta']['heading'] }}</h2>
+            <p data-animate class="text-white/70 text-base mb-8 max-w-2xl mx-auto">{{ $division['cta']['description'] }}</p>
+            <a href="{{ $division['cta']['url'] }}" class="btn-primary btn-primary-lg">
+                <span class="btn-text"><span>{{ $division['cta']['text'] }}</span></span>
+                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
         </div>
-    </section>
+    </div>
+</section>
 @endif
 
-{{-- Appointment Form --}}
-<section class="py-24 md:py-32 bg-white" id="appointment">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+{{-- Appointment --}}
+<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 60px 15px 0; position: relative; overflow: hidden;">
+    <div class="absolute top-0 left-0 w-[300px] h-[300px] opacity-10" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(60px);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div data-animate>
-                <span class="section-label">Book Now</span>
-                <h2 class="section-heading mb-6">Book an <span class="text-gradient">Appointment</span></h2>
-                <p class="text-text-secondary leading-relaxed mb-10 text-balance">{{ $appointment_text }}</p>
-                <div class="space-y-5">
+                <div class="section-subtitle" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Book Now
+                </div>
+                <h2 class="section-heading text-white">Book an <span style="color: var(--color-primary);">Appointment</span></h2>
+                <p class="text-white/60 text-base leading-relaxed mb-10">{{ $appointment_text }}</p>
+                <div class="space-y-6">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(255,41,87,0.1), rgba(255,41,87,0.05));">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF2957" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(255,41,87,0.15);">
+                            <i class="fa-solid fa-phone text-sm" style="color: var(--color-primary);"></i>
                         </div>
                         <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-text-muted mb-0.5">Call us</p>
-                            <a href="tel:0226322559" class="font-semibold text-dark hover:text-primary transition-colors">02-2632-2559</a>
+                            <p class="text-xs uppercase tracking-wider" style="color: #a9b8b8;">Call us</p>
+                            <a href="tel:0226322559" class="text-white font-medium text-sm hover:text-primary transition-colors">02-2632-2559</a>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(124,92,252,0.1), rgba(124,92,252,0.05));">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(255,41,87,0.15);">
+                            <i class="fa-regular fa-envelope text-sm" style="color: var(--color-primary);"></i>
                         </div>
                         <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-text-muted mb-0.5">Email us</p>
-                            <a href="mailto:contact@endowcorporation.com" class="font-semibold text-dark hover:text-primary transition-colors">contact@endowcorporation.com</a>
+                            <p class="text-xs uppercase tracking-wider" style="color: #a9b8b8;">Email us</p>
+                            <a href="mailto:contact@endowcorporation.com" class="text-white font-medium text-sm hover:text-primary transition-colors">contact@endowcorporation.com</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div data-animate style="animation-delay: 0.15s;">
-                <div class="glass-card p-8 md:p-10">
-                    @if(session('success'))
-                        <div class="mb-6 p-4 rounded-2xl flex items-center gap-3" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15);">
-                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.15);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <p class="text-sm font-medium" style="color: #065f46;">{{ session('success') }}</p>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('appointment.store') }}" method="POST" class="space-y-5">
-                        @csrf
-                        <input type="hidden" name="page" value="{{ request()->route()->getName() }}">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label for="name" class="block text-sm font-semibold text-dark mb-2">Name *</label>
-                                <input type="text" id="name" name="name" placeholder="John Smith" required value="{{ old('name') }}" class="input-field">
-                                @error('name') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
-                            </div>
-                            <div>
-                                <label for="service_type" class="block text-sm font-semibold text-dark mb-2">Service Type</label>
-                                <select id="service_type" name="service_type" class="input-field">
-                                    <option value="">Select...</option>
-                                    <option value="Travel Services" {{ old('service_type') === 'Travel Services' ? 'selected' : '' }}>Travel Services</option>
-                                    <option value="Education Services" {{ old('service_type') === 'Education Services' ? 'selected' : '' }}>Education Services</option>
-                                    <option value="Technology Services" {{ old('service_type') === 'Technology Services' ? 'selected' : '' }}>Technology Services</option>
-                                    <option value="Hospital Tourism" {{ old('service_type') === 'Hospital Tourism' ? 'selected' : '' }}>Hospital Tourism</option>
-                                </select>
-                                @error('service_type') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label for="email" class="block text-sm font-semibold text-dark mb-2">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required value="{{ old('email') }}" class="input-field">
-                                @error('email') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-semibold text-dark mb-2">Phone *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+880" required value="{{ old('phone') }}" class="input-field">
-                                @error('phone') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
-                            </div>
+            <div data-animate class="bg-white rounded-xl p-8 md:p-10" style="box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+                @if(session('success'))
+                    <div class="mb-6 p-4 rounded-lg flex items-center gap-3" style="background: rgba(16,185,129,0.08);">
+                        <i class="fa-solid fa-check-circle" style="color: #10b981;"></i>
+                        <p class="text-sm font-medium" style="color: #065f46;">{{ session('success') }}</p>
+                    </div>
+                @endif
+                <form action="{{ route('appointment.store') }}" method="POST" class="space-y-6">
+                    @csrf
+                    <input type="hidden" name="page" value="{{ request()->route()->getName() }}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--color-text-heading);">Name *</label>
+                            <input type="text" name="name" placeholder="John Smith" required value="{{ old('name') }}" class="input-field">
+                            @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-semibold text-dark mb-2">Message (Optional)</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..." class="input-field resize-none">{{ old('message') }}</textarea>
-                            @error('message') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
+                            <label class="block text-sm font-medium mb-2" style="color: var(--color-text-heading);">Service Type</label>
+                            <select name="service_type" class="input-field" style="appearance: auto;">
+                                <option value="">Select...</option>
+                                <option value="Travel Services">Travel Services</option>
+                                <option value="Education Services">Education Services</option>
+                                <option value="Technology Services">Technology Services</option>
+                                <option value="Hospital Tourism">Hospital Tourism</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn-primary w-full py-4 text-base">
-                            Submit Request
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--color-text-heading);">Email *</label>
+                            <input type="email" name="email" placeholder="john@example.com" required value="{{ old('email') }}" class="input-field">
+                            @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--color-text-heading);">Phone *</label>
+                            <input type="tel" name="phone" placeholder="+880" required value="{{ old('phone') }}" class="input-field">
+                            @error('phone') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--color-text-heading);">Message (Optional)</label>
+                        <textarea name="message" rows="4" placeholder="Tell us about your needs..." class="input-field resize-none">{{ old('message') }}</textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text"><span>Submit Request</span></span>
+                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
