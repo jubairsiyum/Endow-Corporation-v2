@@ -91,7 +91,7 @@
         <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex items-center">
-                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 w-auto">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-16 md:h-18 lg:h-20 w-auto">
             </a>
 
             {{-- Desktop Nav --}}

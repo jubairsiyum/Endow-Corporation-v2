@@ -5,7 +5,7 @@
             {{-- Brand --}}
             <div>
                 <a href="{{ route('home') }}" class="flex items-center gap-3 mb-6">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-12 w-auto">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 md:h-16 w-auto">
                 </a>
                 <p class="text-sm leading-relaxed mb-6" style="color: #67787a; max-width: 280px;">
                     A global leader in travel, education, technology, and healthcare solutions. Empowering businesses worldwide.

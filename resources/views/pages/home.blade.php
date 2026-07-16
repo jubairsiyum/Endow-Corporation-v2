@@ -18,23 +18,18 @@
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"></div>
 
     <div class="max-w-5xl mx-auto px-6 py-28 md:py-36 lg:py-44 relative z-10 text-center">
-        {{-- Logo Mark — larger, with stronger glow --}}
-        <div data-animate class="mb-10">
-            <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-32 md:h-40 lg:h-48 mx-auto" style="filter: drop-shadow(0 0 60px rgba(212,32,44,0.35)) drop-shadow(0 0 120px rgba(212,32,44,0.15));">
-        </div>
-
-        {{-- Tagline badge — bolder --}}
+        {{-- Tagline badge --}}
         <div data-animate class="inline-flex items-center gap-2.5 mb-8 text-xs font-bold uppercase tracking-[2.5px] px-5 py-2.5 rounded" style="color: var(--color-primary); border: 1.5px dashed rgba(212,32,44,0.35); background: rgba(212,32,44,0.04);">
             <i class="fa-solid fa-compass"></i>
             Navigating Knowledge, Embracing Adventure
         </div>
 
-        {{-- Headline — bolder, more dramatic --}}
+        {{-- Headline --}}
         <h1 data-animate class="text-white text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em; text-shadow: 0 4px 40px rgba(0,0,0,0.3);">
             Empowering <span style="color: var(--color-primary); text-shadow: 0 0 40px rgba(212,32,44,0.4);">Businesses</span><br class="hidden md:block"> Globally
         </h1>
 
-        {{-- Description — more visible --}}
+        {{-- Description --}}
         <p data-animate class="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: rgba(255,255,255,0.65);">
             A global leader in Travel, Education, Technology, and Healthcare solutions. We connect businesses with excellence across 30+ countries.
         </p>
@@ -50,7 +45,7 @@
             </a>
         </div>
 
-        {{-- Dashed service checklist — more prominent --}}
+        {{-- Dashed service checklist --}}
         <div data-animate class="max-w-xl mx-auto dashed-border-dark rounded-lg px-8 py-5 flex items-center justify-between" style="background: rgba(255,255,255,0.03);">
             <div class="flex items-center gap-6 text-sm font-medium" style="color: rgba(255,255,255,0.55);">
                 <span class="flex items-center gap-2">
