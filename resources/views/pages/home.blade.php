@@ -10,32 +10,26 @@
 {{-- HERO --}}
 {{-- ============================================ --}}
 <section class="relative overflow-hidden" style="background-color: var(--color-dark); border-radius: 0 0 12px 12px; margin: 0 15px;">
-    {{-- Decorative glows — larger, more dramatic --}}
     <div class="absolute top-[5%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20" style="background: var(--color-primary); filter: blur(120px);"></div>
     <div class="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(100px);"></div>
     <div class="absolute top-[40%] right-[25%] w-[200px] h-[200px] rounded-full opacity-10" style="background: #ff6b6b; filter: blur(80px);"></div>
-    {{-- Dotted grid overlay --}}
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px;"></div>
 
     <div class="max-w-5xl mx-auto px-6 py-28 md:py-36 lg:py-44 relative z-10 text-center">
-        {{-- Tagline badge --}}
-        <div data-animate class="inline-flex items-center gap-2.5 mb-8 text-xs font-bold uppercase tracking-[2.5px] px-5 py-2.5 rounded" style="color: var(--color-primary); border: 1.5px dashed rgba(212,32,44,0.35); background: rgba(212,32,44,0.04);">
+        <div class="animate-hero-1 inline-flex items-center gap-2.5 mb-8 text-xs font-bold uppercase tracking-[2.5px] px-5 py-2.5 rounded" style="color: var(--color-primary); border: 1.5px dashed rgba(212,32,44,0.35); background: rgba(212,32,44,0.04);">
             <i class="fa-solid fa-compass"></i>
             Navigating Knowledge, Embracing Adventure
         </div>
 
-        {{-- Headline --}}
-        <h1 data-animate class="text-white text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em; text-shadow: 0 4px 40px rgba(0,0,0,0.3);">
+        <h1 class="animate-hero-2 text-white text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em; text-shadow: 0 4px 40px rgba(0,0,0,0.3);">
             Empowering <span style="color: var(--color-primary); text-shadow: 0 0 40px rgba(212,32,44,0.4);">Businesses</span><br class="hidden md:block"> Globally
         </h1>
 
-        {{-- Description --}}
-        <p data-animate class="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: rgba(255,255,255,0.65);">
+        <p class="animate-hero-3 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: rgba(255,255,255,0.65);">
             A global leader in Travel, Education, Technology, and Healthcare solutions. We connect businesses with excellence across 30+ countries.
         </p>
 
-        {{-- CTAs --}}
-        <div data-animate class="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <div class="animate-hero-4 flex flex-wrap items-center justify-center gap-4 mb-16">
             <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg" style="box-shadow: 0 6px 30px rgba(212,32,44,0.4);">
                 <span class="btn-text"><span>Get Consulting</span></span>
                 <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
@@ -45,21 +39,12 @@
             </a>
         </div>
 
-        {{-- Dashed service checklist --}}
-        <div data-animate class="max-w-xl mx-auto dashed-border-dark rounded-lg px-8 py-5 flex items-center justify-between" style="background: rgba(255,255,255,0.03);">
+        <div class="animate-hero-5 max-w-xl mx-auto dashed-border-dark rounded-lg px-8 py-5 flex items-center justify-between" style="background: rgba(255,255,255,0.03);">
             <div class="flex items-center gap-6 text-sm font-medium" style="color: rgba(255,255,255,0.55);">
-                <span class="flex items-center gap-2">
-                    <i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology
-                </span>
-                <span class="flex items-center gap-2">
-                    <i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare
-                </span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare</span>
             </div>
         </div>
     </div>
@@ -76,6 +61,7 @@
                 Our Services
             </div>
             <h2 class="section-heading">What We <span style="color: var(--color-primary);">Offer</span></h2>
+            <p class="text-base max-w-2xl mx-auto" style="color: var(--color-text);">Comprehensive solutions across four core divisions, delivering excellence to businesses and individuals worldwide.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
@@ -88,8 +74,9 @@
                 ['icon' => 'fa-solid fa-handshake', 'title' => 'Consulting', 'description' => 'Expert consulting services to help businesses grow, connect, and succeed in the global market.', 'route' => 'consulting'],
             ] as $index => $service)
                 <a href="{{ route('division.show', $service['route']) }}" data-animate class="service-card group block" style="animation-delay: {{ $index * 0.1 }}s;">
-                    <div class="service-icon mb-6">
+                    <div class="img-placeholder mb-6" style="height: 180px;">
                         <i class="{{ $service['icon'] }}"></i>
+                        <span>{{ $service['title'] }}</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-3 transition-colors" style="color: var(--color-text-heading);" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-heading)'">{{ $service['title'] }}</h3>
                     <p class="text-sm leading-relaxed mb-5" style="color: var(--color-text);">{{ $service['description'] }}</p>
@@ -131,25 +118,13 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {{-- Left: Visual --}}
             <div data-animate class="relative">
-                <div class="rounded-xl overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
-                    <div class="bg-white p-6">
-                        <div class="grid grid-cols-2 gap-4">
-                            @foreach([
-                                ['value' => '7+', 'label' => 'Years', 'icon' => 'fa-solid fa-calendar'],
-                                ['value' => '25+', 'label' => 'Team', 'icon' => 'fa-solid fa-users'],
-                                ['value' => '940+', 'label' => 'Projects', 'icon' => 'fa-solid fa-briefcase'],
-                                ['value' => '810+', 'label' => 'Clients', 'icon' => 'fa-solid fa-face-smile'],
-                            ] as $stat)
-                                <div class="p-5 rounded-lg text-center" style="background: var(--color-section-alt);">
-                                    <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3" style="background: rgba(212,32,44,0.08);">
-                                        <i class="{{ $stat['icon'] }} text-sm" style="color: var(--color-primary);"></i>
-                                    </div>
-                                    <p class="text-2xl font-semibold" style="color: var(--color-text-heading);">{{ $stat['value'] }}</p>
-                                    <p class="text-xs mt-1" style="color: var(--color-text-muted);">{{ $stat['label'] }}</p>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                <div class="img-placeholder" style="height: 440px;">
+                    <i class="fa-solid fa-building-columns text-5xl mb-3"></i>
+                    <span>Endow Corporation Office</span>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white rounded-xl p-5 shadow-lg" style="border-left: 3px solid var(--color-primary);">
+                    <p class="text-3xl font-bold" style="color: var(--color-primary);">7+</p>
+                    <p class="text-xs" style="color: var(--color-text-muted);">Years of Excellence</p>
                 </div>
             </div>
 
@@ -195,6 +170,7 @@
                 Our Divisions
             </div>
             <h2 class="section-heading">Explore Our <span style="color: var(--color-primary);">Divisions</span></h2>
+            <p class="text-base max-w-2xl mx-auto" style="color: var(--color-text);">Four specialized divisions working together to deliver comprehensive global solutions.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
@@ -209,18 +185,22 @@
 
             @foreach($divisions as $index => $div)
                 <a href="{{ route('division.show', $div['route']) }}" data-animate class="service-card group flex flex-col" style="animation-delay: {{ $index * 0.1 }}s;">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="service-icon">
+                    <div class="flex items-start gap-5 mb-4">
+                        <div class="img-placeholder flex-shrink-0" style="width: 100px; height: 80px;">
                             <i class="{{ $div['icon'] }}"></i>
                         </div>
-                        <i class="fa-solid fa-arrow-right text-lg transition-transform group-hover:translate-x-1" style="color: var(--color-primary);"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2" style="color: var(--color-text-heading);">{{ $div['name'] }}</h3>
-                    <p class="text-sm leading-relaxed mb-4 flex-1" style="color: var(--color-text);">{{ $div['desc'] }}</p>
-                    <div class="flex flex-wrap gap-2">
-                        @foreach($div['tags'] as $tag)
-                            <span class="px-3 py-1 rounded text-xs font-medium" style="background: rgba(212,32,44,0.06); color: var(--color-primary);">{{ $tag }}</span>
-                        @endforeach
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-semibold" style="color: var(--color-text-heading);">{{ $div['name'] }}</h3>
+                                <i class="fa-solid fa-arrow-right text-lg transition-transform group-hover:translate-x-1" style="color: var(--color-primary);"></i>
+                            </div>
+                            <p class="text-sm leading-relaxed mb-3" style="color: var(--color-text);">{{ $div['desc'] }}</p>
+                            <div class="flex flex-wrap gap-2">
+                                @foreach($div['tags'] as $tag)
+                                    <span class="px-3 py-1 rounded text-xs font-medium" style="background: rgba(212,32,44,0.06); color: var(--color-primary);">{{ $tag }}</span>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </a>
             @endforeach
@@ -229,9 +209,55 @@
 </section>
 
 {{-- ============================================ --}}
+{{-- WHY CHOOSE US --}}
+{{-- ============================================ --}}
+<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 0 15px; position: relative; overflow: hidden;">
+    <div class="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full opacity-10" style="background: var(--color-primary); filter: blur(80px);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-animate>
+                <div class="section-subtitle" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-star"></i>
+                    Why Choose Us
+                </div>
+                <h2 class="section-heading text-white">We Are a Globally Recognized <span style="color: var(--color-primary);">Consulting Leader</span></h2>
+                <p class="text-white/50 text-base leading-relaxed mb-8">
+                    Endow Corporation is celebrated for its excellence in delivering innovative solutions. Our award-winning services empower businesses and individuals to achieve their full potential.
+                </p>
+
+                <div class="space-y-5">
+                    @foreach([
+                        ['icon' => 'fa-solid fa-earth-americas', 'title' => 'Global Expertise', 'desc' => 'Solutions across 30+ countries with deep local knowledge.'],
+                        ['icon' => 'fa-solid fa-headset', 'title' => '24/7 Customer Support', 'desc' => 'Always available to provide support whenever you need it.'],
+                        ['icon' => 'fa-solid fa-shield-halved', 'title' => 'Trusted & Secure', 'desc' => 'Enterprise-grade security and compliance standards.'],
+                    ] as $f)
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.12);">
+                                <i class="{{ $f['icon'] }} text-sm" style="color: var(--color-primary);"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-semibold text-white mb-1">{{ $f['title'] }}</h4>
+                                <p class="text-sm" style="color: rgba(255,255,255,0.5);">{{ $f['desc'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div data-animate>
+                <div class="img-placeholder" style="height: 420px;">
+                    <i class="fa-solid fa-users-gear text-5xl mb-3"></i>
+                    <span>Our Expert Team</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ============================================ --}}
 {{-- TESTIMONIALS --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: #e8e8e8; border-radius: 12px; margin: 0 15px; overflow: hidden;">
+<section class="section-gap" style="background-color: #e8e8e8; border-radius: 12px; margin: 60px 15px 0; overflow: hidden;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-[52px]" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">

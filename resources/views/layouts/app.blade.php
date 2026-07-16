@@ -90,8 +90,13 @@
     <header id="main-header" class="transition-all duration-300" style="background: white; border-radius: 0 0 12px 12px; margin: 0 15px; position: relative; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
         <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center">
-                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-16 md:h-18 lg:h-20 w-auto">
+            <a href="{{ route('home') }}" class="flex items-center gap-3">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="h-14 md:h-16 lg:h-18 w-auto flex-shrink-0">
+                <div class="hidden sm:flex flex-col">
+                    <span class="text-base font-bold leading-tight" style="color: var(--color-dark); letter-spacing: -0.02em;">Endow Corporation</span>
+                    <span class="text-[10px] font-medium uppercase tracking-[1.5px] leading-tight" style="color: var(--color-primary);">Navigating Knowledge, Embracing Adventure</span>
+                </div>
+            </a>
             </a>
 
             {{-- Desktop Nav --}}
@@ -285,22 +290,35 @@
         mobileMenuClose?.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
 
-        // Scroll animations
+        // Scroll animations — scoped per section
+        document.querySelectorAll('section, [data-animate]').forEach(section => {
+            if (!section.hasAttribute('data-animate') && !section.querySelector('[data-animate]')) return;
+            const items = section.hasAttribute('data-animate') ? [section] : section.querySelectorAll('[data-animate]');
+            items.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(25px)';
+                el.style.transition = `opacity 0.5s ease-out ${i * 0.1}s, transform 0.5s ease-out ${i * 0.1}s`;
+            });
+        });
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    const section = entry.target.closest('section') || entry.target;
+                    const items = section.hasAttribute('data-animate') ? [section] : section.querySelectorAll('[data-animate]');
+                    items.forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    });
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
-        document.querySelectorAll('[data-animate]').forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(25px)';
-            el.style.transition = `opacity 0.6s ease-out ${i * 0.08}s, transform 0.6s ease-out ${i * 0.08}s`;
-            observer.observe(el);
+        document.querySelectorAll('section').forEach(section => {
+            if (section.querySelector('[data-animate]') || section.hasAttribute('data-animate')) {
+                observer.observe(section);
+            }
         });
 
         // Counters

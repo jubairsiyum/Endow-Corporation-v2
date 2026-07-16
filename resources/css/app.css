@@ -433,6 +433,32 @@
     .nav-link.active::after {
         width: 100%;
     }
+
+    .img-placeholder {
+        width: 100%;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--color-section-alt) 0%, #e0e0e0 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-text-muted);
+        border: 2px dashed var(--color-border-dashed);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .img-placeholder i {
+        font-size: 32px;
+        margin-bottom: 8px;
+        opacity: 0.4;
+    }
+
+    .img-placeholder span {
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.5;
+    }
 }
 
 @layer utilities {
@@ -454,3 +480,14 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@keyframes heroFadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-1 { opacity: 0; animation: heroFadeInUp 0.7s ease-out 0.1s forwards; }
+.animate-hero-2 { opacity: 0; animation: heroFadeInUp 0.7s ease-out 0.25s forwards; }
+.animate-hero-3 { opacity: 0; animation: heroFadeInUp 0.7s ease-out 0.4s forwards; }
+.animate-hero-4 { opacity: 0; animation: heroFadeInUp 0.7s ease-out 0.55s forwards; }
+.animate-hero-5 { opacity: 0; animation: heroFadeInUp 0.7s ease-out 0.7s forwards; }
