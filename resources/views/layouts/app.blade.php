@@ -51,7 +51,7 @@
 <body>
 
     {{-- Top Bar --}}
-    <div class="hidden lg:block" style="background-color: var(--color-dark); border-radius: 0 0 12px 12px; margin: 0 15px;">
+    <div class="hidden lg:block" style="background-color: var(--color-dark);">
         <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2 text-white/60 text-xs font-medium">
@@ -87,7 +87,7 @@
     </div>
 
     {{-- Header --}}
-    <header id="main-header" class="transition-all duration-300" style="background: white; border-radius: 0 0 12px 12px; margin: 0 15px; position: relative; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <header id="main-header" class="transition-all duration-300" style="background: white; position: relative; z-index: 100; border-bottom: 1px solid var(--color-border);">
         <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex items-center gap-3">
@@ -248,17 +248,15 @@
                 header.style.left = '0';
                 header.style.right = '0';
                 header.style.zIndex = '1002';
-                header.style.boxShadow = '0 0 15px rgba(0,0,0,0.1)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
                 header.style.width = '100%';
-                header.style.borderRadius = '0';
-                header.style.margin = '0';
+                header.style.borderBottom = '1px solid var(--color-border)';
                 if (headerTopBar) headerTopBar.style.display = 'none';
             } else {
                 header.style.position = 'relative';
                 header.style.boxShadow = 'none';
                 header.style.width = '';
-                header.style.borderRadius = '0 0 12px 12px';
-                header.style.margin = '0 15px';
+                header.style.borderBottom = '1px solid var(--color-border)';
                 if (headerTopBar) headerTopBar.style.display = '';
             }
         });

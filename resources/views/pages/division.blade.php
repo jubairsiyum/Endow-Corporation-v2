@@ -7,7 +7,7 @@
 @section('content')
 
 {{-- Hero --}}
-<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 15px 15px 0; position: relative; overflow: hidden;">
+<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(65px);"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10 py-16">
         <nav class="mb-6">
@@ -92,7 +92,7 @@
 @endif
 
 {{-- Appointment --}}
-<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 60px 15px 0; position: relative; overflow: hidden;">
+<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute top-0 left-0 w-[300px] h-[300px] opacity-10" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(60px);"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">

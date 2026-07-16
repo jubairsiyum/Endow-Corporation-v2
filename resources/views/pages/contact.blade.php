@@ -27,7 +27,7 @@
 @section('content')
 
 {{-- Hero --}}
-<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 15px 15px 0; position: relative; overflow: hidden;">
+<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(65px);"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10 py-16">
         <nav class="mb-6">

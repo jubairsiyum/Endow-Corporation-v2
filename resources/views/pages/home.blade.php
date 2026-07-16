@@ -9,7 +9,7 @@
 {{-- ============================================ --}}
 {{-- HERO --}}
 {{-- ============================================ --}}
-<section class="relative overflow-hidden" style="background-color: var(--color-dark); border-radius: 0 0 12px 12px; margin: 0 15px;">
+<section class="relative overflow-hidden" style="background-color: var(--color-dark);">
     <div class="absolute top-[5%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20" style="background: var(--color-primary); filter: blur(120px);"></div>
     <div class="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(100px);"></div>
     <div class="absolute top-[40%] right-[25%] w-[200px] h-[200px] rounded-full opacity-10" style="background: #ff6b6b; filter: blur(80px);"></div>
@@ -113,7 +113,7 @@
 {{-- ============================================ --}}
 {{-- ABOUT --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: #e8e8e8; border-radius: 12px; margin: 0 15px;">
+<section class="section-gap" style="background-color: #e8e8e8; margin: 0 15px;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {{-- Left: Visual --}}
@@ -211,7 +211,7 @@
 {{-- ============================================ --}}
 {{-- WHY CHOOSE US --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 0 15px; position: relative; overflow: hidden;">
+<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full opacity-10" style="background: var(--color-primary); filter: blur(80px);"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -257,7 +257,7 @@
 {{-- ============================================ --}}
 {{-- TESTIMONIALS --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: #e8e8e8; border-radius: 12px; margin: 60px 15px 0; overflow: hidden;">
+<section class="section-gap" style="background-color: #e8e8e8; margin: 60px 15px 0; overflow: hidden;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-[52px]" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
@@ -341,8 +341,8 @@
 {{-- ============================================ --}}
 {{-- CTA --}}
 {{-- ============================================ --}}
-<section class="px-[15px]">
-    <div class="stat-bar flex flex-wrap items-center" style="margin-bottom: 0; border-radius: 12px;">
+<section>
+    <div class="stat-bar flex flex-wrap items-center" style="margin-bottom: 0;">
         <div class="w-full lg:w-1/2 p-10 lg:p-14">
             <h2 data-animate class="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight mb-6" style="letter-spacing: -0.03em;">
                 Let's Discuss How We Can Help You <span style="color: #ffcc00;">Succeed!</span>
@@ -369,7 +369,7 @@
 {{-- ============================================ --}}
 {{-- APPOINTMENT FORM --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-dark); border-radius: 12px; margin: 60px 15px 0; position: relative; overflow: hidden;">
+<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute top-0 left-0 w-[300px] h-[300px] opacity-10" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(60px);"></div>
 
     <div class="max-w-7xl mx-auto px-6">

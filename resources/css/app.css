@@ -28,7 +28,7 @@
 @layer base {
     html {
         scroll-behavior: smooth;
-        scroll-padding-top: 0;
+        scroll-padding-top: 80px;
     }
 
     body {
@@ -278,7 +278,6 @@
 
     .stat-bar {
         background: linear-gradient(135deg, var(--color-primary) 0%, #a01a22 100%);
-        border-radius: 12px;
         margin-bottom: -122px;
         position: relative;
         z-index: 2;

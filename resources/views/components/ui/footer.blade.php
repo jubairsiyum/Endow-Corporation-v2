@@ -1,5 +1,5 @@
 {{-- Footer --}}
-<footer style="background-color: #d8e5e5; border-radius: 12px; margin: 0 15px; position: relative; overflow: hidden;">
+<footer style="background-color: #d8e5e5; position: relative; overflow: hidden;">
     <div class="max-w-7xl mx-auto px-6 pt-32 pb-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
             {{-- Brand --}}
