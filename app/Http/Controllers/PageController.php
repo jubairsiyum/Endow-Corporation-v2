@@ -28,7 +28,7 @@ class PageController extends Controller
     {
         $divisions = $this->getDivisions();
 
-        if (!isset($divisions[$slug])) {
+        if (! isset($divisions[$slug])) {
             abort(404);
         }
 
@@ -36,7 +36,7 @@ class PageController extends Controller
 
         $appointmentTexts = [
             'travel' => 'Let us help you plan your perfect journey! Schedule a quick consultation with our experts to discuss your travel needs and get personalized recommendations.',
-            'education' => "Ready to take the next step in your educational journey? Book a consultation with our experts to explore study programs, scholarship opportunities, and visa assistance.",
+            'education' => 'Ready to take the next step in your educational journey? Book a consultation with our experts to explore study programs, scholarship opportunities, and visa assistance.',
             'technology' => "Let's discuss how technology can accelerate your business. Schedule a session with our experts today!",
             'hospital-tourism' => "Planning medical travel? Book a free consultation with our healthcare travel experts. We'll help you find the best hospitals, doctors, and treatment packages worldwide.",
         ];

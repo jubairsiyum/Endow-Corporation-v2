@@ -9,15 +9,14 @@
 {{-- ============================================ --}}
 {{-- HERO — Single Column Centered --}}
 {{-- ============================================ --}}
-<section class="relative overflow-hidden" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 100vh; display: flex; align-items: center;">
+<section class="relative overflow-hidden section-gap-hero" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 92vh; display: flex; align-items: center;">
     {{-- Gradient orbs --}}
     <div class="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full opacity-15" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(100px);"></div>
     <div class="absolute bottom-[10%] right-[8%] w-[450px] h-[450px] rounded-full opacity-10" style="background: radial-gradient(circle, #ff6b6b, transparent 70%); filter: blur(80px);"></div>
     <div class="absolute top-[50%] left-[50%] w-[300px] h-[300px] rounded-full opacity-5" style="background: radial-gradient(circle, white, transparent 70%); filter: blur(60px); transform: translate(-50%, -50%);"></div>
-    {{-- Grid overlay --}}
     <div class="absolute inset-0 opacity-[0.025]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-    <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 relative z-10 w-full text-center">
+    <div class="max-w-4xl mx-auto px-6 py-16 md:py-24 relative z-10 w-full text-center">
         {{-- Badge --}}
         <div class="animate-hero-1 inline-flex items-center gap-2.5 mb-8 text-[11px] font-bold uppercase tracking-[3px] px-5 py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
             <i class="fa-solid fa-bolt" style="font-size: 10px;"></i>
@@ -25,7 +24,7 @@
         </div>
 
         {{-- Headline --}}
-        <h1 class="animate-hero-2 text-white text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em;">
+        <h1 class="animate-hero-2 text-white text-4xl md:text-5xl lg:text-[64px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em;">
             Navigating <span class="gradient-text">Knowledge,</span><br>Embracing Adventure
         </h1>
 

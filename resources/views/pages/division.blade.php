@@ -7,7 +7,7 @@
 @section('content')
 
 {{-- Hero --}}
-<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
+<section class="section-gap-hero" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
     <div class="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(65px);"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10 py-16">
         <nav class="mb-6">
@@ -22,7 +22,7 @@
                 <i class="{{ $division['icon'] ?? 'fa-solid fa-building' }} text-xl" style="color: var(--color-primary);"></i>
             </div>
             <div>
-                <h1 class="text-4xl md:text-5xl lg:text-[68px] font-medium text-white" style="letter-spacing: -0.03em; line-height: 1.135;">{{ $division['name'] }}</h1>
+                <h1 class="text-4xl md:text-5xl lg:text-[56px] font-medium text-white" style="letter-spacing: -0.03em; line-height: 1.135;">{{ $division['name'] }}</h1>
                 <p class="text-white/50 text-lg mt-1">{{ $division['tagline'] }}</p>
             </div>
         </div>

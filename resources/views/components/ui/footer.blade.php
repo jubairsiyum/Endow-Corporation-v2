@@ -28,15 +28,15 @@
                 </div>
             </div>
 
-            {{-- Services --}}
+            {{-- Education --}}
             <div>
-                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Services</h5>
+                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Education</h5>
                 <ul class="space-y-3">
                     @foreach([
-                        ['label' => 'Endow Travel', 'url' => route('division.show', 'travel')],
                         ['label' => 'Global Education', 'url' => route('division.show', 'education')],
-                        ['label' => 'Technologies', 'url' => route('division.show', 'technology')],
-                        ['label' => 'Hospital Tourism', 'url' => route('division.show', 'hospital-tourism')],
+                        ['label' => 'Study Abroad', 'url' => route('seo.study-abroad')],
+                        ['label' => 'Scholarships', 'url' => route('seo.scholarships')],
+                        ['label' => 'Language Training', 'url' => route('seo.language-training')],
                     ] as $link)
                         <li>
                             <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='var(--color-primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
@@ -47,14 +47,15 @@
                 </ul>
             </div>
 
-            {{-- Company --}}
+            {{-- Technology --}}
             <div>
-                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Company</h5>
+                <h5 class="text-sm font-bold mb-6 uppercase tracking-wider" style="color: rgba(255,255,255,0.7);">Technology</h5>
                 <ul class="space-y-3">
                     @foreach([
-                        ['label' => 'About Us', 'url' => route('about')],
-                        ['label' => 'Contact', 'url' => route('contact')],
-                        ['label' => 'Consulting', 'url' => route('consulting')],
+                        ['label' => 'Technologies', 'url' => route('division.show', 'technology')],
+                        ['label' => 'AI & Automation', 'url' => route('seo.ai-automation')],
+                        ['label' => 'Cloud Computing', 'url' => route('seo.cloud-computing')],
+                        ['label' => 'Software Development', 'url' => route('seo.software-development')],
                     ] as $link)
                         <li>
                             <a href="{{ $link['url'] }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.4);" onmouseover="this.style.color='var(--color-primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
@@ -93,8 +94,9 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-sm" style="color: rgba(255,255,255,0.3);">&copy; {{ date('Y') }} Endow Corporation. All rights reserved.</p>
                 <div class="flex items-center gap-6">
-                    <a href="#" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
-                    <a href="#" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Terms of Service</a>
+                    <a href="{{ route('seo.privacy-policy') }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Privacy Policy</a>
+                    <a href="{{ route('seo.terms-of-service') }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Terms of Service</a>
+                    <a href="{{ route('about') }}" class="text-sm transition-colors" style="color: rgba(255,255,255,0.3);" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">About Us</a>
                 </div>
             </div>
         </div>
