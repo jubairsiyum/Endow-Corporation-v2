@@ -53,23 +53,23 @@
     {{-- Top Bar --}}
     <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
         <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
                     <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
                     <span>Sat – Thu, 8:00am – 6:00pm</span>
                 </div>
-                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.15);"></div>
+                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
                 <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2.5 text-[13px] font-medium transition-colors" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
                     <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
                     contact@endowcorporation.com
                 </a>
-                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.15);"></div>
+                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
                     <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
                     Seoul, South Korea
                 </div>
             </div>
-            <div class="flex items-center gap-1.5">
+            <div class="flex items-center gap-2.5">
                 @foreach([
                     ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
                     ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
@@ -90,9 +90,9 @@
     </div>
 
     {{-- Header — Glassmorphism --}}
-    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100; background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-2.5 pb-1.5">
-            <div class="flex items-center justify-between rounded-2xl px-5 sm:px-6 py-2" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 30px rgba(0,0,0,0.2);">
+    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-0 pb-0">
+            <div class="flex items-center justify-between rounded-2xl px-6 sm:px-7 py-2.5" style="background: rgba(10,10,10,0.4); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex-shrink-0">
                     <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 42px; width: auto;">
@@ -106,8 +106,8 @@
                     {{-- Divisions --}}
                     <div x-data="{ open: false }" class="relative" @click.away="open = false">
                         <button @click="open = !open" class="nav-link flex items-center gap-2 {{ request()->routeIs('division.*') ? 'active' : '' }}">
-                            Divisions
-                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="open ? 'rotate-180' : ''" style="font-size: 11px;"></i>
+                            <span>Divisions</span>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-200" :class="open ? 'rotate-180' : ''" style="font-size: 10px; margin-top: 1px;"></i>
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                              x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
@@ -243,6 +243,7 @@
         const header = document.getElementById('main-header');
         const headerTopBar = header.previousElementSibling;
         const hamburgerBars = document.querySelectorAll('.hamburger-bar');
+        const headerPill = header.querySelector('.max-w-7xl > div');
 
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
@@ -260,18 +261,29 @@
                 header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
                 header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
                 header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
+                if (headerPill) {
+                    headerPill.style.background = 'rgba(255,255,255,0.88)';
+                    headerPill.style.border = '1px solid rgba(255,255,255,0.5)';
+                    headerPill.style.boxShadow = '0 2px 16px rgba(0,0,0,0.04)';
+                    headerPill.style.insetShadow = 'none';
+                }
                 hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
                 if (headerTopBar) headerTopBar.style.display = 'none';
             } else {
                 header.classList.remove('header-scrolled');
                 header.style.position = 'relative';
-                header.style.background = 'linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%)';
+                header.style.background = 'transparent';
                 header.style.backdropFilter = 'none';
                 header.style.webkitBackdropFilter = 'none';
                 header.style.width = '';
                 header.style.borderBottom = 'none';
                 header.style.boxShadow = '';
                 header.style.transition = 'background 0.3s, box-shadow 0.3s';
+                if (headerPill) {
+                    headerPill.style.background = 'rgba(10,10,10,0.4)';
+                    headerPill.style.border = '1px solid rgba(255,255,255,0.07)';
+                    headerPill.style.boxShadow = '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+                }
                 hamburgerBars.forEach(bar => bar.style.background = 'rgba(255,255,255,0.7)');
                 if (headerTopBar) headerTopBar.style.display = '';
             }
