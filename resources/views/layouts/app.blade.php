@@ -51,21 +51,21 @@
 <body>
 
     {{-- Top Bar --}}
-    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%); border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
+        <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-6">
-                <div class="flex items-center gap-2 text-xs font-medium" style="color: rgba(255,255,255,0.45);">
-                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 10px;"></i>
+                <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
+                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
                     <span>Sat – Thu, 8:00am – 6:00pm</span>
                 </div>
-                <div class="w-px h-3" style="background: rgba(255,255,255,0.1);"></div>
-                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2 text-xs font-medium transition-colors" style="color: rgba(255,255,255,0.45);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
-                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 10px;"></i>
+                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.15);"></div>
+                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2.5 text-[13px] font-medium transition-colors" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
                     contact@endowcorporation.com
                 </a>
-                <div class="w-px h-3" style="background: rgba(255,255,255,0.1);"></div>
-                <div class="flex items-center gap-2 text-xs font-medium" style="color: rgba(255,255,255,0.45);">
-                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 10px;"></i>
+                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.15);"></div>
+                <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
+                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
                     Seoul, South Korea
                 </div>
             </div>
@@ -78,11 +78,11 @@
                 ] as $social)
                     <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
                        class="w-6 h-6 rounded flex items-center justify-center transition-all"
-                       style="color: rgba(255,255,255,0.3);"
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.08)';"
-                       onmouseout="this.style.color='rgba(255,255,255,0.3)'; this.style.backgroundColor='transparent';"
+                       style="color: rgba(255,255,255,0.4);"
+                       onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.1)';"
+                       onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.backgroundColor='transparent';"
                        aria-label="Social">
-                        <i class="{{ $social['icon'] }}" style="font-size: 10px;"></i>
+                        <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
                     </a>
                 @endforeach
             </div>
@@ -90,12 +90,12 @@
     </div>
 
     {{-- Header — Glassmorphism --}}
-    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-2">
-            <div class="flex items-center justify-between rounded-2xl px-5 sm:px-6 py-2.5" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 30px rgba(0,0,0,0.06);">
+    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100; background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-2.5 pb-1.5">
+            <div class="flex items-center justify-between rounded-2xl px-5 sm:px-6 py-2" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 30px rgba(0,0,0,0.2);">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex-shrink-0">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 38px; width: auto;">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 42px; width: auto;">
                 </a>
 
                 {{-- Desktop Nav --}}
@@ -105,16 +105,16 @@
 
                     {{-- Divisions --}}
                     <div x-data="{ open: false }" class="relative" @click.away="open = false">
-                        <button @click="open = !open" class="nav-link flex items-center gap-1.5 {{ request()->routeIs('division.*') ? 'active' : '' }}">
+                        <button @click="open = !open" class="nav-link flex items-center gap-2 {{ request()->routeIs('division.*') ? 'active' : '' }}">
                             Divisions
-                            <i class="fa-solid fa-chevron-down text-[10px] transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="open ? 'rotate-180' : ''" style="font-size: 11px;"></i>
                         </button>
                         <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
                              x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
                              x-transition:leave="transition ease-in duration-150"
                              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
-                             class="absolute top-full left-0 mt-3 w-64 p-2 rounded-xl"
-                             style="background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                             class="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
+                             style="background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 40px rgba(0,0,0,0.12);">
                             @foreach([
                                 ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
                                 ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
@@ -122,8 +122,8 @@
                                 ['route' => 'hospital-tourism', 'icon' => 'fa-solid fa-heart-pulse', 'name' => 'Hospital Tourism'],
                             ] as $division)
                                 <a href="{{ route('division.show', $division['route']) }}"
-                                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors"
-                                   onmouseover="this.style.background='rgba(212,32,44,0.04)'" onmouseout="this.style.background='transparent'">
+                                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200"
+                                   onmouseover="this.style.background='rgba(212,32,44,0.06)'; this.style.paddingLeft='20px'" onmouseout="this.style.background='transparent'; this.style.paddingLeft='16px'">
                                     <i class="{{ $division['icon'] }} text-sm" style="color: var(--color-primary);"></i>
                                     <span class="text-sm font-medium" style="color: var(--color-text-heading);">{{ $division['name'] }}</span>
                                 </a>
@@ -136,15 +136,15 @@
 
                 {{-- CTA + Hamburger --}}
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('consulting') }}" class="btn-primary hidden sm:inline-flex">
+                    <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg hidden sm:inline-flex">
                         <span class="btn-text"><span>Let's Talk</span></span>
                         <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                     </a>
 
-                    <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-colors" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='transparent'" aria-label="Menu">
-                        <span class="w-5 h-0.5 rounded-full transition-all" style="background: var(--color-text-heading);" id="bar1"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all" style="background: var(--color-text-heading);" id="bar2"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all" style="background: var(--color-text-heading);" id="bar3"></span>
+                    <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'" aria-label="Menu">
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar1"></span>
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar2"></span>
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar3"></span>
                     </button>
                 </div>
             </div>
@@ -242,26 +242,37 @@
         // Sticky header
         const header = document.getElementById('main-header');
         const headerTopBar = header.previousElementSibling;
+        const hamburgerBars = document.querySelectorAll('.hamburger-bar');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                header.classList.add('header-scrolled');
                 header.style.position = 'fixed';
                 header.style.top = '0';
                 header.style.left = '0';
                 header.style.right = '0';
                 header.style.zIndex = '1002';
                 header.style.width = '100%';
-                header.style.background = 'rgba(250,250,250,0.8)';
+                header.style.background = 'rgba(250,250,250,0.92)';
                 header.style.backdropFilter = 'blur(20px) saturate(180%)';
                 header.style.webkitBackdropFilter = 'blur(20px) saturate(180%)';
-                header.style.borderBottom = '1px solid rgba(0,0,0,0.06)';
+                header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
+                header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
+                hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
                 if (headerTopBar) headerTopBar.style.display = 'none';
             } else {
+                header.classList.remove('header-scrolled');
                 header.style.position = 'relative';
-                header.style.background = 'transparent';
+                header.style.background = 'linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%)';
                 header.style.backdropFilter = 'none';
                 header.style.webkitBackdropFilter = 'none';
                 header.style.width = '';
                 header.style.borderBottom = 'none';
+                header.style.boxShadow = '';
+                header.style.transition = 'background 0.3s, box-shadow 0.3s';
+                hamburgerBars.forEach(bar => bar.style.background = 'rgba(255,255,255,0.7)');
                 if (headerTopBar) headerTopBar.style.display = '';
             }
         });
