@@ -7,7 +7,7 @@
 @section('content')
 
 {{-- ============================================ --}}
-{{-- HERO — Pitch-Deck Full Screen --}}
+{{-- HERO — Single Column Centered --}}
 {{-- ============================================ --}}
 <section class="relative overflow-hidden" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 100vh; display: flex; align-items: center;">
     {{-- Gradient orbs --}}
@@ -17,76 +17,41 @@
     {{-- Grid overlay --}}
     <div class="absolute inset-0 opacity-[0.025]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {{-- Left: Content --}}
-            <div>
-                <div class="animate-hero-1 inline-flex items-center gap-2.5 mb-8 text-[11px] font-bold uppercase tracking-[3px] px-5 py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
-                    <i class="fa-solid fa-bolt" style="font-size: 10px;"></i>
-                    Empowering Businesses Globally
-                </div>
+    <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 relative z-10 w-full text-center">
+        {{-- Badge --}}
+        <div class="animate-hero-1 inline-flex items-center gap-2.5 mb-8 text-[11px] font-bold uppercase tracking-[3px] px-5 py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
+            <i class="fa-solid fa-bolt" style="font-size: 10px;"></i>
+            Empowering Businesses Globally
+        </div>
 
-                <h1 class="animate-hero-2 text-white text-5xl md:text-6xl lg:text-[72px] font-bold leading-[1.05] mb-6" style="letter-spacing: -0.04em;">
-                    Navigating<br>
-                    <span class="gradient-text">Knowledge,</span><br>
-                    Embracing<br>
-                    Adventure
-                </h1>
+        {{-- Headline --}}
+        <h1 class="animate-hero-2 text-white text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em;">
+            Navigating <span class="gradient-text">Knowledge,</span><br>Embracing Adventure
+        </h1>
 
-                <p class="animate-hero-3 text-lg max-w-lg mb-10 leading-relaxed" style="color: rgba(255,255,255,0.5);">
-                    A global leader in Travel, Education, Technology, and Healthcare solutions. Connecting excellence across 30+ countries.
-                </p>
+        {{-- Description --}}
+        <p class="animate-hero-3 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: rgba(255,255,255,0.5);">
+            A global leader in Travel, Education, Technology, and Healthcare solutions. We connect businesses with excellence across 30+ countries.
+        </p>
 
-                <div class="animate-hero-4 flex flex-wrap items-center gap-4 mb-14">
-                    <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
-                        <span class="btn-text"><span>Get Consulting</span></span>
-                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                    </a>
-                    <a href="{{ route('about') }}" class="btn-outline">
-                        Learn More
-                    </a>
-                </div>
+        {{-- CTAs --}}
+        <div class="animate-hero-4 flex flex-wrap items-center justify-center gap-4 mb-16">
+            <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
+                <span class="btn-text"><span>Get Consulting</span></span>
+                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="{{ route('about') }}" class="btn-outline">
+                Learn More
+            </a>
+        </div>
 
-                <div class="animate-hero-5 flex items-center gap-8">
-                    @foreach([
-                        ['number' => '7+', 'label' => 'Years'],
-                        ['number' => '940+', 'label' => 'Projects'],
-                        ['number' => '30+', 'label' => 'Countries'],
-                    ] as $stat)
-                        <div>
-                            <p class="text-2xl font-bold text-white" style="letter-spacing: -0.02em;">{{ $stat['number'] }}</p>
-                            <p class="text-xs" style="color: rgba(255,255,255,0.4);">{{ $stat['label'] }}</p>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-            {{-- Right: Visual --}}
-            <div class="hidden lg:block animate-hero-3">
-                <div class="relative">
-                    {{-- Glowing card --}}
-                    <div class="rounded-2xl p-8" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(10px);">
-                        <div class="grid grid-cols-2 gap-4">
-                            @foreach([
-                                ['icon' => 'fa-solid fa-plane-departure', 'label' => 'Travel', 'color' => '#D4202C'],
-                                ['icon' => 'fa-solid fa-graduation-cap', 'label' => 'Education', 'color' => '#D4202C'],
-                                ['icon' => 'fa-solid fa-microchip', 'label' => 'Technology', 'color' => '#D4202C'],
-                                ['icon' => 'fa-solid fa-heart-pulse', 'label' => 'Healthcare', 'color' => '#D4202C'],
-                            ] as $div)
-                                <div class="p-5 rounded-xl text-center" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
-                                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3" style="background: rgba(212,32,44,0.1); border: 1px solid rgba(212,32,44,0.15);">
-                                        <i class="{{ $div['icon'] }}" style="color: {{ $div['color'] }}; font-size: 18px;"></i>
-                                    </div>
-                                    <p class="text-sm font-semibold text-white">{{ $div['label'] }}</p>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="mt-4 p-4 rounded-xl text-center" style="background: linear-gradient(135deg, rgba(212,32,44,0.12) 0%, rgba(212,32,44,0.04) 100%); border: 1px solid rgba(212,32,44,0.15);">
-                            <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color: rgba(255,255,255,0.5);">Global Reach</p>
-                            <p class="text-3xl font-bold gradient-text">30+ Countries</p>
-                        </div>
-                    </div>
-                </div>
+        {{-- Dashed divider --}}
+        <div class="animate-hero-5 max-w-lg mx-auto dashed-border-dark rounded-xl px-8 py-5 flex items-center justify-between" style="background: rgba(255,255,255,0.03);">
+            <div class="flex items-center gap-8 text-sm font-medium" style="color: rgba(255,255,255,0.5);">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare</span>
             </div>
         </div>
     </div>
