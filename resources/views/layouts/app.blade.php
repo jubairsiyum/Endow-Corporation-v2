@@ -50,11 +50,11 @@
 </head>
 <body>
 
-    {{-- Topbar + Header wrapped in dark band --}}
-    <div id="header-zone" style="background: var(--color-dark);">
+    {{-- Topbar + Header --}}
+    <div id="header-zone">
 
         {{-- Top Bar --}}
-        <div id="header-topbar" class="hidden lg:block">
+        <div id="header-topbar" class="hidden lg:block" style="background: var(--color-dark);">
             <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
@@ -264,11 +264,16 @@
             header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
             header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
             header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
+            const headerWrapper = header.querySelector('.max-w-7xl');
+            if (headerWrapper) {
+                headerWrapper.style.paddingTop = '0';
+                headerWrapper.style.paddingBottom = '0';
+            }
             if (headerPill) {
-                    headerPill.style.background = 'transparent';
-                    headerPill.style.border = 'none';
-                    headerPill.style.boxShadow = 'none';
-                }
+                headerPill.style.background = 'transparent';
+                headerPill.style.border = 'none';
+                headerPill.style.boxShadow = 'none';
+            }
             hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
             if (headerTopBar) headerTopBar.style.display = 'none';
         }
@@ -283,6 +288,11 @@
             header.style.borderBottom = 'none';
             header.style.boxShadow = '';
             header.style.transition = 'background 0.3s, box-shadow 0.3s';
+            const headerWrapper = header.querySelector('.max-w-7xl');
+            if (headerWrapper) {
+                headerWrapper.style.paddingTop = '';
+                headerWrapper.style.paddingBottom = '';
+            }
             if (headerPill) {
                 headerPill.style.background = 'rgba(10,10,10,0.4)';
                 headerPill.style.border = '1px solid rgba(255,255,255,0.07)';
