@@ -51,7 +51,7 @@
 <body>
 
     {{-- Top Bar --}}
-    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
+    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%); padding-bottom: 50px;">
         <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
@@ -90,8 +90,8 @@
     </div>
 
     {{-- Header — Glassmorphism --}}
-    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100; margin-top: -12px; background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-0">
+    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-0 pb-0">
             <div class="flex items-center justify-between rounded-2xl px-6 sm:px-7 py-2.5" style="background: rgba(10,10,10,0.4); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex-shrink-0">
@@ -272,7 +272,7 @@
             } else {
                 header.classList.remove('header-scrolled');
                 header.style.position = 'relative';
-                header.style.background = 'linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%)';
+                header.style.background = 'transparent';
                 header.style.backdropFilter = 'none';
                 header.style.webkitBackdropFilter = 'none';
                 header.style.width = '';
