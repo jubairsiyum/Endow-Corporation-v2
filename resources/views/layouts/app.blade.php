@@ -50,9 +50,12 @@
 </head>
 <body>
 
-    {{-- Top Bar --}}
-    <div class="hidden lg:block" style="background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark-2) 100%); padding-bottom: 50px;">
-        <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
+    {{-- Topbar + Header wrapped in dark band --}}
+    <div id="header-zone" style="background: var(--color-dark);">
+
+        {{-- Top Bar --}}
+        <div id="header-topbar" class="hidden lg:block">
+            <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
                     <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
@@ -91,7 +94,7 @@
 
     {{-- Header — Glassmorphism --}}
     <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-0 pb-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-0">
             <div class="flex items-center justify-between rounded-2xl px-6 sm:px-7 py-2.5" style="background: rgba(10,10,10,0.4); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex-shrink-0">
@@ -150,6 +153,7 @@
             </div>
         </div>
     </header>
+    </div>
 
     {{-- Mobile Menu --}}
     <div id="mobile-menu" class="hidden fixed inset-0 z-50">
@@ -241,51 +245,58 @@
 
         // Sticky header
         const header = document.getElementById('main-header');
-        const headerTopBar = header.previousElementSibling;
+        const headerTopBar = document.getElementById('header-topbar');
+        const headerZone = document.getElementById('header-zone');
         const hamburgerBars = document.querySelectorAll('.hamburger-bar');
         const headerPill = header.querySelector('.max-w-7xl > div');
 
+        function setHeaderScrolled() {
+            header.classList.add('header-scrolled');
+            header.style.position = 'fixed';
+            header.style.top = '0';
+            header.style.left = '0';
+            header.style.right = '0';
+            header.style.zIndex = '1002';
+            header.style.width = '100%';
+            header.style.background = 'rgba(250,250,250,0.92)';
+            header.style.backdropFilter = 'blur(20px) saturate(180%)';
+            header.style.webkitBackdropFilter = 'blur(20px) saturate(180%)';
+            header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
+            header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
+            if (headerPill) {
+                    headerPill.style.background = 'transparent';
+                    headerPill.style.border = 'none';
+                    headerPill.style.boxShadow = 'none';
+                }
+            hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
+            if (headerTopBar) headerTopBar.style.display = 'none';
+        }
+
+        function setHeaderNormal() {
+            header.classList.remove('header-scrolled');
+            header.style.position = 'relative';
+            header.style.background = 'transparent';
+            header.style.backdropFilter = 'none';
+            header.style.webkitBackdropFilter = 'none';
+            header.style.width = '';
+            header.style.borderBottom = 'none';
+            header.style.boxShadow = '';
+            header.style.transition = 'background 0.3s, box-shadow 0.3s';
+            if (headerPill) {
+                headerPill.style.background = 'rgba(10,10,10,0.4)';
+                headerPill.style.border = '1px solid rgba(255,255,255,0.07)';
+                headerPill.style.boxShadow = '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+            }
+            hamburgerBars.forEach(bar => bar.style.background = 'rgba(255,255,255,0.7)');
+            if (headerTopBar) headerTopBar.style.display = '';
+        }
+
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            if (scrollY > 50) {
-                header.classList.add('header-scrolled');
-                header.style.position = 'fixed';
-                header.style.top = '0';
-                header.style.left = '0';
-                header.style.right = '0';
-                header.style.zIndex = '1002';
-                header.style.width = '100%';
-                header.style.background = 'rgba(250,250,250,0.92)';
-                header.style.backdropFilter = 'blur(20px) saturate(180%)';
-                header.style.webkitBackdropFilter = 'blur(20px) saturate(180%)';
-                header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
-                header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
-                if (headerPill) {
-                    headerPill.style.background = 'rgba(255,255,255,0.88)';
-                    headerPill.style.border = '1px solid rgba(255,255,255,0.5)';
-                    headerPill.style.boxShadow = '0 2px 16px rgba(0,0,0,0.04)';
-                    headerPill.style.insetShadow = 'none';
-                }
-                hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
-                if (headerTopBar) headerTopBar.style.display = 'none';
+            if (window.scrollY > 50) {
+                setHeaderScrolled();
             } else {
-                header.classList.remove('header-scrolled');
-                header.style.position = 'relative';
-                header.style.background = 'transparent';
-                header.style.backdropFilter = 'none';
-                header.style.webkitBackdropFilter = 'none';
-                header.style.width = '';
-                header.style.borderBottom = 'none';
-                header.style.boxShadow = '';
-                header.style.transition = 'background 0.3s, box-shadow 0.3s';
-                if (headerPill) {
-                    headerPill.style.background = 'rgba(10,10,10,0.4)';
-                    headerPill.style.border = '1px solid rgba(255,255,255,0.07)';
-                    headerPill.style.boxShadow = '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
-                }
-                hamburgerBars.forEach(bar => bar.style.background = 'rgba(255,255,255,0.7)');
-                if (headerTopBar) headerTopBar.style.display = '';
+                setHeaderNormal();
             }
         });
 
