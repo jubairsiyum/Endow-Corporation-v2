@@ -267,9 +267,9 @@
 
         function setHeaderNormal() {
             header.classList.remove('header-scrolled');
-            header.style.paddingLeft = '';
-            header.style.paddingRight = '';
-            header.style.paddingTop = '';
+            header.style.paddingLeft = '7.5%';
+            header.style.paddingRight = '7.5%';
+            header.style.paddingTop = '20px';
             if (headerTopBar) {
                 headerTopBar.style.maxHeight = '0';
                 headerTopBar.style.opacity = '0';
