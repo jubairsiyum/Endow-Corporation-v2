@@ -50,123 +50,118 @@
 </head>
 <body>
 
-    {{-- Topbar + Header --}}
+    {{-- Topbar (scrolls away naturally) --}}
     <div id="header-zone">
-
-        {{-- Top Bar --}}
         <div id="header-topbar" class="hidden lg:block" style="background: #0a0a0a;">
             <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
-            <div class="flex items-center gap-7">
-                <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
-                    <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
-                    <span>Sat – Thu, 8:00am – 6:00pm</span>
-                </div>
-                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
-                <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2.5 text-[13px] font-medium transition-colors" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                    <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
-                    contact@endowcorporation.com
-                </a>
-                <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
-                <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
-                    <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
-                    Seoul, South Korea
-                </div>
-            </div>
-            <div class="flex items-center gap-2.5">
-                @foreach([
-                    ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
-                    ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
-                    ['icon' => 'fa-brands fa-instagram', 'url' => 'https://www.instagram.com/endowcorporation'],
-                    ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
-                ] as $social)
-                    <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                       class="w-6 h-6 rounded flex items-center justify-center transition-all"
-                       style="color: rgba(255,255,255,0.4);"
-                       onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.1)';"
-                       onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.backgroundColor='transparent';"
-                       aria-label="Social">
-                        <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
+                <div class="flex items-center gap-7">
+                    <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
+                        <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
+                        <span>Sat – Thu, 8:00am – 6:00pm</span>
+                    </div>
+                    <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
+                    <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2.5 text-[13px] font-medium transition-colors" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                        <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
+                        contact@endowcorporation.com
                     </a>
-                @endforeach
+                    <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
+                    <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
+                        <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
+                        Seoul, South Korea
+                    </div>
+                </div>
+                <div class="flex items-center gap-2.5">
+                    @foreach([
+                        ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
+                        ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
+                        ['icon' => 'fa-brands fa-instagram', 'url' => 'https://www.instagram.com/endowcorporation'],
+                        ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
+                    ] as $social)
+                        <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
+                           class="w-6 h-6 rounded flex items-center justify-center transition-all"
+                           style="color: rgba(255,255,255,0.4);"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.1)';"
+                           onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.backgroundColor='transparent';"
+                           aria-label="Social">
+                            <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 
-    {{-- Header --}}
-    <header id="main-header" style="position: relative; z-index: 100; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.06);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="flex items-center justify-between py-4">
-                {{-- Logo --}}
-                <a href="{{ route('home') }}" class="flex-shrink-0">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 42px; width: auto;">
+    {{-- Glassmorphism Pill Header --}}
+    <header id="main-header" style="position: fixed; z-index: 1000; top: 0; left: 0; right: 0; padding: 24px 16px; pointer-events: none; transition: padding 0.3s ease;">
+        <div id="header-pill" class="max-w-4xl mx-auto flex items-center justify-between rounded-full px-6 sm:px-7 py-3" style="pointer-events: auto; background: linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box; border: 1px solid transparent; backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
+
+            {{-- Logo --}}
+            <a href="{{ route('home') }}" class="flex-shrink-0">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
+            </a>
+
+            {{-- Desktop Nav --}}
+            <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-white/60">
+                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
+
+                {{-- Divisions --}}
+                <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                    <button @click="open = !open" class="nav-link flex items-center gap-1.5 {{ request()->routeIs('division.*') ? 'active' : '' }}">
+                        <span>Divisions</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-200" :class="open ? 'rotate-180' : ''" style="font-size: 9px;"></i>
+                    </button>
+                    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-150"
+                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
+                         class="absolute top-full left-0 mt-3 w-64 p-2 rounded-2xl"
+                         style="background: rgba(14,16,26,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+                        @foreach([
+                            ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
+                            ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
+                            ['route' => 'technology', 'icon' => 'fa-solid fa-microchip', 'name' => 'Technologies'],
+                            ['route' => 'hospital-tourism', 'icon' => 'fa-solid fa-heart-pulse', 'name' => 'Hospital Tourism'],
+                        ] as $division)
+                            <a href="{{ route('division.show', $division['route']) }}"
+                               class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 transition-all duration-200 text-sm"
+                               onmouseover="this.style.background='rgba(255,255,255,0.06)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='rgba(255,255,255,0.6)'">
+                                <i class="{{ $division['icon'] }} text-xs" style="color: var(--color-primary);"></i>
+                                <span class="font-medium">{{ $division['name'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
+            </nav>
+
+            {{-- CTA + Hamburger --}}
+            <div class="flex items-center gap-2">
+                <a href="{{ route('consulting') }}" class="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: var(--color-primary);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    <span>Let's Talk</span>
+                    <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
+                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                    </span>
                 </a>
 
-                {{-- Desktop Nav --}}
-                <nav class="hidden lg:flex items-center gap-7">
-                    <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-                    <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
-
-                    {{-- Divisions --}}
-                    <div x-data="{ open: false }" class="relative" @click.away="open = false">
-                        <button @click="open = !open" class="nav-link flex items-center gap-2 {{ request()->routeIs('division.*') ? 'active' : '' }}">
-                            <span>Divisions</span>
-                            <i class="fa-solid fa-chevron-down transition-transform duration-200" :class="open ? 'rotate-180' : ''" style="font-size: 10px; margin-top: 1px;"></i>
-                        </button>
-                        <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
-                             x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-                             x-transition:leave="transition ease-in duration-150"
-                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
-                             class="absolute top-full left-0 mt-3 w-64 p-2 rounded-xl"
-                             style="background: #fff; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-                            @foreach([
-                                ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
-                                ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
-                                ['route' => 'technology', 'icon' => 'fa-solid fa-microchip', 'name' => 'Technologies'],
-                                ['route' => 'hospital-tourism', 'icon' => 'fa-solid fa-heart-pulse', 'name' => 'Hospital Tourism'],
-                            ] as $division)
-                                <a href="{{ route('division.show', $division['route']) }}"
-                                   class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200"
-                                   onmouseover="this.style.background='rgba(212,32,44,0.04)'; this.style.paddingLeft='20px'" onmouseout="this.style.background='transparent'; this.style.paddingLeft='16px'">
-                                    <i class="{{ $division['icon'] }} text-sm" style="color: var(--color-primary);"></i>
-                                    <span class="text-sm font-medium" style="color: var(--color-text-heading);">{{ $division['name'] }}</span>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
-                </nav>
-
-                {{-- CTA + Hamburger --}}
-                <div class="flex items-center gap-4">
-                    <a href="{{ route('consulting') }}" class="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: #0f172a;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#0f172a'">
-                        <span>Let's Talk</span>
-                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
-                            <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                        </span>
-                    </a>
-
-                    <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-colors" onmouseover="this.style.background='rgba(0,0,0,0.04)'" onmouseout="this.style.background='transparent'" aria-label="Menu">
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar1"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar2"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar3"></span>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="lg:hidden hover:bg-white/10 p-2 rounded-full transition-all duration-300 border border-white/10" style="background: rgba(255,255,255,0.02);" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-white/70" style="font-size: 16px;"></i>
+                </button>
             </div>
         </div>
     </header>
-    </div>
 
     {{-- Mobile Menu --}}
     <div id="mobile-menu" class="hidden fixed inset-0 z-50">
         <div id="mobile-menu-overlay" class="absolute inset-0" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
-        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: #fff; border-left: 1px solid rgba(0,0,0,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.1);">
+        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(14,16,26,0.95); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.3);">
             <div class="flex items-center justify-between mb-8">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
                 </a>
-                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors" style="background: rgba(0,0,0,0.05);" onmouseover="this.style.background='rgba(212,32,44,0.1)'" onmouseout="this.style.background='rgba(0,0,0,0.05)'" aria-label="Close">
-                    <i class="fa-solid fa-xmark text-lg" style="color: var(--color-text-heading);"></i>
+                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full transition-colors border border-white/10" style="background: rgba(255,255,255,0.05);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'" aria-label="Close">
+                    <i class="fa-solid fa-xmark text-lg" style="color: rgba(255,255,255,0.7);"></i>
                 </button>
             </div>
 
@@ -178,13 +173,13 @@
                 ] as $link)
                     <a href="{{ route($link['route']) }}"
                        class="block px-4 py-3 rounded-xl text-sm font-semibold transition-colors {{ request()->routeIs($link['route']) ? 'text-white' : '' }}"
-                       @if(request()->routeIs($link['route'])) style="background: var(--color-primary);" @else style="color: var(--color-text-heading);" onmouseover="this.style.background='rgba(212,32,44,0.04)'" onmouseout="this.style.background='transparent'" @endif>
+                       @if(request()->routeIs($link['route'])) style="background: var(--color-primary);" @else style="color: rgba(255,255,255,0.6);" onmouseover="this.style.background='rgba(255,255,255,0.06)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='rgba(255,255,255,0.6)'" @endif>
                         {{ $link['label'] }}
                     </a>
                 @endforeach
 
                 <div class="pt-5 pb-2 px-4">
-                    <p class="text-[10px] font-bold uppercase tracking-[2px]" style="color: var(--color-text-muted);">Divisions</p>
+                    <p class="text-[10px] font-bold uppercase tracking-[2px]" style="color: rgba(255,255,255,0.3);">Divisions</p>
                 </div>
 
                 @foreach([
@@ -195,16 +190,18 @@
                 ] as $division)
                     <a href="{{ route('division.show', $division['route']) }}"
                        class="block px-4 py-3 rounded-xl text-sm font-semibold transition-colors {{ request()->routeIs('division.show', $division['route']) ? 'text-white' : '' }}"
-                       @if(request()->routeIs('division.show', $division['route'])) style="background: var(--color-primary);" @else style="color: var(--color-text-heading);" onmouseover="this.style.background='rgba(212,32,44,0.04)'" onmouseout="this.style.background='transparent'" @endif>
+                       @if(request()->routeIs('division.show', $division['route'])) style="background: var(--color-primary);" @else style="color: rgba(255,255,255,0.6);" onmouseover="this.style.background='rgba(255,255,255,0.06)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='rgba(255,255,255,0.6)'" @endif>
                         {{ $division['label'] }}
                     </a>
                 @endforeach
             </nav>
 
             <div class="absolute bottom-6 left-6 right-6">
-                <a href="{{ route('consulting') }}" class="btn-primary w-full justify-center">
-                    <span class="btn-text"><span>Let's Talk</span></span>
-                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                <a href="{{ route('consulting') }}" class="flex items-center justify-center gap-2.5 w-full px-5 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: var(--color-primary);">
+                    <span>Let's Talk</span>
+                    <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
+                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                    </span>
                 </a>
             </div>
         </div>
@@ -248,31 +245,24 @@
         // Sticky header
         const header = document.getElementById('main-header');
         const headerTopBar = document.getElementById('header-topbar');
-        const hamburgerBars = document.querySelectorAll('.hamburger-bar');
+        const headerPill = document.getElementById('header-pill');
 
         function setHeaderScrolled() {
-            header.classList.add('header-scrolled');
-            header.style.position = 'fixed';
-            header.style.top = '0';
-            header.style.left = '0';
-            header.style.right = '0';
-            header.style.zIndex = '1002';
-            header.style.width = '100%';
-            header.style.background = '#ffffff';
-            header.style.boxShadow = '0 1px 12px rgba(0,0,0,0.06)';
-            header.style.borderBottom = '1px solid rgba(0,0,0,0.04)';
+            header.style.padding = '12px 16px';
+            if (headerPill) {
+                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.7), rgba(14,16,26,0.5)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.06)) border-box';
+                headerPill.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)';
+            }
             if (headerTopBar) headerTopBar.style.display = 'none';
-            hamburgerBars.forEach(bar => bar.style.background = '#374151');
         }
 
         function setHeaderNormal() {
-            header.classList.remove('header-scrolled');
-            header.style.position = 'relative';
-            header.style.background = '#ffffff';
-            header.style.boxShadow = '';
-            header.style.borderBottom = '1px solid rgba(0,0,0,0.06)';
+            header.style.padding = '24px 16px';
+            if (headerPill) {
+                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box';
+                headerPill.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+            }
             if (headerTopBar) headerTopBar.style.display = '';
-            hamburgerBars.forEach(bar => bar.style.background = '#374151');
         }
 
         window.addEventListener('scroll', () => {
