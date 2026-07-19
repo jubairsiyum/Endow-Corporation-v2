@@ -68,12 +68,12 @@
         padding-bottom: 100px;
     }
     .section-gap-hero {
-        margin-top: -30px;
-        padding-top: 30px;
+        margin-top: 0;
+        padding-top: 0;
         padding-bottom: 100px;
     }
-    @media (max-width: 991px) { .section-gap { padding-top: 70px; padding-bottom: 70px; } .section-gap-hero { margin-top: -25px; padding-top: 25px; padding-bottom: 70px; } }
-    @media (max-width: 575px) { .section-gap { padding-top: 50px; padding-bottom: 50px; } .section-gap-hero { margin-top: -20px; padding-top: 20px; padding-bottom: 50px; } }
+    @media (max-width: 991px) { .section-gap { padding-top: 70px; padding-bottom: 70px; } .section-gap-hero { margin-top: 0; padding-top: 0; padding-bottom: 70px; } }
+    @media (max-width: 575px) { .section-gap { padding-top: 50px; padding-bottom: 50px; } .section-gap-hero { margin-top: 0; padding-top: 0; padding-bottom: 50px; } }
 
     /* ── Section Headings ── */
     .section-heading {
@@ -374,25 +374,19 @@
     .nav-link {
         font-size: 14px;
         font-weight: 500;
-        color: rgba(255,255,255,0.7);
-        transition: color 0.3s, background-color 0.3s;
+        color: #374151;
+        transition: color 0.2s;
         position: relative;
-        padding: 6px 14px;
-        border-radius: 8px;
+        padding: 6px 4px;
+        border-radius: 0;
     }
-    .nav-link:hover { color: #fff; background-color: rgba(255,255,255,0.08); }
+    .nav-link:hover { color: var(--color-primary); background-color: transparent; }
     .nav-link.active {
-        color: #fff;
-        background-color: rgba(212,32,44,0.18);
+        color: var(--color-primary);
+        background-color: transparent;
         font-weight: 600;
     }
     .nav-link::after { display: none; }
-
-    /* Light header (scrolled state) */
-    .header-scrolled .nav-link { color: var(--color-text); }
-    .header-scrolled .nav-link:hover { color: var(--color-primary); background-color: rgba(212,32,44,0.04); }
-    .header-scrolled .nav-link.active { color: var(--color-primary); background-color: rgba(212,32,44,0.08); }
-    .header-scrolled .nav-link.active { color: var(--color-primary); background-color: rgba(212,32,44,0.08); }
 
     /* ── Image Placeholder ── */
     .img-placeholder {

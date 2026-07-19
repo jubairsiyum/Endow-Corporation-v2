@@ -51,10 +51,10 @@
 <body>
 
     {{-- Topbar + Header --}}
-    <div id="header-zone" style="background: var(--color-dark);">
+    <div id="header-zone">
 
         {{-- Top Bar --}}
-        <div id="header-topbar" class="hidden lg:block">
+        <div id="header-topbar" class="hidden lg:block" style="background: #0a0a0a;">
             <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
@@ -92,10 +92,10 @@
         </div>
     </div>
 
-    {{-- Header — Glassmorphism --}}
-    <header id="main-header" class="transition-all duration-300" style="position: relative; z-index: 100;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-0">
-            <div class="flex items-center justify-between rounded-2xl px-6 sm:px-7 py-2.5" style="background: rgba(10,10,10,0.4); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
+    {{-- Header --}}
+    <header id="main-header" style="position: relative; z-index: 100; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.06);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between py-4">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex-shrink-0">
                     <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 42px; width: auto;">
@@ -116,8 +116,8 @@
                              x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
                              x-transition:leave="transition ease-in duration-150"
                              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
-                             class="absolute top-full left-0 mt-2 w-64 p-2 rounded-xl"
-                             style="background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 40px rgba(0,0,0,0.12);">
+                             class="absolute top-full left-0 mt-3 w-64 p-2 rounded-xl"
+                             style="background: #fff; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
                             @foreach([
                                 ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
                                 ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
@@ -126,7 +126,7 @@
                             ] as $division)
                                 <a href="{{ route('division.show', $division['route']) }}"
                                    class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200"
-                                   onmouseover="this.style.background='rgba(212,32,44,0.06)'; this.style.paddingLeft='20px'" onmouseout="this.style.background='transparent'; this.style.paddingLeft='16px'">
+                                   onmouseover="this.style.background='rgba(212,32,44,0.04)'; this.style.paddingLeft='20px'" onmouseout="this.style.background='transparent'; this.style.paddingLeft='16px'">
                                     <i class="{{ $division['icon'] }} text-sm" style="color: var(--color-primary);"></i>
                                     <span class="text-sm font-medium" style="color: var(--color-text-heading);">{{ $division['name'] }}</span>
                                 </a>
@@ -138,16 +138,18 @@
                 </nav>
 
                 {{-- CTA + Hamburger --}}
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg hidden sm:inline-flex">
-                        <span class="btn-text"><span>Let's Talk</span></span>
-                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                <div class="flex items-center gap-4">
+                    <a href="{{ route('consulting') }}" class="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: #0f172a;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#0f172a'">
+                        <span>Let's Talk</span>
+                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
+                            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </span>
                     </a>
 
-                    <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-colors" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'" aria-label="Menu">
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar1"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar2"></span>
-                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: rgba(255,255,255,0.7);" id="bar3"></span>
+                    <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-colors" onmouseover="this.style.background='rgba(0,0,0,0.04)'" onmouseout="this.style.background='transparent'" aria-label="Menu">
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar1"></span>
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar2"></span>
+                        <span class="w-5 h-0.5 rounded-full transition-all hamburger-bar" style="background: #374151;" id="bar3"></span>
                     </button>
                 </div>
             </div>
@@ -158,7 +160,7 @@
     {{-- Mobile Menu --}}
     <div id="mobile-menu" class="hidden fixed inset-0 z-50">
         <div id="mobile-menu-overlay" class="absolute inset-0" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
-        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(255,255,255,0.92); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.5); box-shadow: -8px 0 40px rgba(0,0,0,0.12);">
+        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: #fff; border-left: 1px solid rgba(0,0,0,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.1);">
             <div class="flex items-center justify-between mb-8">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
@@ -246,9 +248,7 @@
         // Sticky header
         const header = document.getElementById('main-header');
         const headerTopBar = document.getElementById('header-topbar');
-        const headerZone = document.getElementById('header-zone');
         const hamburgerBars = document.querySelectorAll('.hamburger-bar');
-        const headerPill = header.querySelector('.max-w-7xl > div');
 
         function setHeaderScrolled() {
             header.classList.add('header-scrolled');
@@ -258,48 +258,21 @@
             header.style.right = '0';
             header.style.zIndex = '1002';
             header.style.width = '100%';
-            header.style.background = 'rgba(250,250,250,0.92)';
-            header.style.backdropFilter = 'blur(20px) saturate(180%)';
-            header.style.webkitBackdropFilter = 'blur(20px) saturate(180%)';
-            header.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
-            header.style.transition = 'background 0.3s, box-shadow 0.3s, border-bottom 0.3s';
-            const headerWrapper = header.querySelector('.max-w-7xl');
-            if (headerWrapper) {
-                headerWrapper.style.paddingTop = '0';
-                headerWrapper.style.paddingBottom = '0';
-            }
-            if (headerPill) {
-                headerPill.style.background = 'transparent';
-                headerPill.style.border = 'none';
-                headerPill.style.boxShadow = 'none';
-            }
-            hamburgerBars.forEach(bar => bar.style.background = 'var(--color-text-heading)');
+            header.style.background = '#ffffff';
+            header.style.boxShadow = '0 1px 12px rgba(0,0,0,0.06)';
+            header.style.borderBottom = '1px solid rgba(0,0,0,0.04)';
             if (headerTopBar) headerTopBar.style.display = 'none';
+            hamburgerBars.forEach(bar => bar.style.background = '#374151');
         }
 
         function setHeaderNormal() {
             header.classList.remove('header-scrolled');
             header.style.position = 'relative';
-            header.style.background = 'transparent';
-            header.style.backdropFilter = 'none';
-            header.style.webkitBackdropFilter = 'none';
-            header.style.width = '';
-            header.style.borderBottom = 'none';
+            header.style.background = '#ffffff';
             header.style.boxShadow = '';
-            header.style.transition = 'background 0.3s, box-shadow 0.3s';
-            const headerWrapper = header.querySelector('.max-w-7xl');
-            if (headerWrapper) {
-                headerWrapper.style.paddingTop = '';
-                headerWrapper.style.paddingBottom = '';
-            }
-            if (headerPill) {
-                headerPill.style.background = 'rgba(10,10,10,0.4)';
-                headerPill.style.border = '1px solid rgba(255,255,255,0.07)';
-                headerPill.style.boxShadow = '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
-            }
-            hamburgerBars.forEach(bar => bar.style.background = 'rgba(255,255,255,0.7)');
+            header.style.borderBottom = '1px solid rgba(0,0,0,0.06)';
             if (headerTopBar) headerTopBar.style.display = '';
+            hamburgerBars.forEach(bar => bar.style.background = '#374151');
         }
 
         window.addEventListener('scroll', () => {
