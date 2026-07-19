@@ -257,10 +257,9 @@
                 headerTopBar.style.opacity = '1';
             }
             if (headerPill) {
-                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.7), rgba(14,16,26,0.5)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.06)) border-box';
+                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.7), rgba(14,16,26,0.5))';
                 headerPill.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)';
                 headerPill.style.borderRadius = '0 0 12px 12px';
-                headerPill.style.borderColor = 'rgba(255,255,255,0.05)';
                 headerPill.style.marginTop = '-1px';
             }
         }
@@ -275,10 +274,9 @@
                 headerTopBar.style.opacity = '0';
             }
             if (headerPill) {
-                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box';
+                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35))';
                 headerPill.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
                 headerPill.style.borderRadius = '';
-                headerPill.style.borderColor = 'rgba(255,255,255,0.1)';
                 headerPill.style.marginTop = '';
             }
         }
