@@ -93,7 +93,7 @@
         </div>
 
         {{-- Glassmorphism Pill — 85% width at top, 100% on scroll --}}
-        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(10,10,10,0.65); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
+        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(255,255,255,0.8); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);">
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex-shrink-0">
@@ -145,8 +145,8 @@
                     </span>
                 </a>
 
-                <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300" style="background: rgba(255,255,255,0.08);" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" aria-label="Menu">
-                    <i class="fa-solid fa-bars" style="font-size: 16px; color: rgba(255,255,255,0.85);"></i>
+                <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300" style="background: rgba(0,0,0,0.05);" onmouseover="this.style.background='rgba(0,0,0,0.08)'" onmouseout="this.style.background='rgba(0,0,0,0.05)'" aria-label="Menu">
+                    <i class="fa-solid fa-bars hamburger-icon" style="font-size: 16px; color: #374151;"></i>
                 </button>
             </div>
         </div>
@@ -158,7 +158,7 @@
         <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(10,10,10,0.95); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.3);">
             <div class="flex items-center justify-between mb-8">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="header-logo" style="height: 36px; width: auto;">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto; filter: brightness(0) invert(1);">
                 </a>
                 <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors" style="background: rgba(255,255,255,0.08);" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" aria-label="Close">
                     <i class="fa-solid fa-xmark" style="font-size: 18px; color: rgba(255,255,255,0.85);"></i>
@@ -262,6 +262,9 @@
                 headerPill.style.borderRadius = '0 0 12px 12px';
                 headerPill.style.marginTop = '-1px';
             }
+            document.querySelectorAll('.header-logo').forEach(img => img.style.filter = 'brightness(0) invert(1)');
+            header.querySelectorAll('.nav-link').forEach(link => link.style.color = 'rgba(255,255,255,0.6)');
+            document.querySelectorAll('.hamburger-icon').forEach(icon => icon.style.color = 'rgba(255,255,255,0.85)');
         }
 
         function setHeaderNormal() {
@@ -274,11 +277,14 @@
                 headerTopBar.style.opacity = '0';
             }
             if (headerPill) {
-                headerPill.style.background = 'rgba(10,10,10,0.65)';
-                headerPill.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+                headerPill.style.background = 'rgba(255,255,255,0.8)';
+                headerPill.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)';
                 headerPill.style.borderRadius = '';
                 headerPill.style.marginTop = '';
             }
+            document.querySelectorAll('.header-logo').forEach(img => img.style.filter = '');
+            header.querySelectorAll('.nav-link').forEach(link => link.style.color = '');
+            document.querySelectorAll('.hamburger-icon').forEach(icon => icon.style.color = '#374151');
         }
 
         window.addEventListener('scroll', () => {
