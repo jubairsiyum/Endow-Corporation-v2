@@ -413,7 +413,10 @@
     .pitch-dark h2, .pitch-dark h3, .pitch-dark h4 { color: white; }
     .pitch-dark .section-subtitle { color: var(--color-primary-light); }
 
-    /* ── Gradient Text ── */
+    /* ── Header Logo ── */
+    .header-logo {
+        filter: brightness(0) invert(1);
+    }
     .gradient-text {
         background: linear-gradient(135deg, var(--color-primary) 0%, #ff6b6b 100%);
         -webkit-background-clip: text;

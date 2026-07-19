@@ -93,11 +93,11 @@
         </div>
 
         {{-- Glassmorphism Pill — 85% width at top, 100% on scroll --}}
-        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
+        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(10,10,10,0.65); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex-shrink-0">
-                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
+                <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="header-logo" style="height: 36px; width: auto;">
             </a>
 
             {{-- Desktop Nav --}}
@@ -116,7 +116,7 @@
                          x-transition:leave="transition ease-in duration-150"
                          x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 translate-y-2"
                          class="absolute top-full left-0 mt-3 w-64 p-2 rounded-2xl"
-                         style="background: rgba(14,16,26,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+                         style="background: rgba(10,10,10,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
                         @foreach([
                             ['route' => 'travel', 'icon' => 'fa-solid fa-plane-departure', 'name' => 'Endow Travel'],
                             ['route' => 'education', 'icon' => 'fa-solid fa-graduation-cap', 'name' => 'Global Education'],
@@ -155,10 +155,10 @@
     {{-- Mobile Menu --}}
     <div id="mobile-menu" class="hidden fixed inset-0" style="z-index: 1100;">
         <div id="mobile-menu-overlay" class="absolute inset-0" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
-        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(14,16,26,0.95); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.3);">
+        <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(10,10,10,0.95); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.3);">
             <div class="flex items-center justify-between mb-8">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
+                    <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="header-logo" style="height: 36px; width: auto;">
                 </a>
                 <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors" style="background: rgba(255,255,255,0.08);" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" aria-label="Close">
                     <i class="fa-solid fa-xmark" style="font-size: 18px; color: rgba(255,255,255,0.85);"></i>
@@ -257,7 +257,7 @@
                 headerTopBar.style.opacity = '1';
             }
             if (headerPill) {
-                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.7), rgba(14,16,26,0.5))';
+                headerPill.style.background = 'rgba(10,10,10,0.85)';
                 headerPill.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)';
                 headerPill.style.borderRadius = '0 0 12px 12px';
                 headerPill.style.marginTop = '-1px';
@@ -274,7 +274,7 @@
                 headerTopBar.style.opacity = '0';
             }
             if (headerPill) {
-                headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35))';
+                headerPill.style.background = 'rgba(10,10,10,0.65)';
                 headerPill.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
                 headerPill.style.borderRadius = '';
                 headerPill.style.marginTop = '';

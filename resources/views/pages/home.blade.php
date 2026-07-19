@@ -9,32 +9,32 @@
 {{-- ============================================ --}}
 {{-- HERO — Single Column Centered --}}
 {{-- ============================================ --}}
-<section class="relative overflow-hidden section-gap-hero" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 92vh; display: flex; align-items: center;">
+<section class="relative overflow-hidden section-gap-hero flex items-center" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 100vh;">
     {{-- Gradient orbs --}}
-    <div class="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full opacity-15" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(100px);"></div>
-    <div class="absolute bottom-[10%] right-[8%] w-[450px] h-[450px] rounded-full opacity-10" style="background: radial-gradient(circle, #ff6b6b, transparent 70%); filter: blur(80px);"></div>
-    <div class="absolute top-[50%] left-[50%] w-[300px] h-[300px] rounded-full opacity-5" style="background: radial-gradient(circle, white, transparent 70%); filter: blur(60px); transform: translate(-50%, -50%);"></div>
-    <div class="absolute inset-0 opacity-[0.025]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-[10%] left-[-5%] w-[300px] sm:w-[450px] lg:w-[600px] aspect-square rounded-full opacity-15 pointer-events-none" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(100px);"></div>
+    <div class="absolute bottom-[10%] right-[-3%] w-[250px] sm:w-[350px] lg:w-[450px] aspect-square rounded-full opacity-10 pointer-events-none" style="background: radial-gradient(circle, #ff6b6b, transparent 70%); filter: blur(80px);"></div>
+    <div class="absolute top-1/2 left-1/2 w-[200px] sm:w-[300px] aspect-square rounded-full opacity-5 pointer-events-none -translate-x-1/2 -translate-y-1/2" style="background: radial-gradient(circle, white, transparent 70%); filter: blur(60px);"></div>
+    <div class="absolute inset-0 opacity-[0.025] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-    <div class="max-w-4xl mx-auto px-6 py-16 md:py-24 relative z-10 w-full text-center">
+    <div class="max-w-4xl mx-auto px-5 sm:px-6 pt-8 pb-20 sm:pt-12 sm:pb-24 relative z-10 w-full text-center">
         {{-- Badge --}}
-        <div class="animate-hero-1 inline-flex items-center gap-2.5 mb-8 text-[11px] font-bold uppercase tracking-[3px] px-5 py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
-            <i class="fa-solid fa-bolt" style="font-size: 10px;"></i>
+        <div class="animate-hero-1 inline-flex items-center gap-2 sm:gap-2.5 mb-6 sm:mb-8 text-[10px] sm:text-[11px] font-bold uppercase tracking-[2px] sm:tracking-[3px] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
+            <i class="fa-solid fa-bolt" style="font-size: 9px;"></i>
             Empowering Businesses Globally
         </div>
 
         {{-- Headline --}}
-        <h1 class="animate-hero-2 text-white text-4xl md:text-5xl lg:text-[64px] font-bold leading-[1.05] mb-8" style="letter-spacing: -0.04em;">
-            Navigating <span class="gradient-text">Knowledge,</span><br>Embracing Adventure
+        <h1 class="animate-hero-2 text-white text-[32px] sm:text-4xl md:text-5xl lg:text-[64px] font-bold leading-[1.08] sm:leading-[1.05] mb-6 sm:mb-8" style="letter-spacing: -0.03em;">
+            Navigating <span class="gradient-text">Knowledge,</span><br class="hidden sm:block"> <span class="sm:hidden">Embracing </span>Adventure
         </h1>
 
         {{-- Description --}}
-        <p class="animate-hero-3 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: rgba(255,255,255,0.5);">
+        <p class="animate-hero-3 text-base sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed px-2 sm:px-0" style="color: rgba(255,255,255,0.5);">
             A global leader in Travel, Education, Technology, and Healthcare solutions. We connect businesses with excellence across 30+ countries.
         </p>
 
         {{-- CTAs --}}
-        <div class="animate-hero-4 flex flex-wrap items-center justify-center gap-4 mb-16">
+        <div class="animate-hero-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
             <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
                 <span class="btn-text"><span>Get Consulting</span></span>
                 <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
@@ -44,13 +44,23 @@
             </a>
         </div>
 
-        {{-- Dashed divider --}}
-        <div class="animate-hero-5 max-w-lg mx-auto dashed-border-dark rounded-xl px-8 py-5 flex items-center justify-between" style="background: rgba(255,255,255,0.03);">
-            <div class="flex items-center gap-8 text-sm font-medium" style="color: rgba(255,255,255,0.5);">
-                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel</span>
-                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education</span>
-                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology</span>
-                <span class="flex items-center gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare</span>
+        {{-- Dashed divider — wraps on mobile --}}
+        <div class="animate-hero-5 max-w-lg mx-auto dashed-border-dark rounded-xl px-5 sm:px-8 py-4 sm:py-5" style="background: rgba(255,255,255,0.03);">
+            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-8 text-xs sm:text-sm font-medium" style="color: rgba(255,255,255,0.5);">
+                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel</span>
+                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education</span>
+                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology</span>
+                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare</span>
+            </div>
+        </div>
+    </div>
+
+    {{-- Scroll indicator --}}
+    <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-hero-5">
+        <div class="flex flex-col items-center gap-2" style="color: rgba(255,255,255,0.3);">
+            <span class="text-[10px] uppercase tracking-[3px] font-medium hidden sm:block">Scroll</span>
+            <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+                <div class="w-1 h-2 rounded-full bg-white/40 animate-bounce"></div>
             </div>
         </div>
     </div>
@@ -209,6 +219,155 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ============================================ --}}
+{{-- ENDOW TECHNOLOGIES HIGHLIGHT --}}
+{{-- ============================================ --}}
+<section class="section-gap overflow-hidden" style="background-color: var(--color-body-bg);">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {{-- Left: Content --}}
+            <div data-animate>
+                <div class="section-subtitle" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-microchip"></i>
+                    Endow Technologies
+                </div>
+                <h2 class="section-heading">Innovate. Transform. <span class="gradient-text">Lead.</span></h2>
+                <p class="text-base leading-relaxed mb-8" style="color: var(--color-text);">
+                    Stay ahead with cutting-edge technology solutions that drive digital transformation, improve efficiency, and power your business forward.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    @foreach([
+                        ['icon' => 'fa-solid fa-code', 'title' => 'Software Solutions', 'desc' => 'Scalable, custom-built platforms'],
+                        ['icon' => 'fa-solid fa-robot', 'title' => 'AI & Automation', 'desc' => 'Smart workflows, reduced overhead'],
+                        ['icon' => 'fa-solid fa-cloud', 'title' => 'Cloud & Security', 'desc' => 'Secure, scalable infrastructure'],
+                        ['icon' => 'fa-solid fa-mobile-screen', 'title' => 'App Development', 'desc' => 'High-performance web & mobile'],
+                    ] as $feature)
+                        <div class="flex items-start gap-3 p-4 rounded-xl transition-all" style="background: white; border: 1px solid var(--color-border);" onmouseover="this.style.borderColor='rgba(212,32,44,0.15)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.04)';" onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.08);">
+                                <i class="{{ $feature['icon'] }} text-sm" style="color: var(--color-primary);"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold mb-0.5" style="color: var(--color-text-heading);">{{ $feature['title'] }}</h4>
+                                <p class="text-xs" style="color: var(--color-text-muted);">{{ $feature['desc'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <a href="{{ route('division.show', 'technology') }}" class="btn-primary">
+                    <span class="btn-text"><span>Explore Endow Tech</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+
+            {{-- Right: Visual --}}
+            <div data-animate class="relative">
+                <div class="rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
+                    <div class="text-center px-8">
+                        <div class="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background: rgba(212,32,44,0.15); border: 1px solid rgba(212,32,44,0.2);">
+                            <i class="fa-solid fa-microchip text-3xl" style="color: var(--color-primary-light);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Endow Technologies</h3>
+                        <p class="text-sm" style="color: rgba(255,255,255,0.5);">Powering digital transformation worldwide</p>
+                        <div class="flex items-center justify-center gap-3 mt-6">
+                            @foreach(['AI', 'Cloud', 'Dev', 'Data'] as $tag)
+                                <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">{{ $tag }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -left-4 bg-white rounded-xl p-4" style="box-shadow: 0 12px 40px rgba(0,0,0,0.08);">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.1);">
+                            <i class="fa-solid fa-arrow-trend-up text-sm" style="color: #10b981;"></i>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold" style="color: var(--color-text-heading);">98%</p>
+                            <p class="text-[11px]" style="color: var(--color-text-muted);">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ============================================ --}}
+{{-- ENDOW GLOBAL EDUCATION HIGHLIGHT --}}
+{{-- ============================================ --}}
+<section class="section-gap pitch-dark overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] opacity-10 pointer-events-none" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(120px);"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {{-- Left: Visual --}}
+            <div data-animate class="relative order-2 lg:order-1">
+                <div class="rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.06); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
+                    <div class="text-center px-8">
+                        <div class="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background: rgba(212,32,44,0.15); border: 1px solid rgba(212,32,44,0.2);">
+                            <i class="fa-solid fa-graduation-cap text-3xl" style="color: var(--color-primary-light);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Endow Global Education</h3>
+                        <p class="text-sm" style="color: rgba(255,255,255,0.5);">Opening doors to global opportunities</p>
+                        <div class="flex items-center justify-center gap-3 mt-6">
+                            @foreach(['Study', 'Scholarships', 'Language', 'Visa'] as $tag)
+                                <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">{{ $tag }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 bg-white rounded-xl p-4" style="box-shadow: 0 12px 40px rgba(0,0,0,0.08);">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.1);">
+                            <i class="fa-solid fa-earth-americas text-sm" style="color: #10b981;"></i>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold" style="color: var(--color-text-heading);">30+</p>
+                            <p class="text-[11px]" style="color: var(--color-text-muted);">Countries Reached</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Right: Content --}}
+            <div data-animate class="order-1 lg:order-2">
+                <div class="section-subtitle" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Endow Global Education
+                </div>
+                <h2 class="section-heading">Global Vision, <span class="gradient-text">Guided Path</span></h2>
+                <p class="text-base leading-relaxed mb-8" style="color: rgba(255,255,255,0.5);">
+                    Open doors to global opportunities through world-class educational programs, partnerships, and resources that inspire growth and learning.
+                </p>
+
+                <div class="space-y-4 mb-8">
+                    @foreach([
+                        ['icon' => 'fa-solid fa-landmark', 'title' => 'World-Class Study Programs', 'desc' => 'Globally recognized programs tailored for career growth.'],
+                        ['icon' => 'fa-solid fa-hand-holding-heart', 'title' => 'Student Support', 'desc' => 'Comprehensive assistance for admissions, visas, and settling in.'],
+                        ['icon' => 'fa-solid fa-award', 'title' => 'Scholarship Guidance', 'desc' => 'Making quality education more affordable and accessible.'],
+                    ] as $feature)
+                        <div class="flex items-start gap-4 p-4 rounded-xl" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1);">
+                                <i class="{{ $feature['icon'] }} text-sm" style="color: var(--color-primary-light);"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold mb-0.5 text-white">{{ $feature['title'] }}</h4>
+                                <p class="text-xs" style="color: rgba(255,255,255,0.5);">{{ $feature['desc'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <a href="{{ route('division.show', 'education') }}" class="btn-primary">
+                    <span class="btn-text"><span>Explore Global Education</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
         </div>
     </div>
 </section>
