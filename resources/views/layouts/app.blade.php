@@ -145,23 +145,23 @@
                     </span>
                 </a>
 
-                <button id="mobile-menu-btn" class="lg:hidden hover:bg-white/10 p-2 rounded-full transition-all duration-300 border border-white/10" style="background: rgba(255,255,255,0.02);" aria-label="Menu">
-                    <i class="fa-solid fa-bars text-white/70" style="font-size: 16px;"></i>
+                <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300" style="background: rgba(255,255,255,0.08);" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" aria-label="Menu">
+                    <i class="fa-solid fa-bars" style="font-size: 16px; color: rgba(255,255,255,0.85);"></i>
                 </button>
             </div>
         </div>
     </header>
 
     {{-- Mobile Menu --}}
-    <div id="mobile-menu" class="hidden fixed inset-0 z-50">
+    <div id="mobile-menu" class="hidden fixed inset-0" style="z-index: 1100;">
         <div id="mobile-menu-overlay" class="absolute inset-0" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
         <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-80 max-w-[85vw] p-6 transform translate-x-full transition-transform duration-300" style="background: rgba(14,16,26,0.95); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -8px 0 40px rgba(0,0,0,0.3);">
             <div class="flex items-center justify-between mb-8">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" style="height: 36px; width: auto;">
                 </a>
-                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full transition-colors border border-white/10" style="background: rgba(255,255,255,0.05);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'" aria-label="Close">
-                    <i class="fa-solid fa-xmark text-lg" style="color: rgba(255,255,255,0.7);"></i>
+                <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-xl transition-colors" style="background: rgba(255,255,255,0.08);" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'" aria-label="Close">
+                    <i class="fa-solid fa-xmark" style="font-size: 18px; color: rgba(255,255,255,0.85);"></i>
                 </button>
             </div>
 
