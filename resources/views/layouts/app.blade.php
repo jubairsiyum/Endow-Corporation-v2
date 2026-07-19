@@ -142,11 +142,9 @@
 
             {{-- CTA + Hamburger --}}
             <div class="flex items-center gap-2">
-                <a href="{{ route('consulting') }}" class="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: var(--color-primary);" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-                    <span>Let's Talk</span>
-                    <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
-                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                    </span>
+                <a href="{{ route('consulting') }}" class="hidden sm:inline-flex btn-primary">
+                    <span class="btn-text"><span>Let's Talk</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
 
                 <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300" style="background: rgba(0,0,0,0.05);" onmouseover="this.style.background='rgba(0,0,0,0.08)'" onmouseout="this.style.background='rgba(0,0,0,0.05)'" aria-label="Menu">
@@ -251,11 +249,9 @@
             </div>
 
             <div class="absolute bottom-6 left-6 right-6">
-                <a href="{{ route('consulting') }}" class="flex items-center justify-center gap-2.5 w-full px-5 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: var(--color-primary);">
-                    <span>Let's Talk</span>
-                    <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white/15">
-                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                    </span>
+                <a href="{{ route('consulting') }}" class="btn-primary w-full justify-center">
+                    <span class="btn-text"><span>Let's Talk</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
