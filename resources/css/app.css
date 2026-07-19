@@ -69,11 +69,11 @@
     }
     .section-gap-hero {
         margin-top: 0;
-        padding-top: 100px;
+        padding-top: 70px;
         padding-bottom: 100px;
     }
-    @media (max-width: 991px) { .section-gap { padding-top: 90px; padding-bottom: 70px; } .section-gap-hero { margin-top: 0; padding-top: 90px; padding-bottom: 70px; } }
-    @media (max-width: 575px) { .section-gap { padding-top: 80px; padding-bottom: 50px; } .section-gap-hero { margin-top: 0; padding-top: 80px; padding-bottom: 50px; } }
+    @media (max-width: 991px) { .section-gap { padding-top: 90px; padding-bottom: 70px; } .section-gap-hero { margin-top: 0; padding-top: 70px; padding-bottom: 70px; } }
+    @media (max-width: 575px) { .section-gap { padding-top: 80px; padding-bottom: 50px; } .section-gap-hero { margin-top: 0; padding-top: 70px; padding-bottom: 50px; } }
 
     /* ── Section Headings ── */
     .section-heading {

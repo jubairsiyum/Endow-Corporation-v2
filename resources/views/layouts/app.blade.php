@@ -50,9 +50,11 @@
 </head>
 <body>
 
-    {{-- Topbar (scrolls away naturally) --}}
-    <div id="header-zone">
-        <div id="header-topbar" class="hidden lg:block" style="background: #0a0a0a;">
+    {{-- Fixed Glassmorphism Header --}}
+    <header id="main-header" style="position: fixed; z-index: 1000; top: 0; left: 0; right: 0;">
+
+        {{-- Topbar — collapsed by default, expands on scroll --}}
+        <div id="header-topbar" class="lg:block" style="background: #0a0a0a; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.35s ease;">
             <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
                 <div class="flex items-center gap-7">
                     <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
@@ -89,11 +91,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    {{-- Glassmorphism Pill Header --}}
-    <header id="main-header" style="position: fixed; z-index: 1000; top: 0; left: 0; right: 0; padding: 24px 16px; pointer-events: none; transition: padding 0.3s ease;">
-        <div id="header-pill" class="max-w-4xl mx-auto flex items-center justify-between rounded-full px-6 sm:px-7 py-3" style="pointer-events: auto; background: linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box; border: 1px solid transparent; backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
+        {{-- Full-Width Glassmorphism Pill --}}
+        <div id="header-pill" class="flex items-center justify-between px-6 sm:px-10 lg:px-16 py-3" style="transition: background 0.3s ease, box-shadow 0.3s ease; background: linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box; border-bottom: 1px solid transparent; border-top: 1px solid transparent; backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);">
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex-shrink-0">
@@ -248,21 +248,29 @@
         const headerPill = document.getElementById('header-pill');
 
         function setHeaderScrolled() {
-            header.style.padding = '12px 16px';
+            header.classList.add('header-scrolled');
+            if (headerTopBar && window.innerWidth >= 1024) {
+                headerTopBar.style.maxHeight = '50px';
+                headerTopBar.style.opacity = '1';
+            }
             if (headerPill) {
                 headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.7), rgba(14,16,26,0.5)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.06)) border-box';
                 headerPill.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)';
+                headerPill.style.borderRadius = '0';
             }
-            if (headerTopBar) headerTopBar.style.display = 'none';
         }
 
         function setHeaderNormal() {
-            header.style.padding = '24px 16px';
+            header.classList.remove('header-scrolled');
+            if (headerTopBar) {
+                headerTopBar.style.maxHeight = '0';
+                headerTopBar.style.opacity = '0';
+            }
             if (headerPill) {
                 headerPill.style.background = 'linear-gradient(180deg, rgba(14,16,26,0.55), rgba(14,16,26,0.35)) padding-box, linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)) border-box';
                 headerPill.style.boxShadow = '0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+                headerPill.style.borderRadius = '';
             }
-            if (headerTopBar) headerTopBar.style.display = '';
         }
 
         window.addEventListener('scroll', () => {
