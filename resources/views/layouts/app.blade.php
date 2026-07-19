@@ -96,8 +96,12 @@
         <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(255,255,255,0.8); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);">
 
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex-shrink-0">
+            <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center gap-3">
                 <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="header-logo" style="height: 36px; width: auto;">
+                <div id="header-wordmark" class="hidden leading-none" style="color: #fff; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);">
+                    <div class="text-base font-bold" style="line-height: 1.15; letter-spacing: 3.5px;">ENDOW</div>
+                    <div class="font-semibold" style="line-height: 1.15; font-size: 10px; letter-spacing: 1.8px;">Corporation</div>
+                </div>
             </a>
 
             {{-- Desktop Nav --}}
@@ -246,6 +250,7 @@
         const header = document.getElementById('main-header');
         const headerTopBar = document.getElementById('header-topbar');
         const headerPill = document.getElementById('header-pill');
+        const headerWordmark = document.getElementById('header-wordmark');
 
         function setHeaderScrolled() {
             header.classList.add('header-scrolled');
@@ -265,6 +270,7 @@
             document.querySelectorAll('.header-logo').forEach(img => img.style.filter = 'brightness(0) invert(1)');
             header.querySelectorAll('.nav-link').forEach(link => link.style.color = 'rgba(255,255,255,0.6)');
             document.querySelectorAll('.hamburger-icon').forEach(icon => icon.style.color = 'rgba(255,255,255,0.85)');
+            if (headerWordmark) headerWordmark.classList.remove('hidden');
         }
 
         function setHeaderNormal() {
@@ -285,6 +291,7 @@
             document.querySelectorAll('.header-logo').forEach(img => img.style.filter = '');
             header.querySelectorAll('.nav-link').forEach(link => link.style.color = '');
             document.querySelectorAll('.hamburger-icon').forEach(icon => icon.style.color = '#374151');
+            if (headerWordmark) headerWordmark.classList.add('hidden');
         }
 
         window.addEventListener('scroll', () => {
