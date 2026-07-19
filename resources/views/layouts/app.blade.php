@@ -200,6 +200,56 @@
                 @endforeach
             </nav>
 
+            {{-- Contact Info (from desktop topbar) --}}
+            <div class="mt-8 pt-6 space-y-4" style="border-top: 1px solid rgba(255,255,255,0.06);">
+                <div class="flex items-center gap-3 px-4">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1);">
+                        <i class="fa-regular fa-clock text-xs" style="color: var(--color-primary-light);"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.3);">Hours</p>
+                        <p class="text-xs font-medium" style="color: rgba(255,255,255,0.7);">Sat – Thu, 8:00am – 6:00pm</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 px-4">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1);">
+                        <i class="fa-regular fa-envelope text-xs" style="color: var(--color-primary-light);"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.3);">Email</p>
+                        <a href="mailto:contact@endowcorporation.com" class="text-xs font-medium" style="color: rgba(255,255,255,0.7);">contact@endowcorporation.com</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 px-4">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1);">
+                        <i class="fa-solid fa-location-dot text-xs" style="color: var(--color-primary-light);"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.3);">Location</p>
+                        <p class="text-xs font-medium" style="color: rgba(255,255,255,0.7);">Seoul, South Korea</p>
+                    </div>
+                </div>
+
+                {{-- Social Links --}}
+                <div class="flex items-center gap-2 px-4 pt-2">
+                    @foreach([
+                        ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
+                        ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
+                        ['icon' => 'fa-brands fa-instagram', 'url' => 'https://www.instagram.com/endowcorporation'],
+                        ['icon' => 'fa-brands fa-youtube', 'url' => 'https://www.youtube.com/@endowcorporation'],
+                    ] as $social)
+                        <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
+                           class="w-8 h-8 rounded-lg flex items-center justify-center transition-all"
+                           style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4);"
+                           onmouseover="this.style.color='white'; this.style.background='rgba(255,255,255,0.1)';"
+                           onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.background='rgba(255,255,255,0.05)';"
+                           aria-label="Social">
+                            <i class="{{ $social['icon'] }}" style="font-size: 12px;"></i>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
             <div class="absolute bottom-6 left-6 right-6">
                 <a href="{{ route('consulting') }}" class="flex items-center justify-center gap-2.5 w-full px-5 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background: var(--color-primary);">
                     <span>Let's Talk</span>
