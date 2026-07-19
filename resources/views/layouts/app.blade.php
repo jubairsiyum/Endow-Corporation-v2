@@ -51,10 +51,10 @@
 <body>
 
     {{-- Topbar + Header --}}
-    <div id="header-zone">
+    <div id="header-zone" style="background: var(--color-dark);">
 
         {{-- Top Bar --}}
-        <div id="header-topbar" class="hidden lg:block" style="background: var(--color-dark);">
+        <div id="header-topbar" class="hidden lg:block">
             <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
             <div class="flex items-center gap-7">
                 <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
