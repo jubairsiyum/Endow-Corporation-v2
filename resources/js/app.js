@@ -1,3 +1,6 @@
+// ── Scroll Stack — GSAP ScrollTrigger Card Stacking ──
+import './scroll-stack.js';
+
 // ── Premium Services Section — Spotlight + Entrance ──
 (function () {
     const cards = document.querySelectorAll('.service-card-v3');

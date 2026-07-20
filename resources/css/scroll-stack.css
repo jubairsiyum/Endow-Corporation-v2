@@ -1,0 +1,190 @@
+/* ============================================================
+   Scroll Stack — Stacked cards with peek edges visible behind
+   GSAP ScrollTrigger handles all animation.
+   ============================================================ */
+
+/* ── Section ── */
+.scroll-stack-section { position: relative; overflow: visible; }
+
+/* ── Viewport — pinned by GSAP, cards live inside ── */
+.scroll-stack-viewport {
+    position: relative;
+    height: 58vh;
+    min-height: 380px;
+    max-height: 520px;
+    overflow: visible;           /* visible so peek cards show above */
+    padding-top: 50px;           /* room for stacked peek edges */
+}
+
+/* ── Cards — all absolutely positioned, stacked with peek offset ── */
+.scroll-stack-card {
+    position: absolute;
+    bottom: 0;                   /* anchored at bottom of viewport */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);   /* match padding-top so cards fill below peek area */
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+/* Active card glow */
+.scroll-stack-card--active {
+    border-color: rgba(212, 32, 44, 0.18);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 32, 44, 0.08);
+}
+
+/* ── Card inner grid (image + content) ── */
+.scroll-stack-card-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+
+@media (min-width: 992px) {
+    .scroll-stack-card-inner {
+        grid-template-columns: 1.1fr 1fr;
+    }
+}
+
+/* ── Image Column ── */
+.scroll-stack-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+}
+@media (min-width: 992px) { .scroll-stack-image { min-height: 0; } }
+
+.scroll-stack-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Gradient overlay on image */
+.scroll-stack-image::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(135deg,
+        rgba(10,10,10,0.02) 0%, rgba(10,10,10,0.08) 40%,
+        rgba(10,10,10,0.35) 75%, rgba(10,10,10,0.65) 100%);
+}
+
+/* Red accent glow */
+.scroll-stack-image::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(ellipse at 30% 70%, rgba(212,32,44,0.08) 0%, transparent 60%);
+    opacity: 0.5;
+}
+
+/* ── Glassmorphism icon (over image, bottom-left) ── */
+.scroll-stack-glass-icon {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    z-index: 5;
+    width: 48px; height: 48px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(212,32,44,0.12);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212,32,44,0.2);
+    box-shadow: 0 0 20px rgba(212,32,44,0.08);
+}
+.scroll-stack-glass-icon i {
+    font-size: 18px;
+    color: var(--color-primary-light, #e83542);
+}
+
+/* ── Content Column ── */
+.scroll-stack-content {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 28px 24px 32px;
+    background: #fff;
+    position: relative; z-index: 5;
+}
+@media (min-width: 992px) { .scroll-stack-content { padding: 36px 36px 42px; } }
+@media (min-width: 1200px) { .scroll-stack-content { padding: 44px 48px 52px; } }
+
+/* ── Badge ── */
+.scroll-stack-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(212,32,44,0.7);
+    margin-bottom: 12px;
+}
+.scroll-stack-badge::before {
+    content: ''; width: 22px; height: 1px;
+    background: var(--color-primary); opacity: 0.5;
+}
+
+/* ── Title ── */
+.scroll-stack-title {
+    font-size: 21px; font-weight: 800; color: #0a0a0a;
+    margin-bottom: 10px; letter-spacing: -0.03em; line-height: 1.18;
+}
+@media (min-width: 576px) { .scroll-stack-title { font-size: 24px; } }
+@media (min-width: 992px) { .scroll-stack-title { font-size: 28px; } }
+
+/* ── Description ── */
+.scroll-stack-description {
+    font-size: 14px; line-height: 1.7; color: #555;
+    margin-bottom: 20px;
+}
+@media (min-width: 992px) { .scroll-stack-description { font-size: 15px; margin-bottom: 24px; } }
+
+/* ── CTA Button ── */
+.scroll-stack-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 5px 5px 5px 18px;
+    background: linear-gradient(135deg, var(--color-primary, #D4202C) 0%, var(--color-primary-dark, #b81c26) 100%);
+    color: #fff; font-size: 13px; font-weight: 600; border-radius: 50px;
+    text-decoration: none; box-shadow: 0 4px 20px rgba(212,32,44,0.3);
+    align-self: flex-start; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.scroll-stack-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,32,44,0.5); }
+.scroll-stack-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; background-color: #0a0a0a; border-radius: 50%;
+    color: #fff; flex-shrink: 0;
+}
+.scroll-stack-arrow i { font-size: 12px; transition: transform 0.35s ease; transform: rotate(-45deg); }
+.scroll-stack-card:hover .scroll-stack-arrow i { transform: rotate(0deg); }
+
+/* ── Hover: image zoom ── */
+.scroll-stack-card:hover .scroll-stack-image img { transform: scale(1.05); }
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-stack-viewport { height: auto !important; overflow: visible !important; padding-top: 0 !important; }
+    .scroll-stack-card {
+        position: relative !important; bottom: auto !important; left: auto !important;
+        height: auto !important; margin-bottom: 28px !important;
+        opacity: 1 !important; transform: none !important;
+    }
+    .scroll-stack-card-inner { min-height: 360px; }
+}
+
+/* ── Mobile (<768px): no pin, fade-up ── */
+@media (max-width: 767px) {
+    .scroll-stack-viewport { height: auto !important; overflow: visible !important; padding-top: 0 !important; }
+    .scroll-stack-card {
+        position: relative !important; bottom: auto !important; left: auto !important;
+        height: auto !important; margin-bottom: 24px !important;
+        opacity: 0; transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scroll-stack-card.scroll-stack-visible { opacity: 1; transform: translateY(0); }
+    .scroll-stack-card-inner { min-height: 420px; }
+    .scroll-stack-image { min-height: 180px; }
+}

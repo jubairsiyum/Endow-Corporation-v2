@@ -39,7 +39,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/css/scroll-stack.css'])
 
     @stack('structured-data')
     @yield('head')
@@ -377,6 +377,7 @@
 
         // Scroll animations — scoped per section
         document.querySelectorAll('section, [data-animate]').forEach(section => {
+            if (section.hasAttribute('data-no-animate')) return;
             if (!section.hasAttribute('data-animate') && !section.querySelector('[data-animate]')) return;
             const items = section.hasAttribute('data-animate') ? [section] : section.querySelectorAll('[data-animate]');
             items.forEach((el, i) => {
@@ -401,6 +402,7 @@
         }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
         document.querySelectorAll('section').forEach(section => {
+            if (section.hasAttribute('data-no-animate')) return;
             if (section.querySelector('[data-animate]') || section.hasAttribute('data-animate')) {
                 observer.observe(section);
             }

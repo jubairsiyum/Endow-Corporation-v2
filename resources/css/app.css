@@ -817,6 +817,36 @@
     box-shadow: 0 0 20px rgba(212,32,44,0.15);
 }
 
+/* ── Highlight Scroll Stack ── */
+.highlight-stack {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.highlight-pin-card {
+    will-change: transform;
+    transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.highlight-pin-card:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 0 0 1px rgba(212,32,44,0.15) !important;
+}
+
+/* Section padding for highlight sections */
+.section-gap-tech {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.section-gap-edu {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+@media (max-width: 991px) {
+    .section-gap-tech, .section-gap-edu { padding-top: 90px; padding-bottom: 70px; }
+}
+@media (max-width: 575px) {
+    .section-gap-tech, .section-gap-edu { padding-top: 80px; padding-bottom: 50px; }
+}
+
 /* ── Premium Division Cards ── */
 .division-card-premium {
     transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease, background 0.45s ease;
