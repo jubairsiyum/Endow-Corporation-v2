@@ -1,15 +1,12 @@
 /**
- * ScrollStack — Card Stacking via GSAP ScrollTrigger
+ * ScrollStack — True Card Stacking via GSAP ScrollTrigger
  * ============================================================
  *
- * All cards are absolutely positioned in the SAME spot, overlapping.
- * The viewport is pinned and centered on screen. As the user scrolls,
- * the INCOMING card slides UP from below and COVERS the current card.
- * The outgoing card stays in place and subtly recedes (scales down).
- *
- * This "cover" transition means you only ever see ONE full card
- * plus the incoming card sliding over it — no split screen, no
- * ghost overlap, no crossfade artifacts.
+ * Cards are anchored to the bottom of the viewport. As you scroll,
+ * the active card shrinks and moves UP (transform-origin: top),
+ * while the next card slides UP from below to cover it.
+ * This creates a perfect "deck of cards" stacking effect where
+ * older cards peek out from the top.
  *
  * Desktop (>=992px): Full pinned stack with GSAP scroll-driven timeline
  * Tablet (768-991px):  Same, with reduced motion
@@ -52,17 +49,23 @@ export function initScrollStacks() {
         if (deviceTier === 'mobile') return;
 
         const stackId = stack.getAttribute('data-scroll-stack');
+        
+        // ── Visual Parameters ──
+        const isDesktop = deviceTier === 'desktop';
+        const scaleStep = isDesktop ? 0.015 : 0.01; // Ultra-subtle scale difference to cover sides fully
+        const yStep = isDesktop ? 15 : 10; // Peek offset
 
         // ── Set initial state ──
         // Card 0: visible, in place, on top initially
-        // All others: parked BELOW the viewport (yPercent: 100), hidden beneath card 0
+        // All others: parked BELOW the viewport (yPercent: 100), hidden beneath
         cards.forEach((card, i) => {
             gsap.set(card, {
                 yPercent: i === 0 ? 0 : 100,
+                y: 0,
                 scale: 1,
                 opacity: 1,
                 zIndex: i === 0 ? cardCount : 1,
-                transformOrigin: 'center center',
+                transformOrigin: 'center top',
                 force3D: true,
             });
             card.style.willChange = 'transform';
@@ -76,7 +79,7 @@ export function initScrollStacks() {
 
         // ── Pin duration ──
         const vh = window.innerHeight;
-        const scrollPerCard = vh * 0.65;
+        const scrollPerCard = vh * 0.7;
         const transitions = cardCount - 1;
         const totalScroll = Math.max(transitions, 1) * scrollPerCard;
 
@@ -102,40 +105,35 @@ export function initScrollStacks() {
                     });
                 },
             },
-            defaults: { ease: 'power2.inOut' },
+            // We use 'none' for linear tracking with scrub, looks best for true stack
+            defaults: { ease: 'none' },
         });
 
-        // ── Build transition segments ──
-        // "COVER" pattern:
-        //   - Outgoing card STAYS IN PLACE but scales down slightly + fades a bit
-        //     (it recedes visually, like being pushed back in a stack)
-        //   - Incoming card slides UP from below (yPercent 100 → 0) and COVERS it
-        //   - Incoming card always has HIGHER z-index → it covers the outgoing card
-        //   - You only ever see: the full outgoing card + incoming card sliding over it
-        //   - NO split screen, NO crossfade overlap, clean cover transition
         const seg = transitions > 0 ? 1 / transitions : 1;
 
         for (let i = 0; i < transitions; i++) {
             const pos = i * seg;
 
-            // Give incoming card the HIGHEST z-index so it covers everything below
+            // Incoming card: gets highest zIndex, slides up from bottom
             tl.set(cards[i + 1], { zIndex: cardCount + i + 10 }, pos);
-
-            // Outgoing card: stay in place, scale down slightly, fade a bit
-            // (it peeks out from behind the incoming card during transition, giving depth)
-            tl.to(cards[i], {
-                scale: 0.92,
-                opacity: 0.5,
-                duration: seg,
-                ease: 'power2.in',
-            }, pos);
-
-            // Incoming card: slide UP from below, covering the outgoing card
             tl.fromTo(cards[i + 1],
-                { yPercent: 100, scale: 1, opacity: 1 },
-                { yPercent: 0, scale: 1, opacity: 1, duration: seg, ease: 'power2.out' },
+                { yPercent: 100, scale: 1, y: 0 },
+                { yPercent: 0, scale: 1, y: 0, duration: seg, ease: 'power2.out' },
                 pos
             );
+
+            // All previously active cards (0 to i) move deeper into the stack
+            for (let j = 0; j <= i; j++) {
+                const currentDepth = i - j;
+                const nextDepth = currentDepth + 1;
+                
+                tl.to(cards[j], {
+                    scale: 1 - (nextDepth * scaleStep),
+                    y: -(nextDepth * yStep),
+                    duration: seg,
+                    ease: 'power2.out',
+                }, pos);
+            }
         }
 
         allScrollTriggers.push(tl.scrollTrigger);
@@ -163,6 +161,7 @@ export function initScrollStacks() {
         allScrollTriggers.forEach(t => t.kill());
         allScrollTriggers.length = 0;
 
+        const stacks = document.querySelectorAll('[data-scroll-stack]');
         stacks.forEach(stack => {
             const cards = stack.querySelectorAll('.scroll-stack-card');
             cards.forEach(card => {
@@ -174,7 +173,8 @@ export function initScrollStacks() {
     }
 
     // ── Mount ──
-    stacks.forEach(stack => mountStack(stack));
+    const initialStacks = document.querySelectorAll('[data-scroll-stack]');
+    initialStacks.forEach(stack => mountStack(stack));
     initMobileFallback();
 
     // ── Responsive rebuild ──
@@ -190,7 +190,8 @@ export function initScrollStacks() {
                 if (newTier === 'mobile') {
                     initMobileFallback();
                 } else {
-                    stacks.forEach(stack => mountStack(stack));
+                    const activeStacks = document.querySelectorAll('[data-scroll-stack]');
+                    activeStacks.forEach(stack => mountStack(stack));
                 }
             }
             ScrollTrigger.refresh();

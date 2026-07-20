@@ -9,11 +9,11 @@
 /* ── Viewport — pinned by GSAP, cards live inside ── */
 .scroll-stack-viewport {
     position: relative;
-    height: 58vh;
-    min-height: 380px;
-    max-height: 520px;
-    overflow: visible;           /* visible so peek cards show above */
-    padding-top: 50px;           /* room for stacked peek edges */
+    height: 62vh;
+    min-height: 420px;
+    max-height: 580px;
+    overflow: hidden;            /* Clips parked cards at bottom. Peek edges stay within padding-top. */
+    padding-top: 40px;           /* Subtle room for stacked peek edges */
 }
 
 /* ── Cards — all absolutely positioned, stacked with peek offset ── */
@@ -22,23 +22,22 @@
     bottom: 0;                   /* anchored at bottom of viewport */
     left: 0;
     width: 100%;
-    height: calc(100% - 50px);   /* match padding-top so cards fill below peek area */
+    height: calc(100% - 40px);   /* match padding-top so cards fill below peek area */
     border-radius: 20px;
     overflow: hidden;
     background: #0d0d0d;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
-    transform-origin: center bottom;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); /* Virtually invisible default shadow */
+    transform-origin: center top; /* Top anchors them so shrinking reveals top edges */
     will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transition: box-shadow 0.5s ease, border-color 0.5s ease;
+    transition: box-shadow 0.5s ease;
 }
 
 /* Active card glow */
 .scroll-stack-card--active {
-    border-color: rgba(212, 32, 44, 0.18);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 32, 44, 0.08);
+    /* Large Y-offset ensures shadow only casts DOWNWARD, preventing dark shadow lines on the top peek edges of cards behind it */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25); 
 }
 
 /* ── Card inner grid (image + content) ── */
