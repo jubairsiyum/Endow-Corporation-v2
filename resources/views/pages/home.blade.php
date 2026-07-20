@@ -10,15 +10,30 @@
 {{-- HERO — Premium Vertical Carousel --}}
 {{-- ============================================ --}}
 <section id="hero-carousel" class="hero-carousel relative overflow-hidden will-change-transform" style="height: 100vh; min-height: 700px; background: #0a0a0a;">
-    {{-- Animated Background Blobs --}}
+    {{-- Sophisticated Corporate Background --}}
     <div class="hero-bg-canvas absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="hero-blob hero-blob-1 absolute w-[600px] sm:w-[800px] lg:w-[1000px] aspect-square rounded-full opacity-[0.08] animate-blob-1" style="background: radial-gradient(circle, var(--color-primary) 0%, transparent 60%); filter: blur(120px); top: -20%; left: -15%;"></div>
-        <div class="hero-blob hero-blob-2 absolute w-[500px] sm:w-[650px] lg:w-[800px] aspect-square rounded-full opacity-[0.06] animate-blob-2" style="background: radial-gradient(circle, #ff6b6b 0%, transparent 60%); filter: blur(100px); bottom: -15%; right: -10%;"></div>
-        <div class="hero-blob hero-blob-3 absolute w-[300px] sm:w-[400px] aspect-square rounded-full opacity-[0.04] animate-blob-3" style="background: radial-gradient(circle, #ffffff 0%, transparent 60%); filter: blur(80px); top: 40%; left: 60%;"></div>
+        {{-- Gradient Mesh — layered soft atmospheric gradients --}}
+        <div class="hero-grad-mesh absolute inset-0"></div>
+
+        {{-- Geometric Diamond Accents — rotating subtly --}}
+        <div class="hero-geo hero-geo-1 absolute w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 opacity-[0.025]" style="border: 1px solid rgba(255,255,255,0.45); top: 12%; right: -4%; transform: rotate(45deg);"></div>
+        <div class="hero-geo hero-geo-2 absolute w-28 h-28 sm:w-40 sm:h-40 lg:w-52 lg:h-52 opacity-[0.02]" style="border: 1px solid rgba(255,255,255,0.35); bottom: 28%; left: -3%; transform: rotate(45deg);"></div>
+        <div class="hero-geo hero-geo-3 absolute w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 opacity-[0.018]" style="border: 1px solid rgba(212,32,44,0.35); top: 50%; right: 22%; transform: rotate(45deg);"></div>
+
+        {{-- Thin Accent Lines — drifting slowly --}}
+        <div class="hero-line hero-line-1 absolute h-px opacity-[0.035]" style="width: 280px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); top: 28%; left: 8%;"></div>
+        <div class="hero-line hero-line-2 absolute w-px opacity-[0.025]" style="height: 180px; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.4), transparent); top: 45%; right: 12%;"></div>
+        <div class="hero-line hero-line-3 absolute h-px opacity-[0.02] hidden sm:block" style="width: 200px; background: linear-gradient(90deg, transparent, rgba(212,32,44,0.5), transparent); bottom: 35%; right: 25%;"></div>
+
+        {{-- Network Nodes — subtle glowing connection points --}}
+        <div class="hero-node hero-node-1 absolute w-1.5 h-1.5 rounded-full opacity-0 sm:opacity-100" style="background: var(--color-primary); top: 18%; left: 72%; box-shadow: 0 0 10px rgba(212,32,44,0.5), 0 0 20px rgba(212,32,44,0.2);"></div>
+        <div class="hero-node hero-node-2 absolute w-1 h-1 rounded-full opacity-0 sm:opacity-100" style="background: rgba(255,255,255,0.6); top: 62%; left: 18%; box-shadow: 0 0 8px rgba(255,255,255,0.3);"></div>
+        <div class="hero-node hero-node-3 absolute w-1.5 h-1.5 rounded-full opacity-0 sm:opacity-100" style="background: var(--color-primary-light); bottom: 25%; left: 55%; box-shadow: 0 0 12px rgba(212,32,44,0.4), 0 0 24px rgba(212,32,44,0.15);"></div>
     </div>
 
-    {{-- Subtle grid overlay --}}
-    <div class="absolute inset-0 opacity-[0.018] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+    {{-- Refined Dot Matrix with Vignette --}}
+    <div class="hero-dot-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="hero-vignette absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
     @php
         $slides = [
