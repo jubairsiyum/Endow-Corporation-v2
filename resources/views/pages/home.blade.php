@@ -7,60 +7,128 @@
 @section('content')
 
 {{-- ============================================ --}}
-{{-- HERO — Single Column Centered --}}
+{{-- HERO — Premium Vertical Carousel --}}
 {{-- ============================================ --}}
-<section class="relative overflow-hidden section-gap-hero flex items-center" style="background: linear-gradient(160deg, #0a0a0a 0%, #1a0a0c 40%, #0a0a0a 100%); min-height: 100vh;">
-    {{-- Gradient orbs --}}
-    <div class="absolute top-[10%] left-[-5%] w-[300px] sm:w-[450px] lg:w-[600px] aspect-square rounded-full opacity-15 pointer-events-none" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(100px);"></div>
-    <div class="absolute bottom-[10%] right-[-3%] w-[250px] sm:w-[350px] lg:w-[450px] aspect-square rounded-full opacity-10 pointer-events-none" style="background: radial-gradient(circle, #ff6b6b, transparent 70%); filter: blur(80px);"></div>
-    <div class="absolute top-1/2 left-1/2 w-[200px] sm:w-[300px] aspect-square rounded-full opacity-5 pointer-events-none -translate-x-1/2 -translate-y-1/2" style="background: radial-gradient(circle, white, transparent 70%); filter: blur(60px);"></div>
-    <div class="absolute inset-0 opacity-[0.025] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;"></div>
-
-    <div class="max-w-4xl mx-auto px-5 sm:px-6 pt-8 pb-20 sm:pt-12 sm:pb-24 relative z-10 w-full text-center">
-        {{-- Badge --}}
-        <div class="animate-hero-1 inline-flex items-center gap-2 sm:gap-2.5 mb-6 sm:mb-8 text-[10px] sm:text-[11px] font-bold uppercase tracking-[2px] sm:tracking-[3px] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.25); background: rgba(212,32,44,0.06);">
-            <i class="fa-solid fa-bolt" style="font-size: 9px;"></i>
-            Empowering Businesses Globally
-        </div>
-
-        {{-- Headline --}}
-        <h1 class="animate-hero-2 text-white text-[32px] sm:text-4xl md:text-5xl lg:text-[64px] font-bold leading-[1.08] sm:leading-[1.05] mb-6 sm:mb-8" style="letter-spacing: -0.03em;">
-            Navigating <span class="gradient-text">Knowledge,</span><br class="hidden sm:block"> <span class="sm:hidden">Embracing </span>Adventure
-        </h1>
-
-        {{-- Description --}}
-        <p class="animate-hero-3 text-base sm:text-lg md:text-xl max-w-xl sm:max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed px-2 sm:px-0" style="color: rgba(255,255,255,0.5);">
-            A global leader in Travel, Education, Technology, and Healthcare solutions. We connect businesses with excellence across 30+ countries.
-        </p>
-
-        {{-- CTAs --}}
-        <div class="animate-hero-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
-            <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
-                <span class="btn-text"><span>Get Consulting</span></span>
-                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            <a href="{{ route('about') }}" class="btn-outline">
-                Learn More
-            </a>
-        </div>
-
-        {{-- Dashed divider — wraps on mobile --}}
-        <div class="animate-hero-5 max-w-lg mx-auto dashed-border-dark rounded-xl px-5 sm:px-8 py-4 sm:py-5" style="background: rgba(255,255,255,0.03);">
-            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-8 text-xs sm:text-sm font-medium" style="color: rgba(255,255,255,0.5);">
-                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Travel</span>
-                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Education</span>
-                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Technology</span>
-                <span class="flex items-center gap-1.5 sm:gap-2"><i class="fa-solid fa-check" style="color: var(--color-primary);"></i> Healthcare</span>
-            </div>
-        </div>
+<section id="hero-carousel" class="hero-carousel relative overflow-hidden will-change-transform" style="height: 100vh; min-height: 700px; background: #0a0a0a;">
+    {{-- Animated Background Blobs --}}
+    <div class="hero-bg-canvas absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="hero-blob hero-blob-1 absolute w-[600px] sm:w-[800px] lg:w-[1000px] aspect-square rounded-full opacity-[0.08] animate-blob-1" style="background: radial-gradient(circle, var(--color-primary) 0%, transparent 60%); filter: blur(120px); top: -20%; left: -15%;"></div>
+        <div class="hero-blob hero-blob-2 absolute w-[500px] sm:w-[650px] lg:w-[800px] aspect-square rounded-full opacity-[0.06] animate-blob-2" style="background: radial-gradient(circle, #ff6b6b 0%, transparent 60%); filter: blur(100px); bottom: -15%; right: -10%;"></div>
+        <div class="hero-blob hero-blob-3 absolute w-[300px] sm:w-[400px] aspect-square rounded-full opacity-[0.04] animate-blob-3" style="background: radial-gradient(circle, #ffffff 0%, transparent 60%); filter: blur(80px); top: 40%; left: 60%;"></div>
     </div>
 
-    {{-- Scroll indicator --}}
-    <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-hero-5">
-        <div class="flex flex-col items-center gap-2" style="color: rgba(255,255,255,0.3);">
-            <span class="text-[10px] uppercase tracking-[3px] font-medium hidden sm:block">Scroll</span>
-            <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
-                <div class="w-1 h-2 rounded-full bg-white/40 animate-bounce"></div>
+    {{-- Subtle grid overlay --}}
+    <div class="absolute inset-0 opacity-[0.018] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    @php
+        $slides = [
+            [
+                'badge' => 'Global Leader',
+                'badge_icon' => 'fa-solid fa-bolt',
+                'headline' => 'Navigating <span class="hero-accent-text">Knowledge,</span><br class="hidden sm:block">Embracing Adventure',
+                'desc' => 'A global leader in Travel, Education, Technology, and Healthcare. Connecting businesses with excellence across 30+ countries.',
+                'primary_btn' => ['text' => 'Get Consulting', 'url' => 'consulting'],
+                'outline_btn' => ['text' => 'About Us', 'url' => 'about'],
+            ],
+            [
+                'badge' => 'Global Education',
+                'badge_icon' => 'fa-solid fa-graduation-cap',
+                'headline' => 'World-Class <span class="hero-accent-text" style="--accent: #a78bfa;">Education</span><br class="hidden sm:block">Without Borders',
+                'desc' => 'Transforming futures through study abroad programs, scholarship guidance, and comprehensive student support.',
+                'primary_btn' => ['text' => 'Explore Education', 'url' => 'division.show', 'param' => 'education'],
+                'outline_btn' => ['text' => 'Scholarships', 'url' => 'about'],
+            ],
+            [
+                'badge' => 'Endow Technologies',
+                'badge_icon' => 'fa-solid fa-microchip',
+                'headline' => 'Innovate. Transform.<br class="hidden sm:block"><span class="hero-accent-text" style="--accent: #fbbf24;">Lead.</span>',
+                'desc' => 'AI, cloud, custom software, and digital transformation — cutting-edge tech to power your business forward.',
+                'primary_btn' => ['text' => 'Explore Tech', 'url' => 'division.show', 'param' => 'technology'],
+                'outline_btn' => ['text' => 'Our Services', 'url' => 'about'],
+            ],
+            [
+                'badge' => 'Endow Travel',
+                'badge_icon' => 'fa-solid fa-plane-departure',
+                'headline' => 'Seamless <span class="hero-accent-text" style="--accent: #34d399;">Travel</span><br class="hidden sm:block">Worldwide',
+                'desc' => 'Tailored corporate and leisure travel with personalized itineraries, visa processing, and 24/7 support.',
+                'primary_btn' => ['text' => 'Explore Travel', 'url' => 'division.show', 'param' => 'travel'],
+                'outline_btn' => ['text' => 'Our Destinations', 'url' => 'about'],
+            ],
+        ];
+    @endphp
+
+    {{-- Slides --}}
+    <div id="hero-slides" class="hero-slides absolute inset-0">
+        @foreach($slides as $index => $slide)
+            <div class="hero-slide absolute inset-0 flex items-center justify-center"
+                 data-index="{{ $index }}"
+                 style="transform: translateY({{ $index === 0 ? '0' : '100%' }}); opacity: {{ $index === 0 ? '1' : '0' }}; pointer-events: {{ $index === 0 ? 'auto' : 'none' }}; z-index: {{ $index === 0 ? '2' : '1' }}; will-change: transform, opacity;">
+
+                {{-- Slide background gradient (subtle, mostly handled by shared blobs) --}}
+                <div class="absolute inset-0 opacity-30 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, rgba(212,32,44,0.08) 0%, transparent 70%);"></div>
+
+                {{-- Content --}}
+                <div class="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-28 sm:pt-28 sm:pb-32 relative z-10 w-full text-center">
+                    {{-- Badge --}}
+                    <div class="hero-badge inline-flex items-center gap-2 sm:gap-2.5 mb-8 sm:mb-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-[3px] px-5 py-2.5 rounded-full" style="color: var(--color-primary-light); border: 1px solid rgba(212,32,44,0.2); background: rgba(212,32,44,0.06); backdrop-filter: blur(8px);">
+                        <i class="{{ $slide['badge_icon'] }}" style="font-size: 10px;"></i>
+                        {{ $slide['badge'] }}
+                    </div>
+
+                    {{-- Headline --}}
+                    <h1 class="hero-heading text-white mb-8 sm:mb-10" style="font-size: clamp(2.25rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.04em;">
+                        {!! $slide['headline'] !!}
+                    </h1>
+
+                    {{-- Description --}}
+                    <p class="hero-desc max-w-xl sm:max-w-2xl mx-auto mb-12 sm:mb-14 px-2 sm:px-0" style="font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; color: rgba(255,255,255,0.45); letter-spacing: -0.01em;">
+                        {{ $slide['desc'] }}
+                    </p>
+
+                    {{-- CTAs --}}
+                    <div class="hero-ctas flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+                        @php
+                            $primaryUrl = isset($slide['primary_btn']['param'])
+                                ? route($slide['primary_btn']['url'], $slide['primary_btn']['param'])
+                                : route($slide['primary_btn']['url']);
+                        @endphp
+                        <a href="{{ $primaryUrl }}" class="hero-btn-primary group">
+                            <span class="relative z-10">{{ $slide['primary_btn']['text'] }}</span>
+                            <span class="hero-btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="hero-btn-glow"></span>
+                        </a>
+                        <a href="{{ route($slide['outline_btn']['url']) }}" class="hero-btn-ghost group">
+                            <span>{{ $slide['outline_btn']['text'] }}</span>
+                            <i class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    {{-- Combined Scroll Indicator + Pagination Pills --}}
+    <div class="hero-scroll-group absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-4">
+        {{-- Pill Pagination --}}
+        <div class="hero-pills flex items-center gap-2.5">
+            @foreach($slides as $index => $slide)
+                <button class="hero-pill relative overflow-hidden border-0 cursor-pointer"
+                        data-index="{{ $index }}"
+                        aria-label="Slide {{ $index + 1 }}"
+                        style="width: {{ $index === 0 ? '28px' : '8px' }}; height: 8px; border-radius: 999px; background: {{ $index === 0 ? 'var(--color-primary)' : 'rgba(255,255,255,0.2)' }}; transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2), background 0.35s ease;">
+                    @if($index === 0)
+                        <span class="hero-pill-progress absolute inset-0 rounded-full" style="background: rgba(255,255,255,0.25); width: 0%;"></span>
+                    @endif
+                </button>
+            @endforeach
+        </div>
+
+        {{-- Premium Mouse Scroll Icon --}}
+        <div class="hero-mouse-wrap flex flex-col items-center gap-2.5">
+            <span class="hero-scroll-label text-[10px] font-bold uppercase tracking-[5px]" style="color: rgba(255,255,255,0.3);">Scroll</span>
+            <div class="hero-mouse-outline relative w-[26px] h-[42px] rounded-full flex items-start justify-center pt-[10px]" style="border: 2px solid rgba(255,255,255,0.18);">
+                {{-- Scroll wheel that animates downward --}}
+                <div class="hero-mouse-wheel w-[3px] h-[7px] rounded-full" style="background: rgba(255,255,255,0.5);"></div>
             </div>
         </div>
     </div>
