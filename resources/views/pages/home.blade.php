@@ -512,9 +512,11 @@
             </div>
 
             <div data-animate>
-                <div class="img-placeholder" style="height: 420px;">
-                    <i class="fa-solid fa-users-gear text-5xl mb-3"></i>
-                    <span>Our Expert Team</span>
+                <div class="rounded-xl overflow-hidden" style="height: 420px;">
+                    <img src="{{ asset('images/Endow Corporation as a Visionary Leader.png') }}"
+                         alt="Our Expert Team"
+                         class="w-full h-full object-cover"
+                         loading="lazy">
                 </div>
             </div>
         </div>
