@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="travelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a0c;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#travelGrad)"/>
+  <!-- 9-dot grid pattern -->
+  <g fill="#D4202C" opacity="0.25">
+    <!-- Row 1 -->
+    <circle cx="200" cy="100" r="6"/>
+    <circle cx="400" cy="100" r="3"/>
+    <circle cx="600" cy="100" r="5"/>
+    <!-- Row 2 -->
+    <circle cx="200" cy="300" r="4"/>
+    <circle cx="400" cy="300" r="8"/>
+    <circle cx="600" cy="300" r="3"/>
+    <!-- Row 3 -->
+    <circle cx="200" cy="500" r="5"/>
+    <circle cx="400" cy="500" r="4"/>
+    <circle cx="600" cy="500" r="7"/>
+  </g>
+  <!-- World map abstract lines -->
+  <g opacity="0.12" stroke="#D4202C" stroke-width="2" fill="none">
+    <path d="M100,200 Q250,150 400,220 Q550,290 700,180"/>
+    <path d="M120,250 Q300,200 500,260 Q650,320 720,280"/>
+    <path d="M150,300 Q350,250 550,310 Q680,360 740,340"/>
+  </g>
+  <!-- Airplane icon abstract -->
+  <g transform="translate(680,80) rotate(-15)" opacity="0.10" fill="#ffffff">
+    <path d="M0,-8 L-15,-2 L-15,2 L-5,5 L-8,12 L0,10 L8,12 L5,5 L15,2 L15,-2 Z"/>
+  </g>
+  <!-- Subtle grid -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+</svg>

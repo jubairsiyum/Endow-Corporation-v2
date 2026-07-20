@@ -163,24 +163,82 @@
             <p class="text-base max-w-2xl mx-auto" style="color: var(--color-text);">Comprehensive solutions across four core divisions, delivering excellence worldwide.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach([
-                ['icon' => 'fa-solid fa-plane-departure', 'title' => 'Endow Travel', 'description' => 'Tailored travel solutions for businesses and individuals. Personalized itineraries and exclusive deals.', 'route' => 'travel'],
-                ['icon' => 'fa-solid fa-graduation-cap', 'title' => 'Global Education', 'description' => 'Transforming education through world-class programs, scholarship guidance, and student support.', 'route' => 'education'],
-                ['icon' => 'fa-solid fa-microchip', 'title' => 'Technologies', 'description' => 'Cutting-edge tech solutions including AI, cloud computing, custom development, and digital transformation.', 'route' => 'technology'],
-                ['icon' => 'fa-solid fa-heart-pulse', 'title' => 'Hospital Tourism', 'description' => 'Access world-class medical facilities across 30+ countries with comprehensive healthcare travel coordination.', 'route' => 'hospital-tourism'],
-                ['icon' => 'fa-solid fa-earth-americas', 'title' => 'Global Reach', 'description' => 'Operating across 30+ countries with deep local knowledge and international standards.', 'route' => 'about'],
-                ['icon' => 'fa-solid fa-handshake', 'title' => 'Consulting', 'description' => 'Expert consulting services to help businesses grow, connect, and succeed in the global market.', 'route' => 'consulting'],
-            ] as $index => $service)
-                <a href="{{ route('division.show', $service['route']) }}" data-animate class="service-card group block" style="animation-delay: {{ $index * 0.08 }}s;">
-                    <div class="service-icon mb-5">
-                        <i class="{{ $service['icon'] }}"></i>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @php
+                $services = [
+                    [
+                        'icon' => 'fa-solid fa-plane-departure',
+                        'title' => 'Endow Travel',
+                        'description' => 'Tailored travel solutions for businesses and individuals. Personalized itineraries, visa processing, and exclusive corporate deals.',
+                        'route' => 'travel',
+                        'photo' => asset('images/services/travel-photo.jpg'),
+                        'fallback' => asset('images/services/travel-bg.svg'),
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-graduation-cap',
+                        'title' => 'Global Education',
+                        'description' => 'Transforming futures through study abroad programs, scholarship guidance, language training, and student support.',
+                        'route' => 'education',
+                        'photo' => asset('images/services/733542680_989042620614397_7628936787862668773_n.jpg'),
+                        'fallback' => asset('images/services/education-bg.svg'),
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-microchip',
+                        'title' => 'Endow Technologies',
+                        'description' => 'AI, cloud computing, custom software development, and digital transformation — powering your business forward.',
+                        'route' => 'technology',
+                        'photo' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
+                        'fallback' => asset('images/services/technology-bg.svg'),
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-heart-pulse',
+                        'title' => 'Hospital Tourism',
+                        'description' => 'Premium healthcare treatments in South Korea with world-class facilities. End-to-end medical travel coordination and dedicated 24/7 support.',
+                        'route' => 'hospital-tourism',
+                        'photo' => 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop',
+                        'fallback' => asset('images/services/healthcare-bg.svg'),
+                    ],
+                ];
+            @endphp
+
+            @foreach($services as $index => $service)
+                <a href="{{ route('division.show', $service['route']) }}" data-animate class="service-card-v2 group relative overflow-hidden rounded-2xl" style="height: 340px; animation-delay: {{ $index * 0.08 }}s;">
+                    {{-- Background Photo via img tag (onerror works on img, not div) --}}
+                    <img src="{{ $service['photo'] }}"
+                         alt="{{ $service['title'] }}"
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='{{ $service['fallback'] }}';">
+
+                    {{-- Dark overlay gradient --}}
+                    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.65) 50%, rgba(10,10,10,0.92) 100%);"></div>
+
+                    {{-- Brand accent line at top — appears on hover --}}
+                    <div class="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style="background: var(--color-primary);"></div>
+
+                    {{-- Content --}}
+                    <div class="relative z-10 flex flex-col justify-end h-full p-6 sm:p-8">
+                        {{-- Icon --}}
+                        <div class="service-icon-v2 w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-400 group-hover:scale-110" style="background: rgba(212,32,44,0.2); border: 1px solid rgba(212,32,44,0.25);">
+                            <i class="{{ $service['icon'] }}" style="font-size: 18px; color: var(--color-primary-light);"></i>
+                        </div>
+
+                        {{-- Title --}}
+                        <h3 class="text-lg font-bold mb-2 transition-colors duration-300 text-white group-hover:text-primary-light">
+                            {{ $service['title'] }}
+                        </h3>
+
+                        {{-- Description — slides up on hover --}}
+                        <p class="text-sm leading-relaxed mb-4 transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100" style="color: rgba(255,255,255,0.6);">
+                            {{ $service['description'] }}
+                        </p>
+
+                        {{-- CTA --}}
+                        <span class="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300" style="color: var(--color-primary-light);">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                        </span>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 transition-colors" style="color: var(--color-text-heading);" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-text-heading)'">{{ $service['title'] }}</h3>
-                    <p class="text-sm leading-relaxed mb-5" style="color: var(--color-text);">{{ $service['description'] }}</p>
-                    <span class="inline-flex items-center gap-2 text-sm font-semibold transition-all" style="color: var(--color-primary);">
-                        Learn More <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
-                    </span>
                 </a>
             @endforeach
         </div>

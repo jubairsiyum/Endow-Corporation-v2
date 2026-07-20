@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a0a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#hGrad)"/>
+  <!-- Heartbeat line -->
+  <g opacity="0.15" stroke="#e83542" stroke-width="2.5" fill="none">
+    <path d="M50,300 L200,300 L230,300 L250,240 L270,360 L290,300 L350,300 L380,300 L400,250 L420,350 L440,300 L500,300 L550,300 L580,280 L600,340 L620,300 L750,300"/>
+  </g>
+  <!-- Medical cross abstract -->
+  <g transform="translate(650,120)" opacity="0.08">
+    <rect x="-25" y="-60" width="50" height="120" rx="8" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <rect x="-60" y="-25" width="120" height="50" rx="8" fill="none" stroke="#ffffff" stroke-width="3"/>
+  </g>
+  <!-- Pulse rings -->
+  <g opacity="0.06" fill="none" stroke="#e83542" stroke-width="1">
+    <circle cx="150" cy="400" r="40"/>
+    <circle cx="150" cy="400" r="60"/>
+    <circle cx="150" cy="400" r="80"/>
+  </g>
+  <g opacity="0.06" fill="none" stroke="#e83542" stroke-width="1">
+    <circle cx="600" cy="350" r="35"/>
+    <circle cx="600" cy="350" r="55"/>
+  </g>
+  <!-- Dots -->
+  <g opacity="0.2" fill="#e83542">
+    <circle cx="100" cy="150" r="2"/>
+    <circle cx="700" cy="450" r="2"/>
+    <circle cx="300" cy="500" r="2"/>
+    <circle cx="500" cy="100" r="2"/>
+  </g>
+</svg>

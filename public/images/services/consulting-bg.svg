@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="cGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a0c;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#cGrad)"/>
+  <!-- Abstract handshake / partnership lines -->
+  <g opacity="0.12" stroke="#D4202C" stroke-width="2" fill="none">
+    <path d="M150,200 Q300,150 400,200 Q500,250 650,200"/>
+    <path d="M150,200 Q300,250 400,200 Q500,150 650,200"/>
+  </g>
+  <!-- Strategy / growth arrows -->
+  <g opacity="0.1" fill="none" stroke="#e83542" stroke-width="2">
+    <path d="M100,450 L200,380 L300,400 L450,320 L550,340 L700,260"/>
+    <polygon points="700,260 690,275 695,265 685,268"/>
+  </g>
+  <!-- Building blocks / organization -->
+  <g opacity="0.08" fill="none" stroke="#ffffff" stroke-width="1.5">
+    <rect x="500" y="120" width="50" height="50" rx="4"/>
+    <rect x="560" y="120" width="50" height="50" rx="4"/>
+    <rect x="530" y="70" width="50" height="50" rx="4"/>
+    <rect x="500" y="180" width="50" height="50" rx="4"/>
+    <rect x="560" y="180" width="50" height="50" rx="4"/>
+  </g>
+  <!-- Connecting dots -->
+  <g opacity="0.15" fill="#D4202C">
+    <circle cx="200" cy="200" r="3"/>
+    <circle cx="400" cy="200" r="3"/>
+    <circle cx="600" cy="200" r="3"/>
+    <circle cx="300" cy="300" r="3"/>
+    <circle cx="500" cy="340" r="3"/>
+    <circle cx="700" cy="260" r="3"/>
+  </g>
+  <!-- Subtle grid -->
+  <g opacity="0.025" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+  </g>
+</svg>
