@@ -325,8 +325,8 @@
 
                 <div class="space-y-4 mb-8">
                     @foreach(['Innovation', 'Excellence', 'Global Reach', 'Customer Focus'] as $point)
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.08);">
+                        <div class="about-check-pill flex items-center gap-3 p-2 rounded-lg cursor-default" style="background: transparent;">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 feature-icon-premium" style="background: rgba(212,32,44,0.08);">
                                 <i class="fa-solid fa-check text-xs" style="color: var(--color-primary);"></i>
                             </div>
                             <span class="text-sm font-semibold" style="color: var(--color-text-heading);">{{ $point }}</span>
@@ -368,15 +368,17 @@
             @endphp
 
             @foreach($divisions as $index => $div)
-                <a href="{{ route('division.show', $div['route']) }}" data-animate class="group p-7 rounded-2xl transition-all duration-300" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);" onmouseover="this.style.borderColor='rgba(212,32,44,0.3)'; this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'; this.style.background='rgba(255,255,255,0.03)';">
+                <a href="{{ route('division.show', $div['route']) }}" data-animate
+                   class="division-card-premium group p-7 rounded-2xl"
+                   style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
                     <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1); border: 1px solid rgba(212,32,44,0.15);">
+                        <div class="division-icon-premium w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.12); border: 1px solid rgba(212,32,44,0.18);">
                             <i class="{{ $div['icon'] }} text-lg" style="color: var(--color-primary-light);"></i>
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center justify-between mb-2">
                                 <h3 class="text-lg font-bold text-white">{{ $div['name'] }}</h3>
-                                <i class="fa-solid fa-arrow-right text-sm transition-transform group-hover:translate-x-1" style="color: var(--color-primary);"></i>
+                                <i class="division-arrow fa-solid fa-arrow-right text-sm" style="color: var(--color-primary);"></i>
                             </div>
                             <p class="text-sm mb-3" style="color: rgba(255,255,255,0.5);">{{ $div['desc'] }}</p>
                             <div class="flex flex-wrap gap-2">
@@ -563,8 +565,8 @@
                         ['icon' => 'fa-solid fa-headset', 'title' => '24/7 Customer Support', 'desc' => 'Always available to provide support whenever you need it.'],
                         ['icon' => 'fa-solid fa-shield-halved', 'title' => 'Trusted & Secure', 'desc' => 'Enterprise-grade security and compliance standards.'],
                     ] as $f)
-                        <div class="flex items-start gap-4 p-5 rounded-xl transition-all" style="background: white; border: 1px solid var(--color-border);" onmouseover="this.style.borderColor='rgba(212,32,44,0.15)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.04)';" onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
-                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(212,32,44,0.1) 0%, rgba(212,32,44,0.02) 100%);">
+                        <div class="feature-card-premium flex items-start gap-4 p-5 rounded-xl" style="background: white; border: 1px solid var(--color-border);">
+                            <div class="feature-icon-premium w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(212,32,44,0.1) 0%, rgba(212,32,44,0.02) 100%);">
                                 <i class="{{ $f['icon'] }} text-sm" style="color: var(--color-primary);"></i>
                             </div>
                             <div>
@@ -605,7 +607,7 @@
                 ['text' => 'With Endow Global Education, I gained access to programs that completely transformed my career. Their support was incredible.', 'name' => 'Education Client', 'role' => 'Education Division', 'icon' => 'fa-solid fa-graduation-cap'],
                 ['text' => 'Endow Technologies delivered cutting-edge solutions that revolutionized our operations. Truly understands modern business.', 'name' => 'Tech Client', 'role' => 'Technology Division', 'icon' => 'fa-solid fa-microchip'],
             ] as $index => $testimonial)
-                <div data-animate class="testimonial-card {{ $index === 0 ? 'active' : '' }}">
+                <div data-animate class="testimonial-card testimonial-card-premium {{ $index === 0 ? 'active' : '' }}">
                     <div class="mb-4" style="color: var(--color-primary); font-size: 32px;">
                         <i class="fa-solid fa-quote-left"></i>
                     </div>

@@ -800,6 +800,90 @@
     transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+/* ── Premium Feature Cards (Why Choose Us, Technologies, Education) ── */
+.feature-card-premium {
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    will-change: transform;
+}
+.feature-card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(212,32,44,0.08);
+}
+.feature-card-premium .feature-icon-premium {
+    transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.feature-card-premium:hover .feature-icon-premium {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(212,32,44,0.15);
+}
+
+/* ── Premium Division Cards ── */
+.division-card-premium {
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease, background 0.45s ease;
+    will-change: transform;
+}
+.division-card-premium:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(212,32,44,0.2);
+}
+.division-card-premium .division-icon-premium {
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.division-card-premium:hover .division-icon-premium {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(212,32,44,0.2);
+    border-color: rgba(212,32,44,0.35) !important;
+}
+.division-card-premium .division-arrow {
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.3s ease;
+}
+.division-card-premium:hover .division-arrow {
+    transform: translateX(6px);
+    color: var(--color-primary-light) !important;
+}
+
+/* ── Premium Testimonial Cards ── */
+.testimonial-card-premium {
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    will-change: transform;
+}
+.testimonial-card-premium:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,32,44,0.1);
+}
+
+/* ── About Checkmarks — hover lift ── */
+.about-check-pill {
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s ease, background 0.35s ease;
+    will-change: transform;
+}
+.about-check-pill:hover {
+    transform: translateX(6px);
+    background: rgba(212,32,44,0.06) !important;
+}
+
+/* ── Section-level staggered entrance ── */
+@keyframes sectionCardIn {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.section-card-entrance {
+    animation: sectionCardIn 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.section-card-entrance[data-delay="0"] { animation-delay: 0.05s; }
+.section-card-entrance[data-delay="1"] { animation-delay: 0.12s; }
+.section-card-entrance[data-delay="2"] { animation-delay: 0.19s; }
+.section-card-entrance[data-delay="3"] { animation-delay: 0.26s; }
+
+.stat-number-entrance {
+    opacity: 0;
+    animation: sectionCardIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.stat-number-entrance[data-delay="0"] { animation-delay: 0.05s; }
+.stat-number-entrance[data-delay="1"] { animation-delay: 0.15s; }
+.stat-number-entrance[data-delay="2"] { animation-delay: 0.25s; }
+.stat-number-entrance[data-delay="3"] { animation-delay: 0.35s; }
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-carousel *,
