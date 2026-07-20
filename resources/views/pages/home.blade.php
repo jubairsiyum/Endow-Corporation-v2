@@ -300,9 +300,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {{-- Left: Visual --}}
             <div data-animate class="relative">
-                <div class="img-placeholder" style="height: 420px;">
-                    <i class="fa-solid fa-building-columns text-5xl mb-3"></i>
-                    <span>Endow Corporation Office</span>
+                <div class="rounded-xl overflow-hidden" style="height: 420px;">
+                    <img src="{{ asset('images/ec excellence.png') }}"
+                         alt="Endow Corporation Excellence"
+                         class="w-full h-full object-cover"
+                         loading="lazy">
                 </div>
                 <div class="absolute -bottom-5 -right-5 bg-white rounded-xl p-5" style="box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-left: 3px solid var(--color-primary);">
                     <p class="text-3xl font-bold" style="color: var(--color-primary);">7+</p>
