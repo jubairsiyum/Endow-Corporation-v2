@@ -1,6 +1,9 @@
 // ── Scroll Stack — GSAP ScrollTrigger Card Stacking ──
 import './scroll-stack.js';
 
+// ── Testimonial Carousel — Auto-rotating reviews ──
+import './testimonial-carousel.js';
+
 // ── Premium Services Section — Spotlight + Entrance ──
 (function () {
     const cards = document.querySelectorAll('.service-card-v3');

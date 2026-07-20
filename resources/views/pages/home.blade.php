@@ -524,9 +524,9 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- TESTIMONIALS --}}
+{{-- TESTIMONIALS — Auto-rotating Carousel --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: #f0f0f0;">
+<section class="section-gap testimonial-section" style="background-color: #f0f0f0;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-[48px]" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
@@ -536,42 +536,65 @@
             <h2 class="section-heading">What Our Clients <span class="gradient-text">Say</span></h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @php
-                $allTestimonials = config('testimonials', []);
-                // Pick 3 random reviews — fresh on every page load
-                $testimonials = !empty($allTestimonials)
-                    ? collect($allTestimonials)->shuffle()->take(3)->all()
-                    : [];
-            @endphp
-            @foreach($testimonials as $index => $testimonial)
-                <div data-animate class="testimonial-card testimonial-card-premium {{ $index === 0 ? 'active' : '' }}">
-                    <div class="mb-4" style="color: var(--color-primary); font-size: 32px;">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-                    <p class="text-sm leading-relaxed mb-6" style="color: var(--color-text);">"{{ $testimonial['text'] }}"</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        @for($i = 0; $i < 5; $i++)
-                            <i class="fa-solid fa-star text-sm" style="color: #fbbf24;"></i>
-                        @endfor
-                    </div>
-                    <div class="pt-5" style="border-top: 1px solid var(--color-border);">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(212,32,44,0.08);">
-                                    <i class="{{ $testimonial['icon'] }} text-sm" style="color: var(--color-primary);"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold" style="color: var(--color-text-heading);">{{ $testimonial['name'] }}</p>
-                                    <p class="text-xs" style="color: var(--color-text-muted);">{{ $testimonial['role'] }}</p>
+        @php
+            $allTestimonials = config('testimonials', []);
+        @endphp
+
+        @if(!empty($allTestimonials))
+            <div class="testimonial-carousel" style="position: relative; overflow: hidden; padding: 0 48px;">
+                {{-- Track — pages slide horizontally --}}
+                <div class="testimonial-track" style="display: flex; gap: 1.5rem; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform;">
+                    @foreach($allTestimonials as $index => $testimonial)
+                        <div class="testimonial-card testimonial-card-premium flex-shrink-0 px-4 {{ $index === 0 ? 'active' : '' }}"
+                             style="width: 33.333%; min-width: 280px;">
+                            <div class="mb-4" style="color: var(--color-primary); font-size: 32px;">
+                                <i class="fa-solid fa-quote-left"></i>
+                            </div>
+                            <p class="text-sm leading-relaxed mb-6" style="color: var(--color-text);">"{{ $testimonial['text'] }}"</p>
+                            <div class="flex items-center gap-1 mb-4">
+                                @for($i = 0; $i < ($testimonial['stars'] ?? 5); $i++)
+                                    <i class="fa-solid fa-star text-sm" style="color: #fbbf24;"></i>
+                                @endfor
+                            </div>
+                            <div class="pt-5" style="border-top: 1px solid var(--color-border);">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(212,32,44,0.08);">
+                                            <i class="{{ $testimonial['icon'] }} text-sm" style="color: var(--color-primary);"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold" style="color: var(--color-text-heading);">{{ $testimonial['name'] }}</p>
+                                            <p class="text-xs" style="color: var(--color-text-muted);">{{ $testimonial['role'] }}</p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-2xl" style="color: rgba(212,32,44,0.06);"></i>
                                 </div>
                             </div>
-                            <i class="fa-solid fa-quote-right text-2xl" style="color: rgba(212,32,44,0.06);"></i>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
+
+                {{-- Arrows --}}
+                <button class="testimonial-prev" aria-label="Previous testimonial"
+                        style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-border); background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                    <i class="fa-solid fa-chevron-left text-sm" style="color: var(--primary);"></i>
+                </button>
+                <button class="testimonial-next" aria-label="Next testimonial"
+                        style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-border); background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.08); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                    <i class="fa-solid fa-chevron-right text-sm" style="color: var(--primary);"></i>
+                </button>
+
+                {{-- Dots --}}
+                <div class="testimonial-dots" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;">
+                    @foreach($allTestimonials as $index => $t)
+                        <button class="testimonial-dot {{ $index === 0 ? 'testimonial-dot--active' : '' }}"
+                                data-index="{{ $index }}"
+                                aria-label="Go to testimonial {{ $index + 1 }}"
+                                style="width: 10px; height: 10px; border-radius: 50%; border: none; background: {{ $index === 0 ? 'var(--color-primary)' : 'rgba(0,0,0,0.15)' }}; cursor: pointer; transition: all 0.3s ease;"></button>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 </section>
 
