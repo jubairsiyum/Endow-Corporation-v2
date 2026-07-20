@@ -752,6 +752,54 @@
     }
 }
 
+/* ── Premium Services Section ── */
+.services-section {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Service Card v3 */
+.service-card-v3 {
+    will-change: transform;
+}
+.service-card-v3:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(212,32,44,0.15);
+    border-color: rgba(212,32,44,0.25) !important;
+}
+.service-card-v3:hover img {
+    transform: scale(1.08);
+}
+.service-card-v3:hover .service-border-glow {
+    opacity: 1;
+}
+.service-card-v3:hover .service-glass-icon {
+    box-shadow: 0 0 30px rgba(212,32,44,0.3), 0 0 60px rgba(212,32,44,0.1);
+    border-color: rgba(212,32,44,0.35) !important;
+    background: rgba(212,32,44,0.22) !important;
+}
+.service-card-v3:hover .service-cta i {
+    transform: translateX(4px);
+}
+
+/* Staggered entrance animations */
+@keyframes serviceCardIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.service-card-v3.service-card-visible {
+    animation: serviceCardIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.service-card-v3[data-index="0"].service-card-visible { animation-delay: 0.05s; }
+.service-card-v3[data-index="1"].service-card-visible { animation-delay: 0.15s; }
+.service-card-v3[data-index="2"].service-card-visible { animation-delay: 0.25s; }
+.service-card-v3[data-index="3"].service-card-visible { animation-delay: 0.35s; }
+
+/* Glass icon — subtle hover glow */
+.service-glass-icon {
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-carousel *,
@@ -765,4 +813,7 @@
     .hero-pill-progress { transition: none !important; }
     .hero-mouse-wheel { animation: none !important; }
     .hero-scroll-group { animation: none !important; opacity: 1; }
+    .service-card-v3 { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .service-card-v3:hover { transform: none !important; }
+    .service-card-v3:hover img { transform: none !important; }
 }

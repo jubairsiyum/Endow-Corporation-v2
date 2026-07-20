@@ -150,50 +150,62 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- SERVICES --}}
+{{-- SERVICES — Premium Enterprise Showcase --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[48px]" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-briefcase"></i>
+<section class="services-section relative overflow-hidden" style="background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,32,44,0.025) 0%, transparent 60%), var(--color-body-bg);">
+    {{-- Subtle grid texture --}}
+    <div class="absolute inset-0 pointer-events-none opacity-[0.025]" style="background-image: radial-gradient(circle, #0a0a0a 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-28 lg:py-36 relative z-10">
+        {{-- Section Header — elegant typography with generous whitespace --}}
+        <div class="text-center mb-20 lg:mb-24" data-animate>
+            <div class="inline-flex items-center gap-2.5 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-6 h-px" style="background: var(--color-primary);"></span>
                 Our Services
+                <span class="w-6 h-px" style="background: var(--color-primary);"></span>
             </div>
-            <h2 class="section-heading">What We <span class="gradient-text">Offer</span></h2>
-            <p class="text-base max-w-2xl mx-auto" style="color: var(--color-text);">Comprehensive solutions across four core divisions, delivering excellence worldwide.</p>
+            <h2 class="text-[36px] sm:text-[44px] lg:text-[52px] font-extrabold mb-6 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.035em; line-height: 1.08;">
+                Solutions That <span class="gradient-text">Drive Results</span>
+            </h2>
+            <p class="text-base sm:text-lg max-w-xl mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">Four specialized divisions engineered to deliver excellence across every frontier.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{-- Cards Grid — 4 columns at lg, generous gap --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @php
                 $services = [
                     [
+                        'num' => '01',
                         'icon' => 'fa-solid fa-plane-departure',
                         'title' => 'Endow Travel',
-                        'description' => 'Tailored travel solutions for businesses and individuals. Personalized itineraries, visa processing, and exclusive corporate deals.',
+                        'description' => 'Tailored corporate and leisure travel with personalized itineraries, visa processing, and dedicated 24/7 support worldwide.',
                         'route' => 'travel',
                         'photo' => asset('images/services/travel-photo.jpg'),
                         'fallback' => asset('images/services/travel-bg.svg'),
                     ],
                     [
+                        'num' => '02',
                         'icon' => 'fa-solid fa-graduation-cap',
                         'title' => 'Global Education',
-                        'description' => 'Transforming futures through study abroad programs, scholarship guidance, language training, and student support.',
+                        'description' => 'World-class study programs, scholarship guidance, language training, and comprehensive student support — unlocking global opportunities.',
                         'route' => 'education',
                         'photo' => asset('images/services/733542680_989042620614397_7628936787862668773_n.jpg'),
                         'fallback' => asset('images/services/education-bg.svg'),
                     ],
                     [
+                        'num' => '03',
                         'icon' => 'fa-solid fa-microchip',
                         'title' => 'Endow Technologies',
-                        'description' => 'AI, cloud computing, custom software development, and digital transformation — powering your business forward.',
+                        'description' => 'AI, cloud, custom software, and digital transformation — cutting-edge tech engineered to power your business and accelerate growth.',
                         'route' => 'technology',
                         'photo' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
                         'fallback' => asset('images/services/technology-bg.svg'),
                     ],
                     [
+                        'num' => '04',
                         'icon' => 'fa-solid fa-heart-pulse',
                         'title' => 'Hospital Tourism',
-                        'description' => 'Premium healthcare treatments in South Korea with world-class facilities. End-to-end medical travel coordination and dedicated 24/7 support.',
+                        'description' => 'Premium healthcare treatments in South Korea with world-class facilities. End-to-end medical travel coordination and continuous 24/7 support.',
                         'route' => 'hospital-tourism',
                         'photo' => 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=500&fit=crop',
                         'fallback' => asset('images/services/healthcare-bg.svg'),
@@ -202,41 +214,55 @@
             @endphp
 
             @foreach($services as $index => $service)
-                <a href="{{ route('division.show', $service['route']) }}" data-animate class="service-card-v2 group relative overflow-hidden rounded-2xl" style="height: 340px; animation-delay: {{ $index * 0.08 }}s;">
-                    {{-- Background Photo via img tag (onerror works on img, not div) --}}
-                    <img src="{{ $service['photo'] }}"
-                         alt="{{ $service['title'] }}"
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                         loading="lazy"
-                         onerror="this.onerror=null; this.src='{{ $service['fallback'] }}';">
+                <a href="{{ route('division.show', $service['route']) }}"
+                   class="service-card-v3 group relative flex flex-col overflow-hidden cursor-pointer"
+                   data-index="{{ $index }}"
+                   style="border-radius: 26px; min-height: 420px; background: #0d0d0d; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;">
 
-                    {{-- Dark overlay gradient --}}
-                    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.65) 50%, rgba(10,10,10,0.92) 100%);"></div>
+                    {{-- Image Container — full height with zoom --}}
+                    <div class="absolute inset-0 overflow-hidden" style="border-radius: 26px;">
+                        <img src="{{ $service['photo'] }}"
+                             alt="{{ $service['title'] }}"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-800 ease-out"
+                             loading="lazy"
+                             onerror="this.onerror=null; this.src='{{ $service['fallback'] }}';"
+                             style="will-change: transform;">
+                    </div>
 
-                    {{-- Brand accent line at top — appears on hover --}}
-                    <div class="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style="background: var(--color-primary);"></div>
+                    {{-- Multi-layer Gradient Overlays — depth and readability --}}
+                    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.25) 30%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.94) 100%); border-radius: 26px;"></div>
+                    <div class="absolute inset-0 opacity-0 transition-opacity duration-600" style="background: linear-gradient(180deg, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.75) 65%, rgba(10,10,10,0.96) 100%); border-radius: 26px;"></div>
 
-                    {{-- Content --}}
-                    <div class="relative z-10 flex flex-col justify-end h-full p-6 sm:p-8">
-                        {{-- Icon --}}
-                        <div class="service-icon-v2 w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-400 group-hover:scale-110" style="background: rgba(212,32,44,0.2); border: 1px solid rgba(212,32,44,0.25);">
+                    {{-- Border Glow — animated on hover --}}
+                    <div class="service-border-glow absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-600" style="border-radius: 26px; border: 2px solid var(--color-primary); box-shadow: inset 0 0 30px rgba(212,32,44,0.1), 0 0 25px rgba(212,32,44,0.15);"></div>
+
+                    {{-- Spotlight — cursor-following radial glow --}}
+                    <div class="service-spotlight absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-400" style="border-radius: 26px;"></div>
+
+                    {{-- Content — pinned to bottom --}}
+                    <div class="relative z-10 flex flex-col justify-end flex-1 p-6 sm:p-7">
+                        {{-- Number Prefix — elegant monospace --}}
+                        <div class="text-[10px] font-bold tracking-[3px] mb-4" style="color: rgba(255,255,255,0.25); font-family: 'Inter', monospace; letter-spacing: 0.2em;">{{ $service['num'] }}</div>
+
+                        {{-- Glass Icon --}}
+                        <div class="service-glass-icon w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110" style="background: rgba(212,32,44,0.15); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212,32,44,0.2); box-shadow: 0 0 20px rgba(212,32,44,0.1);">
                             <i class="{{ $service['icon'] }}" style="font-size: 18px; color: var(--color-primary-light);"></i>
                         </div>
 
-                        {{-- Title --}}
-                        <h3 class="text-lg font-bold mb-2 transition-colors duration-300 text-white group-hover:text-primary-light">
+                        {{-- Title — refined typography --}}
+                        <h3 class="text-xl font-bold mb-3 transition-colors duration-400 text-white" style="letter-spacing: -0.02em; line-height: 1.15;">
                             {{ $service['title'] }}
                         </h3>
 
-                        {{-- Description — slides up on hover --}}
-                        <p class="text-sm leading-relaxed mb-4 transition-all duration-500 max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100" style="color: rgba(255,255,255,0.6);">
+                        {{-- Description — always visible, subtle --}}
+                        <p class="text-sm leading-relaxed mb-5 transition-all duration-500" style="color: rgba(255,255,255,0.5); line-height: 1.6;">
                             {{ $service['description'] }}
                         </p>
 
-                        {{-- CTA --}}
-                        <span class="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300" style="color: var(--color-primary-light);">
-                            <span>Learn More</span>
-                            <i class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1.5"></i>
+                        {{-- CTA — animated arrow --}}
+                        <span class="service-cta inline-flex items-center gap-2 text-sm font-semibold transition-all duration-400" style="color: var(--color-primary-light);">
+                            <span>Explore Division</span>
+                            <i class="fa-solid fa-arrow-right text-xs transition-all duration-400"></i>
                         </span>
                     </div>
                 </a>

@@ -1,3 +1,41 @@
+// ── Premium Services Section — Spotlight + Entrance ──
+(function () {
+    const cards = document.querySelectorAll('.service-card-v3');
+    if (!cards.length) return;
+
+    // Cursor-following spotlight
+    cards.forEach(card => {
+        const spotlight = card.querySelector('.service-spotlight');
+        if (!spotlight) return;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            spotlight.style.opacity = '1';
+            spotlight.style.background = `radial-gradient(circle 200px at ${x}% ${y}%, rgba(212,32,44,0.12) 0%, transparent 70%)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            spotlight.style.opacity = '0';
+        });
+    });
+
+    // Staggered entrance — Intersection Observer
+    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+
+    const entranceObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('service-card-visible');
+                entranceObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => entranceObserver.observe(card));
+})();
+
 // ── Premium Hero Carousel ──
 // Spring-eased vertical transitions, pill progress indicators, staggered text reveals
 (function () {
