@@ -537,11 +537,14 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @foreach([
-                ['text' => 'Endow Travel made our business trips effortless! Their attention to detail ensured every journey was smooth and productive.', 'name' => 'Corporate Client', 'role' => 'Travel Division', 'icon' => 'fa-solid fa-plane-departure'],
-                ['text' => 'With Endow Global Education, I gained access to programs that completely transformed my career. Their support was incredible.', 'name' => 'Education Client', 'role' => 'Education Division', 'icon' => 'fa-solid fa-graduation-cap'],
-                ['text' => 'Endow Technologies delivered cutting-edge solutions that revolutionized our operations. Truly understands modern business.', 'name' => 'Tech Client', 'role' => 'Technology Division', 'icon' => 'fa-solid fa-microchip'],
-            ] as $index => $testimonial)
+            @php
+                $allTestimonials = config('testimonials', []);
+                // Pick 3 random reviews — fresh on every page load
+                $testimonials = !empty($allTestimonials)
+                    ? collect($allTestimonials)->shuffle()->take(3)->all()
+                    : [];
+            @endphp
+            @foreach($testimonials as $index => $testimonial)
                 <div data-animate class="testimonial-card testimonial-card-premium {{ $index === 0 ? 'active' : '' }}">
                     <div class="mb-4" style="color: var(--color-primary); font-size: 32px;">
                         <i class="fa-solid fa-quote-left"></i>
