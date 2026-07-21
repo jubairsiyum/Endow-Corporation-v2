@@ -409,3 +409,28 @@ import './testimonial-carousel.js';
         }
     });
 })();
+
+// ── Divisions — Staggered Scroll Entrance ──
+(function () {
+    const items = document.querySelectorAll('[data-animate-div]');
+    if (!items.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        items.forEach(el => el.classList.add('div-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = parseInt(el.style.animationDelay) || 0;
+                setTimeout(() => el.classList.add('div-visible'), delay);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    items.forEach(el => observer.observe(el));
+})();

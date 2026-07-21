@@ -898,7 +898,185 @@
 }
 .division-card-premium:hover .division-arrow {
     transform: translateX(6px);
-    color: var(--color-primary-light) !important;
+}
+
+/* ── New Crafted Division Cards ── */
+.division-card {
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+    will-change: transform;
+}
+
+.division-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08), 0 1px 0 rgba(0,0,0,0.04) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+.division-card .division-card-body {
+    transition: padding 0.4s ease;
+}
+
+.division-card .division-icon-wrap {
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.division-card:hover .division-icon-wrap {
+    transform: scale(1.08);
+    box-shadow: 0 0 28px rgba(0,0,0,0.06);
+}
+
+.division-card:hover .division-icon-wrap i {
+    transform: scale(1.1);
+}
+
+.division-card .division-arrow-wrap {
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.division-card:hover .division-arrow-wrap {
+    transform: translateX(4px);
+    background: rgba(0,0,0,0.06) !important;
+}
+
+.division-card:hover .division-arrow-wrap i {
+    color: var(--color-primary) !important;
+}
+
+/* ── Divisions Section Responsive ── */
+@media (max-width: 640px) {
+    .division-card .division-card-body {
+        padding: 1.25rem;
+    }
+    .division-card .division-icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+    .division-card .division-icon-wrap i {
+        font-size: 1rem;
+    }
+    .division-card .division-arrow-wrap {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════
+   DIVISIONS — Premium Enterprise Cards
+   ══════════════════════════════════════════════════════ */
+
+/* ── Card Surface ── */
+.div-card {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+}
+.div-card .div-card-surface {
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.div-card .div-card-glow {
+    transition: opacity 0.35s ease;
+}
+.div-card .div-icon-wrap {
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s ease;
+}
+.div-card .div-arrow-wrap {
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.div-card .div-arrow-wrap i {
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.3s ease;
+}
+.div-card .div-cta-text {
+    transition: color 0.3s ease;
+}
+.div-card .div-cta-arrow {
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ── Card Hover ── */
+.div-card:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+.div-card:hover .div-card-surface {
+    box-shadow: 0 24px 64px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.08);
+}
+.div-card:hover .div-card-glow {
+    opacity: 1;
+}
+.div-card:hover .div-icon-wrap {
+    transform: scale(1.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.div-card:hover .div-icon-wrap i {
+    transform: scale(1.1);
+}
+.div-card:hover .div-arrow-wrap {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    transform: translateX(3px);
+}
+.div-card:hover .div-arrow-wrap i {
+    color: white !important;
+    transform: translateX(2px);
+}
+.div-card:hover .div-cta-text {
+    color: var(--color-primary);
+}
+.div-card:hover .div-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Scroll Entrance Animation ── */
+[data-animate-div] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+[data-animate-div].div-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .div-card,
+    .div-card .div-card-surface,
+    .div-card .div-card-glow,
+    .div-card .div-icon-wrap,
+    .div-card .div-icon-wrap i,
+    .div-card .div-arrow-wrap,
+    .div-card .div-arrow-wrap i,
+    .div-card .div-cta-text,
+    .div-card .div-cta-arrow {
+        transition: none !important;
+    }
+    [data-animate-div] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    #divisions-section {
+        padding: 60px 0 70px;
+    }
+    .div-card .div-icon-wrap {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+    }
+    .div-card .div-arrow-wrap {
+        width: 36px;
+        height: 36px;
+    }
 }
 
 /* ── Premium Testimonial Cards ── */
@@ -968,4 +1146,295 @@
 }
 .footer-link:hover {
     color: rgba(255,255,255,0.8) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Full Page Device Adaptations
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (max 991px) ── */
+@media (max-width: 991px) {
+    /* Hero carousel height */
+    .hero-carousel {
+        min-height: 600px !important;
+    }
+
+    /* Service cards */
+    .service-card-v3 .service-glass-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+    }
+    .service-card-v3 .service-glass-icon i {
+        font-size: 16px;
+    }
+
+    /* Scroll stack viewport */
+    .scroll-stack-viewport {
+        height: 50vh;
+        min-height: 360px;
+    }
+
+    /* Testimonial cards — 2 per row */
+    .testimonial-track .testimonial-card-premium {
+        width: 45% !important;
+        min-width: 220px;
+    }
+}
+
+/* ── Mobile (max 767px) ── */
+@media (max-width: 767px) {
+    /* Hero */
+    .hero-carousel {
+        height: 85vh !important;
+        min-height: 500px !important;
+    }
+    .hero-heading {
+        font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+    }
+    .hero-desc {
+        font-size: 0.95rem !important;
+        max-width: 92% !important;
+    }
+    .hero-btn-primary {
+        padding: 6px 6px 6px 20px !important;
+        font-size: 14px !important;
+    }
+    .hero-btn-primary .hero-btn-icon {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .hero-btn-ghost {
+        padding: 12px 22px !important;
+        font-size: 14px !important;
+    }
+    .hero-badge {
+        font-size: 9px !important;
+        padding: 0.4rem 1rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* Geo elements — hide on small screens */
+    .hero-geo-1, .hero-geo-2, .hero-geo-3,
+    .hero-line-1, .hero-line-2, .hero-line-3 {
+        display: none;
+    }
+
+    /* Services grid — single column */
+    .services-section .grid {
+        gap: 1rem;
+    }
+    .service-card-v3 {
+        min-height: 320px !important;
+        border-radius: 20px !important;
+    }
+    .service-card-v3 .absolute.inset-0.overflow-hidden {
+        border-radius: 20px !important;
+    }
+    .service-card-v3 .service-border-glow {
+        border-radius: 20px !important;
+    }
+    .service-card-v3 .service-spotlight {
+        border-radius: 20px !important;
+    }
+    .service-card-v3 .absolute[style*="linear-gradient"] {
+        border-radius: 20px !important;
+    }
+
+    /* Why Choose Us — stack vertically */
+    .feature-card-premium {
+        padding: 1rem !important;
+    }
+
+    /* About check pills — full width */
+    .about-check-pill {
+        width: 100%;
+    }
+
+    /* Why Choose Us image */
+    .grid-cols-1.lg\:grid-cols-2 .rounded-xl.overflow-hidden {
+        height: 260px !important;
+    }
+
+    /* Scroll stack */
+    .scroll-stack-viewport {
+        height: 45vh;
+        min-height: 320px;
+        padding-top: 24px;
+    }
+    .scroll-stack-card {
+        height: calc(100% - 24px);
+    }
+    .scroll-stack-card-inner {
+        grid-template-columns: 1fr !important;
+    }
+    .scroll-stack-image {
+        min-height: 160px;
+    }
+
+    /* CTA */
+    .btn-primary-lg {
+        padding: 5px 5px 5px 22px !important;
+        font-size: 15px !important;
+    }
+    .btn-primary-lg .btn-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .btn-primary-lg .btn-icon i {
+        font-size: 14px !important;
+    }
+
+    /* Testimonials — single card */
+    .testimonial-carousel {
+        padding: 0 36px !important;
+    }
+    .testimonial-track .testimonial-card-premium {
+        width: 85% !important;
+        min-width: 240px;
+    }
+    .testimonial-prev, .testimonial-next {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    /* FAQ accordion */
+    .accordion-item .accordion-button {
+        padding: 16px 50px 16px 20px !important;
+        font-size: 14px !important;
+    }
+    .accordion-item .accordion-button::after {
+        right: 20px !important;
+    }
+    .accordion-item .accordion-body {
+        padding: 0 20px !important;
+    }
+    .accordion-item.active .accordion-body {
+        padding: 12px 20px 20px !important;
+    }
+
+    /* Trust badges */
+    .trust-badges-row {
+        gap: 1rem !important;
+    }
+}
+
+/* ── Small Mobile (max 480px) ── */
+@media (max-width: 480px) {
+    /* Hero */
+    .hero-carousel {
+        height: 80vh !important;
+        min-height: 450px !important;
+    }
+    .hero-heading {
+        font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    }
+    .hero-desc {
+        font-size: 0.875rem !important;
+    }
+    .hero-ctas {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+    }
+    .hero-btn-primary, .hero-btn-ghost {
+        justify-content: center !important;
+    }
+
+    /* Section headings */
+    .section-heading {
+        font-size: 26px !important;
+    }
+    .section-subtitle {
+        font-size: 10px !important;
+        letter-spacing: 1.5px !important;
+    }
+
+    /* Service cards */
+    .service-card-v3 .service-glass-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+    .service-card-v3 .service-glass-icon i {
+        font-size: 14px;
+    }
+
+    /* Scroll stack */
+    .scroll-stack-viewport {
+        height: 40vh;
+        min-height: 280px;
+    }
+    .scroll-stack-image {
+        min-height: 140px;
+    }
+
+    /* Section padding */
+    .section-gap {
+        padding-top: 60px !important;
+        padding-bottom: 40px !important;
+    }
+
+    /* Testimonials — full width single */
+    .testimonial-carousel {
+        padding: 0 28px !important;
+    }
+    .testimonial-track .testimonial-card-premium {
+        width: 92% !important;
+        min-width: 0;
+    }
+
+    /* CTA buttons */
+    .btn-primary {
+        padding: 4px 4px 4px 16px !important;
+        font-size: 14px !important;
+    }
+    .btn-primary .btn-icon {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .btn-primary .btn-icon i {
+        font-size: 12px !important;
+    }
+    .btn-outline {
+        padding: 10px 20px !important;
+        font-size: 13px !important;
+    }
+
+    /* Fix mobile bottom nav spacing */
+    body {
+        padding-bottom: 80px;
+    }
+
+    /* Appointment form */
+    .input-field {
+        font-size: 15px !important;
+        padding: 12px 0 !important;
+    }
+
+    /* About section image */
+    .grid-cols-1.lg\:grid-cols-2 .rounded-xl.overflow-hidden {
+        height: 260px !important;
+    }
+
+    /* Stat bar items */
+    .stat-item {
+        padding: 32px 20px 36px !important;
+    }
+    .stat-number {
+        font-size: 40px !important;
+    }
+    .stat-label {
+        font-size: 12px !important;
+    }
+
+    /* Appointment form card */
+    .rounded-2xl.p-8 {
+        padding: 1.5rem !important;
+    }
+
+    /* Hide trust badges extra spacing */
+    .trust-badges-row {
+        gap: 0.75rem !important;
+    }
 }

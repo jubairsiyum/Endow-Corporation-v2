@@ -344,48 +344,119 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- DIVISIONS --}}
+{{-- DIVISIONS — Premium Enterprise Showcase --}}
 {{-- ============================================ --}}
-<section class="section-gap pitch-dark">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[48px]" data-animate>
-            <div class="section-subtitle justify-center">
+<section id="divisions-section" class="relative overflow-hidden" style="padding: 100px 0 120px; background: #fafafa;">
+
+    {{-- Background Treatment --}}
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {{-- Radial gradient accents --}}
+        <div class="absolute" style="width: 600px; height: 600px; top: -120px; right: -150px; background: radial-gradient(circle, rgba(212,32,44,0.04) 0%, transparent 70%); filter: blur(60px);"></div>
+        <div class="absolute" style="width: 500px; height: 500px; bottom: -100px; left: -120px; background: radial-gradient(circle, rgba(212,32,44,0.03) 0%, transparent 70%); filter: blur(50px);"></div>
+        {{-- Faint grid --}}
+        <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+
+        {{-- Section Header --}}
+        <div class="text-center mb-16 sm:mb-20 div-header" data-animate-div>
+            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
                 <i class="fa-solid fa-building"></i>
                 Our Divisions
             </div>
-            <h2 class="section-heading">Explore Our <span class="gradient-text">Divisions</span></h2>
-            <p class="text-base max-w-2xl mx-auto" style="color: rgba(255,255,255,0.5);">Four specialized divisions working together to deliver comprehensive global solutions.</p>
+            <h2 class="section-heading" style="font-size: clamp(34px, 4.5vw, 52px); margin-bottom: 20px;">Four Pillars of <span class="gradient-text">Excellence</span></h2>
+            <p class="text-base sm:text-lg max-w-[680px] mx-auto" style="color: var(--color-text); line-height: 1.75;">
+                Each division operates with singular focus — together they deliver end-to-end global solutions across 30+ countries.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {{-- Divisions Grid --}}
             @php
                 $divisions = [
-                    ['route' => 'travel', 'name' => 'Endow Travel', 'desc' => 'Tailored travel solutions for businesses and individuals.', 'icon' => 'fa-solid fa-plane-departure', 'tags' => ['Corporate Travel', 'Leisure', 'Visa']],
-                    ['route' => 'education', 'name' => 'Global Education', 'desc' => 'World-class educational programs and scholarship guidance.', 'icon' => 'fa-solid fa-graduation-cap', 'tags' => ['Study Abroad', 'Scholarships', 'Language']],
-                    ['route' => 'technology', 'name' => 'Technologies', 'desc' => 'Cutting-edge tech solutions for digital transformation.', 'icon' => 'fa-solid fa-microchip', 'tags' => ['AI', 'Cloud', 'Software']],
-                    ['route' => 'hospital-tourism', 'name' => 'Hospital Tourism', 'desc' => 'World-class healthcare travel across 30+ countries.', 'icon' => 'fa-solid fa-heart-pulse', 'tags' => ['Medical Travel', 'Expert Care', 'Global']],
+                    [
+                        'route' => 'technology',
+                        'name' => 'Endow Technologies',
+                        'desc' => 'AI, cloud, custom software — cutting-edge digital transformation engineered to accelerate your business growth.',
+                        'icon' => 'fa-solid fa-microchip',
+                        'accent' => 'rgba(245,158,11,0.08)',
+                        'accentBorder' => 'rgba(245,158,11,0.15)',
+                        'accentHover' => 'rgba(245,158,11,0.12)',
+                        'iconColor' => '#d97706',
+                    ],
+                    [
+                        'route' => 'education',
+                        'name' => 'Global Education',
+                        'desc' => 'World-class study programs, scholarship guidance, language training — opening doors to global academic opportunities.',
+                        'icon' => 'fa-solid fa-graduation-cap',
+                        'accent' => 'rgba(124,58,237,0.08)',
+                        'accentBorder' => 'rgba(124,58,237,0.15)',
+                        'accentHover' => 'rgba(124,58,237,0.12)',
+                        'iconColor' => '#7c3aed',
+                    ],
+                    [
+                        'route' => 'hospital-tourism',
+                        'name' => 'Hospital Tourism',
+                        'desc' => 'World-class medical travel across 30+ countries — connecting patients with accredited hospitals and expert specialists.',
+                        'icon' => 'fa-solid fa-heart-pulse',
+                        'accent' => 'rgba(16,185,129,0.08)',
+                        'accentBorder' => 'rgba(16,185,129,0.15)',
+                        'accentHover' => 'rgba(16,185,129,0.12)',
+                        'iconColor' => '#059669',
+                    ],
+                    [
+                        'route' => 'travel',
+                        'name' => 'Endow Travel',
+                        'desc' => 'Tailored corporate & leisure travel with personalized itineraries, visa processing, and dedicated 24/7 support worldwide.',
+                        'icon' => 'fa-solid fa-plane-departure',
+                        'accent' => 'rgba(212,32,44,0.08)',
+                        'accentBorder' => 'rgba(212,32,44,0.15)',
+                        'accentHover' => 'rgba(212,32,44,0.12)',
+                        'iconColor' => '#D4202C',
+                    ],
                 ];
             @endphp
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
             @foreach($divisions as $index => $div)
-                <a href="{{ route('division.show', $div['route']) }}" data-animate
-                   class="division-card-premium group p-7 rounded-2xl"
-                   style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
-                    <div class="flex items-start gap-5">
-                        <div class="division-icon-premium w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.12); border: 1px solid rgba(212,32,44,0.18);">
-                            <i class="{{ $div['icon'] }} text-lg" style="color: var(--color-primary-light);"></i>
+                <a href="{{ route('division.show', $div['route']) }}"
+                   class="div-card group relative rounded-[22px] overflow-hidden block"
+                   data-animate-div
+                   style="animation-delay: {{ $index * 100 }}ms;"
+                   role="article"
+                   aria-label="{{ $div['name'] }}">
+
+                    {{-- Card surface --}}
+                    <div class="div-card-surface absolute inset-0 rounded-[22px]"
+                         style="background: white; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.02);"></div>
+
+                    {{-- Hover glow --}}
+                    <div class="div-card-glow absolute inset-0 rounded-[22px] pointer-events-none opacity-0 transition-opacity duration-300"
+                         style="background: radial-gradient(ellipse at 50% 0%, {{ $div['accent'] }} 0%, transparent 70%);"></div>
+
+                    <div class="relative z-10 p-8 sm:p-9 lg:p-10 flex flex-col h-full min-h-[240px]">
+                        {{-- Top row: Icon + Arrow --}}
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="div-icon-wrap w-[52px] h-[52px] rounded-[14px] flex items-center justify-center transition-all duration-300"
+                                 style="background: {{ $div['accent'] }}; border: 1px solid {{ $div['accentBorder'] }};">
+                                <i class="{{ $div['icon'] }} text-xl transition-transform duration-300" style="color: {{ $div['iconColor'] }};"></i>
+                            </div>
+                            <div class="div-arrow-wrap w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                                 style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);">
+                                <i class="fa-solid fa-arrow-right text-xs transition-all duration-300" style="color: var(--color-text-muted);"></i>
+                            </div>
                         </div>
+
+                        {{-- Content --}}
                         <div class="flex-1">
-                            <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-lg font-bold text-white">{{ $div['name'] }}</h3>
-                                <i class="division-arrow fa-solid fa-arrow-right text-sm" style="color: var(--color-primary);"></i>
-                            </div>
-                            <p class="text-sm mb-3" style="color: rgba(255,255,255,0.5);">{{ $div['desc'] }}</p>
-                            <div class="flex flex-wrap gap-2">
-                                @foreach($div['tags'] as $tag)
-                                    <span class="px-3 py-1 rounded-full text-xs font-medium" style="background: rgba(212,32,44,0.1); color: var(--color-primary-light);">{{ $tag }}</span>
-                                @endforeach
-                            </div>
+                            <h3 class="text-lg sm:text-xl font-bold mb-2.5 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $div['name'] }}</h3>
+                            <p class="text-sm sm:text-[15px] leading-[1.75]" style="color: var(--color-text);">{{ $div['desc'] }}</p>
+                        </div>
+
+                        {{-- Bottom CTA --}}
+                        <div class="mt-6 pt-5 flex items-center gap-2 text-sm font-semibold transition-all duration-300" style="border-top: 1px solid rgba(0,0,0,0.05); color: var(--color-text-muted);">
+                            <span class="div-cta-text">Learn more</span>
+                            <i class="fa-solid fa-arrow-right text-[11px] transition-transform duration-300 div-cta-arrow"></i>
                         </div>
                     </div>
                 </a>
