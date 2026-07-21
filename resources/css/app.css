@@ -407,8 +407,8 @@
     }
     .nav-link:hover { color: var(--color-primary); background-color: rgba(0,0,0,0.04); }
     .nav-link.active {
-        color: var(--color-primary);
-        background-color: rgba(212,32,44,0.06);
+        color: #b91c1c;
+        background-color: rgba(212,32,44,0.1);
         font-weight: 600;
     }
     .nav-link::after { display: none; }
@@ -959,4 +959,13 @@
     .service-card-v3 { animation: none !important; opacity: 1 !important; transform: none !important; }
     .service-card-v3:hover { transform: none !important; }
     .service-card-v3:hover img { transform: none !important; }
+}
+
+/* ── Footer Premium ── */
+.footer-link:hover .footer-link-arrow {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+.footer-link:hover {
+    color: rgba(255,255,255,0.8) !important;
 }

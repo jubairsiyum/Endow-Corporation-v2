@@ -55,24 +55,24 @@
 
         {{-- Topbar — collapsed by default, expands on scroll --}}
         <div id="header-topbar" class="lg:block" style="background: #0a0a0a; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.35s ease;">
-            <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
-                <div class="flex items-center gap-7">
-                    <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
-                        <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 11px;"></i>
+            <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-5 flex-1 min-w-0">
+                    <div class="flex items-center gap-2 text-[11px] font-medium whitespace-nowrap" style="color: rgba(255,255,255,0.7);">
+                        <i class="fa-regular fa-clock" style="color: var(--color-primary); font-size: 9px;"></i>
                         <span>Sat – Thu, 8:00am – 6:00pm</span>
                     </div>
-                    <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
-                    <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2.5 text-[13px] font-medium transition-colors" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                        <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 11px;"></i>
+                    <div class="w-px h-3.5 flex-shrink-0" style="background: rgba(255,255,255,0.12);"></div>
+                    <a href="mailto:contact@endowcorporation.com" class="flex items-center gap-2 text-[11px] font-medium transition-colors whitespace-nowrap" style="color: rgba(255,255,255,0.7);" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                        <i class="fa-regular fa-envelope" style="color: var(--color-primary); font-size: 9px;"></i>
                         contact@endowcorporation.com
                     </a>
-                    <div class="w-px h-3.5" style="background: rgba(255,255,255,0.12);"></div>
-                    <div class="flex items-center gap-2.5 text-[13px] font-medium" style="color: rgba(255,255,255,0.7);">
-                        <i class="fa-solid fa-location-dot" style="color: var(--color-primary); font-size: 11px;"></i>
-                        Seoul, South Korea
+                    <div class="w-px h-3.5 flex-shrink-0" style="background: rgba(255,255,255,0.12);"></div>
+                    <div class="flex items-center gap-2 text-[11px] font-medium min-w-0" style="color: rgba(255,255,255,0.7);">
+                        <i class="fa-solid fa-location-dot flex-shrink-0" style="color: var(--color-primary); font-size: 9px;"></i>
+                        <span class="truncate">서울 영등포구 버드나루로 50, 리버타워오피스텔 311호 (07248)</span>
                     </div>
                 </div>
-                <div class="flex items-center gap-2.5">
+                <div class="flex items-center gap-2 flex-shrink-0">
                     @foreach([
                         ['icon' => 'fa-brands fa-facebook-f', 'url' => 'https://www.facebook.com/endowcorporation'],
                         ['icon' => 'fa-brands fa-linkedin-in', 'url' => 'https://www.linkedin.com/company/endow-corporation/'],
@@ -85,7 +85,7 @@
                            onmouseover="this.style.color='white'; this.style.backgroundColor='rgba(255,255,255,0.1)';"
                            onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.backgroundColor='transparent';"
                            aria-label="Social">
-                            <i class="{{ $social['icon'] }}" style="font-size: 11px;"></i>
+                            <i class="{{ $social['icon'] }}" style="font-size: 10px;"></i>
                         </a>
                     @endforeach
                 </div>
