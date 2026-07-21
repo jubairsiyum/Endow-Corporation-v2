@@ -341,11 +341,11 @@
             ];
 
             $team = [
-                ['name' => 'Rejowan Shovon', 'role' => 'COO', 'photo' => asset('images/Shovon Endow.png')],                
-                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director', 'photo' => asset('images/Takey Endow.png')],
-                ['name' => 'Jubair Amin Siyum', 'role' => 'Tech Lead', 'photo' => asset('images/Siyum Endow.png')],
-                ['name' => 'Simron Mhejabin', 'role' => 'Asst. Manager', 'photo' => asset('images/Simron EGE.png')],
-                ['name' => 'Ummay Habiba', 'role' => 'Senior Consultant', 'photo' => asset('images/Nabila Endow.png')],
+                ['name' => 'Rejowan Shovon', 'role' => 'COO', 'photo' => asset('images/Shovon Endow.png'), 'division' => 'Endow Corporation'],                
+                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director', 'photo' => asset('images/Takey Endow.png'), 'division' => 'Endow Corporation'],
+                ['name' => 'Jubair Amin Siyum', 'role' => 'Tech Lead', 'photo' => asset('images/Siyum Endow.png'), 'division' => 'Endow Corporation'],
+                ['name' => 'Simron Mhejabin', 'role' => 'Asst. Manager', 'photo' => asset('images/Simron EGE.png'), 'division' => 'Endow Global Education'],
+                ['name' => 'Nabila', 'role' => 'Senior Consultant', 'photo' => asset('images/Nabila Endow.png'), 'division' => 'Endow Travel'],
             ];
         @endphp
 
@@ -386,13 +386,13 @@
         </div>
 
         {{-- Row 2: 5 Team Cards --}}
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5" data-animate>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5" data-animate style="align-items: stretch;">
             @foreach($team as $member)
-                <div class="team-card-small group relative rounded-xl overflow-hidden" style="box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <div class="team-card-small group relative rounded-xl overflow-hidden flex flex-col" style="box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
                     {{-- Photo --}}
-                    <div class="relative" style="padding-top: 120%;">
+                    <div class="relative flex-1" style="aspect-ratio: 3/4;">
                         <img src="{{ $member['photo'] }}"
-                             alt="{{ $member['name'] }} — {{ $member['role'] }}, Endow Corporation"
+                             alt="{{ $member['name'] }}, {{ $member['role'] }}, Endow Corporation"
                              class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                              loading="lazy"
                              width="400"
@@ -413,9 +413,12 @@
                     </div>
 
                     {{-- Name Banner --}}
-                    <div class="relative px-4 py-3" style="background: var(--color-primary);">
+                    <div class="relative px-4 py-3 mt-auto" style="background: var(--color-primary);">
                         <h4 class="text-sm font-bold text-white mb-0.5 truncate" style="letter-spacing: -0.01em;">{{ $member['name'] }}</h4>
                         <p class="text-[10px] font-semibold uppercase tracking-[1.2px] truncate" style="color: rgba(255,255,255,0.75);">{{ $member['role'] }}</p>
+                        @if(!empty($member['division']))
+                            <p class="text-[9px] mt-1 truncate" style="color: rgba(255,255,255,0.55);">{{ $member['division'] }}</p>
+                        @endif
                     </div>
                 </div>
             @endforeach
