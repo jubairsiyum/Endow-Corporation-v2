@@ -397,6 +397,19 @@
                              loading="lazy"
                              width="400"
                              height="480">
+                        {{-- Hover overlay --}}
+                        <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(2px);">
+                            <div class="flex gap-2">
+                                @foreach(['fa-brands fa-facebook-f', 'fa-brands fa-x-twitter', 'fa-brands fa-instagram'] as $icon)
+                                    <a href="#" target="_blank" rel="noopener noreferrer"
+                                       class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                                       style="background: rgba(255,255,255,0.9); color: #374151; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                                       aria-label="Social link">
+                                        <i class="{{ $icon }} text-[11px]"></i>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
 
                     {{-- Name Banner --}}
@@ -429,13 +442,10 @@
 
             @php
                 $timeline = [
-                    ['year' => '2018', 'title' => 'Foundation', 'desc' => 'Endow Corporation established in Seoul, South Korea — starting with a vision to bridge businesses with global opportunities.'],
-                    ['year' => '2019', 'title' => 'Travel Division Launch', 'desc' => 'Endow Travel launched, offering corporate and leisure travel solutions with personalized itineraries across Asia.'],
-                    ['year' => '2020', 'title' => 'Education Goes Global', 'desc' => 'Endow Global Education established — partnering with 50+ international institutions for study abroad programs.'],
-                    ['year' => '2021', 'title' => 'Technology Division', 'desc' => 'Endow Technologies launched — delivering AI, cloud, and custom software solutions to enterprise clients.'],
-                    ['year' => '2022', 'title' => 'Hospital Tourism', 'desc' => 'Hospital Tourism division launched — connecting patients with accredited hospitals across 30+ countries.'],
-                    ['year' => '2023', 'title' => '100+ Projects Milestone', 'desc' => 'Surpassed 100 completed projects with a 98% client satisfaction rate across all four divisions.'],
-                    ['year' => '2024', 'title' => 'Global Expansion', 'desc' => 'Expanded operations to 30+ countries with 25+ team members and 810+ satisfied clients worldwide.'],
+                    ['year' => '2018', 'title' => 'Foundation & Travel Launch', 'desc' => 'Endow Corporation established in Seoul, South Korea — launching with a vision to bridge businesses with global travel opportunities.'],
+                    ['year' => '2022', 'title' => 'Global Education Division', 'desc' => 'Endow Global Education established — partnering with international institutions for study abroad programs, scholarships, and language training.'],
+                    ['year' => '2023', 'title' => 'Technology Division', 'desc' => 'Endow Technologies launched — delivering AI, cloud, and custom software solutions to enterprise clients worldwide.'],
+                    ['year' => '2024', 'title' => 'Hospital Tourism & Global Expansion', 'desc' => 'Hospital Tourism division launched alongside global expansion — connecting patients with accredited hospitals across 30+ countries.'],
                 ];
             @endphp
 
