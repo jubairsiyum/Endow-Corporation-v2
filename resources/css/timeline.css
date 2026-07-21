@@ -1,0 +1,274 @@
+/* ============================================================
+   Timeline — Animated Journey Section
+   Progressive reveal on scroll with line drawing,
+   dot pulsing, card slide-ins, and year glow.
+   ============================================================ */
+
+/* ── Timeline Container ── */
+.timeline-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Center Line — builds from top as you scroll ── */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        rgba(212, 32, 44, 0.4) 0%,
+        rgba(212, 32, 44, 0.15) 50%,
+        rgba(212, 32, 44, 0.15) 100%
+    );
+    z-index: 0;
+}
+
+/* Animated progress overlay on the line */
+.timeline-line-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(212, 32, 44, 0.9) 0%,
+        rgba(212, 32, 44, 0.5) 100%
+    );
+    transition: height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: height;
+}
+
+/* ── Timeline Item ── */
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+.timeline-item--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Content Card (left or right) ── */
+.timeline-card {
+    position: relative;
+    width: 100%;
+    padding: 28px 32px;
+    border-radius: 18px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.35s ease,
+                border-color 0.35s ease,
+                transform 0.35s ease;
+    z-index: 1;
+}
+
+.timeline-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(212, 32, 44, 0.2);
+    transform: translateY(-3px);
+}
+
+/* ── Year Badge ── */
+.timeline-year {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: rgba(212, 32, 44, 0.06);
+    border: 1px solid rgba(212, 32, 44, 0.12);
+    border-radius: 50px;
+    margin-bottom: 16px;
+    transition: background 0.35s ease,
+                box-shadow 0.35s ease,
+                transform 0.35s ease;
+}
+
+.timeline-item--visible .timeline-year {
+    animation: timelineYearPulse 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.timeline-card:hover .timeline-year {
+    background: rgba(212, 32, 44, 0.1);
+    box-shadow: 0 0 0 6px rgba(212, 32, 44, 0.05);
+    transform: scale(1.03);
+}
+
+/* ── Timeline Dot ── */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    width: 18px;
+    height: 18px;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+    background: white;
+    border: 3px solid rgba(212, 32, 44, 0.3);
+    z-index: 2;
+    transition: border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.timeline-item--visible .timeline-dot {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 8px rgba(212, 32, 44, 0.12);
+    animation: timelineDotPulse 2s ease-in-out infinite;
+}
+
+/* Dot inner fill */
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s;
+}
+
+.timeline-item--visible .timeline-dot::after {
+    transform: scale(1);
+}
+
+/* ── Icon inside dot for first active item ── */
+.timeline-dot-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease 0.2s,
+                transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s;
+}
+
+.timeline-item--visible .timeline-dot-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ── Animations ── */
+@keyframes timelineDotPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 8px rgba(212, 32, 44, 0.12);
+    }
+    50% {
+        box-shadow: 0 0 0 14px rgba(212, 32, 44, 0.04);
+    }
+}
+
+@keyframes timelineYearPulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ── Title ── */
+.timeline-card h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+/* ── Description ── */
+.timeline-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--color-text);
+    margin: 0;
+}
+
+/* ── Connecting arm (desktop only) ── */
+.timeline-arm {
+    position: absolute;
+    top: 37px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(212, 32, 44, 0.2) 0%,
+        rgba(212, 32, 44, 0.4) 100%
+    );
+    z-index: 0;
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    width: 0;
+}
+
+.timeline-item--visible .timeline-arm {
+    width: 100%;
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 767px) {
+    .timeline-line {
+        left: 20px;
+    }
+
+    .timeline-dot {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 52px;
+    }
+
+    .timeline-arm {
+        display: none;
+    }
+
+    .timeline-card {
+        padding: 20px 22px;
+    }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-item {
+        transition: opacity 0.3s ease;
+        transform: none;
+    }
+
+    .timeline-dot {
+        animation: none !important;
+    }
+
+    .timeline-item--visible .timeline-dot {
+        animation: none !important;
+    }
+
+    .timeline-year {
+        animation: none !important;
+    }
+}

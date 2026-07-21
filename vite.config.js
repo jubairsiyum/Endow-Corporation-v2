@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/scroll-stack.css',
                 'resources/js/scroll-stack.js',
+                'resources/css/timeline.css',
             ],
             refresh: true,
         }),

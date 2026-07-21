@@ -4,6 +4,9 @@ import './scroll-stack.js';
 // ── Testimonial Carousel — Auto-rotating reviews ──
 import './testimonial-carousel.js';
 
+// ── Timeline — Progressive scroll reveal animations ──
+import { initTimeline } from './timeline.js';
+
 // ── Premium Services Section — Spotlight + Entrance ──
 (function () {
     const cards = document.querySelectorAll('.service-card-v3');

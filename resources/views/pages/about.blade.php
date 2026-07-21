@@ -424,11 +424,11 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- OUR JOURNEY — Timeline --}}
+{{-- OUR JOURNEY — Animated Timeline --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="text-center mb-[48px]" data-animate>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-[56px]" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
                 <i class="fa-solid fa-road"></i>
                 Our Journey
@@ -436,34 +436,65 @@
             <h2 class="section-heading">Milestones of <span class="gradient-text">Growth</span></h2>
         </div>
 
-        <div class="relative" data-animate>
+        @php
+            $timeline = [
+                [
+                    'year' => '2018',
+                    'title' => 'Foundation & Travel Launch',
+                    'desc' => 'Endow Corporation established in Seoul, South Korea — launching with a vision to bridge businesses with global travel opportunities.',
+                    'icon' => 'fa-solid fa-rocket',
+                ],
+                [
+                    'year' => '2022',
+                    'title' => 'Global Education Division',
+                    'desc' => 'Endow Global Education established — partnering with international institutions for study abroad programs, scholarships, and language training.',
+                    'icon' => 'fa-solid fa-graduation-cap',
+                ],
+                [
+                    'year' => '2023',
+                    'title' => 'Technology Division',
+                    'desc' => 'Endow Technologies launched — delivering AI, cloud, and custom software solutions to enterprise clients worldwide.',
+                    'icon' => 'fa-solid fa-microchip',
+                ],
+                [
+                    'year' => '2024',
+                    'title' => 'Hospital Tourism & Global Expansion',
+                    'desc' => 'Hospital Tourism division launched alongside global expansion — connecting patients with accredited hospitals across 30+ countries.',
+                    'icon' => 'fa-solid fa-globe',
+                ],
+            ];
+        @endphp
+
+        <div class="timeline-wrapper">
             {{-- Center line --}}
-            <div class="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2" style="background: linear-gradient(180deg, transparent, rgba(212,32,44,0.2), rgba(212,32,44,0.2), transparent);"></div>
+            <div class="timeline-line">
+                <div class="timeline-line-progress"></div>
+            </div>
 
-            @php
-                $timeline = [
-                    ['year' => '2018', 'title' => 'Foundation & Travel Launch', 'desc' => 'Endow Corporation established in Seoul, South Korea — launching with a vision to bridge businesses with global travel opportunities.'],
-                    ['year' => '2022', 'title' => 'Global Education Division', 'desc' => 'Endow Global Education established — partnering with international institutions for study abroad programs, scholarships, and language training.'],
-                    ['year' => '2023', 'title' => 'Technology Division', 'desc' => 'Endow Technologies launched — delivering AI, cloud, and custom software solutions to enterprise clients worldwide.'],
-                    ['year' => '2024', 'title' => 'Hospital Tourism & Global Expansion', 'desc' => 'Hospital Tourism division launched alongside global expansion — connecting patients with accredited hospitals across 30+ countries.'],
-                ];
-            @endphp
-
-            <div class="space-y-12">
+            <div class="space-y-14 md:space-y-20">
                 @foreach($timeline as $index => $event)
-                    <div class="relative flex items-start gap-8 {{ $index % 2 === 0 ? 'flex-row' : 'flex-row-reverse' }} md:gap-0">
-                        {{-- Content --}}
-                        <div class="w-full md:w-[calc(50%-40px)] {{ $index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12' }}">
-                            <span class="text-xs font-bold uppercase tracking-[2px] mb-2 block" style="color: var(--color-primary);">{{ $event['year'] }}</span>
-                            <h4 class="text-lg font-bold mb-2" style="color: var(--color-text-heading);">{{ $event['title'] }}</h4>
-                            <p class="text-sm leading-[1.75]" style="color: var(--color-text);">{{ $event['desc'] }}</p>
+                    <div class="timeline-item {{ $index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse' }}"
+                         style="transition-delay: {{ $index * 0.1 }}s;">
+
+                        {{-- Content Card — Left or Right --}}
+                        <div class="w-full md:w-[calc(50%-48px)] {{ $index % 2 === 0 ? 'md:text-right' : 'md:text-left' }}">
+                            <div class="timeline-card {{ $index % 2 !== 0 ? 'md:ml-0' : 'md:mr-0' }}">
+                                <span class="timeline-year">
+                                    <i class="{{ $event['icon'] }} text-[11px]"></i>
+                                    {{ $event['year'] }}
+                                </span>
+                                <h4>{{ $event['title'] }}</h4>
+                                <p>{{ $event['desc'] }}</p>
+                            </div>
                         </div>
 
-                        {{-- Dot --}}
-                        <div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 z-10 hidden md:block" style="background: white; border-color: var(--color-primary);"></div>
+                        {{-- Center Dot --}}
+                        <div class="timeline-dot">
+                            <i class="timeline-dot-icon {{ $event['icon'] }}"></i>
+                        </div>
 
-                        {{-- Spacer for other side --}}
-                        <div class="hidden md:block w-[calc(50%-40px)]"></div>
+                        {{-- Spacer for the other side --}}
+                        <div class="hidden md:block w-[calc(50%-48px)]"></div>
                     </div>
                 @endforeach
             </div>
