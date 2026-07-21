@@ -283,3 +283,39 @@ import './testimonial-carousel.js';
         }
     }
 })();
+
+// ── FAQ Accordion — Toggle expand/collapse ──
+(function () {
+    const items = document.querySelectorAll('.accordion-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+        const button = item.querySelector('.accordion-button');
+        const body = item.querySelector('.accordion-body');
+        if (!button || !body) return;
+
+        button.addEventListener('click', () => {
+            const isOpen = item.classList.contains('active');
+
+            // Close all other items
+            items.forEach(other => {
+                if (other !== item) {
+                    other.classList.remove('active');
+                    other.querySelector('.accordion-button')?.classList.add('collapsed');
+                    other.querySelector('.accordion-button')?.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle current
+            if (isOpen) {
+                item.classList.remove('active');
+                button.classList.add('collapsed');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                item.classList.add('active');
+                button.classList.remove('collapsed');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+})();

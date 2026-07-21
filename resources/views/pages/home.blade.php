@@ -625,7 +625,7 @@
                             aria-expanded="{{ $index === 0 ? 'true' : 'false' }}">
                         <span>{{ $faq['q'] }}</span>
                     </button>
-                    <div class="accordion-body {{ $index !== 0 ? 'collapsed' : '' }}" style="{{ $index === 0 ? '' : 'max-height: none;' }}">
+                    <div class="accordion-body">
                         <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $faq['a'] }}</p>
                     </div>
                 </div>
