@@ -1141,8 +1141,7 @@
 
 /* ── Footer Premium ── */
 .footer-link:hover .footer-link-arrow {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
+    transform: translateX(3px) !important;
 }
 .footer-link:hover {
     color: rgba(255,255,255,0.8) !important;

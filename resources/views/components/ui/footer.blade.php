@@ -56,7 +56,7 @@
                     ] as $link)
                         <li>
                             <a href="{{ $link['url'] }}" class="footer-link text-sm transition-all duration-200 inline-flex items-center gap-2" style="color: rgba(255,255,255,0.35);">
-                                <span class="footer-link-arrow opacity-0 -translate-x-2 transition-all duration-200 text-[10px]" style="color: var(--color-primary);">→</span>
+                                <span class="footer-link-arrow text-[10px]" style="color: var(--color-primary);">→</span>
                                 <span>{{ $link['label'] }}</span>
                             </a>
                         </li>
@@ -78,7 +78,7 @@
                     ] as $link)
                         <li>
                             <a href="{{ $link['url'] }}" class="footer-link text-sm transition-all duration-200 inline-flex items-center gap-2" style="color: rgba(255,255,255,0.35);">
-                                <span class="footer-link-arrow opacity-0 -translate-x-2 transition-all duration-200 text-[10px]" style="color: var(--color-primary);">→</span>
+                                <span class="footer-link-arrow text-[10px]" style="color: var(--color-primary);">→</span>
                                 <span>{{ $link['label'] }}</span>
                             </a>
                         </li>
