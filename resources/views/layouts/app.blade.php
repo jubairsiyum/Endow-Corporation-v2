@@ -69,7 +69,7 @@
                     <div class="w-px h-3.5 flex-shrink-0" style="background: rgba(255,255,255,0.12);"></div>
                     <div class="flex items-center gap-2 text-[11px] font-medium min-w-0" style="color: rgba(255,255,255,0.7);">
                         <i class="fa-solid fa-location-dot flex-shrink-0" style="color: var(--color-primary); font-size: 9px;"></i>
-                        <span class="truncate">서울 영등포구 버드나루로 50, 리버타워오피스텔 311호 (07248)</span>
+                        <span class="truncate">서울 영등포구 버드나루로 50, 리버타워오피스텔 311호</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 flex-shrink-0">

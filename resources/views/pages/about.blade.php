@@ -355,98 +355,127 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- TESTIMONIALS --}}
+{{-- ABOUT ENDOW — Premium Content Block --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: var(--color-body-bg);">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[48px]" data-animate>
+
+        {{-- Intro --}}
+        <div class="max-w-3xl mx-auto text-center mb-16" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-quote-left"></i>
-                Testimonials
+                <i class="fa-solid fa-globe"></i>
+                Who We Are
             </div>
-            <h2 class="section-heading">What Our Clients <span class="gradient-text">Say</span></h2>
-            <p class="text-base max-w-[600px] mx-auto mt-4" style="color: var(--color-text); line-height: 1.7;">
-                Hear from businesses and individuals who have transformed their operations with Endow Corporation.
+            <h2 class="section-heading" style="font-size: clamp(30px, 4vw, 48px);">Global Solutions, <span class="gradient-text">Local Expertise</span></h2>
+            <p class="text-base sm:text-lg leading-[1.8]" style="color: var(--color-text);">
+                Founded in Seoul and operating across 30+ countries, Endow Corporation brings together four specialized divisions under one roof — each focused on delivering measurable results for our clients.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-7" data-animate>
+        {{-- Division Cards --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 mb-16" data-animate>
             @php
-                $testimonials = [
-                    ['text' => 'Endow Travel made our business trips effortless! Their attention to detail and personalized service ensured every journey was smooth and productive. Highly recommend for corporate travel management.', 'name' => 'Corporate Client', 'role' => 'Travel Division', 'icon' => 'fa-solid fa-plane-departure', 'stars' => 5],
-                    ['text' => 'With Endow Global Education, I gained access to programs that completely transformed my career. Their support and resources helped me achieve my goals faster than I imagined.', 'name' => 'Education Client', 'role' => 'Education Division', 'icon' => 'fa-solid fa-graduation-cap', 'stars' => 5],
-                    ['text' => 'Endow Technologies delivered cutting-edge solutions that revolutionized our operations. Their team truly understands the needs of modern businesses and delivers with precision.', 'name' => 'Tech Client', 'role' => 'Technology Division', 'icon' => 'fa-solid fa-microchip', 'stars' => 5],
+                $divisions = [
+                    [
+                        'icon' => 'fa-solid fa-plane-departure',
+                        'name' => 'Endow Travel',
+                        'tagline' => 'Where the journey begins',
+                        'desc' => 'From corporate trips to dream vacations, we handle every detail — flights, hotels, visas, and on-ground support around the clock.',
+                        'link' => route('division.show', 'travel'),
+                        'accent' => 'rgba(212,32,44,0.08)',
+                        'accentBorder' => 'rgba(212,32,44,0.12)',
+                        'iconColor' => '#D4202C',
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-graduation-cap',
+                        'name' => 'Global Education',
+                        'tagline' => 'Global vision, guided path',
+                        'desc' => 'Study abroad programs, scholarships, and language training — connecting students with 100+ partner institutions worldwide.',
+                        'link' => route('division.show', 'education'),
+                        'accent' => 'rgba(124,58,237,0.08)',
+                        'accentBorder' => 'rgba(124,58,237,0.12)',
+                        'iconColor' => '#7c3aed',
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-microchip',
+                        'name' => 'Endow Technologies',
+                        'tagline' => 'Innovate. Transform. Lead.',
+                        'desc' => 'Custom software, AI integration, cloud infrastructure, and cybersecurity — built to scale your business forward.',
+                        'link' => route('division.show', 'technology'),
+                        'accent' => 'rgba(245,158,11,0.08)',
+                        'accentBorder' => 'rgba(245,158,11,0.12)',
+                        'iconColor' => '#d97706',
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-heart-pulse',
+                        'name' => 'Hospital Tourism',
+                        'tagline' => 'World-class care, global access',
+                        'desc' => 'Medical travel coordinated end-to-end — accredited hospitals, specialist consultations, and recovery support across 30+ countries.',
+                        'link' => route('division.show', 'hospital-tourism'),
+                        'accent' => 'rgba(16,185,129,0.08)',
+                        'accentBorder' => 'rgba(16,185,129,0.12)',
+                        'iconColor' => '#059669',
+                    ],
                 ];
             @endphp
 
-            @foreach($testimonials as $index => $t)
-                <div class="rounded-2xl p-7 transition-all duration-300 hover:shadow-lg" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-                    <div class="mb-4" style="color: var(--color-primary); font-size: 28px;">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-                    <p class="text-sm leading-[1.8] mb-6" style="color: var(--color-text);">"{{ $t['text'] }}"</p>
-                    <div class="flex items-center gap-1 mb-5">
-                        @for($i = 0; $i < $t['stars']; $i++)
-                            <i class="fa-solid fa-star text-xs" style="color: #fbbf24;"></i>
-                        @endfor
-                    </div>
-                    <div class="pt-5" style="border-top: 1px solid #E5E7EB;">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(212,32,44,0.08);">
-                                <i class="{{ $t['icon'] }} text-sm" style="color: var(--color-primary);"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold" style="color: var(--color-text-heading);">{{ $t['name'] }}</p>
-                                <p class="text-xs" style="color: var(--color-text-muted);">{{ $t['role'] }}</p>
-                            </div>
+            @foreach($divisions as $div)
+                <a href="{{ $div['link'] }}" class="group rounded-2xl p-7 sm:p-8 transition-all duration-300 hover:shadow-lg block" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+                    <div class="flex items-start gap-5">
+                        <div class="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110" style="background: {{ $div['accent'] }}; border: 1px solid {{ $div['accentBorder'] }};">
+                            <i class="{{ $div['icon'] }} text-xl" style="color: {{ $div['iconColor'] }};"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold mb-1" style="color: var(--color-text-heading);">{{ $div['name'] }}</h3>
+                            <p class="text-xs font-semibold uppercase tracking-[1.5px] mb-3" style="color: {{ $div['iconColor'] }};">{{ $div['tagline'] }}</p>
+                            <p class="text-sm leading-[1.75]" style="color: var(--color-text);">{{ $div['desc'] }}</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:border-[var(--color-primary)]" style="border: 1px solid #E5E7EB;">
+                            <i class="fa-solid fa-arrow-right text-[10px] transition-colors duration-300 group-hover:text-white" style="color: var(--color-text-muted);"></i>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
-    </div>
-</section>
 
-{{-- ============================================ --}}
-{{-- SEO CONTENT BLOCK --}}
-{{-- ============================================ --}}
-<section class="section-gap" style="background-color: #f0f0f0;">
-    <div class="max-w-4xl mx-auto px-6">
-        <div data-animate>
-            <div class="text-center mb-10">
-                <h2 class="section-heading" style="font-size: clamp(28px, 3.5vw, 40px);">Endow Corporation — <span class="gradient-text">Global Solutions, Local Expertise</span></h2>
+        {{-- Global Presence --}}
+        <div class="rounded-2xl p-8 sm:p-10 lg:p-12" data-animate style="background: var(--color-dark); box-shadow: 0 24px 64px rgba(0,0,0,0.15);">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="section-subtitle" style="color: var(--color-primary-light);">
+                        <i class="fa-solid fa-earth-americas"></i>
+                        Global Presence
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-5" style="letter-spacing: -0.03em; line-height: 1.2;">Headquartered in Seoul,<br>Operating Worldwide</h3>
+                    <p class="text-base leading-[1.8] mb-4" style="color: rgba(255,255,255,0.5);">
+                        From our offices in Seoul's Yeongdeungpo district, we serve clients across Asia, Europe, the Middle East, and the Americas — combining local understanding with global standards.
+                    </p>
+                    <p class="text-base leading-[1.8]" style="color: rgba(255,255,255,0.5);">
+                        Our multilingual team of 25+ professionals is passionate about delivering results that matter. Every project, every client, every time.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-5">
+                    @foreach([
+                        ['value' => '30+', 'label' => 'Countries'],
+                        ['value' => '940+', 'label' => 'Projects'],
+                        ['value' => '810+', 'label' => 'Clients'],
+                        ['value' => '98%', 'label' => 'Satisfaction'],
+                    ] as $stat)
+                        <div class="rounded-xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                            <div class="text-2xl sm:text-3xl font-bold text-white mb-1" style="letter-spacing: -0.03em;">{{ $stat['value'] }}</div>
+                            <div class="text-xs font-medium uppercase tracking-[1.5px]" style="color: rgba(255,255,255,0.4);">{{ $stat['label'] }}</div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+        </div>
 
-            <div class="space-y-6 text-base leading-[1.85]" style="color: var(--color-text);">
-                <h3 class="text-xl font-bold" style="color: var(--color-text-heading);">Who We Are</h3>
-                <p>
-                    Endow Corporation is a South Korea-based global conglomerate specializing in four core verticals: <strong>Travel</strong>, <strong>Education</strong>, <strong>Technology</strong>, and <strong>Hospital Tourism</strong>. Founded in 2018 and headquartered in Seoul's Yeongdeungpo district, we have grown from a boutique travel consultancy into a multinational enterprise serving clients across 30+ countries.
-                </p>
-
-                <h3 class="text-xl font-bold" style="color: var(--color-text-heading);">What We Do</h3>
-                <p>
-                    Our <strong>Travel Division</strong> provides end-to-end corporate and leisure travel management — from flight bookings and hotel accommodations to visa processing and 24/7 on-ground support. We serve businesses of all sizes, ensuring cost-effective, seamless travel experiences.
-                </p>
-                <p>
-                    Through <strong>Endow Global Education</strong>, we connect students with world-class study abroad programs, scholarship opportunities, language training, and comprehensive support services. Our partnerships with 100+ international institutions open doors to academic excellence worldwide.
-                </p>
-                <p>
-                    <strong>Endow Technologies</strong> delivers cutting-edge digital transformation services including custom software development, AI and automation integration, cloud infrastructure, and cybersecurity solutions. We help businesses modernize their operations and scale efficiently.
-                </p>
-                <p>
-                    Our <strong>Hospital Tourism Division</strong> coordinates medical travel across a network of accredited hospitals in 30+ countries. From specialist consultations to post-care follow-up, we manage the entire healthcare journey for patients seeking world-class treatment abroad.
-                </p>
-
-                <h3 class="text-xl font-bold" style="color: var(--color-text-heading);">Our Global Presence</h3>
-                <p>
-                    With a headquarters in Seoul, South Korea, and operations spanning Asia, Europe, the Middle East, and the Americas, Endow Corporation combines deep local knowledge with international standards. Our multilingual team of 25+ professionals has successfully delivered 940+ projects for 810+ satisfied clients — maintaining a 98% satisfaction rate.
-                </p>
-
-                <h3 class="text-xl font-bold" style="color: var(--color-text-heading);">Our Commitment</h3>
-                <p>
-                    At Endow Corporation, we are driven by innovation, guided by integrity, and committed to excellence. Every solution we deliver is tailored to our clients' unique needs — because we believe that true success lies in understanding challenges and crafting strategies that create lasting impact. Let's build something extraordinary together.
-                </p>
-            </div>
+        {{-- Commitment --}}
+        <div class="mt-16 text-center max-w-[750px] mx-auto" data-animate>
+            <h3 class="text-2xl sm:text-3xl font-bold mb-5" style="color: var(--color-text-heading); letter-spacing: -0.03em;">Built on Trust, Driven by <span class="gradient-text">Innovation</span></h3>
+            <p class="text-base sm:text-lg leading-[1.8]" style="color: var(--color-text);">
+                Every solution we deliver is tailored to our clients' unique challenges. Because at Endow Corporation, we don't just provide services — we build lasting partnerships that drive real growth.
+            </p>
         </div>
     </div>
 </section>
