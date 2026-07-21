@@ -609,24 +609,31 @@
                 FAQs
             </div>
             <h2 class="section-heading">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            <p class="text-base max-w-[700px] mx-auto mt-4" style="color: var(--color-text); line-height: 1.7;">Find answers to the most common questions about Endow Corporation's services, technology, and global operations.</p>
         </div>
 
-        <div class="accordion" data-animate>
-            @foreach([
-                ['q' => 'What does Endow Corporation do?', 'a' => 'We are a global conglomerate operating across four core divisions — Travel, Education, Technology, and Hospital Tourism. From corporate travel management to AI-driven tech solutions, we deliver end-to-end services that help businesses and individuals thrive across 30+ countries.'],
-                ['q' => 'Can you manage end-to-end corporate travel for our organization?', 'a' => 'Absolutely. We handle everything from flights and accommodations to visa processing, itinerary management, and 24/7 on-ground support — all tailored to your company\'s travel policies and budget.'],
-                ['q' => 'What technology solutions does Endow Technologies provide?', 'a' => 'We deliver custom software development, AI and automation integration, cloud infrastructure, and cybersecurity services. Our solutions are built for scalability and designed to accelerate your digital transformation.'],
-                ['q' => 'How does your Hospital Tourism division work?', 'a' => 'We coordinate medical travel across a network of accredited hospitals in 30+ countries. From selecting the right facility and specialist to arranging travel logistics and post-care follow-up, we manage the entire journey for patients seeking world-class healthcare abroad.'],
-                ['q' => 'What educational programs and scholarships do you offer?', 'a' => 'We partner with leading global institutions to offer study abroad programs, language training, and scholarship guidance. Our team supports students through admissions, visa processing, and settlement in their new country.'],
-                ['q' => 'How can I get started with Endow Corporation?', 'a' => 'Simply book a free consultation through our website or call us at 02-2632-2559. We\'ll assess your needs, recommend the right division, and build a tailored plan to get started.'],
-            ] as $index => $faq)
-                <div class="accordion-item mb-4 {{ $index === 0 ? 'active' : '' }}">
-                    <button class="accordion-button w-full text-left flex items-center justify-between rounded-xl {{ $index !== 0 ? 'collapsed' : '' }}"
-                            aria-expanded="{{ $index === 0 ? 'true' : 'false' }}">
+        <div class="accordion" data-animate role="list">
+            @php
+                $faqs = [
+                    ['q' => 'What does Endow Corporation do?', 'a' => 'We are a global conglomerate operating across four core divisions — Travel, Education, Technology, and Hospital Tourism. From corporate travel management to AI-driven tech solutions, we deliver end-to-end services that help businesses and individuals thrive across 30+ countries.'],
+                    ['q' => 'Can you manage end-to-end corporate travel for our organization?', 'a' => 'Absolutely. We handle everything from flights and accommodations to visa processing, itinerary management, and 24/7 on-ground support — all tailored to your company\'s travel policies and budget.'],
+                    ['q' => 'What technology solutions does Endow Technologies provide?', 'a' => 'We deliver custom software development, AI and automation integration, cloud infrastructure, and cybersecurity services. Our solutions are built for scalability and designed to accelerate your digital transformation.'],
+                    ['q' => 'How does your Hospital Tourism division work?', 'a' => 'We coordinate medical travel across a network of accredited hospitals in 30+ countries. From selecting the right facility and specialist to arranging travel logistics and post-care follow-up, we manage the entire journey for patients seeking world-class healthcare abroad.'],
+                    ['q' => 'What educational programs and scholarships do you offer?', 'a' => 'We partner with leading global institutions to offer study abroad programs, language training, and scholarship guidance. Our team supports students through admissions, visa processing, and settlement in their new country.'],
+                    ['q' => 'How can I get started with Endow Corporation?', 'a' => 'Simply book a free consultation through our website or call us at 02-2632-2559. We\'ll assess your needs, recommend the right division, and build a tailored plan to get started.'],
+                ];
+            @endphp
+
+            @foreach($faqs as $index => $faq)
+                <div class="accordion-item {{ $index === 0 ? 'active' : '' }}" role="listitem">
+                    <button class="accordion-button w-full text-left flex items-center justify-between {{ $index !== 0 ? 'collapsed' : '' }}"
+                            aria-expanded="{{ $index === 0 ? 'true' : 'false' }}"
+                            aria-controls="faq-answer-{{ $index }}"
+                            id="faq-question-{{ $index }}">
                         <span>{{ $faq['q'] }}</span>
                     </button>
-                    <div class="accordion-body">
-                        <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $faq['a'] }}</p>
+                    <div class="accordion-body" id="faq-answer-{{ $index }}" role="region" aria-labelledby="faq-question-{{ $index }}">
+                        <p class="text-sm leading-relaxed">{{ $faq['a'] }}</p>
                     </div>
                 </div>
             @endforeach

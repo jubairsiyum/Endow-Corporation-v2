@@ -433,31 +433,6 @@
             }, { threshold: 0.5 });
             counterObserver.observe(counter);
         });
-
-        // FAQ accordion
-        document.querySelectorAll('.accordion-button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.closest('.accordion-item');
-                const body = item.querySelector('.accordion-body');
-                const isOpen = btn.getAttribute('aria-expanded') === 'true';
-
-                document.querySelectorAll('.accordion-item').forEach(other => {
-                    if (other !== item) {
-                        other.querySelector('.accordion-button')?.setAttribute('aria-expanded', 'false');
-                        other.querySelector('.accordion-body').classList.add('collapsed');
-                        other.querySelector('.accordion-body').style.maxHeight = null;
-                    }
-                });
-
-                if (isOpen) {
-                    body.classList.add('collapsed');
-                    body.style.maxHeight = null;
-                } else {
-                    body.classList.remove('collapsed');
-                    body.style.maxHeight = body.scrollHeight + 'px';
-                }
-            });
-        });
     </script>
 
     {{-- Mobile Bottom Nav --}}

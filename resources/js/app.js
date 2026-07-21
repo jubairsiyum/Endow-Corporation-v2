@@ -289,33 +289,123 @@ import './testimonial-carousel.js';
     const items = document.querySelectorAll('.accordion-item');
     if (!items.length) return;
 
-    items.forEach(item => {
+    const buttons = document.querySelectorAll('.accordion-button');
+
+    /**
+     * Measure the natural (unclipped) height of an accordion body.
+     * Temporarily lifts max-height & overflow so scrollHeight returns the true value.
+     */
+    function measureFullHeight(body) {
+        const prevMaxHeight = body.style.maxHeight;
+        const prevOverflow = body.style.overflow;
+        body.style.transition = 'none';       // kill transition during measurement
+        body.style.maxHeight = 'none';
+        body.style.overflow = 'visible';
+        const h = body.scrollHeight;
+        body.style.maxHeight = prevMaxHeight;
+        body.style.overflow = prevOverflow;
+        body.style.transition = '';           // restore
+        return h;
+    }
+
+    function openItem(item) {
         const button = item.querySelector('.accordion-button');
         const body = item.querySelector('.accordion-body');
-        if (!button || !body) return;
+        if (!body) return;
 
+        // Apply active state first (padding / opacity via CSS)
+        item.classList.add('active');
+        button.classList.remove('collapsed');
+        button.setAttribute('aria-expanded', 'true');
+
+        // Measure true full height with active padding applied
+        const fullHeight = measureFullHeight(body);
+
+        // Start from zero, animate to full height
+        body.style.maxHeight = '0px';
+        body.offsetHeight;                    // force reflow
+        body.style.maxHeight = fullHeight + 'px';
+
+        // After animation completes, lift the restriction so resizes / long content
+        // never get clipped again while this item stays open
+        const onDone = (e) => {
+            if (e && e.propertyName !== 'max-height') return;
+            body.style.maxHeight = 'none';
+            body.removeEventListener('transitionend', onDone);
+        };
+        body.addEventListener('transitionend', onDone);
+    }
+
+    function closeItem(item) {
+        const button = item.querySelector('.accordion-button');
+        const body = item.querySelector('.accordion-body');
+        if (!body) return;
+
+        // Lock current height so the transition has a starting point
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.offsetHeight;                    // force reflow
+        body.style.maxHeight = '0px';
+
+        item.classList.remove('active');
+        button.classList.add('collapsed');
+        button.setAttribute('aria-expanded', 'false');
+    }
+
+    // ── Click handler ──
+    buttons.forEach(button => {
         button.addEventListener('click', () => {
+            const item = button.closest('.accordion-item');
             const isOpen = item.classList.contains('active');
 
-            // Close all other items
+            // Close siblings
             items.forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('active');
-                    other.querySelector('.accordion-button')?.classList.add('collapsed');
-                    other.querySelector('.accordion-button')?.setAttribute('aria-expanded', 'false');
+                if (other !== item && other.classList.contains('active')) {
+                    closeItem(other);
                 }
             });
 
-            // Toggle current
             if (isOpen) {
-                item.classList.remove('active');
-                button.classList.add('collapsed');
-                button.setAttribute('aria-expanded', 'false');
+                closeItem(item);
             } else {
-                item.classList.add('active');
-                button.classList.remove('collapsed');
-                button.setAttribute('aria-expanded', 'true');
+                openItem(item);
             }
         });
+    });
+
+    // ── Keyboard navigation ──
+    buttons.forEach((button, index) => {
+        button.addEventListener('keydown', (e) => {
+            let targetIndex = -1;
+
+            if (e.key === 'ArrowDown')        { e.preventDefault(); targetIndex = (index + 1) % buttons.length; }
+            else if (e.key === 'ArrowUp')     { e.preventDefault(); targetIndex = (index - 1 + buttons.length) % buttons.length; }
+            else if (e.key === 'Home')        { e.preventDefault(); targetIndex = 0; }
+            else if (e.key === 'End')         { e.preventDefault(); targetIndex = buttons.length - 1; }
+
+            if (targetIndex >= 0) buttons[targetIndex].focus();
+        });
+    });
+
+    // ── Initialise already-open items (the first accordion, by HTML) ──
+    items.forEach(item => {
+        if (item.classList.contains('active')) {
+            const body = item.querySelector('.accordion-body');
+            if (!body) return;
+
+            // Measure with active padding
+            const fullHeight = measureFullHeight(body);
+
+            // Animate from 0 → full for a polished entrance
+            body.style.maxHeight = '0px';
+            body.offsetHeight;
+            body.style.maxHeight = fullHeight + 'px';
+
+            const onDone = (e) => {
+                if (e && e.propertyName !== 'max-height') return;
+                body.style.maxHeight = 'none';
+                body.removeEventListener('transitionend', onDone);
+            };
+            body.addEventListener('transitionend', onDone);
+        }
     });
 })();
