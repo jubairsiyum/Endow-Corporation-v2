@@ -481,133 +481,216 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- CTA --}}
+{{-- CTA — Refined Corporate Call-to-Action --}}
 {{-- ============================================ --}}
-<section>
-    <div class="stat-bar flex flex-wrap items-center" style="margin-bottom: 0;">
-        <div class="w-full lg:w-1/2 p-10 lg:p-14">
-            <h2 data-animate class="text-3xl md:text-4xl lg:text-[44px] font-bold text-white leading-tight mb-6" style="letter-spacing: -0.03em;">
-                Let's Discuss How We Can Help You <span style="color: #ffcc00;">Succeed!</span>
-            </h2>
-            <p data-animate class="text-white/60 text-base leading-relaxed mb-8 max-w-lg">
-                Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare, our team is ready to guide you every step of the way.
-            </p>
-            <div data-animate class="flex flex-wrap gap-4">
-                <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
-                    <span class="btn-text"><span>Get a Quote</span></span>
-                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="{{ route('contact') }}" class="btn-outline">
-                    Contact Us
-                </a>
-            </div>
+<section class="section-gap relative overflow-hidden" style="background: linear-gradient(160deg, #faf9f8 0%, #f3f1ef 40%, #f8f6f5 100%);">
+    {{-- Subtle decorative blobs --}}
+    <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);"></div>
+    <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-[0.04]" style="background: radial-gradient(circle, var(--color-primary-dark) 0%, transparent 70%);"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div data-animate class="inline-flex items-center gap-2.5 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+            <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+            Get In Touch
+            <span class="w-5 h-px" style="background: var(--color-primary);"></span>
         </div>
-        <div class="w-full lg:w-1/2 hidden lg:flex items-center justify-center p-10">
-            <img src="{{ asset('images/endow-logo.png') }}" alt="Endow Corporation" class="max-h-44 opacity-25" style="filter: brightness(0) invert(1);">
+
+        <h2 data-animate class="text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold mb-6 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.035em; line-height: 1.12;">
+            Let's Discuss How We Can<br class="hidden sm:block"> Help You <span class="gradient-text">Succeed</span>
+        </h2>
+
+        <p data-animate class="text-base sm:text-lg max-w-xl mx-auto mb-10" style="color: var(--color-text); line-height: 1.7;">
+            Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare — our team is ready to guide you every step of the way.
+        </p>
+
+        <div data-animate class="flex flex-wrap items-center justify-center gap-4">
+            <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
+                <span class="btn-text"><span>Get a Quote</span></span>
+                <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="{{ route('contact') }}" class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5" style="background: white; color: var(--color-text-heading); border: 1.5px solid var(--color-border); box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                <i class="fa-regular fa-comment text-sm" style="color: var(--color-primary);"></i>
+                Contact Us
+            </a>
+        </div>
+
+        {{-- Trust badges --}}
+        <div data-animate class="mt-14 flex flex-wrap items-center justify-center gap-8">
+            <div class="flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+                <i class="fa-solid fa-check-circle" style="color: #10b981; font-size: 13px;"></i>
+                <span>Free Consultation</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+                <i class="fa-solid fa-check-circle" style="color: #10b981; font-size: 13px;"></i>
+                <span>No Obligation</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+                <i class="fa-solid fa-check-circle" style="color: #10b981; font-size: 13px;"></i>
+                <span>Tailored Solutions</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+                <i class="fa-solid fa-check-circle" style="color: #10b981; font-size: 13px;"></i>
+                <span>24/7 Support</span>
+            </div>
         </div>
     </div>
 </section>
 
 {{-- ============================================ --}}
-{{-- APPOINTMENT FORM --}}
+{{-- APPOINTMENT FORM — Refined Corporate Booking --}}
 {{-- ============================================ --}}
-<section class="section-gap pitch-dark">
-    <div class="absolute top-0 left-0 w-[400px] h-[400px] opacity-10" style="background: radial-gradient(circle, var(--color-primary), transparent 70%); filter: blur(80px);"></div>
+<section class="section-gap relative overflow-hidden" style="background: linear-gradient(180deg, #fefefe 0%, #f8f7f6 100%);">
+    {{-- Subtle grid texture --}}
+    <div class="absolute inset-0 pointer-events-none opacity-[0.018]" style="background-image: radial-gradient(circle, #0a0a0a 1px, transparent 1px); background-size: 28px 28px;"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {{-- Left: Info --}}
-            <div data-animate>
-                <div class="section-subtitle" style="color: var(--color-primary);">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    Book Now
-                </div>
-                <h2 class="section-heading">Book an <span class="gradient-text">Appointment</span></h2>
-                <p class="text-base leading-relaxed mb-10" style="color: rgba(255,255,255,0.5);">
-                    Ready to take the next step? Let's connect! Our team is here to help with Travel, Education, Technology, or Healthcare consulting.
-                </p>
+        {{-- Section Header --}}
+        <div class="text-center mb-16 lg:mb-20" data-animate>
+            <div class="inline-flex items-center gap-2.5 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+                Book Now
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+            </div>
+            <h2 class="text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold mb-5 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.035em; line-height: 1.12;">
+                Book an <span class="gradient-text">Appointment</span>
+            </h2>
+            <p class="text-base max-w-lg mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">
+                Ready to take the next step? Let's connect — our team is here to help with Travel, Education, Technology, or Healthcare consulting.
+            </p>
+        </div>
 
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1); border: 1px solid rgba(212,32,44,0.15);">
-                            <i class="fa-solid fa-phone text-sm" style="color: var(--color-primary-light);"></i>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
+            {{-- Left: Contact Cards (2/5 width) --}}
+            <div data-animate class="lg:col-span-2 space-y-5">
+                @php
+                    $contactCards = [
+                        [
+                            'icon' => 'fa-solid fa-phone',
+                            'label' => 'Call Us',
+                            'value' => '02-2632-2559',
+                            'href' => 'tel:0226322559',
+                            'sub' => 'Mon–Sat, 8am–6pm KST',
+                        ],
+                        [
+                            'icon' => 'fa-regular fa-envelope',
+                            'label' => 'Email Us',
+                            'value' => 'contact@endowcorporation.com',
+                            'href' => 'mailto:contact@endowcorporation.com',
+                            'sub' => 'We reply within 24 hours',
+                        ],
+                        [
+                            'icon' => 'fa-solid fa-location-dot',
+                            'label' => 'Visit Us',
+                            'value' => 'Seoul, South Korea',
+                            'href' => null,
+                            'sub' => 'Serving clients worldwide',
+                        ],
+                    ];
+                @endphp
+
+                @foreach($contactCards as $card)
+                    <div class="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:-translate-y-0.5" style="background: white; border: 1px solid var(--color-border); box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300" style="background: rgba(212,32,44,0.06);">
+                            <i class="{{ $card['icon'] }} text-sm" style="color: var(--color-primary);"></i>
                         </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.4);">Call us</p>
-                            <a href="tel:0226322559" class="text-white font-semibold text-sm hover:text-primary transition-colors">02-2632-2559</a>
+                        <div class="min-w-0">
+                            <p class="text-[11px] font-bold uppercase tracking-wider mb-1" style="color: var(--color-text-muted);">{{ $card['label'] }}</p>
+                            @if($card['href'])
+                                <a href="{{ $card['href'] }}" class="block text-[15px] font-semibold transition-colors hover:text-[color:var(--color-primary)] truncate" style="color: var(--color-text-heading);">{{ $card['value'] }}</a>
+                            @else
+                                <p class="text-[15px] font-semibold truncate" style="color: var(--color-text-heading);">{{ $card['value'] }}</p>
+                            @endif
+                            <p class="text-xs mt-0.5" style="color: var(--color-text-muted);">{{ $card['sub'] }}</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1); border: 1px solid rgba(212,32,44,0.15);">
-                            <i class="fa-regular fa-envelope text-sm" style="color: var(--color-primary-light);"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.4);">Email us</p>
-                            <a href="mailto:contact@endowcorporation.com" class="text-white font-semibold text-sm hover:text-primary transition-colors">contact@endowcorporation.com</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(212,32,44,0.1); border: 1px solid rgba(212,32,44,0.15);">
-                            <i class="fa-regular fa-clock text-sm" style="color: var(--color-primary-light);"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider mb-0.5" style="color: rgba(255,255,255,0.4);">Business hours</p>
-                            <p class="text-white font-semibold text-sm">Sat – Thu, 8:00am – 6:00pm</p>
-                        </div>
+                @endforeach
+
+                {{-- Stat badge --}}
+                <div class="mt-8 p-5 rounded-2xl flex items-center gap-4" style="background: linear-gradient(135deg, rgba(212,32,44,0.04) 0%, rgba(212,32,44,0.01) 100%); border: 1px dashed rgba(212,32,44,0.15);">
+                    <div class="text-3xl font-extrabold tracking-tight" style="color: var(--color-primary);">98%</div>
+                    <div>
+                        <p class="text-sm font-semibold" style="color: var(--color-text-heading);">Client Satisfaction</p>
+                        <p class="text-xs mt-0.5" style="color: var(--color-text-muted);">Based on 810+ happy clients</p>
                     </div>
                 </div>
             </div>
 
-            {{-- Right: Form --}}
-            <div data-animate class="bg-white rounded-2xl p-8 md:p-10" style="box-shadow: 0 24px 64px rgba(0,0,0,0.3);">
-                @if(session('success'))
-                    <div class="mb-6 p-4 rounded-xl flex items-center gap-3" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15);">
-                        <i class="fa-solid fa-check-circle" style="color: #10b981;"></i>
-                        <p class="text-sm font-medium" style="color: #065f46;">{{ session('success') }}</p>
-                    </div>
-                @endif
+            {{-- Right: Form Card (3/5 width) --}}
+            <div data-animate class="lg:col-span-3">
+                <div class="rounded-2xl p-8 md:p-10" style="background: white; border: 1px solid var(--color-border); box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+                    @if(session('success'))
+                        <div class="mb-7 p-4 rounded-xl flex items-center gap-3" style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.12);">
+                            <i class="fa-solid fa-check-circle text-base" style="color: #10b981;"></i>
+                            <p class="text-sm font-medium" style="color: #065f46;">{{ session('success') }}</p>
+                        </div>
+                    @endif
 
-                <form action="{{ route('appointment.store') }}" method="POST" class="space-y-6">
-                    @csrf
-                    <input type="hidden" name="page" value="about">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-semibold mb-2" style="color: var(--color-text-heading);">Name *</label>
-                            <input type="text" id="name" name="name" placeholder="John Smith" required value="{{ old('name') }}" class="input-field">
-                            @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                    <form action="{{ route('appointment.store') }}" method="POST" class="space-y-6">
+                        @csrf
+                        <input type="hidden" name="page" value="about">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-[13px] font-semibold mb-2" style="color: var(--color-text-heading);">Full Name <span style="color: var(--color-primary);">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required value="{{ old('name') }}"
+                                    class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+                                    style="background: #fafafa; border: 1.5px solid var(--color-border); color: var(--color-text-heading);"
+                                    onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white'; this.style.boxShadow='0 0 0 3px rgba(212,32,44,0.06)';"
+                                    onblur="this.style.borderColor='var(--color-border)'; this.style.background='#fafafa'; this.style.boxShadow='none';">
+                                @error('name') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
+                            </div>
+                            <div>
+                                <label for="service_type" class="block text-[13px] font-semibold mb-2" style="color: var(--color-text-heading);">Service Type</label>
+                                <select id="service_type" name="service_type"
+                                    class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none appearance-auto"
+                                    style="background: #fafafa; border: 1.5px solid var(--color-border); color: var(--color-text-heading);"
+                                    onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white'; this.style.boxShadow='0 0 0 3px rgba(212,32,44,0.06)';"
+                                    onblur="this.style.borderColor='var(--color-border)'; this.style.background='#fafafa'; this.style.boxShadow='none';">
+                                    <option value="">Select a service...</option>
+                                    <option value="Travel Services">Travel Services</option>
+                                    <option value="Education Services">Education Services</option>
+                                    <option value="Technology Services">Technology Services</option>
+                                    <option value="Hospital Tourism">Hospital Tourism</option>
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <label for="service_type" class="block text-sm font-semibold mb-2" style="color: var(--color-text-heading);">Service Type</label>
-                            <select id="service_type" name="service_type" class="input-field" style="appearance: auto;">
-                                <option value="">Select...</option>
-                                <option value="Travel Services">Travel Services</option>
-                                <option value="Education Services">Education Services</option>
-                                <option value="Technology Services">Technology Services</option>
-                                <option value="Hospital Tourism">Hospital Tourism</option>
-                            </select>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="email" class="block text-[13px] font-semibold mb-2" style="color: var(--color-text-heading);">Email Address <span style="color: var(--color-primary);">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required value="{{ old('email') }}"
+                                    class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+                                    style="background: #fafafa; border: 1.5px solid var(--color-border); color: var(--color-text-heading);"
+                                    onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white'; this.style.boxShadow='0 0 0 3px rgba(212,32,44,0.06)';"
+                                    onblur="this.style.borderColor='var(--color-border)'; this.style.background='#fafafa'; this.style.boxShadow='none';">
+                                @error('email') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-[13px] font-semibold mb-2" style="color: var(--color-text-heading);">Phone Number <span style="color: var(--color-primary);">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+880 1XXX-XXXXXX" required value="{{ old('phone') }}"
+                                    class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none"
+                                    style="background: #fafafa; border: 1.5px solid var(--color-border); color: var(--color-text-heading);"
+                                    onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white'; this.style.boxShadow='0 0 0 3px rgba(212,32,44,0.06)';"
+                                    onblur="this.style.borderColor='var(--color-border)'; this.style.background='#fafafa'; this.style.boxShadow='none';">
+                                @error('phone') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
                         <div>
-                            <label for="email" class="block text-sm font-semibold mb-2" style="color: var(--color-text-heading);">Email *</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required value="{{ old('email') }}" class="input-field">
-                            @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            <label for="message" class="block text-[13px] font-semibold mb-2" style="color: var(--color-text-heading);">Message <span style="color: var(--color-text-muted); font-weight: 400;">(optional)</span></label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs, goals, or questions..."
+                                class="w-full px-4 py-3 rounded-xl text-sm transition-all duration-200 outline-none resize-none"
+                                style="background: #fafafa; border: 1.5px solid var(--color-border); color: var(--color-text-heading);"
+                                onfocus="this.style.borderColor='var(--color-primary)'; this.style.background='white'; this.style.boxShadow='0 0 0 3px rgba(212,32,44,0.06)';"
+                                onblur="this.style.borderColor='var(--color-border)'; this.style.background='#fafafa'; this.style.boxShadow='none';">{{ old('message') }}</textarea>
                         </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-semibold mb-2" style="color: var(--color-text-heading);">Phone *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+880" required value="{{ old('phone') }}" class="input-field">
-                            @error('phone') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                        </div>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-semibold mb-2" style="color: var(--color-text-heading);">Message (Optional)</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your needs..." class="input-field resize-none">{{ old('message') }}</textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">
-                        <span class="btn-text"><span>Submit Request</span></span>
-                        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                    </button>
-                </form>
+
+                        <button type="submit" class="btn-primary w-full sm:w-auto justify-center">
+                            <span class="btn-text"><span>Submit Request</span></span>
+                            <span class="btn-icon"><i class="fa-solid fa-paper-plane text-xs"></i></span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
