@@ -2,7 +2,7 @@
 
 @section('title', 'About Us – Endow Corporation | Global Leader in Travel, Education, Technology & Healthcare')
 @section('meta_title', 'About Us – Endow Corporation | Global Leader in Travel, Education, Technology & Healthcare')
-@section('meta_description', 'Discover Endow Corporation — a global conglomerate operating across Travel, Education, Technology, and Hospital Tourism. Serving 30+ countries with innovative solutions since 2018.')
+@section('meta_description', 'Discover Endow Corporation, a global conglomerate operating across Travel, Education, Technology, and Hospital Tourism. Serving 30+ countries with innovative solutions since 2018.')
 
 @section('content')
 
@@ -34,7 +34,7 @@
                 Navigating Knowledge,<br>Embracing <span style="color: var(--color-primary-light);">Adventure</span>
             </h1>
             <p class="text-lg md:text-xl leading-relaxed max-w-2xl" style="color: rgba(255,255,255,0.5); line-height: 1.7;">
-                A global conglomerate empowering businesses and individuals across Travel, Education, Technology, and Healthcare — serving clients in 30+ countries with innovation, excellence, and trust.
+                A global conglomerate empowering businesses and individuals across Travel, Education, Technology, and Healthcare, serving clients in 30+ countries with innovation, excellence, and trust.
             </p>
         </div>
     </div>
@@ -54,13 +54,13 @@
                 <h2 class="section-heading">Building a Global Legacy of <span class="gradient-text">Innovation & Excellence</span></h2>
                 <div class="space-y-5">
                     <p class="text-base leading-[1.8]" style="color: var(--color-text);">
-                        Endow Corporation was founded with a singular vision — to bridge the gap between businesses and global opportunities. What started as a travel consultancy has evolved into a multinational conglomerate operating across four strategic divisions: <strong>Travel</strong>, <strong>Education</strong>, <strong>Technology</strong>, and <strong>Hospital Tourism</strong>.
+                        Endow Corporation was founded with a singular vision, to bridge the gap between businesses and global opportunities. What started as a travel consultancy has evolved into a multinational conglomerate operating across four strategic divisions: <strong>Travel</strong>, <strong>Education</strong>, <strong>Technology</strong>, and <strong>Hospital Tourism</strong>.
                     </p>
                     <p class="text-base leading-[1.8]" style="color: var(--color-text);">
                         Headquartered in Seoul, South Korea, we leverage deep local expertise and a vast international network to deliver end-to-end solutions. Our team of 25+ professionals has successfully delivered 940+ projects for 810+ satisfied clients across Asia, Europe, the Middle East, and the Americas.
                     </p>
                     <p class="text-base leading-[1.8]" style="color: var(--color-text);">
-                        At Endow, we believe that true excellence lies in understanding our clients' unique challenges and crafting tailored strategies that drive measurable results. Whether it's a corporate travel program, a study abroad scholarship, a cloud migration, or a medical tourism journey — we deliver with precision, care, and integrity.
+                        At Endow, we believe that true excellence lies in understanding our clients' unique challenges and crafting tailored strategies that drive measurable results. Whether it's a corporate travel program, a study abroad scholarship, a cloud migration, or a medical tourism journey, we deliver with precision, care, and integrity.
                     </p>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div data-animate>
                 <div class="rounded-2xl overflow-hidden" style="height: 480px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
                     <img src="{{ asset('images/Endow About.png') }}"
-                         alt="Endow Corporation — Global leader in travel, education, technology, and healthcare solutions"
+                         alt="Endow Corporation, global leader in travel, education, technology, and healthcare solutions"
                          class="w-full h-full object-cover"
                          loading="eager"
                          width="800"
@@ -100,7 +100,7 @@
                 </div>
                 <h3 class="text-lg font-bold mb-3" style="color: var(--color-text-heading);">Our Mission</h3>
                 <p class="text-sm leading-[1.8]" style="color: var(--color-text);">
-                    To empower businesses and individuals with innovative, end-to-end solutions across Travel, Education, Technology, and Healthcare — driving growth, connectivity, and lasting success on a global scale.
+                    To empower businesses and individuals with innovative, end-to-end solutions across Travel, Education, Technology, and Healthcare, driving growth, connectivity, and lasting success on a global scale.
                 </p>
             </div>
 
@@ -111,7 +111,7 @@
                 </div>
                 <h3 class="text-lg font-bold mb-3" style="color: var(--color-text-heading);">Our Vision</h3>
                 <p class="text-sm leading-[1.8]" style="color: var(--color-text);">
-                    To be the world's most trusted global conglomerate — recognized for excellence, innovation, and meaningful impact across every market we serve.
+                    To be the world's most trusted global conglomerate, recognized for excellence, innovation, and meaningful impact across every market we serve.
                 </p>
             </div>
 
@@ -122,7 +122,7 @@
                 </div>
                 <h3 class="text-lg font-bold mb-3" style="color: var(--color-text-heading);">Our Values</h3>
                 <p class="text-sm leading-[1.8]" style="color: var(--color-text);">
-                    Innovation, Excellence, Global Reach, Customer Focus, Sustainability, and Integrity — the principles that guide every decision we make.
+                    Innovation, Excellence, Global Reach, Customer Focus, Sustainability, and Integrity, the principles that guide every decision we make.
                 </p>
             </div>
         </div>
@@ -170,7 +170,7 @@
             </div>
             <h2 class="section-heading" style="font-size: clamp(34px, 4.5vw, 52px); margin-bottom: 20px;">Four Pillars of <span class="gradient-text">Excellence</span></h2>
             <p class="text-base sm:text-lg max-w-[680px] mx-auto" style="color: var(--color-text); line-height: 1.75;">
-                Each division operates with singular focus — together they deliver end-to-end global solutions across 30+ countries.
+                Each division operates with singular focus, together they deliver end-to-end global solutions across 30+ countries.
             </p>
         </div>
 
@@ -179,7 +179,7 @@
                 [
                     'route' => 'technology',
                     'name' => 'Endow Technologies',
-                    'desc' => 'AI, cloud, custom software — cutting-edge digital transformation engineered to accelerate your business growth.',
+                    'desc' => 'AI, cloud, custom software, cutting-edge digital transformation engineered to accelerate your business growth.',
                     'icon' => 'fa-solid fa-microchip',
                     'accent' => 'rgba(245,158,11,0.08)',
                     'accentBorder' => 'rgba(245,158,11,0.15)',
@@ -188,7 +188,7 @@
                 [
                     'route' => 'education',
                     'name' => 'Global Education',
-                    'desc' => 'World-class study programs, scholarship guidance, language training — opening doors to global academic opportunities.',
+                    'desc' => 'World-class study programs, scholarship guidance, language training, opening doors to global academic opportunities.',
                     'icon' => 'fa-solid fa-graduation-cap',
                     'accent' => 'rgba(124,58,237,0.08)',
                     'accentBorder' => 'rgba(124,58,237,0.15)',
@@ -197,7 +197,7 @@
                 [
                     'route' => 'hospital-tourism',
                     'name' => 'Hospital Tourism',
-                    'desc' => 'World-class medical travel across 30+ countries — connecting patients with accredited hospitals and expert specialists.',
+                    'desc' => 'Premium medical travel connecting patients with South Korea\'s world-class hospitals and expert specialists.',
                     'icon' => 'fa-solid fa-heart-pulse',
                     'accent' => 'rgba(16,185,129,0.08)',
                     'accentBorder' => 'rgba(16,185,129,0.15)',
@@ -441,25 +441,25 @@
                 [
                     'year' => '2018',
                     'title' => 'Foundation & Travel Launch',
-                    'desc' => 'Endow Corporation established in Seoul, South Korea — launching with a vision to bridge businesses with global travel opportunities.',
+                    'desc' => 'Endow Corporation established in Seoul, South Korea, launching with a vision to bridge businesses with global travel opportunities.',
                     'icon' => 'fa-solid fa-rocket',
                 ],
                 [
                     'year' => '2022',
                     'title' => 'Global Education Division',
-                    'desc' => 'Endow Global Education established — partnering with international institutions for study abroad programs, scholarships, and language training.',
+                    'desc' => 'Endow Global Education established, partnering with international institutions for study abroad programs, scholarships, and language training.',
                     'icon' => 'fa-solid fa-graduation-cap',
                 ],
                 [
                     'year' => '2023',
                     'title' => 'Technology Division',
-                    'desc' => 'Endow Technologies launched — delivering AI, cloud, and custom software solutions to enterprise clients worldwide.',
+                    'desc' => 'Endow Technologies launched, delivering AI, cloud, and custom software solutions to enterprise clients worldwide.',
                     'icon' => 'fa-solid fa-microchip',
                 ],
                 [
                     'year' => '2024',
                     'title' => 'Hospital Tourism & Global Expansion',
-                    'desc' => 'Hospital Tourism division launched alongside global expansion — connecting patients with accredited hospitals across 30+ countries.',
+                    'desc' => 'Hospital Tourism division launched alongside global expansion, connecting international patients with South Korea\'s premium healthcare facilities.',
                     'icon' => 'fa-solid fa-globe',
                 ],
             ];
@@ -516,7 +516,7 @@
             </div>
             <h2 class="section-heading" style="font-size: clamp(30px, 4vw, 48px);">Global Solutions, <span class="gradient-text">Local Expertise</span></h2>
             <p class="text-base sm:text-lg leading-[1.8]" style="color: var(--color-text);">
-                Founded in Seoul and operating across 30+ countries, Endow Corporation brings together four specialized divisions under one roof — each focused on delivering measurable results for our clients.
+                Founded in Seoul and operating across 30+ countries, Endow Corporation brings together four specialized divisions under one roof, each focused on delivering measurable results for our clients.
             </p>
         </div>
 
@@ -528,7 +528,7 @@
                         'icon' => 'fa-solid fa-plane-departure',
                         'name' => 'Endow Travel',
                         'tagline' => 'Where the journey begins',
-                        'desc' => 'From corporate trips to dream vacations, we handle every detail — flights, hotels, visas, and on-ground support around the clock.',
+                        'desc' => 'From corporate trips to dream vacations, we handle every detail, flights, hotels, visas, and on-ground support around the clock.',
                         'link' => route('division.show', 'travel'),
                         'accent' => 'rgba(212,32,44,0.08)',
                         'accentBorder' => 'rgba(212,32,44,0.12)',
@@ -537,8 +537,8 @@
                     [
                         'icon' => 'fa-solid fa-graduation-cap',
                         'name' => 'Global Education',
-                        'tagline' => 'Global vision, guided path',
-                        'desc' => 'Study abroad programs, scholarships, and language training — connecting students with 100+ partner institutions worldwide.',
+                        'tagline' => 'Top 1 Agency from Bangladesh to Korea',
+                        'desc' => 'Bangladesh\'s leading education agency for South Korea. Study abroad programs, scholarships, and language training with 100+ partner institutions.',
                         'link' => route('division.show', 'education'),
                         'accent' => 'rgba(124,58,237,0.08)',
                         'accentBorder' => 'rgba(124,58,237,0.12)',
@@ -548,7 +548,7 @@
                         'icon' => 'fa-solid fa-microchip',
                         'name' => 'Endow Technologies',
                         'tagline' => 'Innovate. Transform. Lead.',
-                        'desc' => 'Custom software, AI integration, cloud infrastructure, and cybersecurity — built to scale your business forward.',
+                        'desc' => 'Custom software, AI integration, cloud infrastructure, and cybersecurity, built to scale your business forward.',
                         'link' => route('division.show', 'technology'),
                         'accent' => 'rgba(245,158,11,0.08)',
                         'accentBorder' => 'rgba(245,158,11,0.12)',
@@ -557,8 +557,8 @@
                     [
                         'icon' => 'fa-solid fa-heart-pulse',
                         'name' => 'Hospital Tourism',
-                        'tagline' => 'World-class care, global access',
-                        'desc' => 'Medical travel coordinated end-to-end — accredited hospitals, specialist consultations, and recovery support across 30+ countries.',
+                        'tagline' => 'Premium Healthcare in South Korea',
+                        'desc' => 'Connecting international patients with South Korea\'s world-class hospitals. Expert medical coordination, specialist consultations, and recovery support.',
                         'link' => route('division.show', 'hospital-tourism'),
                         'accent' => 'rgba(16,185,129,0.08)',
                         'accentBorder' => 'rgba(16,185,129,0.12)',
@@ -596,7 +596,7 @@
                     </div>
                     <h3 class="text-2xl sm:text-3xl font-bold text-white mb-5" style="letter-spacing: -0.03em; line-height: 1.2;">Headquartered in Seoul,<br>Operating Worldwide</h3>
                     <p class="text-base leading-[1.8] mb-4" style="color: rgba(255,255,255,0.5);">
-                        From our offices in Seoul's Yeongdeungpo district, we serve clients across Asia, Europe, the Middle East, and the Americas — combining local understanding with global standards.
+                        From our offices in Seoul's Yeongdeungpo district, we serve clients across Asia, Europe, the Middle East, and the Americas, combining local understanding with global standards.
                     </p>
                     <p class="text-base leading-[1.8]" style="color: rgba(255,255,255,0.5);">
                         Our multilingual team of 25+ professionals is passionate about delivering results that matter. Every project, every client, every time.
@@ -622,7 +622,7 @@
         <div class="mt-16 text-center max-w-[750px] mx-auto" data-animate>
             <h3 class="text-2xl sm:text-3xl font-bold mb-5" style="color: var(--color-text-heading); letter-spacing: -0.03em;">Built on Trust, Driven by <span class="gradient-text">Innovation</span></h3>
             <p class="text-base sm:text-lg leading-[1.8]" style="color: var(--color-text);">
-                Every solution we deliver is tailored to our clients' unique challenges. Because at Endow Corporation, we don't just provide services — we build lasting partnerships that drive real growth.
+                Every solution we deliver is tailored to our clients' unique challenges. Because at Endow Corporation, we don't just provide services, we build lasting partnerships that drive real growth.
             </p>
         </div>
     </div>
@@ -648,7 +648,7 @@
         </h2>
 
         <p data-animate class="text-base sm:text-lg max-w-xl mx-auto mb-10" style="color: var(--color-text); line-height: 1.7;">
-            Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare — our team is ready to guide you every step of the way.
+            Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare, our team is ready to guide you every step of the way.
         </p>
 
         <div data-animate class="flex flex-wrap items-center justify-center gap-4">
@@ -703,7 +703,7 @@
                 Book an <span class="gradient-text">Appointment</span>
             </h2>
             <p class="text-base max-w-lg mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">
-                Ready to take the next step? Let's connect — our team is here to help with Travel, Education, Technology, or Healthcare consulting.
+                Ready to take the next step? Let's connect, our team is here to help with Travel, Education, Technology, or Healthcare consulting.
             </p>
         </div>
 

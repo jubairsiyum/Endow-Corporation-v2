@@ -151,7 +151,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]" data-animate>
             @foreach([
                 ['step' => '01', 'icon' => 'fa-solid fa-clipboard-check', 'title' => 'Take a Placement Test', 'desc' => 'We assess your current language level through a quick and comprehensive placement test to determine the right course for you.'],
-                ['step' => '02', 'icon' => 'fa-solid fa-calendar-check', 'title' => 'Choose Your Schedule', 'desc' => 'Select from flexible class timings — morning, evening, or weekend sessions — that best fit your personal and professional commitments.'],
+                ['step' => '02', 'icon' => 'fa-solid fa-calendar-check', 'title' => 'Choose Your Schedule', 'desc' => 'Select from flexible class timings, morning, evening, or weekend sessions, that best fit your personal and professional commitments.'],
                 ['step' => '03', 'icon' => 'fa-solid fa-rocket', 'title' => 'Start Learning', 'desc' => 'Begin your language training with expert instructors, interactive curriculum, and access to our digital learning platform.'],
             ] as $index => $step)
                 <div class="service-card text-center relative">

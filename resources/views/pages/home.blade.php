@@ -57,7 +57,7 @@
                 'badge' => 'Endow Technologies',
                 'badge_icon' => 'fa-solid fa-microchip',
                 'headline' => 'Innovate. Transform.<br class="hidden sm:block"><span class="hero-accent-text" style="--accent: #fbbf24;">Lead.</span>',
-                'desc' => 'AI, cloud, custom software, and digital transformation — cutting-edge tech to power your business forward.',
+                        'desc' => 'AI, cloud, custom software, and digital transformation, cutting-edge tech to power your business forward.',
                 'primary_btn' => ['text' => 'Explore Tech', 'url' => 'division.show', 'param' => 'technology'],
                 'outline_btn' => ['text' => 'Our Services', 'url' => 'about'],
             ],
@@ -187,7 +187,7 @@
                         'num' => '02',
                         'icon' => 'fa-solid fa-graduation-cap',
                         'title' => 'Global Education',
-                        'description' => 'World-class study programs, scholarship guidance, language training, and comprehensive student support — unlocking global opportunities.',
+                        'description' => 'World-class study programs, scholarship guidance, language training, and comprehensive student support, unlocking global opportunities.',
                         'route' => 'education',
                         'photo' => asset('images/services/733542680_989042620614397_7628936787862668773_n.jpg'),
                         'fallback' => asset('images/services/education-bg.svg'),
@@ -196,7 +196,7 @@
                         'num' => '03',
                         'icon' => 'fa-solid fa-microchip',
                         'title' => 'Endow Technologies',
-                        'description' => 'AI, cloud, custom software, and digital transformation — cutting-edge tech engineered to power your business and accelerate growth.',
+                        'description' => 'AI, cloud, custom software, and digital transformation, cutting-edge tech engineered to power your business and accelerate growth.',
                         'route' => 'technology',
                         'photo' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
                         'fallback' => asset('images/services/technology-bg.svg'),
@@ -367,7 +367,7 @@
             </div>
             <h2 class="section-heading" style="font-size: clamp(34px, 4.5vw, 52px); margin-bottom: 20px;">Four Pillars of <span class="gradient-text">Excellence</span></h2>
             <p class="text-base sm:text-lg max-w-[680px] mx-auto" style="color: var(--color-text); line-height: 1.75;">
-                Each division operates with singular focus — together they deliver end-to-end global solutions across 30+ countries.
+                Each division operates with singular focus, together they deliver end-to-end global solutions across 30+ countries.
             </p>
         </div>
 
@@ -377,7 +377,7 @@
                     [
                         'route' => 'technology',
                         'name' => 'Endow Technologies',
-                        'desc' => 'AI, cloud, custom software — cutting-edge digital transformation engineered to accelerate your business growth.',
+                        'desc' => 'AI, cloud, custom software, cutting-edge digital transformation engineered to accelerate your business growth.',
                         'icon' => 'fa-solid fa-microchip',
                         'accent' => 'rgba(245,158,11,0.08)',
                         'accentBorder' => 'rgba(245,158,11,0.15)',
@@ -387,7 +387,7 @@
                     [
                         'route' => 'education',
                         'name' => 'Global Education',
-                        'desc' => 'World-class study programs, scholarship guidance, language training — opening doors to global academic opportunities.',
+                        'desc' => 'World-class study programs, scholarship guidance, language training, opening doors to global academic opportunities.',
                         'icon' => 'fa-solid fa-graduation-cap',
                         'accent' => 'rgba(124,58,237,0.08)',
                         'accentBorder' => 'rgba(124,58,237,0.15)',
@@ -397,7 +397,7 @@
                     [
                         'route' => 'hospital-tourism',
                         'name' => 'Hospital Tourism',
-                        'desc' => 'World-class medical travel across 30+ countries — connecting patients with accredited hospitals and expert specialists.',
+                        'desc' => 'Premium medical travel connecting patients with South Korea\'s world-class hospitals and expert specialists.',
                         'icon' => 'fa-solid fa-heart-pulse',
                         'accent' => 'rgba(16,185,129,0.08)',
                         'accentBorder' => 'rgba(16,185,129,0.15)',
@@ -480,7 +480,7 @@
             'image' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop',
             'icon' => 'fa-solid fa-code',
             'title' => 'Software Development',
-            'description' => 'Custom-built, scalable platforms engineered for performance. From enterprise SaaS to internal tooling — we build software that drives your business forward with clean architecture and modern stacks.',
+            'description' => 'Custom-built, scalable platforms engineered for performance. From enterprise SaaS to internal tooling, we build software that drives your business forward with clean architecture and modern stacks.',
             'button_text' => 'Explore Endow Tech',
             'button_url' => '/technology',
             'badge' => '01',
@@ -686,10 +686,10 @@
         <div class="accordion" data-animate role="list">
             @php
                 $faqs = [
-                    ['q' => 'What does Endow Corporation do?', 'a' => 'We are a global conglomerate operating across four core divisions — Travel, Education, Technology, and Hospital Tourism. From corporate travel management to AI-driven tech solutions, we deliver end-to-end services that help businesses and individuals thrive across 30+ countries.'],
-                    ['q' => 'Can you manage end-to-end corporate travel for our organization?', 'a' => 'Absolutely. We handle everything from flights and accommodations to visa processing, itinerary management, and 24/7 on-ground support — all tailored to your company\'s travel policies and budget.'],
+                    ['q' => 'What does Endow Corporation do?', 'a' => 'We are a global conglomerate operating across four core divisions, Travel, Education, Technology, and Hospital Tourism. From corporate travel management to AI-driven tech solutions, we deliver end-to-end services that help businesses and individuals thrive across 30+ countries.'],
+                    ['q' => 'Can you manage end-to-end corporate travel for our organization?', 'a' => 'Absolutely. We handle everything from flights and accommodations to visa processing, itinerary management, and 24/7 on-ground support, all tailored to your company\'s travel policies and budget.'],
                     ['q' => 'What technology solutions does Endow Technologies provide?', 'a' => 'We deliver custom software development, AI and automation integration, cloud infrastructure, and cybersecurity services. Our solutions are built for scalability and designed to accelerate your digital transformation.'],
-                    ['q' => 'How does your Hospital Tourism division work?', 'a' => 'We coordinate medical travel across a network of accredited hospitals in 30+ countries. From selecting the right facility and specialist to arranging travel logistics and post-care follow-up, we manage the entire journey for patients seeking world-class healthcare abroad.'],
+                    ['q' => 'How does your Hospital Tourism division work?', 'a' => 'We coordinate medical travel to South Korea\'s world-class hospitals. From selecting the right facility and specialist to arranging travel logistics and post-care follow-up, we manage the entire journey for patients seeking premium healthcare abroad.'],
                     ['q' => 'What educational programs and scholarships do you offer?', 'a' => 'We partner with leading global institutions to offer study abroad programs, language training, and scholarship guidance. Our team supports students through admissions, visa processing, and settlement in their new country.'],
                     ['q' => 'How can I get started with Endow Corporation?', 'a' => 'Simply book a free consultation through our website or call us at 02-2632-2559. We\'ll assess your needs, recommend the right division, and build a tailored plan to get started.'],
                 ];
@@ -732,7 +732,7 @@
         </h2>
 
         <p data-animate class="text-base sm:text-lg max-w-xl mx-auto mb-10" style="color: var(--color-text); line-height: 1.7;">
-            Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare — our team is ready to guide you every step of the way.
+            Whether you're looking for tailored solutions in Travel, Education, Technology, or Healthcare, our team is ready to guide you every step of the way.
         </p>
 
         <div data-animate class="flex flex-wrap items-center justify-center gap-4">
@@ -787,7 +787,7 @@
                 Book an <span class="gradient-text">Appointment</span>
             </h2>
             <p class="text-base max-w-lg mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">
-                Ready to take the next step? Let's connect — our team is here to help with Travel, Education, Technology, or Healthcare consulting.
+                Ready to take the next step? Let's connect, our team is here to help with Travel, Education, Technology, or Healthcare consulting.
             </p>
         </div>
 

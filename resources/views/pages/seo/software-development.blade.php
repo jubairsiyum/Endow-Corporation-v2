@@ -154,7 +154,7 @@
                 </div>
                 <h2 class="section-heading">Why Choose <span class="gradient-text">Endow Technologies?</span></h2>
                 <p class="text-base leading-relaxed mb-8" style="color: var(--color-text);">
-                    We don't just write code — we build digital products that solve real business problems and deliver measurable ROI.
+                    We don't just write code, we build digital products that solve real business problems and deliver measurable ROI.
                 </p>
 
                 <div class="space-y-5">

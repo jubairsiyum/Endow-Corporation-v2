@@ -30,7 +30,7 @@
                 <i class="fa-regular fa-calendar mr-1"></i> Last Updated: July 16, 2026
             </p>
             <p class="text-base leading-relaxed mt-4" style="color: var(--color-text);">
-                Welcome to Endow Corporation. These Terms of Service govern your use of our website and services provided through our divisions — Endow Travel, Endow Global Education, and Endow Technologies. By accessing our website or using our services, you agree to be bound by these terms.
+                Welcome to Endow Corporation. These Terms of Service govern your use of our website and services provided through our divisions: Endow Travel, Endow Global Education, and Endow Technologies. By accessing our website or using our services, you agree to be bound by these terms.
             </p>
         </div>
 
@@ -116,7 +116,7 @@
                 4. Intellectual Property
             </h2>
             <p class="text-base leading-relaxed mb-4" style="color: var(--color-text);">
-                All content on this website — including but not limited to text, graphics, logos, images, software, and design elements — is the property of Endow Corporation or its licensors and is protected by international intellectual property laws.
+                All content on this website, including but not limited to text, graphics, logos, images, software, and design elements, is the property of Endow Corporation or its licensors and is protected by international intellectual property laws.
             </p>
             <p class="text-base leading-relaxed" style="color: var(--color-text);">
                 You are granted a limited, non-exclusive, non-transferable license to access and use the website for personal or internal business purposes. You may not reproduce, distribute, modify, create derivative works of, publicly display, or commercially exploit any content without prior written consent from Endow Corporation.

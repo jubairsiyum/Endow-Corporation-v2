@@ -30,7 +30,7 @@
                 <i class="fa-regular fa-calendar mr-1"></i> Last Updated: July 16, 2026
             </p>
             <p class="text-base leading-relaxed mt-4" style="color: var(--color-text);">
-                At Endow Corporation, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website and use our services across our divisions — Endow Travel, Endow Global Education, and Endow Technologies.
+                At Endow Corporation, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website and use our services across our divisions: Endow Travel, Endow Global Education, and Endow Technologies.
             </p>
         </div>
 
