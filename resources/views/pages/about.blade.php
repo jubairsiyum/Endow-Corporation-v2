@@ -66,7 +66,7 @@
             </div>
 
             <div data-animate>
-                <div class="rounded-2xl overflow-hidden" style="height: 480px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
+                <div class="rounded-2xl overflow-hidden" style="height: 360px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
                     <img src="{{ asset('images/Endow About.png') }}"
                          alt="Endow Corporation, global leader in travel, education, technology, and healthcare solutions"
                          class="w-full h-full object-cover"
@@ -290,7 +290,7 @@
             </div>
 
             <div data-animate>
-                <div class="rounded-2xl overflow-hidden" style="height: 480px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
+                <div class="rounded-2xl overflow-hidden" style="height: 360px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
                     <img src="{{ asset('images/Endow Corporation as a Visionary Leader.png') }}"
                          alt="Why choose Endow Corporation — expert team delivering global solutions"
                          class="w-full h-full object-cover"

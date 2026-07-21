@@ -51,7 +51,7 @@
 <body>
 
     {{-- Fixed Glassmorphism Header --}}
-    <header id="main-header" style="position: fixed; z-index: 1000; top: 0; left: 0; right: 0; padding: 16px 4% 0; transition: padding 0.4s cubic-bezier(0.4,0,0.2,1);">
+    <header id="main-header" style="position: fixed; z-index: 1000; top: 0; left: 0; right: 0; padding: 12px 3% 0; transition: padding 0.4s cubic-bezier(0.4,0,0.2,1);">
 
         {{-- Topbar — collapsed by default, expands on scroll --}}
         <div id="header-topbar" class="lg:block" style="background: #0a0a0a; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.35s ease;">
@@ -93,7 +93,7 @@
         </div>
 
         {{-- Glassmorphism Pill — 85% width at top, 100% on scroll --}}
-        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-6 sm:px-10 lg:px-16 py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(255,255,255,0.8); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);">
+        <div id="header-pill" class="flex items-center justify-between rounded-2xl px-4 sm:px-8 lg:px-16 py-3 sm:py-4" style="transition: background 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.45s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1); background: rgba(255,255,255,0.8); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);">
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center gap-3">
@@ -321,9 +321,9 @@
 
         function setHeaderNormal() {
             header.classList.remove('header-scrolled');
-            header.style.paddingLeft = '4%';
-            header.style.paddingRight = '4%';
-            header.style.paddingTop = '16px';
+            header.style.paddingLeft = '3%';
+            header.style.paddingRight = '3%';
+            header.style.paddingTop = '12px';
             if (headerTopBar) {
                 headerTopBar.style.maxHeight = '0';
                 headerTopBar.style.opacity = '0';

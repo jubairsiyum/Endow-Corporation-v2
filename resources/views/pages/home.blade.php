@@ -9,7 +9,7 @@
 {{-- ============================================ --}}
 {{-- HERO — Premium Vertical Carousel --}}
 {{-- ============================================ --}}
-<section id="hero-carousel" class="hero-carousel relative overflow-hidden will-change-transform" style="height: 100vh; min-height: 700px; background: #0a0a0a;">
+<section id="hero-carousel" class="hero-carousel relative overflow-hidden will-change-transform" style="height: 100vh; min-height: 560px; background: #0a0a0a;">
     {{-- Sophisticated Corporate Background --}}
     <div class="hero-bg-canvas absolute inset-0 pointer-events-none" aria-hidden="true">
         {{-- Gradient Mesh — layered soft atmospheric gradients --}}
@@ -217,7 +217,7 @@
                 <a href="{{ route('division.show', $service['route']) }}"
                    class="service-card-v3 group relative flex flex-col overflow-hidden cursor-pointer"
                    data-index="{{ $index }}"
-                   style="border-radius: 26px; min-height: 420px; background: #0d0d0d; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;">
+                   style="border-radius: 26px; min-height: 360px; background: #0d0d0d; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease, border-color 0.5s ease;">
 
                     {{-- Image Container — full height with zoom --}}
                     <div class="absolute inset-0 overflow-hidden" style="border-radius: 26px;">
@@ -300,13 +300,13 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {{-- Left: Visual --}}
             <div data-animate class="relative">
-                <div class="rounded-xl overflow-hidden" style="height: 420px;">
+                <div class="rounded-xl overflow-hidden" style="height: 320px; min-height: 250px;">
                     <img src="{{ asset('images/ec excellence.png') }}"
                          alt="Endow Corporation Excellence"
                          class="w-full h-full object-cover"
                          loading="lazy">
                 </div>
-                <div class="absolute -bottom-5 -right-5 bg-white rounded-xl p-5" style="box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-left: 3px solid var(--color-primary);">
+                <div class="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 bg-white rounded-xl p-4 sm:p-5" style="box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-left: 3px solid var(--color-primary);">
                     <p class="text-3xl font-bold" style="color: var(--color-primary);">7+</p>
                     <p class="text-xs font-medium" style="color: var(--color-text-muted);">Years of Excellence</p>
                 </div>
@@ -583,7 +583,7 @@
             </div>
 
             <div data-animate>
-                <div class="rounded-xl overflow-hidden" style="height: 420px;">
+                <div class="rounded-xl overflow-hidden" style="height: 320px; min-height: 250px;">
                     <img src="{{ asset('images/Endow Corporation as a Visionary Leader.png') }}"
                          alt="Our Expert Team"
                          class="w-full h-full object-cover"

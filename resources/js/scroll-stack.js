@@ -22,6 +22,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initScrollStacks() {
+    // ── Module-level refs for cleanup ──
+    const allScrollTriggers = [];
+    let mobileObserver = null;
+
     // ── Respect reduced motion ──
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         initMobileFallback();
@@ -31,13 +35,11 @@ export function initScrollStacks() {
     const stacks = document.querySelectorAll('[data-scroll-stack]');
     if (!stacks.length) return;
 
-    const allScrollTriggers = [];
-
     function getDeviceTier() {
         const w = window.innerWidth;
         if (w >= 992) return 'desktop';
         if (w >= 768) return 'tablet';
-        return 'mobile';
+        return 'mobile'; // <768
     }
 
     function mountStack(stack) {
@@ -52,12 +54,15 @@ export function initScrollStacks() {
         
         // ── Visual Parameters ──
         const isDesktop = deviceTier === 'desktop';
-        const scaleStep = isDesktop ? 0.015 : 0.01; // Ultra-subtle scale difference to cover sides fully
-        const yStep = isDesktop ? 15 : 10; // Peek offset
+        const scaleStep = isDesktop ? 0.015 : 0.01;
+        const yStep = isDesktop ? 15 : 10;
+
+        // ── Clear any residual mobile styles first ──
+        cards.forEach((card) => {
+            card.classList.remove('scroll-stack-visible');
+        });
 
         // ── Set initial state ──
-        // Card 0: visible, in place, on top initially
-        // All others: parked BELOW the viewport (yPercent: 100), hidden beneath
         cards.forEach((card, i) => {
             gsap.set(card, {
                 yPercent: i === 0 ? 0 : 100,
@@ -140,34 +145,57 @@ export function initScrollStacks() {
     }
 
     function initMobileFallback() {
-        const cards = document.querySelectorAll('.scroll-stack-card');
-        if (!cards.length) return;
+        // Disconnect previous observer to avoid leaks
+        if (mobileObserver) {
+            mobileObserver.disconnect();
+            mobileObserver = null;
+        }
 
-        const observer = new IntersectionObserver(
+        const mobileStacks = document.querySelectorAll('[data-scroll-stack]');
+        if (!mobileStacks.length) return;
+
+        mobileObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('scroll-stack-visible');
-                        observer.unobserve(entry.target);
+                        mobileObserver.unobserve(entry.target);
                     }
                 });
             },
-            { threshold: 0.1, rootMargin: '0px 0px -20px 0px' }
+            { threshold: 0.06, rootMargin: '0px 0px -50px 0px' }
         );
-        cards.forEach(card => observer.observe(card));
+
+        mobileStacks.forEach(stack => {
+            const cards = stack.querySelectorAll('.scroll-stack-card');
+            cards.forEach(card => {
+                // Ensure card starts hidden for the fade-up effect
+                card.classList.remove('scroll-stack-visible', 'scroll-stack-card--active');
+                // Observe
+                mobileObserver.observe(card);
+            });
+        });
     }
 
     function destroyAll() {
+        // Kill all GSAP ScrollTriggers
         allScrollTriggers.forEach(t => t.kill());
         allScrollTriggers.length = 0;
 
-        const stacks = document.querySelectorAll('[data-scroll-stack]');
-        stacks.forEach(stack => {
+        // Disconnect mobile observer
+        if (mobileObserver) {
+            mobileObserver.disconnect();
+            mobileObserver = null;
+        }
+
+        // Clean up all cards: clear GSAP inline styles, reset classes
+        const allStacks = document.querySelectorAll('[data-scroll-stack]');
+        allStacks.forEach(stack => {
             const cards = stack.querySelectorAll('.scroll-stack-card');
             cards.forEach(card => {
                 gsap.set(card, { clearProps: 'all' });
                 card.style.willChange = '';
-                card.classList.remove('scroll-stack-card--active');
+                card.classList.remove('scroll-stack-card--active', 'scroll-stack-visible');
             });
         });
     }

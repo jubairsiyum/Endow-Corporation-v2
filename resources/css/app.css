@@ -72,8 +72,9 @@
         padding-top: 80px;
         padding-bottom: 100px;
     }
-    @media (max-width: 991px) { .section-gap { padding-top: 90px; padding-bottom: 70px; } .section-gap-hero { margin-top: 0; padding-top: 80px; padding-bottom: 70px; } }
-    @media (max-width: 575px) { .section-gap { padding-top: 80px; padding-bottom: 50px; } .section-gap-hero { margin-top: 0; padding-top: 80px; padding-bottom: 50px; } }
+    @media (max-width: 991px) { .section-gap { padding-top: 80px; padding-bottom: 70px; } .section-gap-hero { margin-top: 0; padding-top: 60px; padding-bottom: 60px; } }
+    @media (max-width: 767px) { .section-gap { padding-top: 60px; padding-bottom: 50px; } .section-gap-hero { margin-top: 0; padding-top: 50px; padding-bottom: 50px; } }
+    @media (max-width: 479px) { .section-gap { padding-top: 48px; padding-bottom: 40px; } }
 
     /* ── Section Headings ── */
     .section-heading {
@@ -84,7 +85,8 @@
         margin-bottom: 40px;
     }
     @media (max-width: 991px) { .section-heading { font-size: 34px; margin-bottom: 30px; } }
-    @media (max-width: 575px) { .section-heading { font-size: 28px; } }
+    @media (max-width: 767px) { .section-heading { font-size: 28px; margin-bottom: 24px; } }
+    @media (max-width: 479px) { .section-heading { font-size: 24px; } }
 
     .section-subtitle {
         display: inline-flex;
@@ -288,6 +290,24 @@
         letter-spacing: 0.5px;
     }
 
+    /* Stat Bar — Responsive */
+    @media (max-width: 991px) {
+        .stat-item { padding: 48px 30px 52px; }
+        .stat-number { font-size: 48px; }
+        .stat-label { font-size: 13px; }
+    }
+    @media (max-width: 767px) {
+        .stat-item { padding: 36px 20px 40px; }
+        .stat-item:not(:last-child)::after { display: none; }
+        .stat-number { font-size: 40px; }
+        .stat-label { font-size: 12px; margin-top: 6px; }
+    }
+    @media (max-width: 479px) {
+        .stat-item { padding: 28px 16px 32px; }
+        .stat-number { font-size: 34px; }
+        .stat-label { font-size: 11px; }
+    }
+
     /* ── Testimonials ── */
     .testimonial-card {
         background: white;
@@ -303,6 +323,17 @@
     .testimonial-card.active {
         border-color: var(--color-primary);
         box-shadow: 0 12px 40px rgba(212,32,44,0.1);
+    }
+
+    /* Testimonials — Responsive */
+    @media (max-width: 767px) {
+        .testimonial-card { padding: 28px 18px 24px; }
+        .testimonial-carousel { padding: 0 36px; }
+        .testimonial-prev, .testimonial-next { width: 36px; height: 36px; }
+    }
+    @media (max-width: 479px) {
+        .testimonial-carousel { padding: 0 28px; }
+        .testimonial-prev, .testimonial-next { width: 32px; height: 32px; }
     }
 
     /* ── Accordion ── */
@@ -395,6 +426,44 @@
     .dashed-border { border: 1px dashed var(--color-border-dashed); }
     .dashed-border-dark { border: 1px dashed rgba(255,255,255,0.12); }
 
+    /* ── Divisions Section — Responsive ── */
+    @media (max-width: 767px) {
+        .div-card .div-icon-wrap { width: 44px; height: 44px; border-radius: 12px; }
+        .div-card .div-icon-wrap i { font-size: 18px; }
+        .div-card { min-height: 200px; }
+    }
+    @media (max-width: 479px) {
+        .div-card .div-icon-wrap { width: 40px; height: 40px; border-radius: 10px; }
+        .div-card .div-icon-wrap i { font-size: 16px; }
+        .div-card { min-height: 180px; }
+        .div-card .div-arrow-wrap { width: 36px; height: 36px; }
+    }
+
+    /* ── Services Section — Responsive ── */
+    @media (max-width: 479px) {
+        .service-card-v3 { min-height: 320px; border-radius: 20px; }
+        .service-card-v3 .service-glass-icon { width: 40px; height: 40px; border-radius: 12px; }
+        .service-card-v3 .service-glass-icon i { font-size: 16px; }
+    }
+
+    /* ── Footer — Responsive ── */
+    @media (max-width: 767px) {
+        footer .grid { gap: 36px; }
+        footer .pt-24 { padding-top: 60px; }
+    }
+    @media (max-width: 479px) {
+        footer .pt-24 { padding-top: 44px; }
+        footer .mb-16 { margin-bottom: 32px; }
+    }
+
+    /* ── About Page Hero — Responsive ── */
+    @media (max-width: 767px) {
+        section[style*="padding: 140px"] { padding: 100px 0 60px !important; }
+    }
+    @media (max-width: 479px) {
+        section[style*="padding: 140px"] { padding: 90px 0 48px !important; }
+    }
+
     /* ── Nav Links ── */
     .nav-link {
         font-size: 14px;
@@ -441,6 +510,9 @@
     /* ── Header Logo ── */
     .header-logo {
         transition: filter 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    @media (max-width: 479px) {
+        .header-logo { height: 28px !important; }
     }
     .gradient-text {
         background: linear-gradient(135deg, var(--color-primary) 0%, #ff6b6b 100%);
@@ -757,6 +829,53 @@
 
 .hero-mouse-wheel {
     animation: heroMouseWheel 2.2s ease-in-out infinite;
+}
+
+/* ── Hero Responsive Overrides ── */
+@media (max-width: 767px) {
+    .hero-slide > .max-w-5xl { padding-top: 80px; padding-bottom: 100px; }
+    .hero-btn-primary {
+        padding: 6px 6px 6px 22px;
+        font-size: 14px;
+        gap: 10px;
+    }
+    .hero-btn-primary .hero-btn-icon {
+        width: 38px;
+        height: 38px;
+    }
+    .hero-btn-primary .hero-btn-icon i { font-size: 13px; }
+    .hero-btn-ghost {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    .hero-pill {
+        height: 6px;
+    }
+    .hero-scroll-group { bottom: 20px; gap: 12px; }
+    .hero-mouse-outline { width: 22px; height: 36px; }
+    .hero-mouse-wheel { width: 2.5px; height: 6px; }
+    .hero-scroll-label { font-size: 9px; letter-spacing: 4px; }
+}
+
+@media (max-width: 479px) {
+    .hero-btn-primary {
+        padding: 5px 5px 5px 18px;
+        font-size: 13px;
+        gap: 8px;
+    }
+    .hero-btn-primary .hero-btn-icon {
+        width: 34px;
+        height: 34px;
+    }
+    .hero-btn-primary .hero-btn-icon i { font-size: 12px; }
+    .hero-btn-ghost {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    .hero-scroll-group { bottom: 14px; gap: 10px; }
+    .hero-scroll-label { display: none; }
+    .hero-slide > .max-w-5xl { padding-top: 72px; padding-bottom: 100px; }
+    #hero-carousel { min-height: 480px; }
 }
 
 /* Hide scroll group on non-first slides */
