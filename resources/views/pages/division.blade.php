@@ -6,25 +6,117 @@
 
 @section('content')
 
-{{-- Hero --}}
-<section class="section-gap" style="background-color: var(--color-dark); position: relative; overflow: hidden;">
-    <div class="absolute top-[10%] right-[5%] w-[300px] h-[300px] rounded-full opacity-15" style="background: var(--color-primary); filter: blur(65px);"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10 py-16">
-        <nav class="mb-6">
-            <ol class="flex items-center gap-2 text-sm" style="color: #a9b8b8;">
-                <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a></li>
-                <li><i class="fa-solid fa-chevron-right text-[10px]"></i></li>
-                <li class="text-white font-medium">{{ $division['name'] }}</li>
-            </ol>
-        </nav>
-        <div class="flex items-center gap-5">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: rgba(255,41,87,0.15); border: 1px solid rgba(255,41,87,0.2);">
-                <i class="{{ $division['icon'] ?? 'fa-solid fa-building' }} text-xl" style="color: var(--color-primary);"></i>
+{{-- ============================================ --}}
+{{-- HERO — Modern Split Layout --}}
+{{-- ============================================ --}}
+@php
+    $heroColor = match($division['color'] ?? 'primary') {
+        'accent-blue'   => '#3b82f6',
+        'accent-violet' => '#7c3aed',
+        'accent-cyan'   => '#06b6d4',
+        default         => '#D4202C',
+    };
+    $heroAccent = match($division['color'] ?? 'primary') {
+        'accent-blue'   => '#60a5fa',
+        'accent-violet' => '#a78bfa',
+        'accent-cyan'   => '#22d3ee',
+        default         => '#e83542',
+    };
+    $heroIcon = match($division['icon'] ?? 'building') {
+        'plane'          => 'fa-solid fa-plane-departure',
+        'graduation-cap' => 'fa-solid fa-graduation-cap',
+        'cpu'            => 'fa-solid fa-microchip',
+        'heart-pulse'    => 'fa-solid fa-heart-pulse',
+        default          => 'fa-solid fa-building',
+    };
+    $stats = $division['highlights'] ?? [];
+@endphp
+
+<section class="relative overflow-hidden" style="background: #080808; min-height: 85vh; display: flex; align-items: center;">
+    {{-- Background Layers --}}
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 32px 32px;"></div>
+        <div class="absolute" style="top: -15%; right: -8%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, {{ $heroColor }}1a 0%, transparent 70%); filter: blur(60px);"></div>
+        <div class="absolute" style="bottom: -10%; left: -5%; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle, {{ $heroColor }}0d 0%, transparent 70%); filter: blur(50px);"></div>
+        <div class="absolute top-0 right-0 w-px h-64 opacity-10" style="background: linear-gradient(to bottom, {{ $heroAccent }}cc, transparent); transform: rotate(25deg); transform-origin: top right;"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-24 lg:py-32 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            {{-- LEFT: Content --}}
+            <div class="lg:col-span-7">
+                <nav class="mb-8" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-full" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.4);">
+                        <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a></li>
+                        <li><span class="mx-1 opacity-30">/</span></li>
+                        <li class="text-white font-medium">{{ $division['name'] }}</li>
+                    </ol>
+                </nav>
+
+                <div class="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[2.5px]" style="background: {{ $heroColor }}1a; color: {{ $heroAccent }}; border: 1px solid {{ $heroColor }}33; letter-spacing: 0.12em;">
+                    <span class="w-1.5 h-1.5 rounded-full" style="background: {{ $heroAccent }};"></span>
+                    {{ $division['name'] }}
+                </div>
+
+                <h1 class="text-[42px] sm:text-[52px] lg:text-[64px] font-extrabold text-white leading-[1.05] tracking-tight mb-6" style="letter-spacing: -0.035em;">
+                    {{ explode(' ', $division['name'])[0] ?? $division['name'] }}<br>
+                    <span style="background: linear-gradient(135deg, {{ $heroAccent }} 0%, {{ $heroColor }} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ trim(substr($division['name'], strlen(explode(' ', $division['name'])[0] ?? ''))) }}</span>
+                </h1>
+
+                <p class="text-base sm:text-lg leading-relaxed max-w-xl mb-10" style="color: rgba(255,255,255,0.45); line-height: 1.75;">
+                    {{ $division['tagline'] }}. {{ $division['meta_description'] }}
+                </p>
+
+                @if(count($stats))
+                <div class="flex flex-wrap items-center gap-6 sm:gap-10 mb-10">
+                    @foreach(array_slice($stats, 0, 3) as $stat)
+                        <div class="text-center sm:text-left">
+                            <div class="text-[28px] sm:text-[34px] font-extrabold text-white tracking-tight" style="letter-spacing: -0.03em; line-height: 1;">{{ $stat['value'] }}</div>
+                            <div class="text-[11px] font-semibold uppercase tracking-[1.5px] mt-1" style="color: rgba(255,255,255,0.3);">{{ $stat['label'] }}</div>
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+
+                <a href="{{ $division['cta']['url'] ?? route('consulting') }}" class="btn-primary btn-primary-lg">
+                    <span class="btn-text"><span>{{ $division['cta']['text'] ?? 'Get Started' }}</span></span>
+                    <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
             </div>
-            <div>
-                <h1 class="text-4xl md:text-5xl lg:text-[56px] font-medium text-white" style="letter-spacing: -0.03em; line-height: 1.135;">{{ $division['name'] }}</h1>
-                <p class="text-white/50 text-lg mt-1">{{ $division['tagline'] }}</p>
+
+            {{-- RIGHT: Visual Element --}}
+            <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative">
+                <div class="relative w-[320px] h-[380px]">
+                    <div class="absolute top-0 right-0 w-[260px] h-[300px] rounded-3xl overflow-hidden shadow-2xl transform rotate-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background: {{ $heroColor }}22; border: 1px solid {{ $heroColor }}33;">
+                                    <i class="{{ $heroIcon }} text-3xl" style="color: {{ $heroAccent }};"></i>
+                                </div>
+                                <div class="w-32 h-1 rounded-full mx-auto mb-3 opacity-20" style="background: white;"></div>
+                                <div class="w-24 h-1 rounded-full mx-auto mb-3 opacity-10" style="background: white;"></div>
+                                <div class="w-16 h-1 rounded-full mx-auto opacity-10" style="background: white;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-[200px] h-[240px] rounded-3xl overflow-hidden shadow-xl transform -rotate-6" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="{{ $heroIcon }} text-5xl opacity-10" style="color: white;"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-[20%] left-[10%] flex gap-1.5">
+                        <span class="w-2 h-2 rounded-full" style="background: {{ $heroAccent }};"></span>
+                        <span class="w-2 h-2 rounded-full opacity-40" style="background: {{ $heroColor }};"></span>
+                        <span class="w-2 h-2 rounded-full opacity-20" style="background: white;"></span>
+                    </div>
+                    <div class="absolute bottom-[25%] right-[5%] flex gap-1.5">
+                        <span class="w-2 h-2 rounded-full opacity-30" style="background: white;"></span>
+                        <span class="w-2 h-2 rounded-full" style="background: {{ $heroAccent }};"></span>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </section>

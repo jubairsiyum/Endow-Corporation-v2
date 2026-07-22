@@ -15,6 +15,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/get-consulting', [PageController::class, 'consulting'])->name('consulting');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
+Route::get('/travel', [PageController::class, 'travel'])->name('travel');
 Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
 // Education SEO Pages

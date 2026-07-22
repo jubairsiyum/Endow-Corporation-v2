@@ -24,6 +24,11 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
+    public function travel()
+    {
+        return view('pages.travel');
+    }
+
     public function division($slug)
     {
         $divisions = $this->getDivisions();
