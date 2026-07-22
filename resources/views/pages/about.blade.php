@@ -304,125 +304,58 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- MEET OUR EXPERTS — Photo Cards --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16" data-animate>
+{{-- MEET OUR EXPERTS --}}
+{{-- ============================================ --}}
+<section class="section-gap" style="background: #f3f4f6;">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
                 <i class="fa-solid fa-user-tie"></i>
                 Team Members
             </div>
             <h2 class="section-heading">Meet Our <span class="gradient-text">Experts</span></h2>
+            <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
+                Our talented team across every subsidiary, united by a passion for excellence.
+            </p>
         </div>
 
         @php
             $leadership = [
-                [
-                    'name' => 'Abdullah Al Faruq',
-                    'role' => 'CEO',
-                    'photo' => asset('images/Faruq CEO Endow.jpg'),
-                    'social' => [
-                        ['icon' => 'fa-brands fa-facebook-f', 'url' => '#'],
-                        ['icon' => 'fa-brands fa-x-twitter', 'url' => '#'],
-                        ['icon' => 'fa-brands fa-instagram', 'url' => '#'],
-                    ],
-                ],
-                [
-                    'name' => 'Chanwoong Park',
-                    'role' => 'Strategic Director',
-                    'photo' => asset('images/Endow Advisor.png'),
-                    'social' => [
-                        ['icon' => 'fa-brands fa-facebook-f', 'url' => '#'],
-                        ['icon' => 'fa-brands fa-x-twitter', 'url' => '#'],
-                        ['icon' => 'fa-brands fa-instagram', 'url' => '#'],
-                    ],
-                ],
+                ['name' => 'Abdullah Al Faruq', 'role' => 'CEO',               'photo' => 'images/Faruq CEO Endow.jpg', 'color' => '#D4202C'],
+                ['name' => 'Chanwoong Park',    'role' => 'Strategic Director', 'photo' => 'images/Endow Advisor.png',   'color' => '#7c3aed'],
             ];
 
             $team = [
-                ['name' => 'Rejowan Shovon', 'role' => 'COO', 'photo' => asset('images/Shovon Endow.png'), 'division' => 'Endow Corporation'],                
-                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director', 'photo' => asset('images/Takey Endow.png'), 'division' => 'Endow Corporation'],
-                ['name' => 'Jubair Amin Siyum', 'role' => 'Tech Lead', 'photo' => asset('images/Siyum Endow.png'), 'division' => 'Endow Corporation'],
-                ['name' => 'Simron Mhejabin', 'role' => 'Asst. Manager', 'photo' => asset('images/Simron EGE.png'), 'division' => 'Endow Global Education'],
-                ['name' => 'Nabila', 'role' => 'Senior Consultant', 'photo' => asset('images/Nabila Endow.png'), 'division' => 'Endow Travel'],
+                ['name' => 'Rejowan Shovon',     'role' => 'COO',                    'photo' => 'images/Shovon Endow.png', 'color' => '#10b981'],
+                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director',  'photo' => 'images/Takey Endow.png',  'color' => '#f97316'],
+                ['name' => 'Jubair Amin Siyum',  'role' => 'Tech Lead',              'photo' => 'images/Siyum Endow.png',  'color' => '#3b82f6'],
+                ['name' => 'Simron Mhejabin',    'role' => 'Asst. Manager',          'photo' => 'images/Simron EGE.png',   'color' => '#f43f5e'],
+                ['name' => 'Nabila',             'role' => 'Senior Consultant',       'photo' => 'images/Nabila Endow.png', 'color' => '#ec4899'],
+            ];
+
+            $socialIcons = [
+                ['icon' => 'fa-brands fa-facebook-f',  'url' => '#'],
+                ['icon' => 'fa-brands fa-x-twitter',    'url' => '#'],
+                ['icon' => 'fa-brands fa-instagram',    'url' => '#'],
+                ['icon' => 'fa-brands fa-linkedin-in',  'url' => '#'],
             ];
         @endphp
 
-        {{-- Row 1: 2 Leadership Cards --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" data-animate>
+        {{-- ==================== ROW 1: Leadership (2 cards, centered) ==================== --}}
+        <div class="flex justify-center gap-6 mb-10" data-animate>
             @foreach($leadership as $member)
-                <div class="team-card-large group relative rounded-2xl overflow-hidden" style="box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
-                    {{-- Photo --}}
-                    <div class="relative" style="padding-top: 85%;">
-                        <img src="{{ $member['photo'] }}"
-                             alt="{{ $member['name'] }} — {{ $member['role'] }}, Endow Corporation"
-                             class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                             loading="lazy"
-                             width="500"
-                             height="425">
-                        <div class="absolute inset-0" style="background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.15) 100%);"></div>
-                    </div>
-
-                    {{-- Name Banner --}}
-                    <div class="relative px-5 py-3" style="background: var(--color-primary);">
-                        <h3 class="text-base font-bold text-white mb-0.5" style="letter-spacing: -0.01em;">{{ $member['name'] }}</h3>
-                        <p class="text-[11px] font-semibold uppercase tracking-[1.5px]" style="color: rgba(255,255,255,0.75);">{{ $member['role'] }}</p>
-                    </div>
-
-                    {{-- Social Icons --}}
-                    <div class="absolute top-3 right-3 flex flex-col gap-1.5">
-                        @foreach($member['social'] as $s)
-                            <a href="{{ $s['url'] }}" target="_blank" rel="noopener noreferrer"
-                               class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
-                               style="background: rgba(255,255,255,0.9); color: #374151; box-shadow: 0 2px 8px rgba(0,0,0,0.15); backdrop-filter: blur(4px);"
-                               aria-label="{{ $member['name'] }} on social media">
-                                <i class="{{ $s['icon'] }} text-[10px]"></i>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+                @include('components.team-card-v2', ['member' => $member])
             @endforeach
         </div>
 
-        {{-- Row 2: 5 Team Cards --}}
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5" data-animate style="align-items: stretch;">
+        {{-- ==================== ROW 2: Team (5 cards, each unique color) ==================== --}}
+        <div class="flex justify-center flex-wrap gap-6" data-animate>
             @foreach($team as $member)
-                <div class="team-card-small group relative rounded-xl overflow-hidden flex flex-col" style="box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
-                    {{-- Photo --}}
-                    <div class="relative flex-1" style="aspect-ratio: 3/4;">
-                        <img src="{{ $member['photo'] }}"
-                             alt="{{ $member['name'] }}, {{ $member['role'] }}, Endow Corporation"
-                             class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                             loading="lazy"
-                             width="400"
-                             height="480">
-                        {{-- Hover overlay --}}
-                        <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(2px);">
-                            <div class="flex gap-2">
-                                @foreach(['fa-brands fa-facebook-f', 'fa-brands fa-x-twitter', 'fa-brands fa-instagram'] as $icon)
-                                    <a href="#" target="_blank" rel="noopener noreferrer"
-                                       class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                                       style="background: rgba(255,255,255,0.9); color: #374151; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
-                                       aria-label="Social link">
-                                        <i class="{{ $icon }} text-[11px]"></i>
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Name Banner --}}
-                    <div class="relative px-4 py-3 mt-auto" style="background: var(--color-primary);">
-                        <h4 class="text-sm font-bold text-white mb-0.5 truncate" style="letter-spacing: -0.01em;">{{ $member['name'] }}</h4>
-                        <p class="text-[10px] font-semibold uppercase tracking-[1.2px] truncate" style="color: rgba(255,255,255,0.75);">{{ $member['role'] }}</p>
-                        @if(!empty($member['division']))
-                            <p class="text-[9px] mt-1 truncate" style="color: rgba(255,255,255,0.55);">{{ $member['division'] }}</p>
-                        @endif
-                    </div>
-                </div>
+                @include('components.team-card-v2', ['member' => $member])
             @endforeach
         </div>
+
     </div>
 </section>
 
