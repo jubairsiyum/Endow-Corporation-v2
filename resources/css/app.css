@@ -550,6 +550,15 @@
     box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06) !important;
 }
 
+/* ── Team card photo: B&W → color on hover ── */
+.team-card-photo {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+.group:hover .team-card-photo {
+    filter: grayscale(0%);
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
