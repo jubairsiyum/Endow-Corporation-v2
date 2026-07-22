@@ -308,7 +308,7 @@
 {{-- MEET OUR EXPERTS --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background: #f3f4f6;">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-[1400px] mx-auto px-6">
         <div class="text-center mb-14" data-animate>
             <div class="section-subtitle justify-center" style="color: var(--color-primary);">
                 <i class="fa-solid fa-user-tie"></i>
@@ -349,7 +349,7 @@
             @endforeach
         </div>
 
-        {{-- ==================== ROW 2: Team (5 cards, each unique color) ==================== --}}
+        {{-- ==================== ROW 2: Team (5 cards) ==================== --}}
         <div class="flex justify-center flex-wrap gap-6" data-animate>
             @foreach($team as $member)
                 @include('components.team-card-v2', ['member' => $member])
