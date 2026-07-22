@@ -322,16 +322,16 @@
 
         @php
             $leadership = [
-                ['name' => 'Abdullah Al Faruq', 'role' => 'CEO',               'photo' => 'images/Faruq CEO Endow.jpg', 'color' => '#D4202C'],
-                ['name' => 'Chanwoong Park',    'role' => 'Strategic Director', 'photo' => 'images/Endow Advisor.png',   'color' => '#7c3aed'],
+                ['name' => 'Abdullah Al Faruq', 'role' => 'CEO',               'photo' => 'images/Faruq CEO Endow.jpg', 'color' => '#D4202C', 'division' => 'Endow Corporation'],
+                ['name' => 'Chanwoong Park',    'role' => 'Strategic Director', 'photo' => 'images/Endow Advisor.png',   'color' => '#7c3aed', 'division' => 'Endow Corporation'],
             ];
 
             $team = [
-                ['name' => 'Rejowan Shovon',     'role' => 'COO',                    'photo' => 'images/Shovon Endow.png', 'color' => '#10b981'],
-                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director',  'photo' => 'images/Takey Endow.png',  'color' => '#f97316'],
-                ['name' => 'Jubair Amin Siyum',  'role' => 'Tech Lead',              'photo' => 'images/Siyum Endow.png',  'color' => '#3b82f6'],
-                ['name' => 'Simron Mhejabin',    'role' => 'Asst. Manager',          'photo' => 'images/Simron EGE.png',   'color' => '#f43f5e'],
-                ['name' => 'Nabila',             'role' => 'Senior Consultant',       'photo' => 'images/Nabila Endow.png', 'color' => '#ec4899'],
+                ['name' => 'Rejowan Shovon',     'role' => 'COO',                    'photo' => 'images/Shovon Endow.png', 'color' => '#10b981', 'division' => 'Endow Corporation'],
+                ['name' => 'Takey Yeasir Sajin', 'role' => 'HR & Creative Director',  'photo' => 'images/Takey Endow.png',  'color' => '#f97316', 'division' => 'Endow Corporation'],
+                ['name' => 'Jubair Amin Siyum',  'role' => 'Tech Lead',              'photo' => 'images/Siyum Endow.png',  'color' => '#3b82f6', 'division' => 'Endow Corporation'],
+                ['name' => 'Simron Mhejabin',    'role' => 'Asst. Manager',          'photo' => 'images/Simron EGE.png',   'color' => '#f43f5e', 'division' => 'Endow Global Education'],
+                ['name' => 'Nabila',             'role' => 'Senior Consultant',       'photo' => 'images/Nabila Endow.png', 'color' => '#ec4899', 'division' => 'Endow Travel'],
             ];
 
             $socialIcons = [
