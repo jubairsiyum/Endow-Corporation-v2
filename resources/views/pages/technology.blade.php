@@ -316,25 +316,30 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- STATS --}}
+{{-- HOW WE WORK --}}
 {{-- ============================================ --}}
-<section style="background: var(--color-dark); padding: 60px 0;">
+<section style="padding: 90px 0; background: #080808;">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" data-animate>
-            @foreach([
-                ['value' => '200+', 'label' => 'Projects Delivered', 'icon' => 'fa-solid fa-diagram-project'],
-                ['value' => '25+', 'label' => 'Tech Experts', 'icon' => 'fa-solid fa-users-gear'],
-                ['value' => '40%', 'label' => 'Avg. Cost Reduction', 'icon' => 'fa-solid fa-piggy-bank'],
-                ['value' => '99.9%', 'label' => 'Uptime SLA', 'icon' => 'fa-solid fa-server'],
-            ] as $stat)
-                <div>
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.15);">
-                        <i class="{{ $stat['icon'] }} text-sm" style="color: #a78bfa;"></i>
-                    </div>
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-1" style="letter-spacing: -0.03em;">{{ $stat['value'] }}</div>
-                    <div class="text-sm" style="color: rgba(255,255,255,0.45);">{{ $stat['label'] }}</div>
-                </div>
-            @endforeach
+        <div class="max-w-3xl mx-auto text-center" data-animate>
+            {{-- Large decorative quote mark --}}
+            <div class="text-6xl sm:text-7xl font-bold leading-none mb-4" style="color: rgba(167,139,250,0.12); font-family: Georgia, serif;">"</div>
+
+            <p class="text-[28px] sm:text-[34px] font-bold leading-[1.2] text-white mb-4" style="letter-spacing: -0.02em;">
+                We build software that actually works for teams that actually use it.
+            </p>
+
+            <div class="flex items-center justify-center gap-4 mb-7">
+                <span class="block h-px w-12" style="background: linear-gradient(90deg, transparent, rgba(167,139,250,0.3));"></span>
+                <span class="block w-2 h-2 rounded-full" style="background: #a78bfa;"></span>
+                <span class="block h-px w-12" style="background: linear-gradient(90deg, rgba(251,191,36,0.3), transparent);"></span>
+            </div>
+
+            <p class="text-base leading-[1.9] max-w-xl mx-auto" style="color: rgba(255,255,255,0.45);">
+                No fluff, no jargon. Just a small team of engineers who ship code, solve real problems, and stand behind their work. We've built for startups scaling their first product and for enterprises migrating legacy systems that ran for decades. Every project taught us something.
+            </p>
+
+            {{-- Closing decorative mark --}}
+            <div class="text-6xl sm:text-7xl font-bold leading-none mt-2 -mb-6" style="color: rgba(251,191,36,0.10); font-family: Georgia, serif; transform: rotate(180deg);">"</div>
         </div>
     </div>
 </section>
