@@ -253,67 +253,69 @@
         {{-- Procedure cards --}}
         <div class="mt-16" data-animate>
             <h3 class="text-xl font-bold mb-8 text-center" style="color: var(--color-text-heading);">Popular Plastic & Aesthetic Procedures We Arrange</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @php
                     $cosmeticProcedures = [
                         [
                             'title' => 'Facial Contouring',
-                            'desc' => 'V-line jaw reduction, cheekbone reduction, and chin augmentation. Korean surgeons are the global authority on facial bone restructuring for balanced, natural results.',
-                            'icon' => 'fa-solid fa-face-smile',
-                            'color' => '#e85d5d',
+                            'desc' => 'V-line jaw reduction, cheekbone reduction, and chin augmentation. Korean surgeons are the global authority on facial bone restructuring.',
+                            'image' => 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Rhinoplasty',
-                            'desc' => 'Primary and revision nose surgery using advanced cartilage grafting, implant, and tip refinement techniques. Natural, harmonious results tailored to Asian and diverse facial structures.',
-                            'icon' => 'fa-solid fa-n',
-                            'color' => '#06b6d4',
+                            'desc' => 'Primary and revision nose surgery using advanced cartilage grafting. Natural, harmonious results tailored to diverse facial structures.',
+                            'image' => 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Eye Surgery',
-                            'desc' => 'Double eyelid, ptosis correction, lateral canthoplasty, and under-eye fat repositioning. The procedure Korean surgeons are most famous for worldwide.',
-                            'icon' => 'fa-solid fa-eye',
-                            'color' => '#10b981',
+                            'desc' => 'Double eyelid, ptosis correction, and canthoplasty. The cosmetic procedure Korean surgeons are most celebrated for worldwide.',
+                            'image' => 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Anti-Aging & Lifting',
-                            'desc' => 'Facelift, thread lift, forehead lift, and neck lift using minimally invasive techniques. Fat grafting and stem cell therapies for natural rejuvenation.',
-                            'icon' => 'fa-solid fa-wand-magic-sparkles',
-                            'color' => '#f59e0b',
+                            'desc' => 'Facelift, thread lift, and neck lift. Fat grafting and stem cell therapies for natural, long-lasting rejuvenation.',
+                            'image' => 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Body Contouring',
-                            'desc' => 'Liposuction, tummy tuck, Brazilian butt lift, arm and thigh lift. Advanced body sculpting with minimal scarring and faster recovery protocols.',
-                            'icon' => 'fa-solid fa-person',
-                            'color' => '#8b5cf6',
+                            'desc' => 'Liposuction, tummy tuck, Brazilian butt lift, and thigh lift. Advanced body sculpting with minimal scarring and fast recovery.',
+                            'image' => 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Breast Surgery',
-                            'desc' => 'Augmentation, lift, reduction, and reconstruction using the latest implant technology and fat transfer techniques for natural-looking results.',
-                            'icon' => 'fa-solid fa-female',
-                            'color' => '#ec4899',
+                            'desc' => 'Augmentation, lift, reduction, and reconstruction using the latest implants and fat transfer for natural-looking results.',
+                            'image' => 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Hair Restoration',
-                            'desc' => 'FUE and FUT hair transplant with natural hairline design. Korea leads in density, graft survival rates, and virtually undetectable results.',
-                            'icon' => 'fa-solid fa-scissors',
-                            'color' => '#f97316',
+                            'desc' => 'FUE and FUT transplant with natural hairline design. Korea leads in graft survival rates and undetectable results.',
+                            'image' => 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=400&fit=crop',
                         ],
                         [
                             'title' => 'Skin & Laser Treatments',
-                            'desc' => 'Advanced laser resurfacing, scar revision, acne treatment, pigmentation correction, and skin rejuvenation using Korea\'s latest dermatology technology.',
-                            'icon' => 'fa-solid fa-droplet',
-                            'color' => '#14b8a6',
+                            'desc' => 'Advanced laser resurfacing, scar revision, pigmentation correction, and skin rejuvenation with Korea\'s latest dermatology technology.',
+                            'image' => 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop',
                         ],
                     ];
                 @endphp
 
                 @foreach($cosmeticProcedures as $proc)
-                    <div class="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: {{ $proc['color'] }}15;">
-                            <i class="{{ $proc['icon'] }} text-sm" style="color: {{ $proc['color'] }};"></i>
+                    <div class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+                        {{-- Image --}}
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="{{ $proc['image'] }}"
+                                 alt="{{ $proc['title'] }} – plastic surgery in South Korea"
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                 loading="lazy"
+                                 width="600"
+                                 height="400">
+                            <div class="absolute inset-0" style="background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35) 100%);"></div>
                         </div>
-                        <h4 class="text-[15px] font-bold mb-2" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $proc['title'] }}</h4>
-                        <p class="text-xs leading-[1.7]" style="color: var(--color-text);">{{ $proc['desc'] }}</p>
+                        {{-- Content --}}
+                        <div class="p-5">
+                            <h4 class="text-[15px] font-bold mb-2" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $proc['title'] }}</h4>
+                            <p class="text-xs leading-[1.7]" style="color: var(--color-text);">{{ $proc['desc'] }}</p>
+                        </div>
                     </div>
                 @endforeach
             </div>
