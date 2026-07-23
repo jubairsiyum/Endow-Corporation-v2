@@ -320,20 +320,18 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5" data-animate>
             @php
                 $destinations = [
-                    ['name' => 'South Korea', 'icon' => 'fa-solid fa-landmark'],
-                    ['name' => 'Japan', 'icon' => 'fa-solid fa-torii-gate'],
-                    ['name' => 'Thailand', 'icon' => 'fa-solid fa-umbrella-beach'],
-                    ['name' => 'Malaysia', 'icon' => 'fa-solid fa-building-columns'],
-                    ['name' => 'Vietnam', 'icon' => 'fa-solid fa-mountain'],
-                    ['name' => 'UAE / Dubai', 'icon' => 'fa-solid fa-city'],
+                    ['name' => 'South Korea', 'flag' => 'https://flagcdn.com/w80/kr.png'],
+                    ['name' => 'Japan', 'flag' => 'https://flagcdn.com/w80/jp.png'],
+                    ['name' => 'Thailand', 'flag' => 'https://flagcdn.com/w80/th.png'],
+                    ['name' => 'Malaysia', 'flag' => 'https://flagcdn.com/w80/my.png'],
+                    ['name' => 'Vietnam', 'flag' => 'https://flagcdn.com/w80/vn.png'],
+                    ['name' => 'UAE / Dubai', 'flag' => 'https://flagcdn.com/w80/ae.png'],
                 ];
             @endphp
 
             @foreach($destinations as $dest)
                 <div class="rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3" style="background: rgba(212,32,44,0.06);">
-                        <i class="{{ $dest['icon'] }} text-lg" style="color: var(--color-primary);"></i>
-                    </div>
+                    <img src="{{ $dest['flag'] }}" alt="{{ $dest['name'] }} flag" class="w-12 h-auto mx-auto mb-3 rounded shadow-sm" loading="lazy" width="48" height="32">
                     <h3 class="text-sm font-bold" style="color: var(--color-text-heading);">{{ $dest['name'] }}</h3>
                 </div>
             @endforeach
