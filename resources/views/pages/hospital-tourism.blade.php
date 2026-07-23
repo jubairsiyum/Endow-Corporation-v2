@@ -253,7 +253,7 @@
         {{-- Procedure cards --}}
         <div class="mt-16" data-animate>
             <h3 class="text-xl font-bold mb-8 text-center" style="color: var(--color-text-heading);">Popular Plastic & Aesthetic Procedures We Arrange</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 @php
                     $cosmeticProcedures = [
                         [
@@ -264,7 +264,7 @@
                         [
                             'title' => 'Rhinoplasty',
                             'desc' => 'Primary and revision nose surgery using advanced cartilage grafting. Natural, harmonious results tailored to diverse facial structures.',
-                            'image' => 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&h=400&fit=crop',
+                            'image' => asset('images/rhinoplasty.jpg'),
                         ],
                         [
                             'title' => 'Eye Surgery',
@@ -294,15 +294,15 @@
                         [
                             'title' => 'Skin & Laser Treatments',
                             'desc' => 'Advanced laser resurfacing, scar revision, pigmentation correction, and skin rejuvenation with Korea\'s latest dermatology technology.',
-                            'image' => 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop',
+                            'image' => asset('images/laser.jpg'),
                         ],
                     ];
                 @endphp
 
                 @foreach($cosmeticProcedures as $proc)
-                    <div class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+                    <div class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5 flex flex-col h-full" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
                         {{-- Image --}}
-                        <div class="relative h-48 overflow-hidden">
+                        <div class="relative h-48 overflow-hidden flex-shrink-0">
                             <img src="{{ $proc['image'] }}"
                                  alt="{{ $proc['title'] }} – plastic surgery in South Korea"
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -312,7 +312,7 @@
                             <div class="absolute inset-0" style="background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35) 100%);"></div>
                         </div>
                         {{-- Content --}}
-                        <div class="p-5">
+                        <div class="p-5 flex flex-col flex-1">
                             <h4 class="text-[15px] font-bold mb-2" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $proc['title'] }}</h4>
                             <p class="text-xs leading-[1.7]" style="color: var(--color-text);">{{ $proc['desc'] }}</p>
                         </div>
