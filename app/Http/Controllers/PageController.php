@@ -29,6 +29,16 @@ class PageController extends Controller
         return view('pages.travel');
     }
 
+    public function education()
+    {
+        return view('pages.education');
+    }
+
+    public function technology()
+    {
+        return view('pages.technology');
+    }
+
     public function division($slug)
     {
         $divisions = $this->getDivisions();

@@ -16,6 +16,8 @@ Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/get-consulting', [PageController::class, 'consulting'])->name('consulting');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
 Route::get('/travel', [PageController::class, 'travel'])->name('travel');
+Route::get('/education', [PageController::class, 'education'])->name('education');
+Route::get('/technology', [PageController::class, 'technology'])->name('technology');
 Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
 // Education SEO Pages
@@ -52,6 +54,8 @@ Route::get('/sitemap.xml', function () {
     $pages = [
         ['url' => '/', 'priority' => '1.0', 'changefreq' => 'weekly'],
         ['url' => '/about-us', 'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['url' => '/education', 'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['url' => '/technology', 'priority' => '0.9', 'changefreq' => 'weekly'],
         ['url' => '/endow-travels', 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => '/endow-global-education', 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => '/endow-technologies', 'priority' => '0.8', 'changefreq' => 'monthly'],
