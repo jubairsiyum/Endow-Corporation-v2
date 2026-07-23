@@ -35,12 +35,6 @@
                     </ol>
                 </nav>
 
-                {{-- Division Label --}}
-                <div class="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[2.5px]" style="background: rgba(212,32,44,0.12); color: #e83542; border: 1px solid rgba(212,32,44,0.2); letter-spacing: 0.12em;">
-                    <span class="w-1.5 h-1.5 rounded-full" style="background: #e83542;"></span>
-                    Endow Travel
-                </div>
-
                 {{-- Heading --}}
                 <h1 class="text-[42px] sm:text-[52px] lg:text-[64px] font-extrabold text-white leading-[1.05] tracking-tight mb-6" style="letter-spacing: -0.035em;">
                     Where the<br>

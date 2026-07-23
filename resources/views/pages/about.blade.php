@@ -74,7 +74,7 @@
                          width="800"
                          height="600">
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </section>

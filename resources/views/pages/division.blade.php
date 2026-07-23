@@ -54,11 +54,6 @@
                     </ol>
                 </nav>
 
-                <div class="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[2.5px]" style="background: {{ $heroColor }}1a; color: {{ $heroAccent }}; border: 1px solid {{ $heroColor }}33; letter-spacing: 0.12em;">
-                    <span class="w-1.5 h-1.5 rounded-full" style="background: {{ $heroAccent }};"></span>
-                    {{ $division['name'] }}
-                </div>
-
                 <h1 class="text-[42px] sm:text-[52px] lg:text-[64px] font-extrabold text-white leading-[1.05] tracking-tight mb-6" style="letter-spacing: -0.035em;">
                     {{ explode(' ', $division['name'])[0] ?? $division['name'] }}<br>
                     <span style="background: linear-gradient(135deg, {{ $heroAccent }} 0%, {{ $heroColor }} 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ trim(substr($division['name'], strlen(explode(' ', $division['name'])[0] ?? ''))) }}</span>
