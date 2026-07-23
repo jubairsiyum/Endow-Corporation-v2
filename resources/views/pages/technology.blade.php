@@ -316,30 +316,69 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- HOW WE WORK --}}
+{{-- HOW WE WORK — Premium SaaS Quote Block --}}
 {{-- ============================================ --}}
-<section style="padding: 90px 0; background: #080808;">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center" data-animate>
-            {{-- Large decorative quote mark --}}
-            <div class="text-6xl sm:text-7xl font-bold leading-none mb-4" style="color: rgba(167,139,250,0.12); font-family: Georgia, serif;">"</div>
+<section class="relative overflow-hidden" style="padding: 100px 0; background: #09090b;">
+    {{-- Ambient spotlights --}}
+    <div class="absolute pointer-events-none" aria-hidden="true" style="top: 50%; left: 50%; width: 800px; height: 600px; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(124,58,237,0.08) 0%, rgba(251,191,36,0.03) 40%, transparent 70%); filter: blur(80px);"></div>
+    <div class="absolute pointer-events-none" aria-hidden="true" style="top: 20%; right: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%); filter: blur(60px);"></div>
+    <div class="absolute pointer-events-none" aria-hidden="true" style="bottom: 15%; left: 8%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(251,191,36,0.04) 0%, transparent 70%); filter: blur(50px);"></div>
 
-            <p class="text-[28px] sm:text-[34px] font-bold leading-[1.2] text-white mb-4" style="letter-spacing: -0.02em;">
-                We build software that actually works for teams that actually use it.
-            </p>
+    {{-- Animated gradient orbs --}}
+    <style>
+        @keyframes quote-glow-1 { 0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.08); } }
+        @keyframes quote-glow-2 { 0%, 100% { opacity: 0.2; transform: translate(0, 0); } 50% { opacity: 0.5; transform: translate(0, -6px); } }
+        @keyframes quote-glow-3 { 0%, 100% { opacity: 0.15; transform: translate(0, 0); } 50% { opacity: 0.35; transform: translate(0, 4px); } }
+        @keyframes quote-border-shift { 0%, 100% { border-color: rgba(167,139,250,0.08); } 50% { border-color: rgba(251,191,36,0.10); } }
+        .quote-spotlight { animation: quote-glow-1 7s ease-in-out infinite; }
+        .quote-float-1 { animation: quote-glow-2 6s ease-in-out infinite; }
+        .quote-float-2 { animation: quote-glow-3 5s ease-in-out infinite 0.5s; }
+    </style>
 
-            <div class="flex items-center justify-center gap-4 mb-7">
-                <span class="block h-px w-12" style="background: linear-gradient(90deg, transparent, rgba(167,139,250,0.3));"></span>
-                <span class="block w-2 h-2 rounded-full" style="background: #a78bfa;"></span>
-                <span class="block h-px w-12" style="background: linear-gradient(90deg, rgba(251,191,36,0.3), transparent);"></span>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="max-w-[720px] mx-auto" data-animate>
+
+            {{-- Glassmorphism card with gradient border --}}
+            <div class="relative rounded-[24px] p-10 md:p-14 lg:p-16 quote-float-1" style="background: radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(167,139,250,0.08); box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(167,139,250,0.04) inset, 0 0 60px rgba(124,58,237,0.03) inset; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+
+                {{-- Large background quotation marks --}}
+                <div class="absolute pointer-events-none select-none" aria-hidden="true" style="top: -10px; left: 20px; font-size: 180px; line-height: 1; font-family: Georgia, serif; color: rgba(167,139,250,0.04);">"</div>
+                <div class="absolute pointer-events-none select-none" aria-hidden="true" style="bottom: -30px; right: 20px; font-size: 180px; line-height: 1; font-family: Georgia, serif; color: rgba(251,191,36,0.03); transform: rotate(180deg);">"</div>
+
+                {{-- Small label --}}
+                <div class="relative z-10 mb-8 flex items-center gap-2.5">
+                    <span class="block w-6 h-px" style="background: #a78bfa;"></span>
+                    <span class="text-[11px] font-semibold uppercase tracking-[3px]" style="color: rgba(167,139,250,0.6);">Our Philosophy</span>
+                </div>
+
+                {{-- Large, bold quote --}}
+                <h2 class="relative z-10 text-[44px] sm:text-[52px] lg:text-[58px] font-extrabold leading-[1.08] tracking-tight mb-8" style="letter-spacing: -0.035em;">
+                    <span style="background: linear-gradient(135deg, #e4e4e7 0%, #d4d4d8 40%, #a78bfa 70%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Software that works.</span><br>
+                    <span style="color: #fbbf24; -webkit-text-fill-color: #fbbf24;">For teams that matter.</span>
+                </h2>
+
+                {{-- Minimal glowing divider --}}
+                <div class="relative z-10 flex items-center gap-3 mb-8">
+                    <span class="block h-px flex-1" style="background: linear-gradient(90deg, rgba(167,139,250,0.2), rgba(167,139,250,0.05));"></span>
+                    <span class="block w-2 h-2 rounded-full" style="background: #a78bfa; box-shadow: 0 0 8px rgba(167,139,250,0.4);"></span>
+                    <span class="block h-px flex-1" style="background: linear-gradient(90deg, rgba(251,191,36,0.05), rgba(251,191,36,0.2));"></span>
+                </div>
+
+                {{-- Body text --}}
+                <p class="relative z-10 text-[15px] sm:text-base leading-[1.85] mx-auto" style="max-width: 650px; color: rgba(255,255,255,0.55);">
+                    No fluff, no jargon. Just a small team of engineers who ship code, solve real problems, and stand behind their work. We've built for startups scaling their first product and for enterprises migrating legacy systems that ran for decades. Every project taught us something.
+                </p>
+
+                {{-- Bottom accent line --}}
+                <div class="relative z-10 mt-10 pt-8" style="border-top: 1px solid rgba(255,255,255,0.04);">
+                    <div class="flex items-center justify-center gap-2 text-xs" style="color: rgba(255,255,255,0.2);">
+                        <span class="block w-4 h-px" style="background: rgba(167,139,250,0.2);"></span>
+                        <span>Endow Technologies</span>
+                        <span class="block w-4 h-px" style="background: rgba(251,191,36,0.2);"></span>
+                    </div>
+                </div>
             </div>
 
-            <p class="text-base leading-[1.9] max-w-xl mx-auto" style="color: rgba(255,255,255,0.45);">
-                No fluff, no jargon. Just a small team of engineers who ship code, solve real problems, and stand behind their work. We've built for startups scaling their first product and for enterprises migrating legacy systems that ran for decades. Every project taught us something.
-            </p>
-
-            {{-- Closing decorative mark --}}
-            <div class="text-6xl sm:text-7xl font-bold leading-none mt-2 -mb-6" style="color: rgba(251,191,36,0.10); font-family: Georgia, serif; transform: rotate(180deg);">"</div>
         </div>
     </div>
 </section>
