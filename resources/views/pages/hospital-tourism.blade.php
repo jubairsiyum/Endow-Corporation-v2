@@ -90,7 +90,7 @@
             <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative" style="min-height: 480px;">
                 <img src="{{ asset('images/Hospital Tourism Hero img.png') }}"
                      alt="Hospital Tourism – World-Class Medical Care in South Korea"
-                     class="w-full h-auto max-w-[460px] rounded-3xl object-cover"
+                     class="w-full h-auto max-w-[460px] rounded-3xl object-cover hero-image-float"
                      style="filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));"
                      loading="eager" width="460" height="500">
         </div>
