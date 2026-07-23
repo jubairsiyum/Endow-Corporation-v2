@@ -606,10 +606,12 @@
                 @endforeach
 
                 <div class="mt-8 p-5 rounded-2xl flex items-center gap-4" style="background: linear-gradient(135deg, rgba(232,93,93,0.04) 0%, rgba(232,93,93,0.01) 100%); border: 1px dashed rgba(232,93,93,0.15);">
-                    <div class="text-3xl font-extrabold tracking-tight" style="color: #e85d5d;">50K+</div>
+                    <div class="flex items-center justify-center w-14 h-14 rounded-full" style="background: rgba(232,93,93,0.1);">
+                        <i class="fa-solid fa-handshake text-xl" style="color: #e85d5d;"></i>
+                    </div>
                     <div>
-                        <p class="text-sm font-semibold" style="color: var(--color-text-heading);">Patients Have Trusted Us</p>
-                        <p class="text-xs mt-0.5" style="color: var(--color-text-muted);">Across 30+ countries worldwide</p>
+                        <p class="text-sm font-semibold" style="color: var(--color-text-heading);">New Service — Built on Trust</p>
+                        <p class="text-xs mt-0.5" style="color: var(--color-text-muted);">We apply 7+ years of global expertise to your care journey. Every patient is our priority.</p>
                     </div>
                 </div>
             </div>
