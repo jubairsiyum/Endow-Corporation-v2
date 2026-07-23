@@ -10,6 +10,12 @@
 {{-- HERO — Modern Split Layout --}}
 {{-- ============================================ --}}
 <section class="relative overflow-hidden" style="background: #080808; min-height: 85vh; display: flex; align-items: center;">
+    <style>
+        @keyframes tech-float-1 { 0%, 100% { transform: rotate(3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-10px); } }
+        @keyframes tech-float-2 { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(-5deg) translateY(-8px); } }
+        .tech-card-1 { animation: tech-float-1 6s ease-in-out infinite; }
+        .tech-card-2 { animation: tech-float-2 5s ease-in-out infinite 0.8s; }
+    </style>
     {{-- Background Layers --}}
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         {{-- Dot grid --}}
@@ -67,39 +73,60 @@
                 </a>
             </div>
 
-            {{-- RIGHT: Visual Element --}}
-            <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative">
-                {{-- Floating decorative card --}}
-                <div class="relative w-[320px] h-[380px]">
-                    {{-- Glass card 1 --}}
-                    <div class="absolute top-0 right-0 w-[260px] h-[300px] rounded-3xl overflow-hidden shadow-2xl transform rotate-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.25);">
-                                    <i class="fa-solid fa-microchip text-3xl" style="color: #a78bfa;"></i>
-                                </div>
-                                <div class="w-32 h-1 rounded-full mx-auto mb-3 opacity-20" style="background: white;"></div>
-                                <div class="w-24 h-1 rounded-full mx-auto mb-3 opacity-10" style="background: white;"></div>
-                                <div class="w-16 h-1 rounded-full mx-auto opacity-10" style="background: white;"></div>
+            {{-- RIGHT: Glassmorphism Cards --}}
+            <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative" style="min-height: 580px;">
+                {{-- Glow effects --}}
+                <div class="absolute top-[5%] right-[5%] w-[260px] h-[260px] rounded-full opacity-[0.15] pointer-events-none" style="background: radial-gradient(circle, #a78bfa 0%, transparent 70%); filter: blur(60px);"></div>
+                <div class="absolute bottom-[5%] left-[5%] w-[200px] h-[200px] rounded-full opacity-[0.12] pointer-events-none" style="background: radial-gradient(circle, #fbbf24 0%, transparent 70%); filter: blur(50px);"></div>
+
+                {{-- Dots indicator --}}
+                <div class="absolute top-[6%] left-[16%] flex gap-2 z-20">
+                    <span class="w-2.5 h-2.5 rounded-full" style="background: #a78bfa;"></span>
+                    <span class="w-2.5 h-2.5 rounded-full" style="background: #fbbf24;"></span>
+                    <span class="w-2.5 h-2.5 rounded-full opacity-30" style="background: #9ca3af;"></span>
+                </div>
+
+                <div class="relative w-[360px]" style="height: 560px;">
+
+                    {{-- Card 1: AI & Cloud (top area, tilted right) --}}
+                    <div class="absolute top-0 right-[3%] w-[250px] rounded-[24px] overflow-hidden z-10 tech-card-1"
+                         style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transform: rotate(3deg); box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
+                        <div class="p-7 pt-9">
+                            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); box-shadow: 0 8px 24px rgba(124,58,237,0.35);">
+                                <i class="fa-solid fa-microchip text-xl text-white"></i>
+                            </div>
+
+                            <h3 class="text-white text-base font-bold mb-2" style="letter-spacing: -0.01em;">AI & Cloud Solutions</h3>
+                            <p class="text-[12px] leading-relaxed mb-5" style="color: rgba(255,255,255,0.45);">Automation. Intelligence.<br>Scalable Infrastructure.</p>
+
+                            <div class="space-y-2">
+                                <div class="h-[3px] rounded-full opacity-15" style="background: white; width: 85%;"></div>
+                                <div class="h-[3px] rounded-full opacity-10" style="background: white; width: 60%;"></div>
+                                <div class="h-[3px] rounded-full opacity-8" style="background: white; width: 40%;"></div>
                             </div>
                         </div>
                     </div>
-                    {{-- Glass card 2 (offset) --}}
-                    <div class="absolute bottom-0 left-0 w-[200px] h-[240px] rounded-3xl overflow-hidden shadow-xl transform -rotate-6" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fa-solid fa-code text-5xl opacity-10" style="color: white;"></i>
+
+                    {{-- Card 2: Custom Software (bottom area, tilted left) --}}
+                    <div class="absolute bottom-0 left-[2%] w-[220px] rounded-[24px] overflow-hidden z-20 tech-card-2"
+                         style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); transform: rotate(-5deg); box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);">
+                        <div class="p-6 pt-7">
+                            <div class="mb-5">
+                                <i class="fa-solid fa-code text-3xl" style="color: rgba(255,255,255,0.15);"></i>
+                            </div>
+
+                            <p class="text-[9px] font-bold tracking-[3px] uppercase mb-2" style="color: #fbbf24;">Development</p>
+                            <h3 class="text-white text-[15px] font-bold leading-snug mb-4" style="letter-spacing: -0.01em;">Custom Software<br>& Web Apps</h3>
+
+                            <div class="flex items-center gap-3">
+                                <div class="flex-1 h-[2px] rounded-full opacity-15" style="background: white;"></div>
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-110" style="background: #fbbf24;">
+                                    <i class="fa-solid fa-arrow-right text-white text-[10px]"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {{-- Accent dot cluster --}}
-                    <div class="absolute top-[20%] left-[10%] flex gap-1.5">
-                        <span class="w-2 h-2 rounded-full" style="background: #a78bfa;"></span>
-                        <span class="w-2 h-2 rounded-full opacity-40" style="background: #fbbf24;"></span>
-                        <span class="w-2 h-2 rounded-full opacity-20" style="background: white;"></span>
-                    </div>
-                    <div class="absolute bottom-[25%] right-[5%] flex gap-1.5">
-                        <span class="w-2 h-2 rounded-full opacity-30" style="background: white;"></span>
-                        <span class="w-2 h-2 rounded-full" style="background: #a78bfa;"></span>
-                    </div>
+
                 </div>
             </div>
 
