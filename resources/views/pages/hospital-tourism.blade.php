@@ -350,7 +350,7 @@
             @php
                 $treatments = [
                     [
-                        'icon' => 'fa-solid fa-sparkles',
+                        'icon' => 'fa-solid fa-user-pen',
                         'title' => 'Plastic & Reconstructive Surgery',
                         'desc' => 'The full spectrum of cosmetic and reconstructive procedures by Korea\'s most experienced board-certified surgeons — from facial contouring and rhinoplasty to post-trauma reconstruction.',
                         'accent' => 'rgba(245,158,11,0.08)',
@@ -543,7 +543,7 @@
                     'text' => 'I traveled to Seoul for revision rhinoplasty after a disappointing result elsewhere. The surgeon Endow connected me with specialized in exactly my type of case — he had done thousands. The result is so natural that no one can tell I had anything done. The entire experience, from the private clinic to the recovery villa, was five-star.',
                     'name' => 'Elena Voss',
                     'detail' => 'Revision Rhinoplasty – Private Clinic, Gangnam, Seoul',
-                    'icon' => 'fa-solid fa-sparkles',
+                    'icon' => 'fa-solid fa-face-smile',
                 ],
             ] as $index => $story)
                 <div class="service-card">
