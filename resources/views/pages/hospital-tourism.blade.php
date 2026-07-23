@@ -230,7 +230,7 @@
 
             <div data-animate>
                 <div class="rounded-2xl overflow-hidden" style="height: 380px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.08);">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop"
+                    <img src="{{ asset('images/plastic-surgery.png') }}"
                          alt="South Korea world-leading plastic surgery and aesthetic procedures"
                          class="w-full h-full object-cover"
                          loading="lazy"
@@ -493,70 +493,6 @@
                     </div>
                     <div class="text-3xl md:text-4xl font-bold text-white mb-1" style="letter-spacing: -0.03em;">{{ $stat['value'] }}</div>
                     <div class="text-sm" style="color: rgba(255,255,255,0.45);">{{ $stat['label'] }}</div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ============================================ --}}
-{{-- PATIENT STORIES — Real Voices --}}
-{{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[52px]" data-animate>
-            <div class="section-subtitle justify-center" style="color: #e85d5d;">
-                <i class="fa-solid fa-feather"></i>
-                Real Stories
-            </div>
-            <h2 class="section-heading">Patients Who <span class="gradient-text">Trusted Us</span></h2>
-            <p class="text-base max-w-xl mx-auto mt-4" style="color: var(--color-text-muted); line-height: 1.7;">
-                Every journey is personal. Here are some of the people we have had the privilege to help.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-[30px]" data-animate>
-            @foreach([
-                [
-                    'text' => 'When my father was diagnosed with liver cancer, we were terrified. Endow Corporation arranged everything — the hospital, the top hepatobiliary surgeon, our visas, even a Korean-speaking coordinator who stayed with us throughout. The surgery was successful and cost 60% less than what we were quoted at home. I will be grateful forever.',
-                    'name' => 'Fatima Al-Rashid',
-                    'detail' => 'Father\'s Liver Cancer Surgery – Samsung Medical Center, Seoul',
-                    'icon' => 'fa-solid fa-heart',
-                ],
-                [
-                    'text' => 'I needed a double knee replacement and was quoted a 14-month wait in the UK. Through Endow, I was in surgery within 3 weeks at a hospital in Seoul with robotic-assisted technology. The care was exceptional, the staff spoke English, and I was walking within days. Best decision I ever made.',
-                    'name' => 'James Whitfield',
-                    'detail' => 'Bilateral Knee Replacement – Asan Medical Center, Seoul',
-                    'icon' => 'fa-solid fa-person-walking',
-                ],
-                [
-                    'text' => 'I traveled to Seoul for revision rhinoplasty after a disappointing result elsewhere. The surgeon Endow connected me with specialized in exactly my type of case — he had done thousands. The result is so natural that no one can tell I had anything done. The entire experience, from the private clinic to the recovery villa, was five-star.',
-                    'name' => 'Elena Voss',
-                    'detail' => 'Revision Rhinoplasty – Private Clinic, Gangnam, Seoul',
-                    'icon' => 'fa-solid fa-face-smile',
-                ],
-            ] as $index => $story)
-                <div class="service-card">
-                    <div class="mb-4" style="color: #e85d5d; font-size: 36px;">
-                        <i class="fa-solid fa-quote-left"></i>
-                    </div>
-                    <p class="text-base leading-relaxed mb-6" style="color: var(--color-text);">"{{ $story['text'] }}"</p>
-                    <div class="flex items-center gap-1 mb-4">
-                        @for($i = 0; $i < 5; $i++)
-                            <i class="fa-solid fa-star text-sm" style="color: #fbbf24;"></i>
-                        @endfor
-                    </div>
-                    <div class="pt-6" style="border-top: 1px dashed var(--color-border-dashed);">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(232,93,93,0.08);">
-                                <i class="{{ $story['icon'] }} text-sm" style="color: #e85d5d;"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-semibold" style="color: var(--color-text-heading);">{{ $story['name'] }}</p>
-                                <p class="text-xs" style="color: var(--color-text-muted);">{{ $story['detail'] }}</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             @endforeach
         </div>
