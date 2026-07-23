@@ -39,6 +39,11 @@ class PageController extends Controller
         return view('pages.technology');
     }
 
+    public function hospitalTourism()
+    {
+        return view('pages.hospital-tourism');
+    }
+
     public function division($slug)
     {
         $divisions = $this->getDivisions();

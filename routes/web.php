@@ -18,6 +18,7 @@ Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
 Route::get('/travel', [PageController::class, 'travel'])->name('travel');
 Route::get('/education', [PageController::class, 'education'])->name('education');
 Route::get('/technology', [PageController::class, 'technology'])->name('technology');
+Route::get('/hospital-tourism', [PageController::class, 'hospitalTourism'])->name('hospital-tourism');
 Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
 // Education SEO Pages
@@ -56,6 +57,7 @@ Route::get('/sitemap.xml', function () {
         ['url' => '/about-us', 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => '/education', 'priority' => '0.9', 'changefreq' => 'weekly'],
         ['url' => '/technology', 'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['url' => '/hospital-tourism', 'priority' => '0.9', 'changefreq' => 'weekly'],
         ['url' => '/endow-travels', 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => '/endow-global-education', 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => '/endow-technologies', 'priority' => '0.8', 'changefreq' => 'monthly'],
