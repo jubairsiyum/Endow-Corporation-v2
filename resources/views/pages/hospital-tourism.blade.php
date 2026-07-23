@@ -10,6 +10,16 @@
 {{-- HERO — Warm, Empathetic Introduction --}}
 {{-- ============================================ --}}
 <section class="relative overflow-hidden" style="background: #0d0b09; min-height: 85vh; display: flex; align-items: center;">
+    <style>
+        @keyframes hero-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .hero-image-float {
+            animation: hero-float 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+    </style>
     {{-- Warm ambient background --}}
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="absolute top-[15%] right-[10%] w-[500px] h-[500px] rounded-full opacity-[0.07]" style="background: radial-gradient(circle, #e85d5d 0%, transparent 70%); filter: blur(70px);"></div>
@@ -76,33 +86,13 @@
                 </a>
             </div>
 
-            {{-- RIGHT: Visual Element --}}
-            <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative">
-                <div class="relative w-[320px] h-[400px]">
-                    <div class="absolute top-0 right-0 w-[260px] h-[310px] rounded-3xl overflow-hidden shadow-2xl transform rotate-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background: rgba(232,93,93,0.12); border: 1px solid rgba(232,93,93,0.2);">
-                                    <i class="fa-solid fa-heart-pulse text-3xl" style="color: #f08080;"></i>
-                                </div>
-                                <div class="w-28 h-1 rounded-full mx-auto mb-3 opacity-20" style="background: white;"></div>
-                                <div class="w-20 h-1 rounded-full mx-auto mb-3 opacity-10" style="background: white;"></div>
-                                <div class="w-14 h-1 rounded-full mx-auto opacity-10" style="background: white;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-[200px] h-[260px] rounded-3xl overflow-hidden shadow-xl transform -rotate-6" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fa-solid fa-stethoscope text-5xl opacity-10" style="color: white;"></i>
-                        </div>
-                    </div>
-                    <div class="absolute top-[22%] left-[8%] flex gap-1.5">
-                        <span class="w-2 h-2 rounded-full" style="background: #f08080;"></span>
-                        <span class="w-2 h-2 rounded-full opacity-40" style="background: #06b6d4;"></span>
-                        <span class="w-2 h-2 rounded-full opacity-20" style="background: white;"></span>
-                    </div>
-                </div>
-            </div>
+            {{-- RIGHT: Hero Image --}}
+            <div class="lg:col-span-5 hidden lg:flex items-center justify-center relative" style="min-height: 480px;">
+                <img src="{{ asset('images/Hospital Tourism Hero img.png') }}"
+                     alt="Hospital Tourism – World-Class Medical Care in South Korea"
+                     class="w-full h-auto max-w-[460px] rounded-3xl object-cover"
+                     style="filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));"
+                     loading="eager" width="460" height="500">
         </div>
     </div>
 </section>
