@@ -161,7 +161,7 @@
         </p>
 
         {{-- Inline stats anchored below --}}
-        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-12 pt-10" style="border-top: 1px solid rgba(0,0,0,0.06);">
+        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-14 pt-12" style="border-top: 1px solid rgba(0,0,0,0.06);">
             @foreach([
                 ['value' => '200+', 'label' => 'Projects Delivered'],
                 ['value' => '25+', 'label' => 'Tech Experts'],
@@ -363,7 +363,7 @@
         </div>
 
         {{-- Bottom stat strip --}}
-        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-14 pt-10" style="border-top: 1px solid var(--color-border);">
+        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-14 pt-12" style="border-top: 1px solid var(--color-border);">
             @foreach([
                 ['value' => '200+', 'label' => 'Projects Delivered'],
                 ['value' => '25+', 'label' => 'Tech Experts'],
@@ -418,10 +418,10 @@
         .process-step:nth-child(4).visible { animation-delay: 0.35s; }
 
         .process-num-circle {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .process-step:hover .process-num-circle {
-            transform: scale(1.1);
+            transform: scale(1.08);
             animation: processPulse 2s ease infinite;
         }
         .process-step:hover .process-num-circle-inner {
@@ -449,8 +449,43 @@
 
         {{-- Interactive Timeline Steps --}}
         <div class="relative">
-            {{-- Connecting line (desktop) --}}
-            <div class="hidden lg:block absolute top-[48px] left-[10%] right-[10%] h-[2px] pointer-events-none" style="background: linear-gradient(90deg, rgba(212,32,44,0.1), rgba(212,32,44,0.25), rgba(212,32,44,0.1));"></div>
+            {{-- Animated connecting line (desktop) --}}
+            <div class="hidden lg:block absolute left-[10%] right-[10%] pointer-events-none" style="top: 30px; height: 2px;">
+                {{-- Base dashed track --}}
+                <div class="absolute inset-x-0 top-0 h-[2px] opacity-40" style="background: repeating-linear-gradient(90deg, var(--color-border) 0px, var(--color-border) 5px, transparent 5px, transparent 14px);"></div>
+                {{-- Animated flow overlay --}}
+                <style>
+                    @keyframes connectorFlow {
+                        0% { background-position: 0% 0; }
+                        100% { background-position: 200% 0; }
+                    }
+                    .connector-flow {
+                        position: absolute; left: 0; right: 0; top: 0; height: 2px;
+                        background: repeating-linear-gradient(90deg, 
+                            var(--color-primary) 0px, var(--color-primary) 5px, 
+                            transparent 5px, transparent 14px);
+                        background-size: 200% 100%;
+                        animation: connectorFlow 4.5s linear infinite;
+                        opacity: 0.55;
+                        mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+                        -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+                    }
+                </style>
+                <div class="connector-flow"></div>
+                {{-- Colored connection dots positioned at column centers --}}
+                @foreach([
+                    ['color' => '#7c3aed', 'left' => 12.5, 'delay' => 0],
+                    ['color' => '#3b82f6', 'left' => 37.5, 'delay' => 0.6],
+                    ['color' => '#10b981', 'left' => 62.5, 'delay' => 1.2],
+                    ['color' => '#f59e0b', 'left' => 87.5, 'delay' => 1.8],
+                ] as $k => $dot)
+                    <style>
+                        @keyframes dotPulse{{ $k }} { 0%,100% { transform: translate(-50%, -50%) scale(1); opacity: 0.75; } 50% { transform: translate(-50%, -50%) scale(1.7); opacity: 1; } }
+                    </style>
+                    <div class="absolute w-[8px] h-[8px] rounded-full"
+                         style="left: {{ $dot['left'] }}%; top: 1px; background: {{ $dot['color'] }}; box-shadow: 0 0 10px {{ $dot['color'] }}50; animation: dotPulse{{ $k }} 2.4s ease-in-out infinite; animation-delay: {{ $dot['delay'] }}s; z-index: 5;"></div>
+                @endforeach
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
                 @foreach([
@@ -459,15 +494,17 @@
                     ['num' => '03', 'icon' => 'fa-solid fa-code', 'title' => 'Development', 'desc' => 'Agile sprints with weekly demos. You see progress in real time — not in PowerPoint slides.', 'color' => '#10b981'],
                     ['num' => '04', 'icon' => 'fa-solid fa-rocket', 'title' => 'Deploy & Scale', 'desc' => 'Production launch with monitoring, documentation, and ongoing support built right in.', 'color' => '#f59e0b'],
                 ] as $i => $step)
-                    <div class="process-step group text-center lg:text-left">
-                        {{-- Number circle with icon --}}
-                        <div class="flex items-center justify-center lg:justify-start mb-6">
-                            <div class="process-num-circle w-[60px] h-[60px] rounded-full flex items-center justify-center relative"
+                    <div class="process-step group text-center lg:text-center">
+                        {{-- Number circle — connector anchor --}}
+                        <div class="flex items-center justify-center mb-6 relative z-10">
+                            <div class="process-num-circle w-[60px] h-[60px] rounded-full flex items-center justify-center relative bg-white"
                                  style="background: {{ $step['color'] }}08; border: 2px solid {{ $step['color'] }}15;">
                                 <div class="process-num-circle-inner w-[52px] h-[52px] rounded-full flex items-center justify-center text-lg font-extrabold transition-all duration-300"
                                      style="background: white; border: 1.5px solid var(--color-border); color: {{ $step['color'] }};">
                                     {{ $step['num'] }}
                                 </div>
+                                {{-- Connector node glow ring --}}
+                                <div class="absolute inset-[-3px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="border: 2px solid {{ $step['color'] }}30; box-shadow: 0 0 12px {{ $step['color'] }}20;"></div>
                             </div>
                         </div>
 
@@ -477,7 +514,7 @@
                              onmouseover="this.style.borderColor='{{ $step['color'] }}30'; this.style.boxShadow='0 8px 28px rgba(0,0,0,0.06)';"
                              onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.03)';">
                             {{-- Step icon --}}
-                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3 mx-auto lg:mx-0 transition-all duration-300 group-hover:scale-110" style="background: {{ $step['color'] }}10;">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3 mx-auto transition-all duration-300 group-hover:scale-110" style="background: {{ $step['color'] }}10;">
                                 <i class="{{ $step['icon'] }} text-sm" style="color: {{ $step['color'] }};"></i>
                             </div>
 
@@ -619,15 +656,15 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- INDUSTRIES — Interactive Pill Grid --}}
+{{-- INDUSTRIES — Professional Sector Cards --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: #ffffff;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" data-animate>
-            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: #7c3aed; letter-spacing: 0.15em;">
-                <span class="w-5 h-px" style="background: #7c3aed;"></span>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
                 Industries
-                <span class="w-5 h-px" style="background: #7c3aed;"></span>
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
             </div>
             <h2 class="section-heading">Expertise Across <span class="gradient-text">Every Sector</span></h2>
             <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
@@ -644,15 +681,19 @@
                 ['icon' => 'fa-solid fa-graduation-cap', 'title' => 'Education', 'desc' => 'Adaptive learning platforms, student analytics, and virtual classroom solutions.'],
                 ['icon' => 'fa-solid fa-truck-fast', 'title' => 'Logistics', 'desc' => 'Route optimization, fleet management, and real-time shipment tracking.'],
             ] as $index => $ind)
-                <div class="group relative rounded-2xl p-6 sm:p-7 text-center transition-all duration-300 hover:-translate-y-1" style="background: #fafafc; border: 1px solid #eeeef0;">
+                <div class="group relative rounded-2xl p-5 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md"
+                     style="background: #fafafc; border: 1px solid #eeeef0;"
+                     onmouseover="this.style.borderColor='var(--color-primary)30'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.05)';"
+                     onmouseout="this.style.borderColor='#eeeef0'; this.style.boxShadow='none';">
                     {{-- Icon --}}
-                    <div class="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 100%);">
-                        <i class="{{ $ind['icon'] }} text-lg" style="color: #7c3aed;"></i>
+                    <div class="w-11 h-11 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-sm"
+                         style="background: rgba(212,32,44,0.06);">
+                        <i class="{{ $ind['icon'] }} text-base" style="color: var(--color-primary);"></i>
                     </div>
                     {{-- Title --}}
-                    <h4 class="text-sm font-bold mb-1" style="color: #0a0a0a; letter-spacing: -0.01em;">{{ $ind['title'] }}</h4>
-                    {{-- Description (hidden, reveals on hover) --}}
-                    <p class="text-[12px] leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-300 max-w-[240px] mx-auto" style="color: rgba(0,0,0,0.55);">{{ $ind['desc'] }}</p>
+                    <h4 class="text-[13px] font-bold mb-1.5" style="color: var(--color-text-heading); letter-spacing: -0.01em;">{{ $ind['title'] }}</h4>
+                    {{-- Description (always visible) --}}
+                    <p class="text-[12px] leading-relaxed mt-2.5 max-w-[240px] mx-auto" style="color: rgba(0,0,0,0.55); line-height: 1.5;">{{ $ind['desc'] }}</p>
                 </div>
             @endforeach
         </div>
