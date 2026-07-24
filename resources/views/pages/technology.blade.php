@@ -135,132 +135,41 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- INTRO: Who We Are --}}
+{{-- MISSION — Full-bleed Typographic Statement --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div data-animate>
-                <div class="section-subtitle" style="color: var(--color-primary);">
-                    <i class="fa-solid fa-microchip"></i>
-                    Who We Are
-                </div>
-                <h2 class="section-heading">Engineering the Future of <span class="gradient-text">Digital Innovation</span></h2>
-                <div class="space-y-5">
-                    <p class="text-base leading-[1.8]" style="color: var(--color-text);">
-                        Endow Technologies is the technology powerhouse of Endow Corporation, headquartered in Seoul, South Korea. We specialize in delivering cutting-edge software solutions, AI-driven automation, secure cloud infrastructure, and comprehensive digital transformation services that empower businesses to thrive in the modern digital economy.
-                    </p>
-                    <p class="text-base leading-[1.8]" style="color: var(--color-text);">
-                        Our team of 25+ engineers, data scientists, and IT consultants combines deep technical expertise with strategic business insight. We don't just write code, we architect solutions that solve real business problems, streamline operations, and unlock new revenue streams for our clients across Asia, Europe, the Middle East, and the Americas.
-                    </p>
-                    <p class="text-base leading-[1.8]" style="color: var(--color-text);">
-                        From custom web and mobile applications to enterprise-grade cloud migrations and intelligent automation pipelines, Endow Technologies delivers with precision, scalability, and a relentless commitment to quality. Our portfolio spans 200+ successful projects across industries including finance, healthcare, retail, manufacturing, and education.
-                    </p>
-                </div>
-            </div>
+<section class="relative overflow-hidden" style="padding: 120px 0; background: #fbfafa;">
+    {{-- Subtle dot texture --}}
+    <div class="absolute inset-0 pointer-events-none opacity-[0.015]" aria-hidden="true" style="background-image: radial-gradient(circle, #0a0a0a 1px, transparent 1px); background-size: 24px 24px;"></div>
+    {{-- Decorative top/bottom rules --}}
+    <div class="absolute top-0 left-[10%] right-[10%] h-px pointer-events-none" style="background: linear-gradient(90deg, transparent, rgba(124,58,237,0.08), transparent);"></div>
+    <div class="absolute bottom-0 left-[10%] right-[10%] h-px pointer-events-none" style="background: linear-gradient(90deg, transparent, rgba(124,58,237,0.08), transparent);"></div>
 
-            <div data-animate>
-                <div class="rounded-2xl overflow-hidden" style="height: 380px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop"
-                         alt="Endow Technologies, AI, cloud computing, and custom software development solutions"
-                         class="w-full h-full object-cover"
-                         loading="eager"
-                         width="800"
-                         height="600">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ============================================ --}}
-{{-- CORE SERVICES --}}
-{{-- ============================================ --}}
-<section class="section-gap" style="background-color: #f0f0f0;">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-code"></i>
-                What We Offer
-            </div>
-            <h2 class="section-heading">Comprehensive <span class="gradient-text">Tech Solutions</span></h2>
-            <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
-                End-to-end technology services designed to accelerate your digital transformation journey.
-            </p>
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div data-animate class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-8" style="color: #7c3aed; letter-spacing: 0.15em;">
+            <span class="w-6 h-px" style="background: #7c3aed;"></span>
+            Our Mission
+            <span class="w-6 h-px" style="background: #7c3aed;"></span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" data-animate>
-            @php
-                $services = [
-                    [
-                        'icon' => 'fa-solid fa-brain',
-                        'title' => 'AI & Automation',
-                        'desc' => 'Intelligent machine learning models, NLP solutions, and process automation that reduce costs by 40% and accelerate operations by 3x.',
-                        'accent' => 'rgba(124,58,237,0.08)',
-                        'accentBorder' => 'rgba(124,58,237,0.12)',
-                        'iconColor' => '#7c3aed',
-                        'link' => route('seo.ai-automation'),
-                    ],
-                    [
-                        'icon' => 'fa-solid fa-cloud',
-                        'title' => 'Cloud Computing & Security',
-                        'desc' => 'Scalable, secure cloud infrastructure with multi-cloud strategy, migration services, and enterprise-grade security compliance.',
-                        'accent' => 'rgba(59,130,246,0.08)',
-                        'accentBorder' => 'rgba(59,130,246,0.15)',
-                        'iconColor' => '#3b82f6',
-                        'link' => route('seo.cloud-computing'),
-                    ],
-                    [
-                        'icon' => 'fa-solid fa-laptop-code',
-                        'title' => 'Custom Software Development',
-                        'desc' => 'High-performance web, mobile, and desktop applications built with modern frameworks and tailored to your unique business requirements.',
-                        'accent' => 'rgba(16,185,129,0.08)',
-                        'accentBorder' => 'rgba(16,185,129,0.15)',
-                        'iconColor' => '#059669',
-                        'link' => route('seo.software-development'),
-                    ],
-                    [
-                        'icon' => 'fa-solid fa-mobile-screen',
-                        'title' => 'Web & Mobile App Development',
-                        'desc' => 'Responsive web apps and native mobile applications for iOS and Android, delivering exceptional user experiences at scale.',
-                        'accent' => 'rgba(245,158,11,0.08)',
-                        'accentBorder' => 'rgba(245,158,11,0.15)',
-                        'iconColor' => '#d97706',
-                        'link' => 'https://endowtech.net/app-development/',
-                    ],
-                    [
-                        'icon' => 'fa-solid fa-gears',
-                        'title' => 'IT Consulting & Digital Strategy',
-                        'desc' => 'Strategic technology advisory, roadmap planning, and digital transformation consulting to align technology with business goals.',
-                        'accent' => 'rgba(236,72,153,0.08)',
-                        'accentBorder' => 'rgba(236,72,153,0.15)',
-                        'iconColor' => '#db2777',
-                        'link' => 'https://endowtech.net/',
-                    ],
-                    [
-                        'icon' => 'fa-solid fa-chart-bar',
-                        'title' => 'Data Analytics & BI',
-                        'desc' => 'Transform raw data into actionable insights with advanced analytics, dashboards, and business intelligence solutions.',
-                        'accent' => 'rgba(14,165,233,0.08)',
-                        'accentBorder' => 'rgba(14,165,233,0.15)',
-                        'iconColor' => '#0284c7',
-                        'link' => 'https://endowtech.net/',
-                    ],
-                ];
-            @endphp
+        <h2 data-animate class="text-[40px] sm:text-[52px] lg:text-[64px] font-extrabold leading-[1.08] tracking-tight mb-6" style="color: #0a0a0a; letter-spacing: -0.035em;">
+            We build the technology<br>
+            <span class="gradient-text">that powers tomorrow's businesses</span>
+        </h2>
 
-            @foreach($services as $svc)
-                <div class="rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1" style="background: white; border: 1px solid #E5E7EB; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-                    <div class="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center mb-5" style="background: {{ $svc['accent'] }}; border: 1px solid {{ $svc['accentBorder'] }};">
-                        <i class="{{ $svc['icon'] }} text-xl" style="color: {{ $svc['iconColor'] }};"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2.5" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $svc['title'] }}</h3>
-                    <p class="text-sm leading-[1.75]" style="color: var(--color-text);">{{ $svc['desc'] }}</p>
-                    @if(isset($svc['link']))
-                        <a href="{{ $svc['link'] }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium mt-4" style="color: var(--color-primary);">
-                            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    @endif
+        <p data-animate class="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style="color: rgba(0,0,0,0.55); line-height: 1.8;">
+            Endow Technologies is the innovation engine of Endow Corporation — a Seoul-based team of engineers, data scientists, and strategists. We architect AI, cloud, and software solutions that solve real business problems. We don't just write code. We build outcomes.
+        </p>
+
+        {{-- Inline stats anchored below --}}
+        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-12 pt-10" style="border-top: 1px solid rgba(0,0,0,0.06);">
+            @foreach([
+                ['value' => '200+', 'label' => 'Projects Delivered'],
+                ['value' => '25+', 'label' => 'Tech Experts'],
+                ['value' => '30+', 'label' => 'Countries Served'],
+            ] as $stat)
+                <div class="text-center">
+                    <div class="text-[32px] sm:text-[40px] font-extrabold tracking-tight" style="color: #7c3aed; letter-spacing: -0.03em; line-height: 1;">{{ $stat['value'] }}</div>
+                    <div class="text-[11px] font-semibold uppercase tracking-[2px] mt-1.5" style="color: rgba(0,0,0,0.3);">{{ $stat['label'] }}</div>
                 </div>
             @endforeach
         </div>
@@ -268,184 +177,465 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- WHY ENDOW TECHNOLOGIES --}}
+{{-- SERVICES — Scroll-Stack Interactive Cards --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
+<section class="scroll-stack-section section-gap" style="background-color: #fbfafa;" data-scroll-stack="tech-services">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div data-animate>
-                <div class="rounded-2xl overflow-hidden" style="height: 380px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=500&fit=crop"
-                         alt="Why choose Endow Technologies for your digital transformation"
-                         class="w-full h-full object-cover"
-                         loading="lazy"
-                         width="800"
-                         height="600">
-                </div>
+        <div class="text-center mb-14" data-animate>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+                What We Build
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
             </div>
+            <h2 class="section-heading">Comprehensive <span class="gradient-text">Tech Solutions</span></h2>
+            <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
+                End-to-end services engineered to accelerate your digital transformation. Scroll to explore each domain.
+            </p>
+        </div>
 
-            <div data-animate>
-                <div class="section-subtitle" style="color: var(--color-primary);">
-                    <i class="fa-solid fa-star"></i>
-                    Why Endow Technologies
-                </div>
-                <h2 class="section-heading">Six Reasons Businesses <span class="gradient-text">Choose Us</span></h2>
-                <div class="space-y-5">
-                    @foreach([
-                        ['icon' => 'fa-solid fa-brain', 'title' => 'Deep Technical Expertise', 'desc' => 'Our team includes AI/ML specialists, cloud architects, and full-stack engineers with proven track records at global tech companies.'],
-                        ['icon' => 'fa-solid fa-rocket', 'title' => 'Agile & Fast Delivery', 'desc' => 'We ship working software in weeks, not months. Our agile methodology ensures rapid iterations and continuous client feedback.'],
-                        ['icon' => 'fa-solid fa-shield-halved', 'title' => 'Enterprise-Grade Security', 'desc' => 'SOC 2-aligned practices, encrypted data pipelines, and secure development lifecycle baked into every project from day one.'],
-                        ['icon' => 'fa-solid fa-scale-balanced', 'title' => 'Scalable Architecture', 'desc' => 'Solutions designed to grow with your business. From startup MVPs to enterprise platforms handling millions of transactions daily.'],
-                        ['icon' => 'fa-solid fa-hand-holding-dollar', 'title' => 'Cost-Effective Innovation', 'desc' => 'Competitive pricing with 40% average cost reduction through automation and efficient offshore-nearshore delivery models.'],
-                        ['icon' => 'fa-solid fa-headset', 'title' => 'Dedicated Support & Maintenance', 'desc' => '24/7 monitoring, proactive maintenance, and rapid incident response ensuring your systems run smoothly around the clock.'],
-                    ] as $item)
-                        <div class="flex items-start gap-4 p-5 rounded-xl transition-all duration-300 hover:shadow-md" style="background: white; border: 1px solid #E5E7EB;">
-                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(124,58,237,0.02) 100%);">
-                                <i class="{{ $item['icon'] }} text-sm" style="color: #7c3aed;"></i>
+        <div class="scroll-stack-viewport">
+            @php
+                $stackCards = [
+                    [
+                        'title' => 'AI & Intelligent Automation',
+                        'desc' => 'Machine learning, NLP, computer vision, and intelligent process automation that reduce costs by 40% and accelerate operations 3x.',
+                        'icon' => 'fa-solid fa-brain',
+                        'accent' => '#7c3aed',
+                        'features' => ['Predictive analytics & ML models', 'Natural language processing', 'Intelligent document processing', 'Process automation pipelines'],
+                        'link' => route('seo.ai-automation'),
+                        'image' => 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+                    ],
+                    [
+                        'title' => 'Cloud Infrastructure & Security',
+                        'desc' => 'Scalable multi-cloud architecture, enterprise-grade security compliance, and seamless migration strategies with 99.9% uptime guarantee.',
+                        'icon' => 'fa-solid fa-cloud',
+                        'accent' => '#3b82f6',
+                        'features' => ['Multi-cloud architecture design', 'SOC 2 & ISO 27001 compliance', 'Zero-trust security framework', 'Disaster recovery & backup'],
+                        'link' => route('seo.cloud-computing'),
+                        'image' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
+                    ],
+                    [
+                        'title' => 'Custom Software & Applications',
+                        'desc' => 'High-performance web, mobile, and desktop applications built with modern frameworks and engineered for scale, security, and exceptional UX.',
+                        'icon' => 'fa-solid fa-laptop-code',
+                        'accent' => '#10b981',
+                        'features' => ['Web & mobile app development', 'API & microservice architecture', 'Real-time data dashboards', 'Legacy system modernization'],
+                        'link' => route('seo.software-development'),
+                        'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+                    ],
+                ];
+            @endphp
+
+            @foreach($stackCards as $i => $card)
+                <div class="scroll-stack-card" style="z-index: {{ count($stackCards) - $i }};">
+                    <div class="scroll-stack-card-inner">
+                        {{-- Content Side --}}
+                        <div class="scroll-stack-content">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-[14px] flex items-center justify-center flex-shrink-0" style="background: {{ $card['accent'] }}15; border: 1px solid {{ $card['accent'] }}25;">
+                                    <i class="{{ $card['icon'] }} text-lg" style="color: {{ $card['accent'] }};"></i>
+                                </div>
+                                <span class="text-[10px] font-bold tracking-[2.5px] uppercase" style="color: var(--color-primary);">0{{ $i + 1 }} — Service</span>
                             </div>
-                            <div>
-                                <h4 class="text-base font-bold mb-1" style="color: var(--color-text-heading);">{{ $item['title'] }}</h4>
-                                <p class="text-sm" style="color: var(--color-text);">{{ $item['desc'] }}</p>
-                            </div>
+
+                            <h3 class="text-[26px] sm:text-[32px] lg:text-[36px] font-extrabold tracking-tight mb-3" style="color: var(--color-text-heading); letter-spacing: -0.03em; line-height: 1.15;">
+                                {{ $card['title'] }}
+                            </h3>
+
+                            <p class="text-[15px] leading-relaxed mb-6" style="color: var(--color-text); max-width: 90%;">
+                                {{ $card['desc'] }}
+                            </p>
+
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8">
+                                @foreach($card['features'] as $feat)
+                                    <li class="flex items-center gap-3 text-sm" style="color: rgba(0,0,0,0.6);">
+                                        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: {{ $card['accent'] }};"></span>
+                                        {{ $feat }}
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <a href="{{ $card['link'] }}" class="inline-flex items-center gap-2.5 text-[14px] font-semibold transition-all hover:gap-3.5 px-5 py-2.5 rounded-full" style="color: white; background: var(--color-primary); width: fit-content;">
+                                Learn More
+                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                            </a>
                         </div>
-                    @endforeach
+
+                        {{-- Image Side --}}
+                        <div class="scroll-stack-image">
+                            <img src="{{ $card['image'] }}" alt="{{ $card['title'] }}" loading="lazy" width="800" height="600">
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 {{-- ============================================ --}}
-{{-- HOW WE WORK — Minimal Quote --}}
+{{-- WHY ENDOW TECHNOLOGIES — Light Interactive Cards --}}
 {{-- ============================================ --}}
-<section class="relative overflow-hidden" style="padding: 120px 0; background: #09090b;">
-    {{-- Soft radial glow --}}
-    <div class="absolute pointer-events-none" aria-hidden="true" style="top: 50%; left: 50%; width: 700px; height: 500px; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(168,85,247,0.06) 0%, transparent 60%); filter: blur(80px);"></div>
+<section class="relative overflow-hidden" style="padding: 100px 0; background: #fefefe;">
+    {{-- Subtle pattern overlay --}}
+    <div class="absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" style="background-image: radial-gradient(circle, #0a0a0a 1px, transparent 1px); background-size: 28px 28px;"></div>
+    {{-- Decorative top rule --}}
+    <div class="absolute top-0 left-[10%] right-[10%] h-px pointer-events-none" style="background: linear-gradient(90deg, transparent, rgba(124,58,237,0.12), transparent);"></div>
+
+    {{-- Entrance animation styles --}}
+    <style>
+        @keyframes whyBounceIn {
+            0% { opacity: 0; transform: translateY(28px) scale(0.96); }
+            60% { opacity: 1; transform: translateY(-4px) scale(1.01); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .why-light-card {
+            opacity: 0;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .why-light-card.visible {
+            animation: whyBounceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .why-light-card:nth-child(1).visible { animation-delay: 0.04s; }
+        .why-light-card:nth-child(2).visible { animation-delay: 0.1s; }
+        .why-light-card:nth-child(3).visible { animation-delay: 0.16s; }
+        .why-light-card:nth-child(4).visible { animation-delay: 0.22s; }
+        .why-light-card:nth-child(5).visible { animation-delay: 0.28s; }
+        .why-light-card:nth-child(6).visible { animation-delay: 0.34s; }
+    </style>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="max-w-[700px] mx-auto" data-animate>
-
-            {{-- Large, bold heading --}}
-            <h2 class="text-[48px] sm:text-[56px] lg:text-[64px] font-extrabold leading-[1.05] tracking-tight text-white mb-6" style="letter-spacing: -0.04em;">
-                Software that works.<br>
-                <span style="color: #a78bfa;">For teams that matter.</span>
+        {{-- Header --}}
+        <div class="text-center mb-16" data-animate>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+                Why Endow Technologies
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+            </div>
+            <h2 class="text-[36px] sm:text-[44px] lg:text-[52px] font-extrabold tracking-tight mb-4" style="color: var(--color-text-heading); letter-spacing: -0.035em; line-height: 1.1;">
+                Six Reasons Businesses<br class="hidden sm:block">
+                <span class="gradient-text">Choose Us</span>
             </h2>
-
-            {{-- Minimal divider --}}
-            <div class="w-12 h-[3px] rounded-full mb-10" style="background: #a78bfa;"></div>
-
-            {{-- Body text --}}
-            <p class="text-[16px] sm:text-[17px] leading-[1.75] max-w-[580px]" style="color: rgba(255,255,255,0.82);">
-                No fluff, no jargon. Just a small team of engineers who ship code, solve real problems, and stand behind their work. We've built for startups scaling their first product and for enterprises migrating legacy systems that ran for decades. Every project taught us something.
+            <p class="text-[15px] max-w-xl mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">
+                Every engagement is built on deep expertise, proven delivery, and a relentless focus on outcomes that move your business forward.
             </p>
+        </div>
 
+        {{-- Interactive Card Grid --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            @foreach([
+                ['icon' => 'fa-solid fa-brain', 'title' => 'Deep Technical Expertise', 'desc' => 'AI/ML specialists, cloud architects, and full-stack engineers with proven track records across 200+ projects.', 'badge' => '10+ Years', 'color' => '#7c3aed'],
+                ['icon' => 'fa-solid fa-rocket', 'title' => 'Agile & Fast Delivery', 'desc' => 'Working software in weeks, not months. Rapid iterations with continuous feedback loops.', 'badge' => '2-Week Sprints', 'color' => '#3b82f6'],
+                ['icon' => 'fa-solid fa-shield-halved', 'title' => 'Enterprise-Grade Security', 'desc' => 'SOC 2-aligned practices, encrypted pipelines, and secure development lifecycles baked in from day one.', 'badge' => '99.9% Secure', 'color' => '#10b981'],
+                ['icon' => 'fa-solid fa-scale-balanced', 'title' => 'Scalable Architecture', 'desc' => 'From startup MVPs to platforms handling millions of daily transactions — built to grow with you.', 'badge' => '100+ Projects', 'color' => '#f59e0b'],
+                ['icon' => 'fa-solid fa-hand-holding-dollar', 'title' => 'Cost-Effective Innovation', 'desc' => '40% average cost reduction through intelligent automation and efficient delivery models.', 'badge' => '40% Savings', 'color' => '#ef4444'],
+                ['icon' => 'fa-solid fa-headset', 'title' => 'Dedicated Support & Maintenance', 'desc' => '24/7 monitoring, proactive maintenance, and rapid incident response to keep you running.', 'badge' => '24/7 Support', 'color' => '#8b5cf6'],
+            ] as $i => $item)
+                <div class="why-light-card group relative rounded-2xl p-6 overflow-hidden cursor-default"
+                     style="background: white; border: 1px solid var(--color-border); box-shadow: 0 1px 4px rgba(0,0,0,0.03);"
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.08)'; this.style.borderColor='{{ $item['color'] }}40';"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 4px rgba(0,0,0,0.03)'; this.style.borderColor='var(--color-border)';">
+                    {{-- Accent top line --}}
+                    <div class="absolute top-0 left-4 right-4 h-[3px] rounded-b transition-all duration-300 opacity-0 group-hover:opacity-100" style="background: {{ $item['color'] }};"></div>
+
+                    {{-- Icon + Badge row --}}
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style="background: {{ $item['color'] }}10; border: 1px solid {{ $item['color'] }}20;">
+                            <i class="{{ $item['icon'] }} text-sm" style="color: {{ $item['color'] }};"></i>
+                        </div>
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300" style="background: {{ $item['color'] }}08; border: 1px solid {{ $item['color'] }}15; color: {{ $item['color'] }};">
+                            {{ $item['badge'] }}
+                        </span>
+                    </div>
+
+                    {{-- Title --}}
+                    <h4 class="text-[16px] font-bold mb-2" style="color: var(--color-text-heading); letter-spacing: -0.01em;">{{ $item['title'] }}</h4>
+
+                    {{-- Description --}}
+                    <p class="text-[13px] leading-relaxed" style="color: var(--color-text-muted);">{{ $item['desc'] }}</p>
+
+                    {{-- Interactive indicator --}}
+                    <div class="mt-4 flex items-center gap-2 text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300" style="color: {{ $item['color'] }};">
+                        <span>Learn more</span>
+                        <i class="fa-solid fa-arrow-right text-[9px] transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Bottom stat strip --}}
+        <div data-animate class="flex flex-wrap items-center justify-center gap-10 sm:gap-16 mt-14 pt-10" style="border-top: 1px solid var(--color-border);">
+            @foreach([
+                ['value' => '200+', 'label' => 'Projects Delivered'],
+                ['value' => '25+', 'label' => 'Tech Experts'],
+                ['value' => '30+', 'label' => 'Countries Served'],
+                ['value' => '99.9%', 'label' => 'Uptime SLA'],
+            ] as $stat)
+                <div class="text-center group cursor-default">
+                    <div class="text-[32px] sm:text-[40px] font-extrabold tracking-tight transition-all duration-300 group-hover:scale-105" style="color: var(--color-primary); letter-spacing: -0.03em; line-height: 1;">{{ $stat['value'] }}</div>
+                    <div class="text-[11px] font-semibold uppercase tracking-[2px] mt-1.5" style="color: var(--color-text-muted);">{{ $stat['label'] }}</div>
+                </div>
+            @endforeach
         </div>
     </div>
+
+    <script>
+    (function() {
+        var cards = document.querySelectorAll('.why-light-card');
+        if (!cards.length) return;
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    cards.forEach(function(c) { c.classList.add('visible'); });
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        obs.observe(cards[0].closest('section') || cards[0]);
+    })();
+    </script>
 </section>
 
 {{-- ============================================ --}}
-{{-- TECHNOLOGY SOLUTIONS --}}
+{{-- PROCESS — Light Animated Interactive Timeline --}}
+{{-- ============================================ --}}
+<section class="relative overflow-hidden" style="padding: 120px 0; background: #fefefe;">
+    {{-- Subtle dot texture --}}
+    <div class="absolute inset-0 pointer-events-none opacity-[0.018]" aria-hidden="true" style="background-image: radial-gradient(circle, #0a0a0a 1px, transparent 1px); background-size: 26px 26px;"></div>
+    {{-- Decorative top rule --}}
+    <div class="absolute top-0 left-[10%] right-[10%] h-px pointer-events-none" style="background: linear-gradient(90deg, transparent, rgba(212,32,44,0.1), transparent);"></div>
+
+    <style>
+        @keyframes processStepIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes processPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,32,44,0.15); } 50% { box-shadow: 0 0 0 10px rgba(212,32,44,0); } }
+        .process-step { opacity: 0; }
+        .process-step.visible { animation: processStepIn 0.5s ease forwards; }
+        .process-step:nth-child(1).visible { animation-delay: 0.05s; }
+        .process-step:nth-child(2).visible { animation-delay: 0.15s; }
+        .process-step:nth-child(3).visible { animation-delay: 0.25s; }
+        .process-step:nth-child(4).visible { animation-delay: 0.35s; }
+
+        .process-num-circle {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+        }
+        .process-step:hover .process-num-circle {
+            transform: scale(1.1);
+            animation: processPulse 2s ease infinite;
+        }
+        .process-step:hover .process-num-circle-inner {
+            background: var(--color-primary) !important;
+            color: white !important;
+            border-color: var(--color-primary) !important;
+        }
+    </style>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        {{-- Header --}}
+        <div class="text-center mb-16" data-animate>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+                How We Work
+                <span class="w-5 h-px" style="background: var(--color-primary);"></span>
+            </div>
+            <h2 class="text-[36px] sm:text-[44px] lg:text-[52px] font-extrabold tracking-tight mb-4" style="color: var(--color-text-heading); letter-spacing: -0.035em; line-height: 1.1;">
+                From concept to<br class="hidden sm:block"><span class="gradient-text">production in weeks</span>
+            </h2>
+            <p class="text-[15px] max-w-lg mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">
+                A lean, transparent process built for speed without compromising quality. Each phase is designed to deliver measurable progress.
+            </p>
+        </div>
+
+        {{-- Interactive Timeline Steps --}}
+        <div class="relative">
+            {{-- Connecting line (desktop) --}}
+            <div class="hidden lg:block absolute top-[48px] left-[10%] right-[10%] h-[2px] pointer-events-none" style="background: linear-gradient(90deg, rgba(212,32,44,0.1), rgba(212,32,44,0.25), rgba(212,32,44,0.1));"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+                @foreach([
+                    ['num' => '01', 'icon' => 'fa-solid fa-magnifying-glass', 'title' => 'Discovery', 'desc' => 'We learn your business, goals, and technical landscape. No assumptions — just deep understanding.', 'color' => '#7c3aed'],
+                    ['num' => '02', 'icon' => 'fa-solid fa-pencil-ruler', 'title' => 'Architecture', 'desc' => 'We design a solution blueprint — tech stack, timeline, and milestones aligned to your budget.', 'color' => '#3b82f6'],
+                    ['num' => '03', 'icon' => 'fa-solid fa-code', 'title' => 'Development', 'desc' => 'Agile sprints with weekly demos. You see progress in real time — not in PowerPoint slides.', 'color' => '#10b981'],
+                    ['num' => '04', 'icon' => 'fa-solid fa-rocket', 'title' => 'Deploy & Scale', 'desc' => 'Production launch with monitoring, documentation, and ongoing support built right in.', 'color' => '#f59e0b'],
+                ] as $i => $step)
+                    <div class="process-step group text-center lg:text-left">
+                        {{-- Number circle with icon --}}
+                        <div class="flex items-center justify-center lg:justify-start mb-6">
+                            <div class="process-num-circle w-[60px] h-[60px] rounded-full flex items-center justify-center relative"
+                                 style="background: {{ $step['color'] }}08; border: 2px solid {{ $step['color'] }}15;">
+                                <div class="process-num-circle-inner w-[52px] h-[52px] rounded-full flex items-center justify-center text-lg font-extrabold transition-all duration-300"
+                                     style="background: white; border: 1.5px solid var(--color-border); color: {{ $step['color'] }};">
+                                    {{ $step['num'] }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Content card --}}
+                        <div class="rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
+                             style="background: #fafafc; border: 1px solid var(--color-border); box-shadow: 0 1px 3px rgba(0,0,0,0.03);"
+                             onmouseover="this.style.borderColor='{{ $step['color'] }}30'; this.style.boxShadow='0 8px 28px rgba(0,0,0,0.06)';"
+                             onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.03)';">
+                            {{-- Step icon --}}
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-3 mx-auto lg:mx-0 transition-all duration-300 group-hover:scale-110" style="background: {{ $step['color'] }}10;">
+                                <i class="{{ $step['icon'] }} text-sm" style="color: {{ $step['color'] }};"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold mb-2.5" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $step['title'] }}</h3>
+                            <p class="text-[13px] leading-relaxed" style="color: var(--color-text-muted);">{{ $step['desc'] }}</p>
+
+                            {{-- Progress indicator --}}
+                            <div class="mt-4 h-[3px] rounded-full overflow-hidden" style="background: #eee;">
+                                <div class="h-full rounded-full transition-all duration-500 group-hover:w-full" style="width: {{ ($i + 1) * 25 }}%; background: {{ $step['color'] }};"></div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Bottom CTA --}}
+        <div data-animate class="text-center mt-14">
+            <p class="text-sm mb-4" style="color: var(--color-text-muted);">
+                Ready to start your project? Let's talk about how we can help.
+            </p>
+            <a href="#appointment" class="inline-flex items-center gap-2.5 text-sm font-semibold px-6 py-3 rounded-full transition-all hover:gap-3.5" style="background: var(--color-primary); color: white;">
+                Schedule a Free Consultation
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var items = document.querySelectorAll('.process-step');
+        if (!items.length) return;
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    items.forEach(function(el) { el.classList.add('visible'); });
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.12 });
+        obs.observe(items[0].closest('section'));
+    })();
+    </script>
+</section>
+
+{{-- ============================================ --}}
+{{-- TECHNOLOGY SOLUTIONS — Full-background Platform Cards --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: #f5f7f7;">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-cubes"></i>
-                Our Solutions
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: #7c3aed; letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
+                Technology Domains
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
             </div>
-            <h2 class="section-heading">Technology <span class="gradient-text">Solutions</span></h2>
+            <h2 class="section-heading">Three Platforms, <span class="gradient-text">One Ecosystem</span></h2>
             <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
-                Three specialized technology domains engineered to transform your business.
+                Purpose-built technology stacks that work together to transform your business.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-animate>
-            {{-- AI & Automation --}}
-            <a href="{{ route('seo.ai-automation') }}" class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-2" style="background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
-                <div class="h-48 overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
-                        <i class="fa-solid fa-robot text-6xl text-white opacity-30"></i>
-                    </div>
-                </div>
-                <div class="p-7">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(124,58,237,0.1);">
-                            <i class="fa-solid fa-brain text-sm" style="color: #7c3aed;"></i>
-                        </div>
-                        <h3 class="text-lg font-bold" style="color: var(--color-text-heading);">AI & Automation</h3>
-                    </div>
-                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text);">
-                        Machine learning models, NLP, computer vision, and intelligent process automation that drive 40% cost reduction and 3x faster processing.
-                    </p>
-                    <span class="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all" style="color: #7c3aed;">
-                        Explore AI <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </span>
-                </div>
-            </a>
+            @php
+                $platforms = [
+                    [
+                        'gradient' => 'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)',
+                        'light' => '#7c3aed',
+                        'icon' => 'fa-solid fa-robot',
+                        'title' => 'AI & Automation',
+                        'desc' => 'Intelligent systems that learn, predict, and automate. From NLP chatbots to computer vision pipelines — deploy AI that drives measurable ROI.',
+                        'features' => ['ML model deployment', 'Natural language processing', 'Computer vision', 'Process automation'],
+                        'cta' => 'Explore AI Platform',
+                        'link' => route('seo.ai-automation'),
+                    ],
+                    [
+                        'gradient' => 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)',
+                        'light' => '#3b82f6',
+                        'icon' => 'fa-solid fa-cloud-arrow-up',
+                        'title' => 'Cloud & Security',
+                        'desc' => 'Enterprise infrastructure built for scale. Multi-cloud architecture, zero-trust security, and migration strategies with 99.9% uptime guarantee.',
+                        'features' => ['Multi-cloud architecture', 'Zero-trust security', 'Seamless migration', '99.9% uptime SLA'],
+                        'cta' => 'Explore Cloud Platform',
+                        'link' => route('seo.cloud-computing'),
+                    ],
+                    [
+                        'gradient' => 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                        'light' => '#10b981',
+                        'icon' => 'fa-solid fa-code',
+                        'title' => 'Custom Software',
+                        'desc' => 'Full-stack web, mobile, and desktop applications engineered for performance, security, and exceptional user experiences at any scale.',
+                        'features' => ['Web & mobile apps', 'API architecture', 'Real-time systems', 'Legacy modernization'],
+                        'cta' => 'Explore Dev Platform',
+                        'link' => route('seo.software-development'),
+                    ],
+                ];
+            @endphp
 
-            {{-- Cloud Computing --}}
-            <a href="{{ route('seo.cloud-computing') }}" class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-2" style="background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
-                <div class="h-48 overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
-                        <i class="fa-solid fa-cloud-arrow-up text-6xl text-white opacity-30"></i>
-                    </div>
-                </div>
-                <div class="p-7">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(59,130,246,0.1);">
-                            <i class="fa-solid fa-cloud text-sm" style="color: #3b82f6;"></i>
-                        </div>
-                        <h3 class="text-lg font-bold" style="color: var(--color-text-heading);">Cloud & Security</h3>
-                    </div>
-                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text);">
-                        Scalable multi-cloud infrastructure, seamless migration services, and enterprise-grade security with 99.9% uptime SLA.
-                    </p>
-                    <span class="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all" style="color: #3b82f6;">
-                        Explore Cloud <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </span>
-                </div>
-            </a>
+            @foreach($platforms as $p)
+                <a href="{{ $p['link'] }}" class="group relative rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1.5 hover:shadow-2xl">
+                    {{-- Full gradient background --}}
+                    <div class="absolute inset-0" style="background: {{ $p['gradient'] }};"></div>
+                    {{-- Decorative radial glow --}}
+                    <div class="absolute -top-20 -right-20 w-[200px] h-[200px] rounded-full opacity-20 pointer-events-none" style="background: radial-gradient(circle, white 0%, transparent 70%);"></div>
+                    <div class="absolute -bottom-10 -left-10 w-[150px] h-[150px] rounded-full opacity-10 pointer-events-none" style="background: radial-gradient(circle, white 0%, transparent 70%);"></div>
+                    {{-- Dot overlay --}}
+                    <div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-            {{-- Software Development --}}
-            <a href="{{ route('seo.software-development') }}" class="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-2" style="background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
-                <div class="h-48 overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="fa-solid fa-code text-6xl text-white opacity-30"></i>
-                    </div>
-                </div>
-                <div class="p-7">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.1);">
-                            <i class="fa-solid fa-laptop-code text-sm" style="color: #10b981;"></i>
+                    <div class="relative z-10 p-8 md:p-10 flex flex-col h-full">
+                        {{-- Icon --}}
+                        <div class="w-[56px] h-[56px] rounded-[16px] flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-105" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.06);">
+                            <i class="{{ $p['icon'] }} text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-lg font-bold" style="color: var(--color-text-heading);">Custom Software</h3>
+
+                        {{-- Content --}}
+                        <h3 class="text-xl font-bold text-white mb-3" style="letter-spacing: -0.02em;">{{ $p['title'] }}</h3>
+                        <p class="text-sm leading-relaxed mb-6 flex-1" style="color: rgba(255,255,255,0.7);">{{ $p['desc'] }}</p>
+
+                        {{-- Features --}}
+                        <ul class="space-y-2 mb-8">
+                            @foreach($p['features'] as $feat)
+                                <li class="flex items-center gap-2.5 text-[12.5px]" style="color: rgba(255,255,255,0.6);">
+                                    <i class="fa-solid fa-check text-[10px]" style="color: rgba(255,255,255,0.8);"></i>
+                                    {{ $feat }}
+                                </li>
+                            @endforeach
+                        </ul>
+
+                        {{-- CTA Arrow --}}
+                        <div class="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all">
+                            {{ $p['cta'] }}
+                            <i class="fa-solid fa-arrow-right text-[11px] transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                        </div>
                     </div>
-                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-text);">
-                        High-performance web, mobile, and desktop applications tailored to your unique business needs with modern frameworks.
-                    </p>
-                    <span class="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all" style="color: #10b981;">
-                        Explore Dev <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </span>
-                </div>
-            </a>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>
 
 {{-- ============================================ --}}
-{{-- INDUSTRIES WE SERVE --}}
+{{-- INDUSTRIES — Interactive Pill Grid --}}
 {{-- ============================================ --}}
-<section class="section-gap" style="background-color: var(--color-body-bg);">
+<section class="section-gap" style="background-color: #ffffff;">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[52px]" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-industry"></i>
+        <div class="text-center mb-16" data-animate>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: #7c3aed; letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
                 Industries
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
             </div>
-            <h2 class="section-heading">Industries We <span class="gradient-text">Serve</span></h2>
+            <h2 class="section-heading">Expertise Across <span class="gradient-text">Every Sector</span></h2>
+            <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
+                Deep domain knowledge that translates technology into industry-specific outcomes.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-animate>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5" data-animate>
             @foreach([
                 ['icon' => 'fa-solid fa-heart-pulse', 'title' => 'Healthcare', 'desc' => 'Diagnostic AI, patient data analytics, and secure medical record systems.'],
                 ['icon' => 'fa-solid fa-building-columns', 'title' => 'Finance & Banking', 'desc' => 'Fraud detection, algorithmic trading, and regulatory compliance automation.'],
@@ -453,15 +643,16 @@
                 ['icon' => 'fa-solid fa-warehouse', 'title' => 'Manufacturing', 'desc' => 'Predictive maintenance, quality control AI, and supply chain digitization.'],
                 ['icon' => 'fa-solid fa-graduation-cap', 'title' => 'Education', 'desc' => 'Adaptive learning platforms, student analytics, and virtual classroom solutions.'],
                 ['icon' => 'fa-solid fa-truck-fast', 'title' => 'Logistics', 'desc' => 'Route optimization, fleet management, and real-time shipment tracking.'],
-            ] as $index => $industry)
-                <div data-animate class="flex items-start gap-5 p-6 rounded-xl transition-all" style="background: white; border: 1px solid var(--color-border);" onmouseover="this.style.borderColor='rgba(124,58,237,0.2)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.04)';" onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(124,58,237,0.02) 100%);">
-                        <i class="{{ $industry['icon'] }} text-sm" style="color: #7c3aed;"></i>
+            ] as $index => $ind)
+                <div class="group relative rounded-2xl p-6 sm:p-7 text-center transition-all duration-300 hover:-translate-y-1" style="background: #fafafc; border: 1px solid #eeeef0;">
+                    {{-- Icon --}}
+                    <div class="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center transition-all duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 100%);">
+                        <i class="{{ $ind['icon'] }} text-lg" style="color: #7c3aed;"></i>
                     </div>
-                    <div>
-                        <h4 class="text-base font-bold mb-1" style="color: var(--color-text-heading);">{{ $industry['title'] }}</h4>
-                        <p class="text-sm" style="color: var(--color-text);">{{ $industry['desc'] }}</p>
-                    </div>
+                    {{-- Title --}}
+                    <h4 class="text-sm font-bold mb-1" style="color: #0a0a0a; letter-spacing: -0.01em;">{{ $ind['title'] }}</h4>
+                    {{-- Description (hidden, reveals on hover) --}}
+                    <p class="text-[12px] leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-300 max-w-[240px] mx-auto" style="color: rgba(0,0,0,0.55);">{{ $ind['desc'] }}</p>
                 </div>
             @endforeach
         </div>
@@ -469,31 +660,50 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- CASE STUDIES --}}
+{{-- CASE STUDIES — Metric-forward Story Cards --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: #f5f7f7;">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-[52px]" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-book-open"></i>
+        <div class="text-center mb-16" data-animate>
+            <div class="inline-flex items-center gap-3 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: #7c3aed; letter-spacing: 0.15em;">
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
                 Case Studies
+                <span class="w-5 h-px" style="background: #7c3aed;"></span>
             </div>
             <h2 class="section-heading">Proven <span class="gradient-text">Results</span></h2>
+            <p class="text-base max-w-xl mx-auto mt-3" style="color: var(--color-text-muted); line-height: 1.7;">
+                Real outcomes from real engagements. Measurable impact across industries.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-[30px]" data-animate>
-            @foreach([
-                ['title' => 'E-Commerce Personalization AI', 'result' => '35% Revenue Increase', 'desc' => 'Implemented AI-driven product recommendation engine for a major online retailer, boosting conversions and average order value by 35%.', 'icon' => 'fa-solid fa-cart-shopping'],
-                ['title' => 'Cloud Migration for FinTech', 'result' => '60% Infrastructure Savings', 'desc' => 'Migrated a financial services platform to secure multi-cloud architecture, reducing infrastructure costs while improving scalability.', 'icon' => 'fa-solid fa-cloud'],
-                ['title' => 'Custom ERP for Manufacturer', 'result' => '50% Faster Operations', 'desc' => 'Built a bespoke ERP system with real-time analytics for a manufacturing client, cutting processing time in half across all departments.', 'icon' => 'fa-solid fa-industry'],
-            ] as $index => $case)
-                <div data-animate class="service-card" style="animation-delay: {{ $index * 0.1 }}s;">
-                    <div class="service-icon mb-6">
-                        <i class="{{ $case['icon'] }}"></i>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-animate>
+            @php
+                $studies = [
+                    ['metric' => '35%', 'label' => 'Revenue Increase', 'title' => 'E-Commerce Personalization AI', 'desc' => 'AI-driven product recommendation engine for a major online retailer, boosting conversions and average order value.', 'icon' => 'fa-solid fa-cart-shopping'],
+                    ['metric' => '60%', 'label' => 'Cost Reduction', 'title' => 'Cloud Migration for FinTech', 'desc' => 'Migrated a financial services platform to secure multi-cloud architecture, reducing infrastructure costs while improving scalability.', 'icon' => 'fa-solid fa-cloud'],
+                    ['metric' => '50%', 'label' => 'Faster Operations', 'title' => 'Custom ERP for Manufacturer', 'desc' => 'Bespoke ERP system with real-time analytics for a manufacturing client, cutting processing time across all departments.', 'icon' => 'fa-solid fa-industry'],
+                ];
+            @endphp
+
+            @foreach($studies as $case)
+                <div class="group relative rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" style="background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+                    {{-- Metric hero area --}}
+                    <div class="pt-8 sm:pt-10 px-8 sm:px-10">
+                        <div class="text-[44px] sm:text-[52px] font-extrabold tracking-tight leading-none mb-2" style="color: #7c3aed; letter-spacing: -0.04em;">{{ $case['metric'] }}</div>
+                        <div class="text-[12px] font-bold uppercase tracking-[2px] mb-5" style="color: rgba(0,0,0,0.3);">{{ $case['label'] }}</div>
+                        <div class="w-10 h-[3px] rounded-full mb-6" style="background: linear-gradient(90deg, #7c3aed, #a78bfa);"></div>
                     </div>
-                    <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3" style="background: rgba(124,58,237,0.08); color: #7c3aed;">{{ $case['result'] }}</div>
-                    <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text-heading);">{{ $case['title'] }}</h3>
-                    <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $case['desc'] }}</p>
+
+                    {{-- Content --}}
+                    <div class="px-8 sm:px-10 pb-8 sm:pb-10">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background: rgba(124,58,237,0.06);">
+                                <i class="{{ $case['icon'] }} text-xs" style="color: #7c3aed;"></i>
+                            </div>
+                            <h3 class="text-[17px] font-bold" style="color: #0a0a0a; letter-spacing: -0.02em;">{{ $case['title'] }}</h3>
+                        </div>
+                        <p class="text-sm leading-relaxed" style="color: rgba(0,0,0,0.55);">{{ $case['desc'] }}</p>
+                    </div>
                 </div>
             @endforeach
         </div>
