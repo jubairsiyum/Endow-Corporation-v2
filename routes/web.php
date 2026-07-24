@@ -19,7 +19,6 @@ Route::get('/travel', [PageController::class, 'travel'])->name('travel');
 Route::get('/education', [PageController::class, 'education'])->name('education');
 Route::get('/technology', [PageController::class, 'technology'])->name('technology');
 Route::get('/hospital-tourism', [PageController::class, 'hospitalTourism'])->name('hospital-tourism');
-Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
 // Education SEO Pages
 Route::get('/study-abroad-programs', [SeoPageController::class, 'studyAbroad'])->name('seo.study-abroad');
@@ -37,6 +36,8 @@ Route::get('/terms-of-service', [SeoPageController::class, 'termsOfService'])->n
 
 // Careers
 Route::view('/careers', 'pages.careers')->name('careers');
+
+Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
 // Form Submissions
 Route::post('/appointments', [FormController::class, 'storeAppointment'])->name('appointment.store');
