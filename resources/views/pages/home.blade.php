@@ -477,7 +477,7 @@
     bg-gradient="linear-gradient(160deg, #fef1f0 0%, #fcd6d3 28%, #fef4f3 55%, #facbc7 100%)"
     :items="[
         [
-            'image' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop',
+            'image' => asset('images/SiyumSoftwareDeveloper.png'),
             'icon' => 'fa-solid fa-code',
             'title' => 'Software Development',
             'description' => 'Custom-built, scalable platforms engineered for performance. From enterprise SaaS to internal tooling, we build software that drives your business forward with clean architecture and modern stacks.',
