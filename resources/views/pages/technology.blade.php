@@ -221,7 +221,7 @@
                         'accent' => '#10b981',
                         'features' => ['Web & mobile app development', 'API & microservice architecture', 'Real-time data dashboards', 'Legacy system modernization'],
                         'link' => route('seo.software-development'),
-                        'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+                        'image' => asset('images/SiyumSoftwareDeveloper.png'),
                     ],
                 ];
             @endphp
