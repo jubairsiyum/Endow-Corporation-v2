@@ -53,7 +53,28 @@ class PageController extends Controller
 
     public function education()
     {
-        return view('pages.education');
+        $educationImages = [];
+        $eduPath = public_path('images/education');
+        if (is_dir($eduPath)) {
+            $files = glob($eduPath . '/*.{jpeg,jpg,png,gif,webp}', GLOB_BRACE);
+            usort($files, function ($a, $b) {
+                $aName = pathinfo($a, PATHINFO_FILENAME);
+                $bName = pathinfo($b, PATHINFO_FILENAME);
+                if (is_numeric($aName) && is_numeric($bName)) {
+                    return (int)$aName - (int)$bName;
+                }
+                return strnatcasecmp($aName, $bName);
+            });
+            $educationImages = array_map(function ($file) {
+                $filename = basename($file);
+                return [
+                    'src' => asset('images/education/' . $filename),
+                    'alt' => 'Education – ' . pathinfo($filename, PATHINFO_FILENAME),
+                ];
+            }, $files);
+        }
+
+        return view('pages.education', compact('educationImages'));
     }
 
     public function technology()
