@@ -26,7 +26,29 @@ class PageController extends Controller
 
     public function travel()
     {
-        return view('pages.travel');
+        $travelImages = [];
+        $travelPath = public_path('images/travel');
+        if (is_dir($travelPath)) {
+            $files = glob($travelPath . '/*.{jpeg,jpg,png,gif,webp}', GLOB_BRACE);
+            // Sort numerically: 1.jpeg, 2.jpeg, ..., 10.jpeg
+            usort($files, function ($a, $b) {
+                $aName = pathinfo($a, PATHINFO_FILENAME);
+                $bName = pathinfo($b, PATHINFO_FILENAME);
+                if (is_numeric($aName) && is_numeric($bName)) {
+                    return (int)$aName - (int)$bName;
+                }
+                return strnatcasecmp($aName, $bName);
+            });
+            $travelImages = array_map(function ($file) {
+                $filename = basename($file);
+                return [
+                    'src' => asset('images/travel/' . $filename),
+                    'alt' => 'Travel destination – ' . pathinfo($filename, PATHINFO_FILENAME),
+                ];
+            }, $files);
+        }
+
+        return view('pages.travel', compact('travelImages'));
     }
 
     public function education()

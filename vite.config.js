@@ -11,6 +11,8 @@ export default defineConfig({
                 'resources/css/scroll-stack.css',
                 'resources/js/scroll-stack.js',
                 'resources/css/timeline.css',
+                'resources/css/dome-gallery.css',
+                'resources/js/dome-gallery.js',
             ],
             refresh: true,
         }),

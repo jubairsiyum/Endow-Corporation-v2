@@ -4,6 +4,10 @@
 @section('meta_title', 'Endow Travel | Corporate & Leisure Travel Solutions Worldwide')
 @section('meta_description', 'Endow Travel offers tailored corporate and leisure travel solutions. Personalized itineraries, visa assistance, exclusive deals, and 24/7 support across 30+ countries. Based in Seoul, South Korea.')
 
+@section('head')
+    @vite(['resources/css/dome-gallery.css'])
+@endsection
+
 @section('content')
 
 {{-- ============================================ --}}
@@ -340,6 +344,31 @@
 </section>
 
 {{-- ============================================ --}}
+{{-- GALLERY — Dome Gallery --}}
+{{-- ============================================ --}}
+@if(!empty($travelImages))
+<section class="relative overflow-hidden" style="background: #080808;">
+    <div class="text-center pt-20 pb-4" data-animate>
+        <div class="section-subtitle justify-center" style="color: var(--color-primary);">
+            <i class="fa-solid fa-images"></i>
+            Photo Gallery
+        </div>
+        <h2 class="section-heading text-white">Explore Our <span class="gradient-text">Travel Moments</span></h2>
+        <p class="text-base max-w-xl mx-auto mt-3" style="color: rgba(255,255,255,0.45); line-height: 1.7;">
+            Drag to explore. Click any image to view it larger.
+        </p>
+    </div>
+
+    <div
+        class="dome-gallery-section"
+        data-dome-gallery
+        data-dome-gallery-images='@json($travelImages)'
+        data-dome-gallery-options='{"grayscale":false,"overlayBlurColor":"#080808","imageBorderRadius":"18px","openedImageBorderRadius":"24px","openedImageWidth":"320px","openedImageHeight":"420px","dragDampening":2.5,"maxVerticalRotationDeg":5}'
+    ></div>
+</section>
+@endif
+
+{{-- ============================================ --}}
 {{-- CTA --}}
 {{-- ============================================ --}}
 <section class="relative overflow-hidden" style="background: linear-gradient(160deg, #faf9f8 0%, #f3f1ef 40%, #f8f6f5 100%);">
@@ -532,5 +561,9 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+    @vite(['resources/js/dome-gallery.js'])
+@endpush
 
 @endsection
