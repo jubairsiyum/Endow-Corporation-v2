@@ -10,23 +10,23 @@
 @push('structured-data')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Service",
+    "@@context": "https://schema.org",
+    "@@type": "Service",
     "name": "AI & Automation Solutions",
-    "provider": { "@type": "Organization", "name": "Endow Technologies" },
+    "provider": { "@@type": "Organization", "name": "Endow Technologies" },
     "description": "Enterprise AI and automation solutions including machine learning, NLP, computer vision, and process automation.",
     "serviceType": "AI & Automation",
-    "areaServed": { "@type": "Country", "name": "South Korea" }
+    "areaServed": { "@@type": "Country", "name": "South Korea" }
 }
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url('/') }}" },
-        { "@type": "ListItem", "position": 2, "name": "Technology", "item": "{{ url('/technology') }}" },
-        { "@type": "ListItem", "position": 3, "name": "AI & Automation", "item": "{{ url()->current() }}" }
+        { "@@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url('/') }}" },
+        { "@@type": "ListItem", "position": 2, "name": "Technology", "item": "{{ url('/technology') }}" },
+        { "@@type": "ListItem", "position": 3, "name": "AI & Automation", "item": "{{ url()->current() }}" }
     ]
 }
 </script>

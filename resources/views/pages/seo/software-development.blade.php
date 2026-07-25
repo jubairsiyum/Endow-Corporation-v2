@@ -10,23 +10,23 @@
 @push('structured-data')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Service",
+    "@@context": "https://schema.org",
+    "@@type": "Service",
     "name": "Custom Software Development",
-    "provider": { "@type": "Organization", "name": "Endow Technologies" },
+    "provider": { "@@type": "Organization", "name": "Endow Technologies" },
     "description": "Custom web, mobile, and enterprise software development using modern frameworks and agile methodologies.",
     "serviceType": "Software Development",
-    "areaServed": { "@type": "Country", "name": "South Korea" }
+    "areaServed": { "@@type": "Country", "name": "South Korea" }
 }
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
     "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url('/') }}" },
-        { "@type": "ListItem", "position": 2, "name": "Technology", "item": "{{ url('/technology') }}" },
-        { "@type": "ListItem", "position": 3, "name": "Custom Software Development", "item": "{{ url()->current() }}" }
+        { "@@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url('/') }}" },
+        { "@@type": "ListItem", "position": 2, "name": "Technology", "item": "{{ url('/technology') }}" },
+        { "@@type": "ListItem", "position": 3, "name": "Custom Software Development", "item": "{{ url()->current() }}" }
     ]
 }
 </script>
