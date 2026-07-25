@@ -138,7 +138,7 @@
 
             <div data-animate>
                 <div class="rounded-2xl overflow-hidden" style="height: 380px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
-                    <img src="{{ asset('images/services/travel-hero.jpg') }}"
+                    <img src="{{ asset('images/travel/travel2.jpg') }}"
                          alt="Endow Travel corporate and leisure travel solutions worldwide"
                          class="w-full h-full object-cover"
                          loading="eager"

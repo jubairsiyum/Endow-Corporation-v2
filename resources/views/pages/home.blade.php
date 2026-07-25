@@ -198,7 +198,7 @@
                         'title' => 'Endow Technologies',
                         'description' => 'AI, cloud, custom software, and digital transformation, cutting-edge tech engineered to power your business and accelerate growth.',
                         'route' => 'technology',
-                        'photo' => asset('images/SiyumSoftwareDeveloper.png'),
+                        'photo' => asset('images/endowtech.png'),
                         'fallback' => asset('images/services/technology-bg.svg'),
                     ],
                     [
