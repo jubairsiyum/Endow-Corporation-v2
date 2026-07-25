@@ -198,7 +198,7 @@
                         'title' => 'Endow Technologies',
                         'description' => 'AI, cloud, custom software, and digital transformation, cutting-edge tech engineered to power your business and accelerate growth.',
                         'route' => 'technology',
-                        'photo' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop',
+                        'photo' => asset('images/SiyumSoftwareDeveloper.png'),
                         'fallback' => asset('images/services/technology-bg.svg'),
                     ],
                     [
@@ -486,7 +486,7 @@
             'badge' => '01',
         ],
         [
-            'image' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop',
+            'image' => asset('images/ShoaibAISolutions.png'),
             'icon' => 'fa-solid fa-robot',
             'title' => 'AI Solutions',
             'description' => 'Intelligent workflows that reduce overhead and multiply output. Machine learning models, RPA pipelines, and predictive analytics designed to give you a competitive edge.',
@@ -495,7 +495,7 @@
             'badge' => '02',
         ],
         [
-            'image' => 'https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=800&h=600&fit=crop',
+            'image' => asset('images/Cloud.png'),
             'icon' => 'fa-solid fa-cloud',
             'title' => 'Cloud Services',
             'description' => 'Secure, scalable infrastructure engineered for zero-downtime. AWS, Azure, and GCP deployments with enterprise-grade security, monitoring, and disaster recovery.',
