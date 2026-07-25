@@ -518,7 +518,7 @@
     bg-gradient="linear-gradient(160deg, #eeeaff 0%, #d8d0ff 28%, #eeebff 55%, #cfc5ff 100%)"
     :items="[
         [
-            'image' => 'https://images.unsplash.com/photo-1523050854058-8df90910e6831?w=800&h=600&fit=crop',
+            'image' => asset('images/education/2.jpg'),
             'icon' => 'fa-solid fa-plane-departure',
             'title' => 'Study Abroad',
             'description' => 'Globally recognized programs tailored for career growth. Access top-tier universities and institutions worldwide with comprehensive academic guidance and placement support.',
@@ -527,7 +527,7 @@
             'badge' => '01',
         ],
         [
-            'image' => 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=600&fit=crop',
+            'image' => asset('images/services/733542680_989042620614397_7628936787862668773_n.jpg'),
             'icon' => 'fa-solid fa-language',
             'title' => 'Language Institute',
             'description' => 'Master new languages with immersive, expert-led programs. From beginner to advanced, our language institute prepares you for global communication and academic success.',
@@ -536,7 +536,7 @@
             'badge' => '02',
         ],
         [
-            'image' => 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
+            'image' => asset('images/education/751938496_122182118000694861_3015630539823030777_n.webp'),
             'icon' => 'fa-solid fa-award',
             'title' => 'Scholarship Program',
             'description' => 'Making quality education more affordable. We connect students with merit-based and need-based scholarships, grants, and financial aid opportunities across 30+ countries.',
