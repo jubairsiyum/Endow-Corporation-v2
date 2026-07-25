@@ -245,7 +245,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div data-animate>
                 <div class="rounded-2xl overflow-hidden" style="height: 380px; min-height: 260px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
-                    <img src="{{ asset('images/services/education-why.jpg') }}"
+                    <img src="{{ asset('images/education/4.jpg') }}"
                          alt="Why choose Endow Global Education for your international education journey"
                          class="w-full h-full object-cover"
                          loading="lazy"
