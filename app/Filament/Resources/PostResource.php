@@ -3,9 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
+use App\Models\Category;
 use App\Models\Post;
 use BackedEnum;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -72,16 +75,12 @@ class PostResource extends Resource
                             ->default('Endow Corporation')
                             ->maxLength(255),
 
-                        Select::make('category')
-                            ->options([
-                                'General' => 'General',
-                                'Travel' => 'Travel',
-                                'Education' => 'Education',
-                                'Technology' => 'Technology',
-                                'Healthcare' => 'Healthcare',
-                            ])
-                            ->default('General')
-                            ->required(),
+                        Select::make('category_id')
+                            ->label('Category')
+                            ->options(fn () => Category::where('is_visible', true)
+                                ->orderBy('sort_order')
+                                ->pluck('name', 'id'))
+                            ->native(false),
 
                         FileUpload::make('featured_image')
                             ->directory('uploads/posts')
@@ -94,6 +93,60 @@ class PostResource extends Resource
                             ->label('Published'),
 
                     ])->columns(2),
+
+                Section::make('SEO')
+                    ->collapsible()
+                    ->schema([
+                        TextInput::make('meta_title')
+                            ->label('Meta Title')
+                            ->maxLength(60)
+                            ->placeholder('Leave blank to use post title')
+                            ->helperText('Recommended max 60 characters')
+                            ->nullable(),
+
+                        Textarea::make('meta_description')
+                            ->label('Meta Description')
+                            ->maxLength(160)
+                            ->rows(2)
+                            ->placeholder('Brief description for search results')
+                            ->helperText('Recommended max 160 characters')
+                            ->nullable(),
+
+                        FileUpload::make('og_image')
+                            ->label('OG Image (Social Sharing)')
+                            ->directory('uploads/posts/og')
+                            ->image()
+                            ->imageEditor()
+                            ->helperText('Recommended size: 1200x630px')
+                            ->nullable(),
+                    ])->columns(2),
+
+                Section::make('Image Gallery')
+                    ->collapsible()
+                    ->schema([
+                                Repeater::make('images')
+                            ->relationship('images')
+                            ->schema([
+                                FileUpload::make('image_path')
+                                    ->label('Image')
+                                    ->directory('uploads/posts/gallery')
+                                    ->image()
+                                    ->required(),
+
+                                TextInput::make('caption')
+                                    ->maxLength(255)
+                                    ->nullable(),
+
+                                TextInput::make('sort_order')
+                                    ->numeric()
+                                    ->default(0)
+                                    ->hidden(),
+                            ])
+                            ->orderColumn('sort_order')
+                            ->addActionLabel('Add Image')
+                            ->collapsible()
+                            ->columns(2),
+                    ]),
             ]);
     }
 
@@ -103,22 +156,25 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(50),
 
                 Tables\Columns\TextColumn::make('author')
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('category')
+                Tables\Columns\TextColumn::make('categoryRelation.name')
+                    ->label('Category')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn (?string $state): string => match ($state) {
                         'General' => 'gray',
                         'Travel' => 'info',
                         'Education' => 'success',
                         'Technology' => 'warning',
                         'Healthcare' => 'danger',
                         default => 'gray',
-                    }),
+                    })
+                    ->sortable(),
 
                 Tables\Columns\IconColumn::make('is_published')
                     ->boolean(),
@@ -128,14 +184,11 @@ class PostResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('category')
-                    ->options([
-                        'General' => 'General',
-                        'Travel' => 'Travel',
-                        'Education' => 'Education',
-                        'Technology' => 'Technology',
-                        'Healthcare' => 'Healthcare',
-                    ]),
+                Tables\Filters\SelectFilter::make('category_id')
+                    ->label('Category')
+                    ->relationship('categoryRelation', 'name')
+                    ->searchable()
+                    ->native(false),
 
                 Tables\Filters\SelectFilter::make('is_published')
                     ->label('Status')
