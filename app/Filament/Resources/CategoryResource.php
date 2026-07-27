@@ -10,6 +10,9 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Infolists\Components\ColorEntry;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -68,6 +71,42 @@ class CategoryResource extends Resource
                         TextInput::make('sort_order')
                             ->numeric()
                             ->default(0),
+                    ])->columns(2),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('Category Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Name'),
+
+                        TextEntry::make('slug')
+                            ->label('Slug')
+                            ->copyable(),
+
+                        TextEntry::make('description')
+                            ->label('Description')
+                            ->placeholder('No description provided.')
+                            ->columnSpanFull(),
+
+                        ColorEntry::make('color')
+                            ->label('Color')
+                            ->placeholder('—'),
+
+                        IconEntry::make('is_visible')
+                            ->label('Visible')
+                            ->boolean(),
+
+                        TextEntry::make('sort_order')
+                            ->label('Sort Order'),
+
+                        TextEntry::make('created_at')
+                            ->label('Created At')
+                            ->dateTime('M d, Y H:i'),
                     ])->columns(2),
             ]);
     }

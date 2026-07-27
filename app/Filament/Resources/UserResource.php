@@ -9,6 +9,8 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -75,6 +77,57 @@ class UserResource extends Resource
                             ->relationship('permissions', 'name')
                             ->preload()
                             ->native(false),
+                    ])->columns(2),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('User Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Name'),
+
+                        TextEntry::make('email')
+                            ->label('Email')
+                            ->copyable(),
+
+                        IconEntry::make('email_verified_at')
+                            ->label('Email Verified')
+                            ->boolean(),
+
+                        TextEntry::make('email_verified_at')
+                            ->label('Verified At')
+                            ->dateTime('M d, Y H:i')
+                            ->placeholder('Not verified'),
+
+                        TextEntry::make('roles.name')
+                            ->label('Roles')
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'Super Admin' => 'danger',
+                                'Editor' => 'warning',
+                                'Viewer' => 'info',
+                                default => 'gray',
+                            })
+                            ->separator(','),
+
+                        TextEntry::make('permissions.name')
+                            ->label('Direct Permissions')
+                            ->badge()
+                            ->color('gray')
+                            ->separator(',')
+                            ->placeholder('None'),
+
+                        TextEntry::make('created_at')
+                            ->label('Registered At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
                     ])->columns(2),
             ]);
     }

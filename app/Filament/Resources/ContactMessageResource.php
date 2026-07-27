@@ -9,6 +9,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -65,6 +66,50 @@ class ContactMessageResource extends Resource
                             ])
                             ->default('unread')
                             ->required(),
+                    ])->columns(2),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('Message Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Name')
+                            ->placeholder('—'),
+
+                        TextEntry::make('email')
+                            ->label('Email')
+                            ->copyable(),
+
+                        TextEntry::make('phone')
+                            ->label('Phone')
+                            ->placeholder('—'),
+
+                        TextEntry::make('status')
+                            ->label('Status')
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'unread' => 'warning',
+                                'read' => 'info',
+                                'replied' => 'success',
+                                default => 'gray',
+                            }),
+
+                        TextEntry::make('message')
+                            ->label('Message')
+                            ->columnSpanFull()
+                            ->placeholder('No message provided.'),
+
+                        TextEntry::make('created_at')
+                            ->label('Received At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
                     ])->columns(2),
             ]);
     }

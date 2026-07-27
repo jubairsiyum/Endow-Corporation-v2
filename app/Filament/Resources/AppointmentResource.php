@@ -10,6 +10,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -77,6 +78,64 @@ class AppointmentResource extends Resource
                             ])
                             ->default('pending')
                             ->required(),
+                    ])->columns(2),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('Appointment Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Name'),
+
+                        TextEntry::make('email')
+                            ->label('Email')
+                            ->copyable(),
+
+                        TextEntry::make('phone')
+                            ->label('Phone')
+                            ->placeholder('—'),
+
+                        TextEntry::make('service_type')
+                            ->label('Service Type')
+                            ->badge()
+                            ->color(fn (?string $state): string => match ($state) {
+                                'Travel Services' => 'info',
+                                'Education Services' => 'success',
+                                'Custom Software Development' => 'warning',
+                                default => 'gray',
+                            }),
+
+                        TextEntry::make('status')
+                            ->label('Status')
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'pending' => 'warning',
+                                'contacted' => 'info',
+                                'completed' => 'success',
+                                'cancelled' => 'danger',
+                                default => 'gray',
+                            }),
+
+                        TextEntry::make('page')
+                            ->label('Submitted From Page')
+                            ->placeholder('—'),
+
+                        TextEntry::make('message')
+                            ->label('Message')
+                            ->columnSpanFull()
+                            ->placeholder('No message provided.'),
+
+                        TextEntry::make('created_at')
+                            ->label('Submitted At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
                     ])->columns(2),
             ]);
     }

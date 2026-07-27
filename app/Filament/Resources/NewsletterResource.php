@@ -8,6 +8,7 @@ use BackedEnum;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -53,6 +54,36 @@ class NewsletterResource extends Resource
                             ])
                             ->default('active')
                             ->required(),
+                    ])->columns(2),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('Subscriber Details')
+                    ->schema([
+                        TextEntry::make('email')
+                            ->label('Email Address')
+                            ->copyable(),
+
+                        TextEntry::make('status')
+                            ->label('Status')
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'active' => 'success',
+                                'unsubscribed' => 'danger',
+                                default => 'gray',
+                            }),
+
+                        TextEntry::make('created_at')
+                            ->label('Subscribed At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
                     ])->columns(2),
             ]);
     }

@@ -7,6 +7,7 @@ use BackedEnum;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -52,6 +53,44 @@ class RoleResource extends Resource
                             ->native(false)
                             ->columnSpanFull(),
                     ])->columns(1),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Section::make('Role Details')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Role Name')
+                            ->badge()
+                            ->color(fn (string $state): string => match ($state) {
+                                'Super Admin' => 'danger',
+                                'Editor' => 'warning',
+                                'Viewer' => 'info',
+                                default => 'gray',
+                            }),
+
+                        TextEntry::make('guard_name')
+                            ->label('Guard'),
+
+                        TextEntry::make('permissions.name')
+                            ->label('Permissions')
+                            ->badge()
+                            ->color('gray')
+                            ->separator(',')
+                            ->placeholder('No permissions assigned.')
+                            ->columnSpanFull(),
+
+                        TextEntry::make('created_at')
+                            ->label('Created At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
+                    ])->columns(2),
             ]);
     }
 

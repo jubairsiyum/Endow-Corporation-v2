@@ -15,6 +15,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -198,6 +202,118 @@ class PostResource extends Resource
                             ->orderColumn('sort_order')
                             ->addActionLabel('Add Image')
                             ->collapsible()
+                            ->columns([
+                                'default' => 1,
+                                'md' => 2,
+                            ]),
+                    ]),
+            ]);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->columns(1)
+            ->schema([
+                Section::make('Post Details')
+                    ->columnSpanFull()
+                    ->schema([
+                        TextEntry::make('title')
+                            ->label('Post Title')
+                            ->columnSpanFull(),
+
+                        TextEntry::make('slug')
+                            ->label('Slug')
+                            ->copyable(),
+
+                        TextEntry::make('excerpt')
+                            ->label('Excerpt')
+                            ->columnSpanFull()
+                            ->placeholder('No excerpt provided.'),
+
+                        TextEntry::make('content')
+                            ->label('Content')
+                            ->html()
+                            ->columnSpanFull()
+                            ->placeholder('No content.'),
+                    ]),
+
+                Section::make('Meta')
+                    ->schema([
+                        TextEntry::make('author')
+                            ->label('Author'),
+
+                        TextEntry::make('categoryRelation.name')
+                            ->label('Category')
+                            ->badge()
+                            ->color(fn (?string $state): string => match ($state) {
+                                'General' => 'gray',
+                                'Travel' => 'info',
+                                'Education' => 'success',
+                                'Technology' => 'warning',
+                                'Healthcare' => 'danger',
+                                default => 'gray',
+                            }),
+
+                        IconEntry::make('is_published')
+                            ->label('Published')
+                            ->boolean(),
+
+                        ImageEntry::make('featured_image')
+                            ->label('Featured Image')
+                            ->disk('public')
+                            ->columnSpanFull()
+                            ->height(300)
+                            ->placeholder('No featured image.'),
+
+                        TextEntry::make('created_at')
+                            ->label('Created At')
+                            ->dateTime('M d, Y H:i'),
+
+                        TextEntry::make('updated_at')
+                            ->label('Last Updated')
+                            ->dateTime('M d, Y H:i'),
+                    ])->columns([
+                        'default' => 1,
+                        'md' => 2,
+                    ]),
+
+                Section::make('SEO')
+                    ->collapsible()
+                    ->schema([
+                        TextEntry::make('meta_title')
+                            ->label('Meta Title')
+                            ->placeholder('Uses post title'),
+
+                        TextEntry::make('meta_description')
+                            ->label('Meta Description')
+                            ->placeholder('Not set'),
+
+                        ImageEntry::make('og_image')
+                            ->label('OG Image (Social Sharing)')
+                            ->disk('public')
+                            ->height(200)
+                            ->placeholder('No OG image set.')
+                            ->columnSpanFull(),
+                    ])->columns([
+                        'default' => 1,
+                        'md' => 2,
+                    ]),
+
+                Section::make('Image Gallery')
+                    ->collapsible()
+                    ->schema([
+                        RepeatableEntry::make('images')
+                            ->schema([
+                                ImageEntry::make('image_path')
+                                    ->label('Image')
+                                    ->disk('public')
+                                    ->height(200),
+
+                                TextEntry::make('caption')
+                                    ->label('Caption')
+                                    ->placeholder('No caption'),
+                            ])
                             ->columns([
                                 'default' => 1,
                                 'md' => 2,
