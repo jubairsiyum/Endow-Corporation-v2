@@ -15,11 +15,15 @@
         {{ $applyStateBindingModifiers('wire:model') }}="{{ $statePath }}"
     />
 
-    <div wire:ignore>
+    <div
+        class="quill-editor-field"
+        style="--quill-min-height: {{ $getMinHeight() }}px;"
+        wire:ignore
+    >
         <div
             id="{{ $id }}"
             data-quill-editor
-            style="min-height: {{ $getMinHeight() }}px; @if ($isDisabled) pointer-events:none;opacity:.6 @endif"
+            @if ($isDisabled) style="pointer-events:none;opacity:.6" @endif
         ></div>
     </div>
 </x-dynamic-component>
