@@ -4,16 +4,16 @@ namespace App\Filament\Forms\Components;
 
 use Filament\Forms\Components\Concerns\HasExtraInputAttributes;
 use Filament\Forms\Components\Field;
-use Filament\Support\Concerns\HasPlaceholder;
 
-class TinyMceEditor extends Field
+class QuillEditor extends Field
 {
     use HasExtraInputAttributes;
-    use HasPlaceholder;
 
-    protected string $view = 'filament.forms.components.tinymce-editor';
+    protected string $view = 'filament.forms.components.quill-editor';
 
-    protected int $minHeight = 600;
+    protected string $toolbar = 'default';
+
+    protected int $minHeight = 400;
 
     public function getMinHeight(): int
     {
@@ -23,6 +23,18 @@ class TinyMceEditor extends Field
     public function minHeight(int $height): static
     {
         $this->minHeight = $height;
+
+        return $this;
+    }
+
+    public function getToolbar(): string
+    {
+        return $this->toolbar;
+    }
+
+    public function toolbar(string $preset): static
+    {
+        $this->toolbar = $preset;
 
         return $this;
     }

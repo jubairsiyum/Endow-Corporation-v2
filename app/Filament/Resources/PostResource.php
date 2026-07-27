@@ -6,7 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Post;
 use BackedEnum;
-use App\Filament\Forms\Components\TinyMceEditor;
+use App\Filament\Forms\Components\QuillEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Components\Section;
@@ -44,8 +44,10 @@ class PostResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema
+            ->columns(1)
             ->schema([
                 Section::make('Post Details')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('title')
                             ->required()
@@ -63,9 +65,9 @@ class PostResource extends Resource
                             ->maxLength(1000)
                             ->rows(3),
 
-                        TinyMceEditor::make('content')
+                        QuillEditor::make('content')
                             ->required()
-                            ->minHeight(600),
+                            ->minHeight(400),
 
                     ]),
 
