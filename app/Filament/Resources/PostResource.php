@@ -370,7 +370,8 @@ class PostResource extends Resource
                     ]),
             ])
             ->actions([
-                Actions\ViewAction::make(),
+                Actions\ViewAction::make()
+                    ->modalWidth('5xl'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

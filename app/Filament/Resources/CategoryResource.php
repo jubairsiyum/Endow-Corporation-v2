@@ -146,7 +146,8 @@ class CategoryResource extends Resource
             ->reorderable('sort_order')
             ->defaultSort('sort_order')
             ->actions([
-                Actions\ViewAction::make(),
+                Actions\ViewAction::make()
+                    ->modalWidth('3xl'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

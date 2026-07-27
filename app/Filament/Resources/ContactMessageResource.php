@@ -155,7 +155,8 @@ class ContactMessageResource extends Resource
                     ]),
             ])
             ->actions([
-                Actions\ViewAction::make(),
+                Actions\ViewAction::make()
+                    ->modalWidth('4xl'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

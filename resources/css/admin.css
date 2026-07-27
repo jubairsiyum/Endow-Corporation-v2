@@ -20,3 +20,50 @@
         max-width: 100% !important;
     }
 }
+
+/* ── View modal: infolist responsiveness ── */
+
+/* Modal window container: allow proper scroll on small screens */
+.fi-modal:not(.fi-modal-slide-over) > .fi-modal-window-ctn {
+    padding: 0.75rem !important;
+}
+
+@media (min-width: 640px) {
+    .fi-modal:not(.fi-modal-slide-over) > .fi-modal-window-ctn {
+        padding: 1rem !important;
+    }
+}
+
+/* Infolist sections inside view modals fill the full width */
+.fi-modal-content .fi-in-section,
+.fi-modal-content .fi-sc-section {
+    width: 100% !important;
+}
+
+/* Infolist grid inside a modal fills the modal width */
+.fi-modal-content .fi-in-component-ctn,
+.fi-modal-content .fi-schema-component-ctn {
+    width: 100% !important;
+}
+
+/* Give the infolist entry label a subtle muted style */
+.fi-modal-content .fi-in-entry-label {
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500, #6b7280) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.125rem;
+}
+
+/* Entry content: normalise text size */
+.fi-modal-content .fi-in-entry-content {
+    font-size: 0.9375rem;
+    color: var(--gray-900, #111827);
+}
+
+/* Ensure section headings inside the modal are properly styled */
+.fi-modal-content .fi-section-header-heading {
+    font-size: 0.9375rem !important;
+    font-weight: 600 !important;
+}

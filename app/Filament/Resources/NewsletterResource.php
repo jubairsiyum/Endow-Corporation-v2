@@ -116,7 +116,8 @@ class NewsletterResource extends Resource
                     ]),
             ])
             ->actions([
-                Actions\ViewAction::make(),
+                Actions\ViewAction::make()
+                    ->modalWidth('3xl'),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
