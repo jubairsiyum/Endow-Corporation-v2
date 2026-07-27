@@ -23,47 +23,45 @@
 
 /* ── View modal: infolist responsiveness ── */
 
-/* Modal window container: allow proper scroll on small screens */
-.fi-modal:not(.fi-modal-slide-over) > .fi-modal-window-ctn {
-    padding: 0.75rem !important;
-}
-
-@media (min-width: 640px) {
-    .fi-modal:not(.fi-modal-slide-over) > .fi-modal-window-ctn {
-        padding: 1rem !important;
-    }
-}
-
-/* Infolist sections inside view modals fill the full width */
-.fi-modal-content .fi-in-section,
-.fi-modal-content .fi-sc-section {
+/* Force the schema form and all its direct section containers to fill modal width */
+.fi-modal-content > .fi-sc-form,
+.fi-modal-content .fi-sc-form {
     width: 100% !important;
 }
 
-/* Infolist grid inside a modal fills the modal width */
-.fi-modal-content .fi-in-component-ctn,
-.fi-modal-content .fi-schema-component-ctn {
+/* Force every schema section wrapper and the Filament section card to fill width */
+.fi-modal-content .fi-sc-section,
+.fi-modal-content .fi-section {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Section content grid: fill width so the 2-col infolist grid has room */
+.fi-modal-content .fi-section-content {
+    width: 100% !important;
+}
+
+/* Infolist entry row: make sure label+value take full width */
+.fi-modal-content .fi-in-entry {
     width: 100% !important;
 }
 
 /* Give the infolist entry label a subtle muted style */
 .fi-modal-content .fi-in-entry-label {
-    font-size: 0.75rem !important;
+    font-size: 0.6875rem !important;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--gray-500, #6b7280) !important;
-    font-weight: 500 !important;
+    color: #9ca3af !important;
+    font-weight: 600 !important;
     margin-bottom: 0.125rem;
 }
 
 /* Entry content: normalise text size */
 .fi-modal-content .fi-in-entry-content {
     font-size: 0.9375rem;
-    color: var(--gray-900, #111827);
 }
 
-/* Ensure section headings inside the modal are properly styled */
-.fi-modal-content .fi-section-header-heading {
-    font-size: 0.9375rem !important;
-    font-weight: 600 !important;
+/* Repeatable entry inside modal: also full width */
+.fi-modal-content .fi-in-repeatable-entry {
+    width: 100% !important;
 }

@@ -23,6 +23,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -126,6 +127,7 @@ class PostResource extends Resource
                             ->native(false),
 
                         FileUpload::make('featured_image')
+                            ->disk('public')
                             ->directory('uploads/posts')
                             ->image()
                             ->imageEditor()
@@ -162,6 +164,7 @@ class PostResource extends Resource
                             ->nullable(),
 
                         FileUpload::make('og_image')
+                            ->disk('public')
                             ->label('OG Image (Social Sharing)')
                             ->directory('uploads/posts/og')
                             ->image()
@@ -182,6 +185,7 @@ class PostResource extends Resource
                             ->relationship('images')
                             ->schema([
                                 FileUpload::make('image_path')
+                                    ->disk('public')
                                     ->label('Image')
                                     ->directory('uploads/posts/gallery')
                                     ->image()
@@ -370,8 +374,12 @@ class PostResource extends Resource
                     ]),
             ])
             ->actions([
-                Actions\ViewAction::make()
-                    ->modalWidth('5xl'),
+                Actions\Action::make('view_on_site')
+                    ->label('View')
+                    ->icon(\Filament\Support\Icons\Heroicon::Eye)
+                    ->color('gray')
+                    ->url(fn ($record) => route('blog.show', $record->slug))
+                    ->openUrlInNewTab(),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

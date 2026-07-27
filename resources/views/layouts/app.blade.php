@@ -111,6 +111,7 @@
             <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-white/60">
                 <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
                 <a href="{{ route('about') }}" class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
+                <a href="{{ route('blog') }}" class="nav-link {{ request()->routeIs('blog*') ? 'active' : '' }}">Blog</a>
 
                 {{-- Divisions --}}
                 <div x-data="{ open: false }" class="relative" @click.away="open = false">
@@ -174,6 +175,7 @@
                 @foreach([
                     ['route' => 'home', 'label' => 'Home'],
                     ['route' => 'about', 'label' => 'About Us'],
+                    ['route' => 'blog', 'label' => 'Blog'],
                     ['route' => 'contact', 'label' => 'Contact'],
                 ] as $link)
                     <a href="{{ route($link['route']) }}"
