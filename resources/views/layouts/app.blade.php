@@ -440,32 +440,6 @@
         });
     </script>
 
-    {{-- Mobile Bottom Nav --}}
-    <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-[1001] px-3 pb-3 pt-1 pointer-events-none">
-        <div class="flex items-center justify-around rounded-2xl px-2 py-2 pointer-events-auto" style="background: rgba(255,255,255,0.88); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 -2px 20px rgba(0,0,0,0.08);">
-            <a href="{{ route('home') }}" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors {{ request()->routeIs('home') ? '' : '' }}" style="{{ request()->routeIs('home') ? 'color: var(--color-primary);' : 'color: var(--color-text-muted);' }}">
-                <i class="fa-solid fa-house text-base"></i>
-                <span class="text-[10px] font-semibold">Home</span>
-            </a>
-            <a href="{{ route('about') }}" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors" style="{{ request()->routeIs('about') ? 'color: var(--color-primary);' : 'color: var(--color-text-muted);' }}">
-                <i class="fa-solid fa-building text-base"></i>
-                <span class="text-[10px] font-semibold">About</span>
-            </a>
-            <a href="{{ route('division.show', 'travel') }}" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors" style="{{ request()->routeIs('division.*') ? 'color: var(--color-primary);' : 'color: var(--color-text-muted);' }}">
-                <i class="fa-solid fa-layer-group text-base"></i>
-                <span class="text-[10px] font-semibold">Divisions</span>
-            </a>
-            <a href="{{ route('contact') }}" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl transition-colors" style="{{ request()->routeIs('contact') ? 'color: var(--color-primary);' : 'color: var(--color-text-muted);' }}">
-                <i class="fa-solid fa-envelope text-base"></i>
-                <span class="text-[10px] font-semibold">Contact</span>
-            </a>
-            <a href="{{ route('consulting') }}" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl font-bold transition-colors" style="color: var(--color-primary);">
-                <i class="fa-solid fa-headset text-base"></i>
-                <span class="text-[10px] font-bold">Consult</span>
-            </a>
-        </div>
-    </nav>
-
     @stack('scripts')
 </body>
 </html>
