@@ -68,12 +68,7 @@ class AdminPanelProvider extends PanelProvider
 
         \Filament\Support\Facades\FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
-            fn () => '<link rel="stylesheet" href="' . Vite::asset('resources/css/quill-editor.css') . '">',
-        );
-
-        \Filament\Support\Facades\FilamentView::registerRenderHook(
-            PanelsRenderHook::SCRIPTS_BEFORE,
-            fn () => '<script src="' . Vite::asset('resources/js/quill-editor.js') . '"></script>',
+            fn () => view('filament.admin-editor-assets')->render(),
         );
     }
 }

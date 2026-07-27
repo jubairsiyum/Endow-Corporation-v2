@@ -1,59 +1,56 @@
 @import 'quill/dist/quill.snow.css';
 
-.quill-editor-wrapper .ql-container {
+.ql-container {
     min-height: 400px;
     font-size: 16px;
 }
 
-.quill-editor-wrapper .ql-editor {
+.ql-editor {
     min-height: 380px;
 }
 
-.quill-editor-wrapper .ql-toolbar {
+.ql-toolbar {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    border-color: #e2e8f0;
 }
 
-.quill-editor-wrapper .ql-container {
+.ql-container {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    border-color: #e2e8f0;
 }
 
-.quill-editor-wrapper .ql-toolbar button:hover,
-.quill-editor-wrapper .ql-toolbar button.ql-active,
-.quill-editor-wrapper .ql-toolbar .ql-picker-label:hover,
-.quill-editor-wrapper .ql-toolbar .ql-picker-label.ql-active,
-.quill-editor-wrapper .ql-toolbar .ql-picker-item:hover,
-.quill-editor-wrapper .ql-toolbar .ql-picker-item.ql-selected {
+.ql-toolbar button:hover,
+.ql-toolbar button.ql-active,
+.ql-toolbar .ql-picker-label:hover,
+.ql-toolbar .ql-picker-label.ql-active,
+.ql-toolbar .ql-picker-item:hover,
+.ql-toolbar .ql-picker-item.ql-selected {
     color: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-toolbar button:hover .ql-stroke,
-.quill-editor-wrapper .ql-toolbar button.ql-active .ql-stroke {
+.ql-toolbar button:hover .ql-stroke,
+.ql-toolbar button.ql-active .ql-stroke {
     stroke: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-toolbar button:hover .ql-fill,
-.quill-editor-wrapper .ql-toolbar button.ql-active .ql-fill {
+.ql-toolbar button:hover .ql-fill,
+.ql-toolbar button.ql-active .ql-fill {
     fill: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-toolbar .ql-picker-label:hover .ql-stroke {
+.ql-toolbar .ql-picker-label:hover .ql-stroke {
     stroke: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-toolbar .ql-picker.ql-expanded .ql-picker-label {
+.ql-toolbar .ql-picker.ql-expanded .ql-picker-label {
     color: #F52549 !important;
-    border-color: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-toolbar .ql-picker.ql-expanded .ql-picker-options {
-    border-color: #F52549 !important;
+.ql-toolbar .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
+    stroke: #F52549 !important;
 }
 
-.quill-editor-wrapper .ql-editor.ql-blank::before {
+.ql-editor.ql-blank::before {
     color: #94a3b8;
     font-style: normal;
 }
