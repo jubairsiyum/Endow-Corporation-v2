@@ -3,6 +3,7 @@
 .quill-editor-field {
     width: 100%;
     min-width: 0;
+    isolation: isolate;
 }
 
 .quill-editor-field .ql-container {
@@ -44,6 +45,30 @@
 .quill-editor-field .ql-toolbar .ql-picker-options,
 .quill-editor-field .ql-toolbar .ql-tooltip {
     z-index: 5;
+}
+
+.quill-editor-fallback {
+    width: 100%;
+    min-height: min(var(--quill-min-height, 400px), 55vh);
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #111827;
+    background: #ffffff;
+    font-size: 16px;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+[data-quill-message] {
+    margin-top: 8px;
+    color: #b45309;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+[data-quill-message][data-type="error"] {
+    color: #b91c1c;
 }
 
 .ql-toolbar button:hover,
@@ -88,6 +113,10 @@
         padding: 8px;
     }
 
+    .quill-editor-field .ql-toolbar .ql-picker.ql-header {
+        width: 90px;
+    }
+
     .quill-editor-field .ql-container {
         min-height: min(var(--quill-min-height, 400px), 45vh);
     }
@@ -95,5 +124,23 @@
     .quill-editor-field .ql-editor {
         min-height: calc(min(var(--quill-min-height, 400px), 45vh) - 20px);
         max-height: 50vh;
+    }
+
+    .quill-editor-fallback {
+        min-height: min(var(--quill-min-height, 400px), 45vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .quill-editor-field .ql-toolbar {
+        gap: 4px;
+    }
+
+    .quill-editor-field .ql-toolbar button {
+        width: 26px;
+    }
+
+    .quill-editor-field .ql-toolbar .ql-formats {
+        margin-right: 0;
     }
 }

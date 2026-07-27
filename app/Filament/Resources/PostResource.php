@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Post;
+use App\Rules\FilledHtmlContent;
 use BackedEnum;
 use App\Filament\Forms\Components\QuillEditor;
 use Filament\Forms\Components\FileUpload;
@@ -24,6 +25,8 @@ use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
+    private const CONTENT_MAX_CHARACTERS = 6_000_000;
+
     protected static ?string $model = Post::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNewspaper;
@@ -50,24 +53,55 @@ class PostResource extends Resource
                     ->columnSpanFull()
                     ->schema([
                         TextInput::make('title')
+                            ->label('Post Title')
                             ->required()
+                            ->minLength(3)
                             ->maxLength(255)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn ($state, $set) => $set('slug', Str::slug($state)))
+                            ->validationMessages([
+                                'required' => 'Add a clear title before saving the post.',
+                                'min' => 'The title should be at least 3 characters.',
+                            ]),
 
                         TextInput::make('slug')
                             ->required()
+                            ->alphaDash()
                             ->unique(ignoreRecord: true)
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->helperText('Used in the public blog URL. Lowercase letters, numbers, and dashes work best.')
+                            ->validationMessages([
+                                'alpha_dash' => 'Use only letters, numbers, dashes, and underscores in the slug.',
+                                'unique' => 'This slug is already used by another post.',
+                            ]),
 
                         Textarea::make('excerpt')
                             ->required()
+                            ->minLength(20)
                             ->maxLength(1000)
-                            ->rows(3),
+                            ->rows(3)
+                            ->autosize()
+                            ->helperText('Short summary shown in blog lists and search previews.')
+                            ->validationMessages([
+                                'required' => 'Add a short excerpt for this post.',
+                                'min' => 'The excerpt should be at least 20 characters.',
+                                'max' => 'Keep the excerpt under 1,000 characters.',
+                            ]),
 
                         QuillEditor::make('content')
+                            ->label('Content')
                             ->required()
-                            ->minHeight(400),
+                            ->rules([
+                                'max:'.self::CONTENT_MAX_CHARACTERS,
+                                new FilledHtmlContent(),
+                            ])
+                            ->dehydrateStateUsing(fn (?string $state): ?string => blank(trim(strip_tags(str_replace('&nbsp;', '', $state ?? '')))) ? null : $state)
+                            ->minHeight(420)
+                            ->helperText('Use the gallery fields below for images. Inline editor images can make the post too large to save.')
+                            ->validationMessages([
+                                'required' => 'Write the post content before saving.',
+                                'max' => 'The editor content is too large. Remove pasted inline images or shorten the post.',
+                            ]),
 
                     ]),
 
@@ -75,6 +109,7 @@ class PostResource extends Resource
                     ->schema([
                         TextInput::make('author')
                             ->default('Endow Corporation')
+                            ->required()
                             ->maxLength(255),
 
                         Select::make('category_id')
@@ -82,19 +117,27 @@ class PostResource extends Resource
                             ->options(fn () => Category::where('is_visible', true)
                                 ->orderBy('sort_order')
                                 ->pluck('name', 'id'))
+                            ->searchable()
+                            ->preload()
                             ->native(false),
 
                         FileUpload::make('featured_image')
                             ->directory('uploads/posts')
                             ->image()
                             ->imageEditor()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->maxSize(4096)
+                            ->helperText('JPEG, PNG, or WebP. Max 4 MB.')
                             ->nullable(),
 
                         Toggle::make('is_published')
                             ->default(true)
                             ->label('Published'),
 
-                    ])->columns(2),
+                    ])->columns([
+                        'default' => 1,
+                        'md' => 2,
+                    ]),
 
                 Section::make('SEO')
                     ->collapsible()
@@ -119,20 +162,28 @@ class PostResource extends Resource
                             ->directory('uploads/posts/og')
                             ->image()
                             ->imageEditor()
-                            ->helperText('Recommended size: 1200x630px')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->maxSize(4096)
+                            ->helperText('Recommended size: 1200x630px. JPEG, PNG, or WebP. Max 4 MB.')
                             ->nullable(),
-                    ])->columns(2),
+                    ])->columns([
+                        'default' => 1,
+                        'md' => 2,
+                    ]),
 
                 Section::make('Image Gallery')
                     ->collapsible()
                     ->schema([
-                                Repeater::make('images')
+                        Repeater::make('images')
                             ->relationship('images')
                             ->schema([
                                 FileUpload::make('image_path')
                                     ->label('Image')
                                     ->directory('uploads/posts/gallery')
                                     ->image()
+                                    ->imageEditor()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->maxSize(4096)
                                     ->required(),
 
                                 TextInput::make('caption')
@@ -147,7 +198,10 @@ class PostResource extends Resource
                             ->orderColumn('sort_order')
                             ->addActionLabel('Add Image')
                             ->collapsible()
-                            ->columns(2),
+                            ->columns([
+                                'default' => 1,
+                                'md' => 2,
+                            ]),
                     ]),
             ]);
     }
