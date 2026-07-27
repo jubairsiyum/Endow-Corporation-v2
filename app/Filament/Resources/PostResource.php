@@ -6,9 +6,9 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Models\Category;
 use App\Models\Post;
 use BackedEnum;
+use App\Filament\Forms\Components\TinyMceEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -63,11 +63,11 @@ class PostResource extends Resource
                             ->maxLength(1000)
                             ->rows(3),
 
-                        RichEditor::make('content')
+                        TinyMceEditor::make('content')
                             ->required()
-                            ->columnSpanFull(),
+                            ->minHeight(600),
 
-                    ])->columns(2),
+                    ]),
 
                 Section::make('Meta')
                     ->schema([
@@ -198,6 +198,7 @@ class PostResource extends Resource
                     ]),
             ])
             ->actions([
+                Actions\ViewAction::make(),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

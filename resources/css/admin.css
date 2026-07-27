@@ -1,0 +1,22 @@
+.fi-page {
+    max-width: 100% !important;
+}
+
+.fi-page-content {
+    max-width: 100% !important;
+}
+
+.fi-page > .max-w-\[--width\] {
+    max-width: 100% !important;
+}
+
+.fi-ta-content {
+    max-width: 100% !important;
+}
+
+@media (min-width: 1024px) {
+    .fi-page > div > .fi-page-content,
+    .fi-page-main > .fi-page-content {
+        max-width: 100% !important;
+    }
+}

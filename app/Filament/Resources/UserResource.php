@@ -117,6 +117,7 @@ class UserResource extends Resource
                     ->native(false),
             ])
             ->actions([
+                Actions\ViewAction::make(),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

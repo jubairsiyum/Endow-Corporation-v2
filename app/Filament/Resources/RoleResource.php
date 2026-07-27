@@ -85,6 +85,7 @@ class RoleResource extends Resource
                     ->sortable(),
             ])
             ->actions([
+                Actions\ViewAction::make(),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])

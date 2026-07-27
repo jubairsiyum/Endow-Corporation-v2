@@ -110,6 +110,7 @@ class ContactMessageResource extends Resource
                     ]),
             ])
             ->actions([
+                Actions\ViewAction::make(),
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
