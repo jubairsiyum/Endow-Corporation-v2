@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\NewsletterResource\Pages;
 use App\Models\Newsletter;
 use BackedEnum;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
