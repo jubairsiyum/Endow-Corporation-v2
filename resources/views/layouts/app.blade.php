@@ -42,7 +42,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    @vite(['resources/css/app.css', 'resources/css/scroll-stack.css', 'resources/css/timeline.css'])
+    @vite(['resources/css/app.css', 'resources/css/scroll-stack.css', 'resources/css/timeline.css', 'resources/css/dome-gallery.css'])
 
     @stack('structured-data')
     @yield('head')
@@ -284,7 +284,7 @@
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/js/dome-gallery.js'])
 
     <script>
         // Back to top

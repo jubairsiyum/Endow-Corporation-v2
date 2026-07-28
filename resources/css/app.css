@@ -545,6 +545,23 @@
     filter: grayscale(0%) !important;
 }
 
+/* ── Team cards responsive ── */
+@media (max-width: 767px) {
+    .team-centered-card {
+        width: 200px !important;
+    }
+    .team-centered-card .px-5 { padding-left: 12px !important; padding-right: 12px !important; }
+    .team-centered-card .py-4 { padding-top: 10px !important; padding-bottom: 10px !important; }
+}
+@media (max-width: 479px) {
+    .team-centered-card {
+        width: 160px !important;
+    }
+    .team-centered-card [style*="height: 285px"] {
+        height: 200px !important;
+    }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

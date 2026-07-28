@@ -45,7 +45,7 @@ Route::post('/contact', [FormController::class, 'storeContact'])->name('contact.
 Route::post('/newsletter', [FormController::class, 'storeNewsletter'])->name('newsletter.store');
 
 // Admin Routes (Protected)
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return redirect()->route('filament.admin.pages.dashboard');
     })->name('dashboard');
