@@ -34,6 +34,15 @@ class User extends Authenticatable
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasAnyRole(['Super Admin', 'Editor', 'Viewer']);
+        try {
+            if ($this->hasAnyRole(['Super Admin', 'Editor', 'Viewer'])) {
+                return true;
+            }
+        } catch (\Throwable $e) {
+            // Spatie tables may not exist on fresh deployment
+        }
+
+        // Fallback: allow the primary admin email through regardless of roles
+        return $this->email === 'admin@endowcorporation.com';
     }
 }
