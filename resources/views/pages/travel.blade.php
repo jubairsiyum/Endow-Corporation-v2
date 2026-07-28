@@ -4,10 +4,6 @@
 @section('meta_title', 'Endow Travel | Corporate & Leisure Travel Solutions Worldwide')
 @section('meta_description', 'Endow Travel offers tailored corporate and leisure travel solutions. Personalized itineraries, visa assistance, exclusive deals, and 24/7 support across 30+ countries. Based in Seoul, South Korea.')
 
-@section('head')
-    @vite(['resources/css/dome-gallery.css'])
-@endsection
-
 @section('content')
 
 {{-- ============================================ --}}
@@ -561,9 +557,5 @@
         </div>
     </div>
 </section>
-
-@push('scripts')
-    @vite(['resources/js/dome-gallery.js'])
-@endpush
 
 @endsection

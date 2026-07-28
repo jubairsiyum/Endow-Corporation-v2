@@ -40,8 +40,13 @@ return [
 
         'public' => [
             'driver' => 'local',
-            // On shared hosting, point this to a writable folder inside public_html to avoid storage:link.
-            'root' => env('FILESYSTEM_PUBLIC_ROOT', storage_path('app/public')),
+            // ── Hostinger / Shared Hosting (no symlink support) ──
+            // Set FILESYSTEM_USE_PUBLIC_PATH=true in .env to store uploads directly
+            // inside public_path('storage'). No storage:link symlink needed.
+            // Make sure public/storage/ exists and is writable (chmod 775).
+            'root' => env('FILESYSTEM_USE_PUBLIC_PATH', false)
+                ? public_path('storage')
+                : (env('FILESYSTEM_PUBLIC_ROOT') ?: storage_path('app/public')),
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,

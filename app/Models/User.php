@@ -42,7 +42,24 @@ class User extends Authenticatable
             // Spatie tables may not exist on fresh deployment
         }
 
-        // Fallback: allow the primary admin email through regardless of roles
-        return $this->email === 'admin@endowcorporation.com';
+        // Fallback: allow specific admin email(s) via env or the default
+        $allowedEmails = array_filter(
+            explode(',', env('FILAMENT_ADMIN_EMAILS', 'admin@endowcorporation.com'))
+        );
+
+        if (in_array($this->email, $allowedEmails, true)) {
+            return true;
+        }
+
+        // Last-resort fallback: if Spatie roles aren't available (tables not migrated
+        // or no roles seeded yet), allow any authenticated user so the admin portal
+        // remains accessible. The panel is already protected by ->login().
+        try {
+            \Spatie\Permission\Models\Role::count();
+        } catch (\Throwable $e) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -634,9 +634,12 @@ class DomeGallery {
 }
 
 // Auto-initialize on elements with data-dome-gallery attribute
-document.addEventListener('DOMContentLoaded', () => {
+function initDomeGalleries() {
   const elements = document.querySelectorAll('[data-dome-gallery]');
   elements.forEach(el => {
+    // Skip already-initialized galleries
+    if (el.classList.contains('dg-root')) return;
+
     let images = [];
     try {
       images = JSON.parse(el.getAttribute('data-dome-gallery-images') || '[]');
@@ -652,7 +655,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     new DomeGallery(el, images, options);
   });
-});
+}
+
+// Handle both cases: DOM not yet ready, or already loaded (module scripts may
+// execute after DOMContentLoaded on production when cached by the browser).
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDomeGalleries);
+} else {
+  initDomeGalleries();
+}
 
 // Expose globally
 window.DomeGallery = DomeGallery;

@@ -4,10 +4,6 @@
 @section('meta_title', 'Endow Global Education | Study Abroad, Scholarships & Language Training')
 @section('meta_description', 'Endow Global Education empowers students worldwide with study abroad programs, scholarship guidance, language training, and comprehensive student support. Serving 30+ countries from Seoul, South Korea.')
 
-@section('head')
-    @vite(['resources/css/dome-gallery.css'])
-@endsection
-
 @section('content')
 
 {{-- ============================================ --}}
@@ -668,9 +664,5 @@
         </div>
     </div>
 </section>
-
-@push('scripts')
-    @vite(['resources/js/dome-gallery.js'])
-@endpush
 
 @endsection
