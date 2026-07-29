@@ -44,12 +44,88 @@ Route::post('/appointments', [FormController::class, 'storeAppointment'])->name(
 Route::post('/contact', [FormController::class, 'storeContact'])->name('contact.store');
 Route::post('/newsletter', [FormController::class, 'storeNewsletter'])->name('newsletter.store');
 
-// Admin Routes (Protected)
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return redirect()->route('filament.admin.pages.dashboard');
-    })->name('dashboard');
+// ──────────────────────────────────────────────────
+// Admin Routes — Custom Admin Panel (no Filament)
+// ──────────────────────────────────────────────────
+
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\ProfileController;
+
+// Guest routes (login)
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
 });
+
+// Authenticated admin routes
+Route::prefix('admin')->name('admin.')->middleware(['admin.access'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // ── RBAC-gated resource routes ──
+    // Each resource group is guarded by the 'permission:...' middleware.
+    // Super Admin bypasses all checks (via Gate::before in AppServiceProvider).
+
+    // Users
+    Route::middleware('permission:view users')->group(function () {
+        Route::resource('users', UserController::class)->except(['show']);
+    });
+
+    // Roles
+    Route::middleware('permission:view roles')->group(function () {
+        Route::resource('roles', RoleController::class)->except(['show']);
+    });
+
+    // Categories
+    Route::middleware('permission:view categories')->group(function () {
+        Route::resource('categories', CategoryController::class)->except(['show']);
+    });
+
+    // Posts
+    Route::middleware('permission:view posts')->group(function () {
+        Route::resource('posts', PostController::class)->except(['show']);
+    });
+
+    // Appointments
+    Route::middleware('permission:view appointments')->group(function () {
+        Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::get('/appointments/{appointment}', [AppointmentController::class, 'show'])->name('appointments.show');
+        Route::patch('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])->name('appointments.update-status');
+        Route::delete('/appointments/{appointment}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+    });
+
+    // Contact Messages
+    Route::middleware('permission:view contact messages')->group(function () {
+        Route::get('/contact-messages', [ContactMessageController::class, 'index'])->name('contact-messages.index');
+        Route::get('/contact-messages/{message}', [ContactMessageController::class, 'show'])->name('contact-messages.show');
+        Route::patch('/contact-messages/{message}/status', [ContactMessageController::class, 'updateStatus'])->name('contact-messages.update-status');
+        Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
+    });
+
+    // Newsletters
+    Route::middleware('permission:view newsletters')->group(function () {
+        Route::get('/newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
+        Route::delete('/newsletters/{newsletter}', [NewsletterController::class, 'destroy'])->name('newsletters.destroy');
+    });
+});
+
+// Redirect /admin to dashboard
+Route::get('/admin', fn () => redirect()->route('admin.dashboard'));
 
 // SEO
 Route::get('/sitemap.xml', function () {
@@ -99,7 +175,6 @@ Route::get('/robots.txt', function () {
     $content = "User-agent: *\n";
     $content .= "Allow: /\n";
     $content .= "Disallow: /admin/\n";
-    $content .= "Disallow: /filament/\n";
     $content .= "\n";
     $content .= 'Sitemap: '.url('/sitemap.xml')."\n";
 

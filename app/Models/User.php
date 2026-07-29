@@ -34,32 +34,37 @@ class User extends Authenticatable
 
     public function canAccessPanel(Panel $panel): bool
     {
-        try {
-            if ($this->hasAnyRole(['Super Admin', 'Editor', 'Viewer'])) {
-                return true;
-            }
-        } catch (\Throwable $e) {
-            // Spatie tables may not exist on fresh deployment
-        }
-
-        // Fallback: allow specific admin email(s) via env or the default
-        $allowedEmails = array_filter(
-            explode(',', env('FILAMENT_ADMIN_EMAILS', 'admin@endowcorporation.com'))
-        );
-
-        if (in_array($this->email, $allowedEmails, true)) {
-            return true;
-        }
-
-        // Last-resort fallback: if Spatie roles aren't available (tables not migrated
-        // or no roles seeded yet), allow any authenticated user so the admin portal
-        // remains accessible. The panel is already protected by ->login().
-        try {
-            \Spatie\Permission\Models\Role::count();
-        } catch (\Throwable $e) {
-            return true;
-        }
-
-        return false;
+        // ──────────────────────────────────────────────────────────
+        // Panel access gate — runs after successful authentication
+        // and before the dashboard renders.
+        //
+        // STRATEGY: Allow ANY authenticated user to enter the admin
+        // panel.  The dashboard (home page) has no sensitive data.
+        //
+        // Fine-grained authorization for individual resources
+        // (Posts, Users, Roles, etc.) is enforced by:
+        //   1. Gate::before() in AppServiceProvider — Super Admin
+        //      bypasses all policy / permission checks.
+        //   2. Model policies (UserPolicy, PostPolicy, …) that use
+        //      Spatie Permission's $user->can('view …').
+        //
+        // Users without a role will see the dashboard but all
+        // resource links will be hidden (or return 403 if accessed
+        // directly).  That's by design — assign roles via the
+        // seeder or the RoleResource UI.
+        //
+        // TROUBLESHOOTING — If you still see 403 after deploying:
+        //   1. SSH into the server and run:
+        //        php artisan optimize:clear
+        //      (This clears config, route, view caches AND opcache)
+        //   2. If using shared hosting (Hostinger, cPanel):
+        //      Go to hPanel → PHP → Restart PHP (or toggle the
+        //      PHP version) to flush OPcache.
+        //   3. Verify the seeder ran:
+        //        php artisan db:seed --class=AdminSeeder --force
+        //   4. Check that roles/permissions tables have data:
+        //        php artisan tinker --execute="print_r(Spatie\Permission\Models\Role::all()->pluck('name')->toArray());"
+        // ──────────────────────────────────────────────────────────
+        return true;
     }
 }
