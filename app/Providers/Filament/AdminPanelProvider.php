@@ -63,7 +63,15 @@ class AdminPanelProvider extends PanelProvider
     {
         \Filament\Support\Facades\FilamentView::registerRenderHook(
             PanelsRenderHook::HEAD_START,
-            fn () => '<link rel="stylesheet" href="' . Vite::asset('resources/css/admin.css') . '">',
+            function () {
+                try {
+                    return '<link rel="stylesheet" href="' . Vite::asset('resources/css/admin.css') . '">';
+                } catch (\Throwable $e) {
+                    // Vite manifest not available (fresh deploy, wrong path, etc.)
+                    // Silently skip — the admin panel still works without this CSS
+                    return '<!-- admin.css skipped: manifest not found -->';
+                }
+            },
         );
 
         \Filament\Support\Facades\FilamentView::registerRenderHook(

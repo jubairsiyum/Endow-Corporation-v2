@@ -54,14 +54,23 @@ class DeploySetup extends Command
             $this->warn('   Spatie cache flush skipped: ' . $e->getMessage());
         }
 
-        // 6. Storage link (skip gracefully on shared hosting)
-        $this->info('5/7 Creating storage link...');
-        if (env('FILESYSTEM_PUBLIC_ROOT')) {
+        // 6. Storage — create public/storage directory or symlink
+        $this->info('5/7 Setting up storage...');
+        if (env('FILESYSTEM_USE_PUBLIC_PATH', false)) {
+            $publicStorage = public_path('storage');
+            if (!is_dir($publicStorage)) {
+                File::makeDirectory($publicStorage, 0775, true);
+                $this->info('   Created public/storage/ directory (no symlink needed).');
+            } else {
+                $this->info('   public/storage/ already exists.');
+            }
+            @chmod($publicStorage, 0775);
+        } elseif (env('FILESYSTEM_PUBLIC_ROOT')) {
             $this->warn('   Skipped — FILESYSTEM_PUBLIC_ROOT is set. Symlink not needed.');
         } else {
             $exitCode = $this->call('storage:link');
             if ($exitCode !== 0) {
-                $this->warn('   storage:link failed. Set FILESYSTEM_PUBLIC_ROOT in .env instead.');
+                $this->warn('   storage:link failed. Set FILESYSTEM_USE_PUBLIC_PATH=true in .env for shared hosting.');
             }
         }
 
