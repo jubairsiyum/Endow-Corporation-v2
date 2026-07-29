@@ -11,8 +11,6 @@ export default defineConfig({
                 'resources/css/scroll-stack.css',
                 'resources/js/scroll-stack.js',
                 'resources/css/timeline.css',
-                'resources/css/dome-gallery.css',
-                'resources/js/dome-gallery.js',
                 'resources/css/admin.css',
                 'resources/css/quill-editor.css',
                 'resources/js/quill-editor.js',

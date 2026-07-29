@@ -42,7 +42,10 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    @vite(['resources/css/app.css', 'resources/css/scroll-stack.css', 'resources/css/timeline.css', 'resources/css/dome-gallery.css'])
+    @vite(['resources/css/app.css', 'resources/css/scroll-stack.css', 'resources/css/timeline.css'])
+
+    {{-- Dome Gallery (static — no Vite dependency) --}}
+    <link rel="stylesheet" href="{{ asset('assets/dome-gallery/dome-gallery.css') }}">
 
     @stack('structured-data')
     @yield('head')
@@ -284,7 +287,10 @@
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-    @vite(['resources/js/app.js', 'resources/js/dome-gallery.js'])
+    {{-- Dome Gallery (static — no Vite dependency) --}}
+    <script defer src="{{ asset('assets/dome-gallery/dome-gallery.js') }}"></script>
+
+    @vite(['resources/js/app.js'])
 
     <script>
         // Back to top
