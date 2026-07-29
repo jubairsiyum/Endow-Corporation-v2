@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SeoPageController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 // Blog
@@ -36,6 +37,33 @@ Route::get('/terms-of-service', [SeoPageController::class, 'termsOfService'])->n
 
 // Careers
 Route::view('/careers', 'pages.careers')->name('careers');
+
+// ──────────────────────────────────────────────────
+// Storage Fallback — for servers without symlink support
+// (Hostinger, cPanel shared hosting, etc.)
+// Serves files from storage/app/public/ via /storage/ URL
+// ──────────────────────────────────────────────────
+Route::get('storage/{path}', function (string $path) {
+    // Security: only allow safe file extensions
+    $allowed = ['jpg','jpeg','png','gif','webp','svg','ico','pdf','css','js','woff','woff2','ttf','eot','mp4','webm','ogg'];
+    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+    if (!in_array($ext, $allowed)) {
+        abort(404);
+    }
+
+    // Prevent directory traversal
+    $safePath = str_replace(['../', '..\\', "\0"], '', $path);
+    $file = storage_path('app/public/' . $safePath);
+
+    if (!file_exists($file) || !is_file($file)) {
+        abort(404);
+    }
+
+    return response()->file($file, [
+        'Cache-Control' => 'public, max-age=31536000, immutable',
+    ]);
+})->where('path', '.*')->name('storage.fallback');
 
 Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 
@@ -129,43 +157,57 @@ Route::get('/admin', fn () => redirect()->route('admin.dashboard'));
 
 // SEO
 Route::get('/sitemap.xml', function () {
-    $pages = [
-        ['url' => '/', 'priority' => '1.0', 'changefreq' => 'weekly'],
-        ['url' => '/about-us', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/education', 'priority' => '0.9', 'changefreq' => 'weekly'],
-        ['url' => '/technology', 'priority' => '0.9', 'changefreq' => 'weekly'],
-        ['url' => '/hospital-tourism', 'priority' => '0.9', 'changefreq' => 'weekly'],
-        ['url' => '/endow-travels', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/endow-global-education', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/endow-technologies', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/hospital-tourism', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/contact-us', 'priority' => '0.7', 'changefreq' => 'monthly'],
-        ['url' => '/get-consulting', 'priority' => '0.7', 'changefreq' => 'monthly'],
-        ['url' => '/blog', 'priority' => '0.9', 'changefreq' => 'weekly'],
-        ['url' => '/careers', 'priority' => '0.7', 'changefreq' => 'monthly'],
+    $posts = Post::where('is_published', true)
+        ->orderByDesc('updated_at')
+        ->get(['slug', 'updated_at']);
+
+    $staticPages = [
+        ['loc' => '/',                        'priority' => '1.0', 'changefreq' => 'weekly'],
+        ['loc' => '/about-us',                'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/blog',                    'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['loc' => '/travel',                  'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['loc' => '/education',               'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['loc' => '/technology',              'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['loc' => '/hospital-tourism',        'priority' => '0.9', 'changefreq' => 'weekly'],
+        ['loc' => '/get-consulting',          'priority' => '0.7', 'changefreq' => 'monthly'],
+        ['loc' => '/contact-us',              'priority' => '0.7', 'changefreq' => 'monthly'],
+        ['loc' => '/careers',                 'priority' => '0.6', 'changefreq' => 'monthly'],
         // Education SEO
-        ['url' => '/study-abroad-programs', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/scholarship-guidance', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/language-training-certifications', 'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/study-abroad-programs',          'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/scholarship-guidance',           'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/language-training-certifications','priority' => '0.8', 'changefreq' => 'monthly'],
         // Technology SEO
-        ['url' => '/ai-automation-solutions', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/cloud-computing-security', 'priority' => '0.8', 'changefreq' => 'monthly'],
-        ['url' => '/custom-software-development', 'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/ai-automation-solutions',         'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/cloud-computing-security',         'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => '/custom-software-development',      'priority' => '0.8', 'changefreq' => 'monthly'],
         // Legal
-        ['url' => '/privacy-policy', 'priority' => '0.3', 'changefreq' => 'yearly'],
-        ['url' => '/terms-of-service', 'priority' => '0.3', 'changefreq' => 'yearly'],
+        ['loc' => '/privacy-policy',           'priority' => '0.3', 'changefreq' => 'yearly'],
+        ['loc' => '/terms-of-service',         'priority' => '0.3', 'changefreq' => 'yearly'],
     ];
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
     $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
-    foreach ($pages as $page) {
+
+    // Static pages
+    foreach ($staticPages as $page) {
         $xml .= '  <url>'."\n";
-        $xml .= '    <loc>'.url($page['url']).'</loc>'."\n";
-        $xml .= '    <lastmod>'.now()->toDateString().'</lastmod>'."\n";
-        $xml .= '    <changefreq>'.$page['changefreq'].'</changefreq>'."\n";
-        $xml .= '    <priority>'.$page['priority'].'</priority>'."\n";
+        $xml .= '    <loc>' . url($page['loc']) . '</loc>'."\n";
+        $xml .= '    <lastmod>' . now()->toDateString() . '</lastmod>'."\n";
+        $xml .= '    <changefreq>' . $page['changefreq'] . '</changefreq>'."\n";
+        $xml .= '    <priority>' . $page['priority'] . '</priority>'."\n";
         $xml .= '  </url>'."\n";
     }
+
+    // Dynamic blog posts
+    foreach ($posts as $post) {
+        $xml .= '  <url>'."\n";
+        $xml .= '    <loc>' . route('blog.show', $post->slug) . '</loc>'."\n";
+        $xml .= '    <lastmod>' . $post->updated_at->toDateString() . '</lastmod>'."\n";
+        $xml .= '    <changefreq>monthly</changefreq>'."\n";
+        $xml .= '    <priority>0.7</priority>'."\n";
+        $xml .= '  </url>'."\n";
+    }
+
     $xml .= '</urlset>';
 
     return response($xml, 200)->header('Content-Type', 'application/xml');
