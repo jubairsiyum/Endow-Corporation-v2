@@ -55,6 +55,20 @@
         height: 100%;
     }
 
+    /* Zigzag: even cards → image right, text left */
+    .scroll-stack-card:nth-child(even) .scroll-stack-card-inner {
+        direction: rtl;
+    }
+    .scroll-stack-card:nth-child(even) .scroll-stack-card-inner > * {
+        direction: ltr;
+    }
+    .scroll-stack-card:nth-child(even) .scroll-stack-image {
+        order: 2;
+    }
+    .scroll-stack-card:nth-child(even) .scroll-stack-content {
+        order: 1;
+    }
+
     .scroll-stack-content {
         display: flex;
         flex-direction: column;

@@ -170,8 +170,8 @@
             <p class="text-base sm:text-lg max-w-xl mx-auto" style="color: var(--color-text-muted); line-height: 1.7;">Four specialized divisions engineered to deliver excellence across every frontier.</p>
         </div>
 
-        {{-- Cards Grid — 4 columns at lg, generous gap --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {{-- Cards Grid — 4 columns at lg, 2×2 at md, 1-col on mobile --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             @php
                 $services = [
                     [
@@ -240,7 +240,7 @@
                     <div class="service-spotlight absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-400" style="border-radius: 26px;"></div>
 
                     {{-- Content — pinned to bottom --}}
-                    <div class="relative z-10 flex flex-col justify-end flex-1 p-6 sm:p-7">
+                    <div class="relative z-10 flex flex-col justify-end flex-1 p-6 md:px-8 lg:px-7">
                         {{-- Number Prefix — elegant monospace --}}
                         <div class="text-[10px] font-bold tracking-[3px] mb-4" style="color: rgba(255,255,255,0.25); font-family: 'Inter', monospace; letter-spacing: 0.2em;">{{ $service['num'] }}</div>
 
@@ -274,16 +274,16 @@
 {{-- ============================================ --}}
 {{-- STATS BAR --}}
 {{-- ============================================ --}}
-<section class="px-6 lg:px-[max(1.5rem,calc((100vw-80rem)/2))] -mt-[50px] relative z-10 mb-[50px]">
-    <div class="max-w-7xl mx-auto">
-        <div class="stat-bar flex flex-wrap">
+<section class="relative z-10" style="margin-top: 0;">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="stat-bar flex flex-col md:flex-row rounded-[22px] shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
             @foreach([
                 ['number' => '7', 'suffix' => '+', 'label' => 'Years of Experience'],
                 ['number' => '25', 'suffix' => '+', 'label' => 'Team Members'],
                 ['number' => '940', 'suffix' => '+', 'label' => 'Successful Projects'],
                 ['number' => '810', 'suffix' => '+', 'label' => 'Satisfied Clients'],
             ] as $stat)
-                <div class="stat-item w-full md:w-1/2 lg:w-1/4">
+                <div class="stat-item w-full md:w-1/4">
                     <div class="stat-number counter" data-target="{{ $stat['number'] }}">0{{ $stat['suffix'] }}</div>
                     <div class="stat-label">{{ $stat['label'] }}</div>
                 </div>
@@ -357,7 +357,7 @@
         <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
     </div>
 
-    <div class="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
 
         {{-- Section Header --}}
         <div class="text-center mb-16 sm:mb-20 div-header" data-animate-div>
@@ -617,7 +617,7 @@
                 <div class="testimonial-track" style="display: flex; gap: 1.5rem; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform;">
                     @foreach($allTestimonials as $index => $testimonial)
                         <div class="testimonial-card testimonial-card-premium flex-shrink-0 px-4 {{ $index === 0 ? 'active' : '' }}"
-                             style="width: 33.333%; min-width: 280px;">
+                             style="width: 100%; min-width: 260px;">
                             <div class="mb-4" style="color: var(--color-primary); font-size: 32px;">
                                 <i class="fa-solid fa-quote-left"></i>
                             </div>
@@ -670,20 +670,28 @@
 </section>
 
 {{-- ============================================ --}}
-{{-- FAQ --}}
+{{-- FAQ — Two-column on desktop --}}
 {{-- ============================================ --}}
 <section class="section-gap" style="background-color: var(--color-body-bg);">
-    <div class="max-w-3xl mx-auto px-6">
-        <div class="text-center mb-[48px]" data-animate>
-            <div class="section-subtitle justify-center" style="color: var(--color-primary);">
-                <i class="fa-solid fa-circle-question"></i>
-                FAQs
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="faq-layout lg:grid lg:grid-cols-5 lg:gap-16 lg:items-start">
+            {{-- Left: Heading (2 cols on desktop) --}}
+            <div class="lg:col-span-2" data-animate>
+                <div class="section-subtitle mb-4" style="color: var(--color-primary);">
+                    <i class="fa-solid fa-circle-question"></i>
+                    FAQs
+                </div>
+                <h2 class="section-heading mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p class="text-base max-w-lg mb-8" style="color: var(--color-text); line-height: 1.7;">Find answers to the most common questions about Endow Corporation's services, technology, and global operations.</p>
+                <div class="hidden lg:flex items-center gap-3 text-sm" style="color: var(--color-text-muted);">
+                    <span class="w-10 h-px" style="background: var(--color-primary);"></span>
+                    Can't find what you need? <a href="{{ route('contact') }}" class="font-semibold" style="color: var(--color-primary);">Contact us</a>
+                </div>
             </div>
-            <h2 class="section-heading">Frequently Asked <span class="gradient-text">Questions</span></h2>
-            <p class="text-base max-w-[700px] mx-auto mt-4" style="color: var(--color-text); line-height: 1.7;">Find answers to the most common questions about Endow Corporation's services, technology, and global operations.</p>
-        </div>
 
-        <div class="accordion" data-animate role="list">
+            {{-- Right: Accordion (3 cols on desktop) --}}
+            <div class="lg:col-span-3" data-animate>
+                <div class="accordion" role="list">
             @php
                 $faqs = [
                     ['q' => 'What does Endow Corporation do?', 'a' => 'We are a global conglomerate operating across four core divisions, Travel, Education, Technology, and Hospital Tourism. From corporate travel management to AI-driven tech solutions, we deliver end-to-end services that help businesses and individuals thrive across 30+ countries.'],
@@ -708,6 +716,8 @@
                     </div>
                 </div>
             @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -720,7 +730,8 @@
     <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);"></div>
     <div class="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full opacity-[0.04]" style="background: radial-gradient(circle, var(--color-primary-dark) 0%, transparent 70%);"></div>
 
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
         <div data-animate class="inline-flex items-center gap-2.5 text-[11px] font-bold tracking-[3px] uppercase mb-6" style="color: var(--color-primary); letter-spacing: 0.15em;">
             <span class="w-5 h-px" style="background: var(--color-primary);"></span>
             Get In Touch
@@ -765,6 +776,7 @@
                 <span>24/7 Support</span>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

@@ -255,13 +255,14 @@
         background: linear-gradient(135deg, var(--color-primary) 0%, #a01a22 100%);
         position: relative;
         z-index: 2;
+        box-shadow: 0 8px 32px rgba(212,32,44,0.15);
     }
     .stat-item {
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 60px 40px 66px;
+        padding: 40px 32px 44px;
         position: relative;
     }
     .stat-item:not(:last-child)::after {
@@ -275,37 +276,38 @@
         background: rgba(255,255,255,0.15);
     }
     .stat-number {
-        font-size: 64px;
-        font-weight: 700;
+        font-size: 52px;
+        font-weight: 600;
         color: white;
         line-height: 1;
         font-variant-numeric: tabular-nums;
+        letter-spacing: -0.03em;
     }
     .stat-label {
-        font-size: 14px;
-        color: rgba(255,255,255,0.65);
+        font-size: 13px;
+        color: rgba(255,255,255,0.75);
         margin-top: 8px;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
 
     /* Stat Bar — Responsive */
     @media (max-width: 991px) {
-        .stat-item { padding: 48px 30px 52px; }
-        .stat-number { font-size: 48px; }
-        .stat-label { font-size: 13px; }
+        .stat-item { padding: 32px 24px 36px; }
+        .stat-number { font-size: 40px; }
+        .stat-label { font-size: 12px; }
     }
     @media (max-width: 767px) {
-        .stat-item { padding: 36px 20px 40px; }
+        .stat-item { padding: 22px 18px 24px; }
         .stat-item:not(:last-child)::after { display: none; }
-        .stat-number { font-size: 40px; }
-        .stat-label { font-size: 12px; margin-top: 6px; }
+        .stat-number { font-size: 32px; }
+        .stat-label { font-size: 11px; margin-top: 6px; letter-spacing: 0.8px; }
     }
     @media (max-width: 479px) {
-        .stat-item { padding: 28px 16px 32px; }
-        .stat-number { font-size: 34px; }
-        .stat-label { font-size: 11px; }
+        .stat-item { padding: 18px 14px 20px; }
+        .stat-number { font-size: 28px; }
+        .stat-label { font-size: 10px; letter-spacing: 0.5px; }
     }
 
     /* ── Testimonials ── */
@@ -1285,6 +1287,13 @@ button {
     box-shadow: 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,32,44,0.1);
 }
 
+/* Desktop: 3 cards visible */
+@media (min-width: 992px) {
+    .testimonial-track .testimonial-card-premium {
+        width: 33.333% !important;
+    }
+}
+
 /* ── About Checkmarks — hover lift ── */
 .about-check-pill {
     transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s ease, background 0.35s ease;
@@ -1370,10 +1379,10 @@ button {
         min-height: 360px;
     }
 
-    /* Testimonial cards — 2 per row */
+    /* Testimonial cards — 2 visible on tablet */
     .testimonial-track .testimonial-card-premium {
-        width: 45% !important;
-        min-width: 220px;
+        width: 48% !important;
+        min-width: 240px;
     }
 }
 
@@ -1609,13 +1618,13 @@ button {
 
     /* Stat bar items */
     .stat-item {
-        padding: 32px 20px 36px !important;
+        padding: 18px 14px 20px !important;
     }
     .stat-number {
-        font-size: 40px !important;
+        font-size: 28px !important;
     }
     .stat-label {
-        font-size: 12px !important;
+        font-size: 10px !important;
     }
 
     /* Appointment form card */
