@@ -57,8 +57,6 @@ Route::get('storage/{path}', [StorageController::class, 'serve'])
     ->where('path', '.*')
     ->name('storage.fallback');
 
-Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
-
 // Form Submissions
 Route::post('/appointments', [FormController::class, 'storeAppointment'])->name('appointment.store');
 Route::post('/contact', [FormController::class, 'storeContact'])->name('contact.store');
@@ -214,3 +212,10 @@ Route::get('/robots.txt', function () {
 
     return response($content, 200)->header('Content-Type', 'text/plain');
 })->name('robots');
+
+// ──────────────────────────────────────────────────
+// Wildcard Division Route — MUST be LAST so it does
+// NOT intercept /sitemap.xml, /robots.txt, or any
+// other explicitly defined routes above.
+// ──────────────────────────────────────────────────
+Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
