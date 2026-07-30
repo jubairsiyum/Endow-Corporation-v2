@@ -6,7 +6,7 @@
 @section('og_title', $post->title)
 @section('og_description', Str::limit(strip_tags($post->excerpt), 160))
 @if($post->featured_image)
-@section('og_image', asset('storage/' . $post->featured_image))
+@section('og_image', storage_url($post->featured_image))
 @endif
 
 @section('content')
@@ -62,7 +62,7 @@
         {{-- Featured Image --}}
         @if($post->featured_image)
             <div class="mb-12 rounded-xl overflow-hidden" style="box-shadow: 0 10px 40px rgba(0,0,0,0.08);" data-animate>
-                <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-full" style="max-height: 500px; object-fit: cover;">
+                <img src="{{ storage_url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full" style="max-height: 500px; object-fit: cover;">
             </div>
         @endif
 
@@ -133,7 +133,7 @@
                     <a href="{{ route('blog.show', $related->slug) }}" class="block">
                         <div class="relative overflow-hidden" style="aspect-ratio: 16/10;">
                             @if($related->featured_image)
-                                <img src="{{ asset('storage/' . $related->featured_image) }}" alt="{{ $related->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <img src="{{ storage_url($related->featured_image) }}" alt="{{ $related->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             @else
                                 <div class="w-full h-full flex flex-col items-center justify-center" style="background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
                                     <i class="fa-solid fa-newspaper text-3xl mb-2" style="color: var(--color-primary); opacity: 0.4;"></i>

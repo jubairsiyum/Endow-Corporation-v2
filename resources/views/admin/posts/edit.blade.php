@@ -59,7 +59,7 @@
                 <label style="display:block;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Featured Image</label>
                 @if($post->featured_image)
                     <div style="margin-bottom:10px;">
-                        <img src="{{ asset('storage/' . $post->featured_image) }}" style="width:160px;height:100px;object-fit:cover;border-radius:10px;border:1px solid var(--border);">
+                        <img src="{{ storage_url($post->featured_image) }}" style="width:160px;height:100px;object-fit:cover;border-radius:10px;border:1px solid var(--border);">
                     </div>
                 @endif
                 <input type="file" name="featured_image" id="featured_image" accept="image/*" style="width:100%;font-size:14px;color:var(--text-secondary);">

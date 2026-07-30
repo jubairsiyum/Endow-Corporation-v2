@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SeoPageController;
+use App\Http\Controllers\StorageController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -39,31 +40,22 @@ Route::get('/terms-of-service', [SeoPageController::class, 'termsOfService'])->n
 Route::view('/careers', 'pages.careers')->name('careers');
 
 // ──────────────────────────────────────────────────
-// Storage Fallback — for servers without symlink support
-// (Hostinger, cPanel shared hosting, etc.)
-// Serves files from storage/app/public/ via /storage/ URL
+// Uploads — Serves files from storage/app/public/ via /uploads/ URL
+// Avoids /storage/ prefix which conflicts with public/storage/ directory
+// on servers where php artisan storage:link (symlink) is unsupported.
 // ──────────────────────────────────────────────────
-Route::get('storage/{path}', function (string $path) {
-    // Security: only allow safe file extensions
-    $allowed = ['jpg','jpeg','png','gif','webp','svg','ico','pdf','css','js','woff','woff2','ttf','eot','mp4','webm','ogg'];
-    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+Route::get('uploads/{path}', [StorageController::class, 'serve'])
+    ->where('path', '.*')
+    ->name('uploads.serve');
 
-    if (!in_array($ext, $allowed)) {
-        abort(404);
-    }
-
-    // Prevent directory traversal
-    $safePath = str_replace(['../', '..\\', "\0"], '', $path);
-    $file = storage_path('app/public/' . $safePath);
-
-    if (!file_exists($file) || !is_file($file)) {
-        abort(404);
-    }
-
-    return response()->file($file, [
-        'Cache-Control' => 'public, max-age=31536000, immutable',
-    ]);
-})->where('path', '.*')->name('storage.fallback');
+// ──────────────────────────────────────────────────
+// Storage Fallback — legacy /storage/ route for servers
+// without a real public/storage/ directory.
+// Serves files from storage/app/public/ via /storage/ URL.
+// ──────────────────────────────────────────────────
+Route::get('storage/{path}', [StorageController::class, 'serve'])
+    ->where('path', '.*')
+    ->name('storage.fallback');
 
 Route::get('/{division:slug}', [PageController::class, 'division'])->name('division.show');
 

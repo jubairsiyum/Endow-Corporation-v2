@@ -39,7 +39,7 @@
                             {{-- Featured Image --}}
                             <div class="relative overflow-hidden" style="aspect-ratio: 16/10;">
                                 @if($post->featured_image)
-                                    <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <img src="{{ storage_url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                                 @else
                                     <div class="w-full h-full flex flex-col items-center justify-center" style="background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);">
                                         <i class="fa-solid fa-newspaper text-4xl mb-3" style="color: var(--color-primary); opacity: 0.4;"></i>
