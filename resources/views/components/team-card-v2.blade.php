@@ -1,54 +1,73 @@
-<div class="team-centered-card w-[250px] flex-shrink-0">
-    <div class="rounded-2xl overflow-hidden bg-white h-full flex flex-col"
-         style="box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);">
+{{--
+    Team Card v2 — Clean Professional Card
+    Usage: @include('components.team-card-v2', ['member' => $member])
+    Requires: $member['name'], $member['role'], $member['photo'], $member['color'], $member['division']
+    Requires: $socialIcons array in scope
+--}}
 
-        {{-- Photo — B&W → color on hover --}}
-        <div class="relative overflow-hidden flex-shrink-0" style="height: 285px;">
+<div class="team-card-pro group w-[240px] flex-shrink-0">
+    {{-- Outer shell: single rounded rectangle with no internal gap --}}
+    <div class="relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-2xl"
+         style="box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04); background: white;">
+
+        {{-- ── Photo Area ─────────────────────────────────────── --}}
+        <div class="relative overflow-hidden" style="height: 272px; flex-shrink: 0; line-height: 0; font-size: 0;">
             <img src="{{ asset($member['photo']) }}"
-                 alt="{{ $member['name'] }} — {{ $member['role'] }}"
-                 class="team-card-photo absolute inset-0 w-full h-full object-cover object-top"
-                 loading="lazy" width="400" height="500">
-            <div class="absolute bottom-0 left-0 right-0 h-14 pointer-events-none"
-                 style="background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 100%);"></div>
+                 alt="{{ $member['name'] }} — {{ $member['role'] }}, {{ $member['division'] }}"
+                 class="block w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                 loading="lazy"
+                 width="480"
+                 height="544">
+
+            {{-- Bottom gradient fade blending into the colored info panel --}}
+            <div class="absolute bottom-0 left-0 right-0 pointer-events-none"
+                 style="height: 64px; background: linear-gradient(to bottom, transparent 0%, {{ $member['color'] }} 100%);"></div>
         </div>
 
-        {{-- Gradient Info Panel --}}
-        <div class="px-5 py-4 text-center flex flex-col justify-center flex-1"
-             style="background: linear-gradient(135deg, {{ $member['color'] }} 0%, {{ $member['color'] }}dd 100%); min-height: 120px;">
+        {{-- ── Info Panel ──────────────────────────────────────── --}}
+        {{-- margin-top: -1px eliminates any sub-pixel rendering gap --}}
+        <div class="flex flex-col items-center text-center px-5 pt-4 pb-5"
+             style="background: {{ $member['color'] }}; margin-top: -1px;">
 
-            {{-- Division Badge --}}
-            @if($member['division'] === 'Endow Corporation')
-                <span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2 mx-auto"
-                      style="background: #ffffff; color: {{ $member['color'] }}; letter-spacing: 0.06em; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+            {{-- Division badge --}}
+            <span class="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.07em] px-3 py-1 rounded-full mb-3"
+                  style="background: rgba(255,255,255,0.18); color: #ffffff; border: 1px solid rgba(255,255,255,0.28); white-space: nowrap;">
+                @if($member['division'] === 'Endow Corporation')
                     <i class="fa-solid fa-gem text-[8px]"></i>
-                    {{ $member['division'] }}
-                </span>
-            @else
-                <span class="inline-block text-[9px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2 mx-auto"
-                      style="background: rgba(255,255,255,0.2); color: #ffffff; letter-spacing: 0.06em;">
-                    {{ $member['division'] }}
-                </span>
-            @endif
+                @elseif($member['division'] === 'Endow Global Education')
+                    <i class="fa-solid fa-graduation-cap text-[8px]"></i>
+                @elseif($member['division'] === 'Endow Travel')
+                    <i class="fa-solid fa-plane text-[8px]"></i>
+                @else
+                    <i class="fa-solid fa-briefcase text-[8px]"></i>
+                @endif
+                {{ $member['division'] }}
+            </span>
 
-            <h3 class="text-[15px] font-bold text-white mb-0.5 tracking-tight leading-tight"
+            {{-- Name --}}
+            <h3 class="text-[15px] font-bold text-white leading-snug mb-0.5"
                 style="letter-spacing: -0.01em;">
                 {{ $member['name'] }}
             </h3>
-            <p class="text-[11px] font-medium text-white mb-3 leading-snug"
-               style="opacity: 0.85;">
+
+            {{-- Role --}}
+            <p class="text-[11px] font-medium mb-4 leading-snug"
+               style="color: rgba(255,255,255,0.82);">
                 {{ $member['role'] }}
             </p>
 
-            <div class="flex items-center justify-center gap-2 mt-auto">
+            {{-- Social icons --}}
+            <div class="flex items-center justify-center gap-2">
                 @foreach($socialIcons as $s)
                     <a href="{{ $s['url'] }}" target="_blank" rel="noopener noreferrer"
-                       class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                       style="background: rgba(255,255,255,0.22); color: #ffffff;"
+                       class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
+                       style="background: rgba(255,255,255,0.2); color: #ffffff; border: 1px solid rgba(255,255,255,0.25);"
                        aria-label="Social link">
                         <i class="{{ $s['icon'] }} text-[10px]"></i>
                     </a>
                 @endforeach
             </div>
         </div>
+
     </div>
 </div>
