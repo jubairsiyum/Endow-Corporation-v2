@@ -25,7 +25,7 @@
                 <i class="fa-solid fa-plane-departure text-xl" style="color: var(--color-primary);"></i>
             </div>
             <div>
-                <h1 class="text-4xl md:text-5xl lg:text-[56px] font-medium text-white" style="letter-spacing: -0.03em; line-height: 1.135;">Study <span class="gradient-text">Abroad Programs</span></h1>
+                <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.05] tracking-tight" style="letter-spacing: -0.035em;">Study <span class="gradient-text">Abroad Programs</span></h1>
                 <p class="text-white/50 text-lg mt-1">Your gateway to world-class education across the globe</p>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <div class="service-icon mx-auto mb-6">
                         <i class="{{ $feature['icon'] }}"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-heading);">{{ $feature['title'] }}</h3>
+                    <h3 class="text-xl font-bold mb-3 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $feature['title'] }}</h3>
                     <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $feature['desc'] }}</p>
                 </div>
             @endforeach
@@ -89,7 +89,7 @@
                     <div class="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center transition-all" style="background: rgba(212,32,44,0.08);">
                         <i class="{{ $dest['icon'] }} text-2xl" style="color: var(--color-primary);"></i>
                     </div>
-                    <h3 class="text-base font-semibold mb-1" style="color: var(--color-text-heading);">{{ $dest['name'] }}</h3>
+                    <h3 class="text-base font-bold mb-1 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $dest['name'] }}</h3>
                     <p class="text-xs" style="color: var(--color-text-muted);">{{ $dest['universities'] }} Universities</p>
                 </div>
             @endforeach
@@ -121,7 +121,7 @@
                     <div class="service-icon mx-auto mb-5">
                         <i class="{{ $step['icon'] }}"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text-heading);">{{ $step['title'] }}</h3>
+                    <h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $step['title'] }}</h3>
                     <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $step['desc'] }}</p>
                 </div>
             @endforeach
@@ -154,7 +154,7 @@
                     <div class="service-icon mb-5">
                         <i class="{{ $program['icon'] }}"></i>
                     </div>
-                    <h3 class="text-lg font-semibold mb-2" style="color: var(--color-text-heading);">{{ $program['title'] }}</h3>
+                    <h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--color-text-heading); letter-spacing: -0.02em;">{{ $program['title'] }}</h3>
                     <p class="text-sm leading-relaxed" style="color: var(--color-text);">{{ $program['desc'] }}</p>
                 </div>
             @endforeach
@@ -195,7 +195,7 @@
                                 <i class="{{ $t['icon'] }} text-sm" style="color: var(--color-primary);"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-semibold" style="color: var(--color-text-heading);">{{ $t['name'] }}</p>
+                                <p class="text-sm font-bold" style="color: var(--color-text-heading);">{{ $t['name'] }}</p>
                                 <p class="text-xs" style="color: var(--color-text-muted);">{{ $t['program'] }}</p>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
 <section class="px-[15px]">
     <div class="stat-bar flex flex-wrap items-center" style="margin-bottom: 0;">
         <div class="w-full p-10 lg:p-14 text-center">
-            <h2 data-animate class="text-3xl md:text-4xl font-medium text-white mb-6" style="letter-spacing: -0.03em;">Ready to Start Your <span class="gradient-text">Study Abroad</span> Journey?</h2>
+            <h2 data-animate class="text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold text-white mb-6 tracking-tight" style="letter-spacing: -0.035em; line-height: 1.12;">Ready to Start Your <span class="gradient-text">Study Abroad</span> Journey?</h2>
             <p data-animate class="text-white/70 text-base mb-8 max-w-2xl mx-auto">Let Endow Global Education guide you to the perfect university and program. Your future starts with a single step.</p>
             <div data-animate class="flex flex-wrap items-center justify-center gap-4">
                 <a href="{{ route('consulting') }}" class="btn-primary btn-primary-lg">
